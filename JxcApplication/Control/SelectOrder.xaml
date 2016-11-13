@@ -1,0 +1,79 @@
+﻿<dx:DXDialogWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:control="clr-namespace:JxcApplication.Control"
+    xmlns:models="clr-namespace:BusinessDb.Cor.Models;assembly=BusinessDb.Cor"
+    xmlns:convert="clr-namespace:JxcApplication.Convert"
+    xmlns:core="clr-namespace:JxcApplication.Core"
+    x:Class="JxcApplication.Control.SelectOrder"
+    x:Name="DialogWindowRoot"
+    Title="选择订单" Height="359.6" Width="851.8"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="ToolWindow"
+    Icon="../Images/Icons/icon.png">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand SourceName="BarEditItemStartTime" EventName="EditValueChanged" Command="{Binding OnStartTimeChangingCommand}" PassEventArgsToCommand="True"/>
+        <dxmvvm:EventToCommand SourceName="BarEditItemEndTime" EventName="EditValueChanged" Command="{Binding OnEndTimeChangingCommand}" PassEventArgsToCommand="True"/>
+        <dxmvvm:EventToCommand SourceName="GridControl1" EventName="ItemsSourceChanged" Command="{Binding ItemsSourceChangedCommand}" CommandParameter="{Binding ElementName=GridControl1}"></dxmvvm:EventToCommand>
+        <dxmvvm:EventToCommand SourceName="GridControl1" EventName="Loaded" Command="{Binding ItemsSourceChangedCommand}" CommandParameter="{Binding ElementName=GridControl1}"></dxmvvm:EventToCommand>
+        <dxmvvm:EventToCommand SourceName="GridControl1" EventName="CustomColumnDisplayText" Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True"></dxmvvm:EventToCommand>
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxb:BarManager>
+            <dxb:BarManager.Bars>
+                <dxb:Bar Caption="工具栏">
+                    <dxb:BarSubItem Content="时间段" LargeGlyph="{dx:DXImage Image=Time_32x32.png}" Glyph="{dx:DXImage Image=Time_32x32.png}">
+                        <dxb:BarButtonItem Content="今  天" LargeGlyph="{dx:DXImage Image=RecurringAppointment_32x32.png}" Glyph="{dx:DXImage Image=RecurringAppointment_32x32.png}"
+                                           Command="{Binding ChangedTimeCommand}" CommandParameter="0"/>
+                        <dxb:BarButtonItem Content="昨  天" LargeGlyph="{dx:DXImage Image=ShowWorkTimeOnly_32x32.png}" Glyph="{dx:DXImage Image=ShowWorkTimeOnly_32x32.png}"
+                                           Command="{Binding ChangedTimeCommand}" CommandParameter="1"/>
+                        <dxb:BarButtonItem Content="本  周" LargeGlyph="{dx:DXImage Image=WorkWeekView_32x32.png}" Glyph="{dx:DXImage Image=WorkWeekView_32x32.png}"
+                                           Command="{Binding ChangedTimeCommand}" CommandParameter="2"/>
+                        <dxb:BarButtonItem Content="上  周" LargeGlyph="{dx:DXImage Image=WeekView_32x32.png}" Glyph="{dx:DXImage Image=WeekView_32x32.png}"
+                                           Command="{Binding ChangedTimeCommand}" CommandParameter="3"/>
+                        <dxb:BarButtonItem Content="本  月" LargeGlyph="{dx:DXImage Image=GroupByNone_32x32.png}" Glyph="{dx:DXImage Image=GroupByNone_32x32.png}"
+                                           Command="{Binding ChangedTimeCommand}" CommandParameter="4"/>
+                        <dxb:BarButtonItem Content="上  月" LargeGlyph="{dx:DXImage Image=MonthView_32x32.png}" Glyph="{dx:DXImage Image=MonthView_32x32.png}"
+                                           Command="{Binding ChangedTimeCommand}" CommandParameter="5"/>
+                    </dxb:BarSubItem>
+                    <dxb:BarItemSeparator/>
+                    <dxb:BarEditItem x:Name="BarEditItemStartTime" Content="起始日期" LargeGlyph="{dx:DXImage Image=GanttView_32x32.png}" Glyph="{dx:DXImage Image=WorkWeekView_32x32.png}" EditWidth="150" EditValue="{Binding StartTime}">
+                         <dxb:BarEditItem.EditSettings>
+                            <dxe:DateEditSettings Mask="f"/>
+                        </dxb:BarEditItem.EditSettings>
+                    </dxb:BarEditItem>
+                    <dxb:BarEditItem x:Name="BarEditItemEndTime" Content="结束日期" EditWidth="150" EditValue="{Binding EndTime}">
+                        <dxb:BarEditItem.EditSettings>
+                            <dxe:DateEditSettings Mask="f"/>
+                        </dxb:BarEditItem.EditSettings>
+                    </dxb:BarEditItem>
+                    <dxb:BarItemSeparator/>
+                    <dxb:BarButtonItem Content="确定" LargeGlyph="{dx:DXImage Image=SaveTo_32x32.png}" Glyph="{dx:DXImage Image=SaveTo_16x16.png}" Command="{Binding ButtonOkCommand}" CommandParameter="{Binding ElementName=DialogWindowRoot}"></dxb:BarButtonItem>
+                    <dxb:BarButtonItem Content="取消" LargeGlyph="{dx:DXImage Image=Cancel_32x32.png}" Glyph="{dx:DXImage Image=Cancel_16x16.png}" Command="{Binding ButtonCancelCommand}" CommandParameter="{Binding ElementName=DialogWindowRoot}"></dxb:BarButtonItem>
+                </dxb:Bar>
+            </dxb:BarManager.Bars>
+            <dxg:GridControl x:Name="GridControl1" ItemsSource="{Binding OrderDetails}" SelectionMode="MultipleRow">
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowEditing="False"/>
+                </dxg:GridControl.View>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="OrderType" Header="单据类型">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:ComboBoxEditSettings  ValueMember="Id" DisplayMember="Description"  ItemsSource="{core:EnumItemsSource EnumType=models:OrderType}"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="Code" Header="单据号" Width="200"></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="CreateDate" Header="单据日期"></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="SumPrice" Header="总金额"></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="Paid" Header="已收款"></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="UnPay" Header="未收款"></dxg:GridColumn>
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+        </dxb:BarManager>
+    </Grid>
+</dx:DXDialogWindow>

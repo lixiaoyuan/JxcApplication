@@ -1,0 +1,375 @@
+﻿<Application x:Class="JxcApplication.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:templateSelector="clr-namespace:JxcApplication.TemplateSelector"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:convert="clr-namespace:JxcApplication.Convert"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:entityModels="clr-namespace:ApplicationDb.Cor.EntityModels;assembly=ApplicationDb.Cor"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:core="clr-namespace:JxcApplication.Core"
+             xmlns:model="clr-namespace:ApplicationDb.Cor.Model;assembly=ApplicationDb.Cor"
+             xmlns:viewModels="clr-namespace:JxcApplication.ViewModels"
+             xmlns:native="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
+             Startup="App_OnStartup">
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/dragdrop.xaml"/>
+                <ResourceDictionary Source="Theme/RibbonTemplate.xaml"/>
+                <ResourceDictionary Source="Theme/ViewModelTemplatesDictionart.xaml"/>
+                <ResourceDictionary Source="Theme/WorkOrderTemplatesDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="ToVisibilityConverter"/>
+            <convert:ColorToStringConvert x:Key="ColorToStringConvert"/>
+            <Color x:Key="FixColor">#FF104EA9</Color>
+            
+            <SolidColorBrush x:Key="FixSolidBrush" Color="{StaticResource FixColor}"></SolidColorBrush>
+            
+            <!--#region GridControl-->
+            <Style TargetType="dxg:TableView">
+                <Setter Property="AllowColumnFiltering" Value="False"/>
+                <Setter Property="IsColumnMenuEnabled" Value="False"/>
+                <Setter Property="IsTotalSummaryMenuEnabled" Value="False"/>
+                <Setter Property="IsGroupRowMenuEnabled" Value="False"/>
+                <Setter Property="IsGroupFooterMenuEnabled" Value="False"/>
+                <Setter Property="IsGroupPanelMenuEnabled" Value="False"/>
+                <Setter Property="IsRowCellMenuEnabled" Value="False"/>
+                <Setter Property="ShowSearchPanelMode" Value="Always"/>
+                <Setter Property="ShowGroupPanel" Value="False"/>
+                <Setter Property="ShowFilterPanelMode" Value="Never"/>
+                <Setter Property="ShowSearchPanelFindButton" Value="True"/>
+                <Setter Property="AllowColumnMoving" Value="False"/>
+                <Setter Property="ShowGroupedColumns" Value="False"/>
+                <!--<Setter Property="AllowSorting" Value="False"></Setter>-->
+            </Style>
+            <Style x:Key="RepotTable" TargetType="dxg:TableView">
+                <Setter Property="AllowColumnFiltering" Value="True"/>
+                <Setter Property="AllowEditing" Value="False"></Setter>
+                <Setter Property="AllowGrouping" Value="True"></Setter>
+                <Setter Property="ShowTotalSummary" Value="True"></Setter>
+                <Setter Property="AutoWidth" Value="True"></Setter>
+                <Setter Property="AllowColumnMoving" Value="True"></Setter>
+                <Setter Property="IsColumnMenuEnabled" Value="False"/>
+                <Setter Property="IsTotalSummaryMenuEnabled" Value="False"/>
+                <Setter Property="IsGroupRowMenuEnabled" Value="False"/>
+                <Setter Property="IsGroupFooterMenuEnabled" Value="False"/>
+                <Setter Property="IsGroupPanelMenuEnabled" Value="False"/>
+                <Setter Property="IsRowCellMenuEnabled" Value="False"/>
+                <Setter Property="ShowSearchPanelMode" Value="Always"/>
+                <Setter Property="ShowGroupPanel" Value="True"/>
+                <Setter Property="ShowFilterPanelMode" Value="Never"/>
+                <Setter Property="ShowSearchPanelFindButton" Value="True"/>
+                <Setter Property="ShowGroupedColumns" Value="False"/>
+            </Style>
+
+            <Style TargetType="dxg:TreeListView">
+                <Setter Property="AllowColumnFiltering" Value="False"/>
+                <Setter Property="AllowRecursiveNodeChecking" Value="True"/>
+                <Setter Property="AutoExpandAllNodes" Value="True"/>
+                <Setter Property="IsColumnMenuEnabled" Value="False"/>
+                <Setter Property="ShowSearchPanelMode" Value="Always"/>
+                <Setter Property="AllowColumnMoving" Value="False"></Setter>
+            </Style>
+
+            <Style TargetType="dxg:GridViewBase">
+                <Setter Property="AllowColumnFiltering" Value="False"/>
+                <Setter Property="IsColumnMenuEnabled" Value="False"/>
+                <Setter Property="ShowSearchPanelMode" Value="Always"/>
+                <Setter Property="ShowGroupPanel" Value="False"/>
+                <Setter Property="ShowFilterPanelMode" Value="Never"/>
+                <Setter Property="ShowSearchPanelFindButton" Value="True"/>
+                <Setter Property="AllowColumnMoving" Value="False"/>
+                <Setter Property="ShowGroupedColumns" Value="False"/>
+            </Style>
+
+            <Style TargetType="dxg:GridControl">
+                <Setter Property="SelectionMode" Value="Row"></Setter>
+            </Style>
+
+            <Style x:Key="GridColumnHeaderConstant" TargetType="{x:Type dxg:GridColumnHeader}">
+                <Setter Property="Foreground" Value="{StaticResource FixSolidBrush}"/>
+            </Style>
+            
+            <!--#endregion -->
+
+            <!--#region NotificationService-->
+            <DataTemplate x:Key="NotificationServiceTemplate">
+                <Border Background="#FFF4F4F4"  BorderThickness="1" BorderBrush="DodgerBlue" CornerRadius="5" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock HorizontalAlignment="Left" Text="{Binding Caption}" Foreground="DodgerBlue"  FontSize="20" FontWeight="Bold" Margin="5"/>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Content}" Foreground="Black" FontSize="16" Margin="3"/>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+            <!--#endregion-->
+
+            <!--#region Bar-->
+            <Style TargetType="dxb:Bar">
+                <Setter Property="IsStatusBar" Value="False"/>
+                <Setter Property="ShowDragWidget" Value="false"/>
+                <Setter Property="AllowCustomizationMenu" Value="False"/>
+                <Setter Property="AllowRename" Value="False"/>
+                <Setter Property="AllowCollapse" Value="False"/>
+                <Setter Property="AllowHide" Value="False"></Setter>
+                <Setter Property="AllowQuickCustomization" Value="False"></Setter>
+                <Setter Property="BarItemDisplayMode" Value="ContentAndGlyph"></Setter>
+            </Style>
+
+            <templateSelector:BarItemTemplateSelector x:Key="BarItemTemplateSelector">
+                <templateSelector:BarItemTemplateSelector.ItemTemplate>
+                    <DataTemplate>
+                        <ContentControl>
+                            <dxb:BarButtonItem Content="{Binding Caption}" Glyph="{Binding Icon}" LargeGlyph="{Binding LargeGlyph}" GlyphAlignment="Top" BarItemDisplayMode="ContentAndGlyph" Command="{Binding}"/>
+                        </ContentControl>
+                    </DataTemplate>
+                </templateSelector:BarItemTemplateSelector.ItemTemplate>
+            </templateSelector:BarItemTemplateSelector>
+            <!--#endregion -->
+
+            <!--联系人-->
+            <ControlTemplate x:Key="ControlTemplateLookUpAcontact">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="编码" />
+                        <dxg:GridColumn FieldName="Name" Header="姓名" />
+                        <dxg:GridColumn FieldName="Tel" Header="电话" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+
+            <!--供应商-->
+            <ControlTemplate x:Key="ControlTemplateLookUpSuppliers">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="编码" />
+                        <dxg:GridColumn FieldName="Name" Header="姓名" />
+                        <dxg:GridColumn FieldName="AContactPhone" Header="电话" />
+                        <dxg:GridColumn FieldName="AContactAddress" Header="地址"/>
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+
+
+            <!--仓库-->
+            <ControlTemplate x:Key="ControlTemplateLookUpStore">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="编码" />
+                        <dxg:GridColumn FieldName="Name" Header="名称" />
+                        <dxg:GridColumn FieldName="Address" Header="地址" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+
+            <!--产品-->
+            <ControlTemplate x:Key="ControlTemplateLookUpProduct">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="编码" Width="70"/>
+                        <dxg:GridColumn FieldName="Name" Header="名称" Width="200"/>
+                        <dxg:GridColumn FieldName="Specification" Header="规格" />
+                        <dxg:GridColumn FieldName="PyCode" Header="拼音编码" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+
+            <!--用户-->
+            <ControlTemplate x:Key="ControlTemplateLookUpSystemUsers">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="编码" />
+                        <dxg:GridColumn FieldName="Name" Header="名称" />
+                        <dxg:GridColumn FieldName="Tel" Header="电话" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+            
+            <!--客户-->
+            <ControlTemplate x:Key="ControlTemplateLookUpCustomer">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="编码" Width="100"/>
+                        <dxg:GridColumn FieldName="Name" Header="名称" Width="240"/>
+                        <dxg:GridColumn FieldName="Tel" Header="电话" />
+                        <dxg:GridColumn FieldName="Area" Header="区域" AllowAutoFilter="True" AllowColumnFiltering="True"/>
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+
+            <!--账户-->
+            <ControlTemplate x:Key="ControlTemplateLookUpAccount">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="编码" />
+                        <dxg:GridColumn FieldName="Name" Header="名称"/>
+                        <dxg:GridColumn FieldName="Balance" Header="余额" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+
+            <!--产品类别-->
+            <ControlTemplate x:Key="ControlTemplateLookUpProductType">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="编码" />
+                        <dxg:GridColumn FieldName="Name" Header="名称" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+
+            <!--费用类别-->
+            <ControlTemplate x:Key="ControlTemplateLookUpCostType">
+                <dxg:GridControl Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Name" Header="名称" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView AutoWidth="True" ShowGroupPanel="False"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+            
+            
+            <!--#region CRUD-->
+            
+            <!--组织结构图-->
+            <DataTemplate x:Key="DataTemplateOrganEdit">
+                <dxlc:LayoutControl>
+                    <dxlc:LayoutGroup View="Group" Orientation="Vertical">
+                        <dxlc:LayoutItem Label="部门编码:" Foreground="{StaticResource FixSolidBrush}">
+                            <dxe:TextEdit Width="200" EditValue="{Binding Code}" IsReadOnly="True" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="部门名称:">
+                            <dxe:TextEdit Width="200" EditValue="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutControl>
+            </DataTemplate>
+
+            <!--编辑费用支出中的费用类别-->
+            <DataTemplate x:Key="DataTemplateCostTypeEdit">
+                <dxlc:LayoutControl>
+                    <dxlc:LayoutGroup View="Group" Orientation="Vertical">
+                        <dxlc:LayoutItem Label="费用类别名称:">
+                            <dxe:TextEdit Width="200" EditValue="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutControl>
+            </DataTemplate>
+            <!--#endregion-->
+
+            <!--重置密码-->
+            <DataTemplate x:Key="DataTemplateRestPassword">
+                <dxlc:LayoutControl>
+                    <dxlc:LayoutGroup View="Group" Orientation="Vertical">
+                        <dxlc:LayoutItem Label="用户名:" Foreground="{StaticResource FixSolidBrush}">
+                            <dxe:TextEdit Width="200" EditValue="{Binding Name}" IsReadOnly="True" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="新密码:">
+                            <dxe:TextEdit Width="200" EditValue="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutControl>
+            </DataTemplate>
+
+            <!--工资另存 日期选择框-->
+            <DataTemplate x:Key="DataTemplateSaveSaDate">
+                <dxlc:LayoutControl  Orientation="Horizontal">
+                    <dxlc:LayoutItem Label="日期:" HorizontalAlignment="Left">
+                        <dxe:DateEdit Name="DateEditWageDate2" Width="120" EditValue="{Binding EditDateTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsTextEditable="False" AllowRoundOutOfRangeValue="True" Mask="y" MaskUseAsDisplayFormat="True">
+                            <dxe:DateEdit.StyleSettings>
+                                <dxe:DateEditPickerStyleSettings/>
+                            </dxe:DateEdit.StyleSettings>
+                        </dxe:DateEdit>
+                    </dxlc:LayoutItem> 
+                </dxlc:LayoutControl>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="DataTemplateRibbonNode">
+                <dxlc:LayoutControl Width="600" Height="200">
+                    <dxlc:LayoutGroup View="Group" Orientation="Vertical">
+                        <dxlc:LayoutGroup View="Group" Orientation="Horizontal">
+                            <dxlc:LayoutItem Label="显示名称:" MaxWidth="300" >
+                                <dxe:TextEdit  EditValue="{Binding DisplayName,Mode=TwoWay}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="标题:" MaxWidth="300" >
+                                <dxe:TextEdit EditValue="{Binding Caption,Mode=TwoWay}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup View="Group" Orientation="Horizontal">
+                            <dxlc:LayoutItem Label="菜单节点类型:" MaxWidth="200" >
+                                <dxe:ComboBoxEdit  EditValue="{Binding Path=NodeType,Mode=TwoWay}"  ValueMember="Id" DisplayMember="Description" ItemsSource="{core:EnumItemsSource2 EnumType=model:RibbonNodeType}"></dxe:ComboBoxEdit>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="父节点:" MaxWidth="200">
+                                <dxe:ComboBoxEdit EditValue="{Binding Path=ParentId,Mode=TwoWay}" ValueMember="Id" DisplayMember="DisplayName" ItemsSource="{Binding RibbonNodes}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="打开窗口菜单:" MaxWidth="200">
+                                <dxe:ComboBoxEdit EditValue="{Binding Path=RibbonNodeRootId,Mode=TwoWay}" ValueMember="Id" DisplayMember="DisplayName" ItemsSource="{Binding MenuRibbonNodes}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup View="Group" Orientation="Horizontal">
+                            <dxlc:LayoutItem Label="按钮链接名称:" MaxWidth="375">
+                                <dxe:TextEdit  EditValue="{Binding Path=LinkName,Mode=TwoWay}"></dxe:TextEdit>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="颜色:" MaxWidth="230">
+                                <dxe:PopupColorEdit  EditValue="{Binding Path=Color,Mode=TwoWay,Converter={StaticResource ColorToStringConvert}}"></dxe:PopupColorEdit>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup View="Group" Orientation="Horizontal">
+                            <dxlc:LayoutItem Label="图片:">
+                                <dxe:TextEdit  EditValue="{Binding Path=Image,Mode=TwoWay}"></dxe:TextEdit>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup View="Group" Orientation="Horizontal">
+                            <dxlc:LayoutItem Label="序号:" MaxWidth="200">
+                                <dxe:TextEdit   EditValue="{Binding Path=Sort,Mode=TwoWay}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="是否默认Category:" MaxWidth="130">
+                                <dxe:CheckEdit EditValue="{Binding Path=IsDefaultPageCategory,Mode=TwoWay}"></dxe:CheckEdit>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="是否启用:" MaxWidth="130">
+                                <dxe:CheckEdit EditValue="{Binding Path=Enable,Mode=TwoWay}"></dxe:CheckEdit>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutControl>
+            </DataTemplate>
+            
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

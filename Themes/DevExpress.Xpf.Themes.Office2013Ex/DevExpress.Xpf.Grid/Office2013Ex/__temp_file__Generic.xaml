@@ -1,0 +1,21 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/WaitIndicators.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/ScrollBars.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/ExpandButtons.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/ColumnHeaderDragIndicator.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/GridControl.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/CardTemplates.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/CardView.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/GridView.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/Rows.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/LightweightStyles.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/GridCard.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/ColumnHeader.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/TotalSummary.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/RowIndicator.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/TreeListIndentItems.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/LookUpEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Grid/Office2013Ex/GridControlElements.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/FadingButton.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/FlipView.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/PageView.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/SlideView.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/CommandButton.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/AppBar.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/MessageBox.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/Flyout.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/TouchNavigator.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Controls/WindowsUI/Office2013Ex/TileNavPane.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

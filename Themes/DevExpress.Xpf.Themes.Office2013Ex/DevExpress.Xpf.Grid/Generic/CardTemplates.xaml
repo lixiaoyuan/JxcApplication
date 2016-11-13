@@ -1,0 +1,80 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxgcore="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys" xmlns:dxght="http://schemas.devexpress.com/winfx/2008/xaml/grid/internal" xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+
+    <Style x:Key="{dxgt:CardTemplatesThemeKey ResourceKey=SearchPanelContentTemplate}" TargetType="{x:Type ContentControl}">
+        <Setter Property="dx:FocusHelper2.Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Background="{DynamicResource {dxgt:TableViewThemeKey ResourceKey=SearchPanelBackground}}">
+                        <dxg:ChildMinWidthPanel ChildMinWidth="{DynamicResource {dxgt:TableViewThemeKey ResourceKey=SearchPanelWidth}}" HorizontalAlignment="{Binding Path=(dxg:GridControl.CurrentView).SearchPanelHorizontalAlignment, RelativeSource={RelativeSource TemplatedParent}}">
+                            <dxg:GridSearchControl x:Name="PART_SearchControl" View="{Binding Path=(dxg:GridControl.CurrentView), RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch">
+                                <dxg:GridSearchControl.Visibility>
+                                    <Binding Path="View.ActualShowSearchPanel" RelativeSource="{RelativeSource Self}">
+                                        <Binding.Converter>
+                                            <dxmvvm:BooleanToVisibilityConverter />
+                                        </Binding.Converter>
+                                    </Binding>
+                                </dxg:GridSearchControl.Visibility>
+                                <dxg:GridSearchControl.Margin>
+                                    <Binding Path="GroupPanelShown" ElementName="PART_SearchControl">
+                                        <Binding.Converter>
+                                            <dx:BoolToObjectConverter TrueValue="{DynamicResource {dxgt:TableViewThemeKey ResourceKey=SearchPanelWithGroupedPanelMargin}}" FalseValue="{DynamicResource {dxgt:TableViewThemeKey ResourceKey=SearchPanelWithoutGroupedPanelMargin}}" />
+                                        </Binding.Converter>
+                                    </Binding>
+                                </dxg:GridSearchControl.Margin>
+                            </dxg:GridSearchControl>
+                        </dxg:ChildMinWidthPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <DataTemplate x:Key="{dxgt:CardTemplatesThemeKey ResourceKey=CardHeaderTemplate}">
+		<TextBlock Text="{Binding Path=Value}" />
+    </DataTemplate>
+    <ControlTemplate x:Key="{dxgt:CardTemplatesThemeKey ResourceKey=CellContentPresenterTemplate}" TargetType="{x:Type dxgcore:CellContentPresenter}">
+        <Border x:Name="ContentBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{TemplateBinding Border.CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+            <dxg:CellEditor x:Name="PART_CellEditor" Margin="{DynamicResource {dxgt:CardViewThemeKey ResourceKey=CellEditorMargin}}" ClipToBounds="{DynamicResource {dxgt:CardViewThemeKey ResourceKey=ClipCellEditor}}">
+            </dxg:CellEditor>
+        </Border>
+    </ControlTemplate>
+    
+	<DataTemplate x:Key="{dxgt:CardTemplatesThemeKey ResourceKey=CardRowTemplate}">
+		<Grid x:Name="grid" dxg:GridColumn.NavigationIndex="{Binding Path=DataContext.Column.VisibleIndex, RelativeSource={RelativeSource TemplatedParent}}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition SharedSizeGroup="cardRowDescription" />
+				<ColumnDefinition Width="6" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+            <TextBlock Style="{DynamicResource {dxgt:CardTemplatesThemeKey ResourceKey=CardRowHeaderTextStyle}}">
+				<TextBlock.Text>
+					<Binding Path="Column.HeaderCaption">
+						<Binding.Converter>
+							<dx:FormatStringConverter FormatString="{}{0}:" />
+						</Binding.Converter>
+					</Binding>
+				</TextBlock.Text>
+                <dxg:GridViewHitInfoBase.HitTestAcceptor>
+                    <dxght:FieldCaptionCardViewHitTestAcceptor />
+                </dxg:GridViewHitInfoBase.HitTestAcceptor>
+			</TextBlock>
+            <dxg:CardCellContentPresenter x:Name="cell" Grid.Column="2" Column="{Binding Path=DataContext.Column, RelativeSource={RelativeSource TemplatedParent}}" CellStyle="{Binding Path=DataContext.Column.ActualCellStyle, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Grid>
+	</DataTemplate>
+	
+	<DataTemplate x:Key="{dxgt:CardTemplatesThemeKey ResourceKey=CardTemplate}">
+		<dxg:CardItemsControl x:Name="cardItemsControl" ItemsSource="{Binding Path=CellData}">
+			<dxg:CardItemsControl.ItemTemplate>
+				<DataTemplate>
+					<dx:DataContentPresenter ContentTemplateSelector="{Binding Path=(dxg:GridControl.ActiveView).ActualCardRowTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}" />
+				</DataTemplate>
+			</dxg:CardItemsControl.ItemTemplate>
+            <dxg:CardItemsControl.ItemsPanel>
+                <ControlTemplate>
+                    <dx:StackVisibleIndexPanel ArrangeAccordingToVisibleIndex="True" Orientation="Vertical" />
+                </ControlTemplate>
+            </dxg:CardItemsControl.ItemsPanel>
+		</dxg:CardItemsControl>
+	</DataTemplate>
+	
+</ResourceDictionary>

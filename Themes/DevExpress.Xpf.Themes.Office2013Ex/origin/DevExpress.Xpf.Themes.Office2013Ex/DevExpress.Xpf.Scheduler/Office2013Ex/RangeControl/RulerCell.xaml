@@ -1,0 +1,5 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler" xmlns:dxscht="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/themekeys" xmlns:dxschd="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/internal" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <ControlTemplate x:Key="{dxscht:RangeControlThemeKey ResourceKey=RulerCellControlTemplate}" TargetType="{x:Type dxsch:RulerCellControl}">
+        <Border Background="#FFF0F3F8" BorderBrush="#FFCFCFCF" BorderThickness="0,0,1,1" VerticalAlignment="Stretch" cs:Name="Border_0002" />
+    </ControlTemplate>
+</ResourceDictionary>

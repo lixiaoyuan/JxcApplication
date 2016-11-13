@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxpdf="http://schemas.devexpress.com/winfx/2008/xaml/pdf" xmlns:themes="http://schemas.devexpress.com/winfx/2008/xaml/pdf/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dxbt="http://schemas.devexpress.com/winfx/2008/xaml/bars/themekeys" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.PdfViewer/Generic/Templates.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <SolidColorBrush Color="#FF3C3C3C" x:Key="CurrentDateButtonForeground" cs:Name="SolidColorBrush_0005" />
+    <Color x:Key="{themes:PdfViewerThemeKey ResourceKey=HighlightSearchTextColor}" cs:Name="Color_0001">#7F0072C6</Color>
+    <Color x:Key="{themes:PdfViewerThemeKey ResourceKey=HighlightSelectionColor}" cs:Name="Color_0006">#7F0072C6</Color>
+    <Color x:Key="{themes:PdfViewerThemeKey ResourceKey=CaretColor}" cs:Name="Color_0007">#FF000000</Color>
+    <Color x:Key="{themes:PdfViewerThemeKey ResourceKey=StartScreenCaptionForegroundColor}" cs:Name="Color_0002">#FF3C3C3C</Color>
+    <Color x:Key="{themes:PdfViewerThemeKey ResourceKey=StartScreenDocumentLinkForegroundColor}" cs:Name="Color_0003">#FF0072C6</Color>
+    <Color x:Key="{themes:PdfViewerThemeKey ResourceKey=StartScreenOpenDocumentForegroundColor}" cs:Name="Color_0004">#FF3C3C3C</Color>
+    <Color x:Key="{themes:PdfViewerThemeKey ResourceKey=LoadingDocumentLinkForegroundColor}" cs:Name="Color_0005">#FF0072C6</Color>
+    <sys:Double x:Key="{themes:PdfViewerThemeKey ResourceKey=PrintDialogRightColumnWidth}">120</sys:Double>
+    <GridLength x:Key="{themes:PdfViewerThemeKey ResourceKey=PrintDialogRightColumnGridLength}">120</GridLength>
+    <LinearGradientBrush x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfPresenterControlBackgroundBrush}" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0107">
+        <GradientStop Color="#FFFFFFFF" Offset="0" cs:Name="GradientStop_0001" />
+        <GradientStop Color="#FFF0F0F0" Offset="1" cs:Name="GradientStop_0002" />
+    </LinearGradientBrush>
+    <ControlTemplate TargetType="{x:Type dxpdf:PdfPageControlItem}" x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfPageControlItemTemplate}">
+        <Grid>
+            <Border x:Name="Selection" BorderBrush="#FFC6C6C6" BorderThickness="1" Margin="-1" cs:Name="Border_0001" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsSelected" Value="true">
+                <Setter TargetName="Selection" Property="BorderBrush" Value="#FF0072C6" cs:Name="Setter_0001" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=SelectionCanvasContentTemplate}">
+        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#45007FFF" BorderBrush="#FF007FFF" BorderThickness="1" cs:Name="Border_0003" />
+    </DataTemplate>
+</ResourceDictionary>

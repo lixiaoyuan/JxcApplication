@@ -1,0 +1,35 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxdiag="http://schemas.devexpress.com/winfx/2008/xaml/diagram" xmlns:dxdiagt="http://schemas.devexpress.com/winfx/2008/xaml/diagram/themekeys" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <SolidColorBrush x:Key="{dxdiagt:DiagramToolboxControlThemeKey ResourceKey=Background}" Color="Transparent" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="{dxdiagt:DiagramControlThemeKeys ResourceKey=PageBackground}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="{dxdiagt:RulerThemeKey ResourceKey=Shadow}" Color="#FFE6E6E6" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="{dxdiagt:RulerThemeKey ResourceKey=Foreground}" Color="#FF525252" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="{dxdiagt:RulerThemeKey ResourceKey=HorizontalBackground}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="{dxdiagt:RulerThemeKey ResourceKey=VerticalBackground}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0006" />
+    <SolidColorBrush x:Key="{dxdiagt:RulerThemeKey ResourceKey=BorderBrush}" Color="#FFE2E2E2" cs:Name="SolidColorBrush_0007" />
+    <SolidColorBrush x:Key="{dxdiagt:RulerThemeKey ResourceKey=TickBrush}" Color="#FFBBBBBB" cs:Name="SolidColorBrush_0008" />
+    <SolidColorBrush x:Key="{dxdiagt:ControlsThemeKeys ResourceKey=SelectionPreviewBackground}" Color="#17000000" cs:Name="SolidColorBrush_0009" />
+    <SolidColorBrush x:Key="{dxdiagt:ControlsThemeKeys ResourceKey=SelectionPreviewBorderBrush}" Color="#FFABABAB" cs:Name="SolidColorBrush_0010" />
+    <SolidColorBrush x:Key="{dxdiagt:ControlsThemeKeys ResourceKey=GridLineBrush}" Color="#FFDADADA" cs:Name="SolidColorBrush_0011" />
+    <LinearGradientBrush x:Key="{dxdiagt:DiagramControlThemeKeys ResourceKey=DiagramControlBackground}" StartPoint="0.5,0" EndPoint="0.5,1" cs:Name="LinearGradientBrush_2054">
+        <GradientStop Color="#FFFFFFFF" Offset="0" cs:Name="GradientStop_0001" />
+        <GradientStop Color="#FFF0F0F0" Offset="1" cs:Name="GradientStop_0002" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ResizeBoxBackground}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0012" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=SelectionAdornerStroke}" Color="#FF939393" cs:Name="SolidColorBrush_0013" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ParameterPointsBackground}" Color="#FFFFFF00" cs:Name="SolidColorBrush_0014" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ParameterPointsStroke}" Color="#FF000000" cs:Name="SolidColorBrush_0015" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=SelectionAdornerMoveBorderBrush}" Color="Transparent" cs:Name="SolidColorBrush_0016" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=SelectionPartBorderBrush}" Color="#FF21408F" cs:Name="SolidColorBrush_0017" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ConnectorConnectedMarkerFill}" Color="#FF0EA619" cs:Name="SolidColorBrush_0018" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ConnectorConnectedMarkerEndFill}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0019" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ConnectorConnectedMarkerStroke}" Color="#FF207626" cs:Name="SolidColorBrush_0020" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=BeginConnectedElementBackground}" Color="Transparent" cs:Name="SolidColorBrush_0021" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=EndConnectedElementBackground}" Color="Transparent" cs:Name="SolidColorBrush_0022" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=EndFreeElementBackground}" Color="#FFD1D1D1" cs:Name="SolidColorBrush_0023" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ConnectorIntermediatePointFill}" Color="#FF0000FF" cs:Name="SolidColorBrush_0024" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ConnectorDragColor}" Color="#FF808080" cs:Name="SolidColorBrush_0025" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ConnectorMovePointColor}" Color="#FFA9A9A9" cs:Name="SolidColorBrush_0026" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=GlueHighlightBrush}" Color="#FF22D006" cs:Name="SolidColorBrush_0027" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=ShapeConnectionPointBrush}" Color="#FF666666" cs:Name="SolidColorBrush_0028" />
+    <SolidColorBrush x:Key="{dxdiagt:AdornersThemeKeys ResourceKey=SnapLineBrush}" Color="#FF5AC85A" cs:Name="SolidColorBrush_0029" />
+</ResourceDictionary>

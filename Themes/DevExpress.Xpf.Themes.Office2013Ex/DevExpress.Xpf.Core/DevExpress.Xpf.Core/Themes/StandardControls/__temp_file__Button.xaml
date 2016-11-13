@@ -1,0 +1,104 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Themes/StandardControls/Brushes.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Themes/StandardControls/SharedResources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+	<Visibility x:Key="Visible">Visible</Visibility>
+    <dxcn:RenderTemplate x:Key="{dxdst:ButtonThemeKey ResourceKey=RenderTemplate}">
+        <dxcn:RenderTemplate.Triggers>
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:SimpleButton.GlyphProperty}" TargetName="Image" TargetProperty="Source" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:SimpleButton.GlyphToContentOffsetProperty}" TargetName="OffsetBorder" TargetProperty="Width" />
+			<dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static ContentControl.ContentProperty}" TargetName="ContentPresenter" />
+			<dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static ContentControl.ContentTemplateProperty}" TargetName="ContentPresenter" />
+			<dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static ContentControl.ContentTemplateSelectorProperty}" TargetName="ContentPresenter" />
+			<dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static Control.VerticalContentAlignmentProperty}" TargetProperty="VerticalAlignment" TargetName="ContentPresenter" />
+			<dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static Control.HorizontalContentAlignmentProperty}" TargetProperty="HorizontalAlignment" TargetName="ContentPresenter" />
+			<dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static Control.PaddingProperty}" TargetProperty="Margin" TargetName="RenderPanel" />
+            <dxcn:MultiRenderTrigger>
+                <dxcn:MultiRenderTrigger.Conditions>
+                    <dxcn:RenderConditionGroup Operator="Or">
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:SimpleButton.GlyphProperty}" Value="{x:Null}" />
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:SimpleButton.ContentProperty}" Value="{x:Null}" />
+                    </dxcn:RenderConditionGroup>
+                </dxcn:MultiRenderTrigger.Conditions>
+                <dxcn:RenderSetter Property="Visibility" TargetName="OffsetBorder" Value="Collapsed" />
+            </dxcn:MultiRenderTrigger>
+            
+			<dxcn:MultiRenderTrigger>
+				<dxcn:MultiRenderTrigger.Conditions>
+					<dxcn:RenderConditionGroup Operator="Or">
+						<dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static UIElement.IsMouseOverProperty}" Value="True" />
+						<dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static Button.IsDefaultedProperty}" Value="True" FallbackIsValid="True" />
+					</dxcn:RenderConditionGroup>
+					<dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static ToggleButton.IsCheckedProperty}" Value="False" />
+					<dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static ButtonBase.IsPressedProperty}" Value="False" />
+				</dxcn:MultiRenderTrigger.Conditions>
+				<dxcn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.HoverState.Border1}" />
+				<dxcn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.HoverState.Border2}" />
+			</dxcn:MultiRenderTrigger>
+			
+			<dxcn:MultiRenderTrigger>
+				<dxcn:MultiRenderTrigger.Conditions>
+					<dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static ButtonBase.IsPressedProperty}" Value="True" />
+					<dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static ToggleButton.IsCheckedProperty}" Value="False" />
+				</dxcn:MultiRenderTrigger.Conditions>
+				<dxcn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.PressedState.Border1}" />
+				<dxcn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.PressedState.Border2}" />
+			</dxcn:MultiRenderTrigger>
+			
+			<dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static ToggleButton.IsCheckedProperty}" Value="True">
+				<dxcn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.CheckedState.Border1}" />
+				<dxcn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.CheckedState.Border2}" />
+			</dxcn:RenderTrigger>
+			
+			<dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static UIElement.IsFocusedProperty}" Value="True">
+				<dxcn:RenderSetter Property="Visibility" TargetName="Focused" Value="{StaticResource Visible}" />
+			</dxcn:RenderTrigger>
+		</dxcn:RenderTemplate.Triggers>
+		<dxcn:RenderPanel>
+			<dxcn:RenderBorder Name="Outer" BorderBrush="{StaticResource Button.DefaultState.Border1}" BorderThickness="1" Background="{StaticResource Button.DefaultState.Border2}" />
+			<dxcn:RenderBorder Name="Focused" BorderBrush="#FF0072C6" BorderThickness="1" Visibility="Collapsed" cs:Name="RenderBorder_0001" />
+            <dxcn:RenderPanel Name="RenderPanel">
+                <dxcn:RenderPanel Margin="2" LayoutProvider="{dxcn:DockPanelLayoutProvider LastChildFill=True}">
+                    <dxcn:RenderImage Name="Image" Dock="Left" Stretch="None" VerticalAlignment="Center" />
+                    <dxcn:RenderBorder Name="OffsetBorder" />
+                    <dxcn:RenderContentPresenter Name="ContentPresenter" Dock="Right" />
+                </dxcn:RenderPanel>
+            </dxcn:RenderPanel>
+        </dxcn:RenderPanel>
+	</dxcn:RenderTemplate>
+	<Style x:Key="BaseButtonStyle" TargetType="{x:Type ButtonBase}">
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="Background" Value="{StaticResource Button.DefaultState.Border1}" />
+		<Setter Property="BorderBrush" Value="{StaticResource Button.DefaultState.Border1}" />
+		<Setter Property="Foreground" Value="{StaticResource Text.Foreground}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Padding" Value="10,1,10,1" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ButtonBase}">
+					<dxcn:Chrome x:Name="Chrome" RenderTemplate="{StaticResource {dxdst:ButtonThemeKey ResourceKey=RenderTemplate}}" />
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter TargetName="Chrome" Property="Opacity" Value="0.5" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+				<Setter Property="Padding" Value="12" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="{dxdst:DefaultStyleThemeKey FullName=System.Windows.Controls.Button}" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}" />
+	<Style x:Key="{dxdst:DefaultStyleThemeKey FullName=System.Windows.Controls.Primitives.ToggleButton}" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource BaseButtonStyle}" />
+	<Style x:Key="{dxdst:DefaultStyleThemeKey FullName=System.Windows.Controls.Primitives.RepeatButton}" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource BaseButtonStyle}" />
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Core.SimpleButton}" TargetType="{x:Type dx:SimpleButton}" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="GlyphToContentOffset" Value="10" />
+    </Style>
+</ResourceDictionary>

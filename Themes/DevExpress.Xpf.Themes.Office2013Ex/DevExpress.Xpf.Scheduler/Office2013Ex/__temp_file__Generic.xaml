@@ -1,0 +1,26 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/Colors.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/SchedulerScrollBar.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/NavigationButton.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/BaseView/MoreButtonToolTip.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/ResourceNavigator.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/CurrentTimeIndicator.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/SchedulerControl.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/Appointments/VerticalAppointment.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/Appointments/HorizontalAppointment.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/Appointments/HorizontalAppointmentSameDay.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/Appointments/HAppointmentLongerThanADay.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/Appointments/DragDropHoverTimeCells.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/Containers.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/Selection.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/BaseView/Header.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/DayView/TimeRuler.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/DayView/MoreButton.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/DayView/HorizontalTimeMarker.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/TimelineView/VerticalTimeMarker.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/RangeControl/Header.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/RangeControl/Thumbnail.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Scheduler/Office2013Ex/RangeControl/RulerCell.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

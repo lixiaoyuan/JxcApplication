@@ -1,0 +1,466 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxdiag="http://schemas.devexpress.com/winfx/2008/xaml/diagram" xmlns:dxdiagt="http://schemas.devexpress.com/winfx/2008/xaml/diagram/themekeys" xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" xmlns:dxpg="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" xmlns:dxdockt="http://schemas.devexpress.com/winfx/2008/xaml/docking/themekeys" xmlns:dxdiagcore="clr-namespace:DevExpress.Diagram.Core;assembly=DevExpress.Diagram.v15.2.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+
+    <dxdiag:DiagramStringIdConverter x:Key="DiagramStringIdConverter" />
+    <dxdiag:DiagramToolsTemplateSelector x:Key="DiagramToolsTemplateSelector" />
+
+    <x:Array x:Key="DiagramFontSizes" Type="sys:Double">
+        <sys:Double>6</sys:Double>
+        <sys:Double>8</sys:Double>
+        <sys:Double>9</sys:Double>
+        <sys:Double>10</sys:Double>
+        <sys:Double>11</sys:Double>
+        <sys:Double>12</sys:Double>
+        <sys:Double>14</sys:Double>
+        <sys:Double>16</sys:Double>
+        <sys:Double>18</sys:Double>
+        <sys:Double>24</sys:Double>
+        <sys:Double>30</sys:Double>
+        <sys:Double>36</sys:Double>
+        <sys:Double>48</sys:Double>
+        <sys:Double>60</sys:Double>
+    </x:Array>
+
+    <dxmvvm:ObjectToObjectConverter x:Key="HideButtonTransformConverter" DefaultTarget="1">
+        <dxmvvm:MapItem Source="True" Target="-1" />
+    </dxmvvm:ObjectToObjectConverter>
+
+    <Style x:Key="HideButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid Margin="0,0,0,0" Width="23" Height="23" Background="#00000000">
+                        <Path Fill="{TemplateBinding Foreground}" Stretch="Fill" x:Name="glyph" Width="9" Height="10" RenderTransformOrigin="0.5,0.5" Data="F1 M 1395,798L 1400,793L 1400,795L 1397,798L 1400,801L 1400,803L 1395,798 Z M 1399,798L 1404,793L 1404,795L 1401,798L 1404,801L 1404,803L 1399,798 Z " HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HideButtonTransformConverter}}" />
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource {dxdockt:DockPaneElementsThemeKey ResourceKey=CaptionNormalForeground}}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsActive, ElementName=PART_ToolboxPane}" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource {dxdockt:DockPaneElementsThemeKey ResourceKey=CaptionActiveForeground}}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Diagram.DiagramControl}" TargetType="{x:Type dxdiag:DiagramControl}">
+        <Setter Property="Background" Value="{DynamicResource {dxdiagt:DiagramControlThemeKeys ResourceKey=DiagramControlBackground}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type dxdiag:DiagramControl}">
+                    <ScrollViewer Background="{TemplateBinding Background}" CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Name="ScrollViewer">
+                        <dxdiag:LayersHost x:Name="LayersHost" Focusable="True" FocusVisualStyle="{x:Null}" Background="{TemplateBinding Background}" />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Diagram.ThemePresenter}" TargetType="{x:Type dxdiag:ThemePresenter}">
+        <Setter Property="Text" Value="Aa" />
+        <Setter Property="Width" Value="62" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type dxdiag:ThemePresenter}">
+                    <Canvas Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle x:Name="PART_RectangleVariant1" Fill="LightGray" Stroke="Black" Canvas.Left="5" Canvas.Top="4" Height="34" Width="34" />
+                        <Rectangle x:Name="PART_RectangleVariant4" Fill="LightGray" Stroke="Black" Canvas.Left="41" Canvas.Top="18" Height="16" Width="16" />
+                        <Rectangle x:Name="PART_RectangleVariant2" Fill="LightGray" Stroke="Black" Canvas.Left="36" Canvas.Top="13" Height="16" Width="16" />
+                        <Rectangle x:Name="PART_RectangleVariant3" Fill="LightGray" Stroke="Black" Canvas.Left="31" Canvas.Top="8" Height="16" Width="16" />
+                        <Polyline x:Name="PART_Line1Variant1" Stroke="Black" Points="22,38 22,43 49,43 49,33" />
+                        <Line x:Name="PART_Line2Variant1" Stroke="Black" X1="0" Y1="0" X2="2" Y2="4" Canvas.Left="49" Canvas.Top="34" />
+                        <Line x:Name="PART_Line3Variant1" Stroke="Black" X1="0" Y1="0" X2="-2" Y2="4" Canvas.Left="49" Canvas.Top="34" />
+                        <TextBlock x:Name="PART_TextVariant1" Text="Aa" Canvas.Left="8" Canvas.Top="18" FontSize="12" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="galleryControlItemTemplate">
+        <ContentControl>
+            <dxb:GalleryItem Caption="{Binding}">
+                <dxb:GalleryItem.Glyph>
+                    <DrawingImage />
+                </dxb:GalleryItem.Glyph>
+            </dxb:GalleryItem>
+        </ContentControl>
+    </DataTemplate>
+
+    <Style x:Key="DiagramLayoutPanelStyle" TargetType="{x:Type dxdo:LayoutPanel}">
+        <Setter Property="AllowMaximize" Value="False" />
+        <Setter Property="AllowMinimize" Value="False" />
+        <Setter Property="AllowClose" Value="False" />
+        <Setter Property="AllowHide" Value="False" />
+        <Setter Property="AllowDock" Value="True" />
+        <Setter Property="AllowFloat" Value="False" />
+        <Setter Property="AllowContextMenu" Value="False" />
+        <Setter Property="AllowDockToDocumentGroup" Value="False" />
+    </Style>
+
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Diagram.DiagramDesignerControl}" TargetType="{x:Type dxdiag:DiagramDesignerControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type dxdiag:DiagramDesignerControl}">
+                    <dxb:BarManager>
+                        <dxb:BarManager.Items>
+                            <dxb:BarButtonItem x:Name="saveButton" Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SaveDocumentButtonStyle}}" />
+                            <dxb:BarButtonItem x:Name="undoButton" Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=UndoButtonStyle}}" />
+                            <dxb:BarButtonItem x:Name="redoButton" Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=RedoButtonStyle}}" />
+                        </dxb:BarManager.Items>
+                        <DockPanel>
+                            <dxr:RibbonControl RibbonStyle="Office2010" DockPanel.Dock="Top">
+                                <dxr:RibbonControl.ToolbarItemLinks>
+                                    <dxb:BarButtonItemLink BarItemName="saveButton" />
+                                    <dxb:BarButtonItemLink BarItemName="undoButton" />
+                                    <dxb:BarButtonItemLink BarItemName="redoButton" />
+                                </dxr:RibbonControl.ToolbarItemLinks>
+                                <dxr:RibbonControl.ApplicationMenu>
+                                    <dxr:ApplicationMenu>
+                                        <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=NewDocumentButtonStyle}}" />
+                                        <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=LoadDocumentButtonStyle}}" />
+                                        <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SaveDocumentButtonStyle}}" />
+                                        <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SaveDocumentAsButtonStyle}}" />
+                                    </dxr:ApplicationMenu>
+                                </dxr:RibbonControl.ApplicationMenu>
+                                <dxr:RibbonDefaultPageCategory>
+                                    <dxr:RibbonPage Caption="{Binding ConverterParameter=RibbonPage_Home, Converter={StaticResource DiagramStringIdConverter}}">
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_Clipboard, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=PasteButtonStyle}}" />
+                                            <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=CutButtonStyle}}" />
+                                            <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=CopyButtonStyle}}" />
+                                        </dxr:RibbonPageGroup>
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_Font, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxr:BarButtonGroup>
+                                                <dxb:BarEditItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=FontFamilySelectorStyle}}" EditValue="{Binding SelectionToolsModel[FontFamily], RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" EditWidth="100">
+                                                    <dxb:BarEditItem.EditSettings>
+                                                        <dxe:FontEditSettings />
+                                                    </dxb:BarEditItem.EditSettings>
+                                                </dxb:BarEditItem>
+                                                <dxb:BarEditItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=FontSizeSelectorStyle}}" EditValue="{Binding SelectionToolsModel[FontSize], RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" EditWidth="50">
+                                                    <dxb:BarEditItem.EditSettings>
+                                                        <dxe:ComboBoxEditSettings ItemsSource="{StaticResource DiagramFontSizes}" MaskType="Numeric" />
+                                                    </dxb:BarEditItem.EditSettings>
+                                                </dxb:BarEditItem>
+                                                <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=FontSizeIncreaseButtonStyle}}" />
+                                                <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=FontSizeDecreaseButtonStyle}}" />
+                                            </dxr:BarButtonGroup>
+                                            <dxr:BarButtonGroup>
+                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=FontBoldButtonStyle}}" />
+                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=FontItalicButtonStyle}}" />
+                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=FontUnderlineButtonStyle}}" />
+                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=FontStrikethroughButtonStyle}}" />
+                                                <dxb:BarItemSeparator />
+                                                <dxb:BarSplitButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=ShapeForegroundColorSplitButtonStyle}}">
+                                                    <dxb:BarSplitButtonItem.PopupControl>
+                                                        <dxb:PopupControlContainer>
+                                                            <dxdiag:ExtendedColorEdit AllowNullInput="True" ShowDefaultColorButton="False" Palettes="{Binding Palettes, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" EditValue="{Binding ShapeForegroundColor, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" EditColorPaletteName="{Binding ForegroundPaletteName, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" ShowBorder="False" />
+                                                        </dxb:PopupControlContainer>
+                                                    </dxb:BarSplitButtonItem.PopupControl>
+                                                </dxb:BarSplitButtonItem>
+                                            </dxr:BarButtonGroup>
+                                        </dxr:RibbonPageGroup>
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=Tools_Text, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxr:BarButtonGroup>
+                                                <dxb:BarItemSelector ItemLinksSource="{Binding TextVerticalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=SelectionToolsModel[VerticalContentAlignment]}">
+                                                    <dxb:BarItemSelector.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <ContentControl>
+                                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=TextVerticalAlignmentButtonsStyle}}" />
+                                                            </ContentControl>
+                                                        </DataTemplate>
+                                                    </dxb:BarItemSelector.ItemTemplate>
+                                                </dxb:BarItemSelector>
+                                            </dxr:BarButtonGroup>
+                                            <dxr:BarButtonGroup>
+                                                <dxb:BarItemSelector ItemLinksSource="{Binding TextHorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=SelectionToolsModel[TextAlignment]}">
+                                                    <dxb:BarItemSelector.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <ContentControl>
+                                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=TextHorizontalAlignmentButtonsStyle}}" />
+                                                            </ContentControl>
+                                                        </DataTemplate>
+                                                    </dxb:BarItemSelector.ItemTemplate>
+                                                </dxb:BarItemSelector>
+                                            </dxr:BarButtonGroup>
+                                        </dxr:RibbonPageGroup>
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_Tools, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxb:BarItemSelector ItemLinksSource="{Binding DiagramToolsItems, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=SelectedToolsItem, Mode=TwoWay}" ItemTemplateSelector="{StaticResource DiagramToolsTemplateSelector}">
+                                                <dxb:BarItemSelector.Resources>
+                                                    <DataTemplate x:Key="SingleTool">
+                                                        <ContentControl>
+                                                            <dxdiag:ToolBoxItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SingleToolItemStyle}}">
+                                                                <dxmvvm:Interaction.Behaviors>
+                                                                    <dxmvvm:EventToCommand EventName="ItemDoubleClick" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=Commands.UseTool}" CommandParameter="{Binding SelectedTool}" />
+                                                                </dxmvvm:Interaction.Behaviors>
+                                                            </dxdiag:ToolBoxItem>
+                                                        </ContentControl>
+                                                    </DataTemplate>
+                                                    <DataTemplate x:Key="MultiplyTool">
+                                                        <ContentControl>
+                                                            <dxdiag:ToolboxSplitItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SplitToolsItemStyle}}">
+                                                                <dxdiag:ToolboxSplitItem.PopupControl>
+                                                                    <dxb:PopupMenu ItemLinksSource="{Binding ToolsInfo}">
+                                                                        <dxb:PopupMenu.ItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <ContentControl>
+                                                                                    <dxb:BarCheckItem GroupIndex="1" Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=ToolItemStyle}}" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
+                                                                                </ContentControl>
+                                                                            </DataTemplate>
+                                                                        </dxb:PopupMenu.ItemTemplate>
+                                                                    </dxb:PopupMenu>
+                                                                </dxdiag:ToolboxSplitItem.PopupControl>
+                                                                <dxmvvm:Interaction.Behaviors>
+                                                                    <dxmvvm:EventToCommand EventName="ItemDoubleClick" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=Commands.UseTool}" CommandParameter="{Binding SelectedTool}" />
+                                                                </dxmvvm:Interaction.Behaviors>
+                                                            </dxdiag:ToolboxSplitItem>
+                                                        </ContentControl>
+                                                    </DataTemplate>
+                                                </dxb:BarItemSelector.Resources>
+                                            </dxb:BarItemSelector>
+                                        </dxr:RibbonPageGroup>
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_ShapeStyles, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxr:RibbonGalleryBarItem IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=ShapeStylesGalleryIsEnabled}" Content="{Binding ConverterParameter=RibbonPageGroup_ShapeStyles, Converter={StaticResource DiagramStringIdConverter}}">
+                                                <dxr:RibbonGalleryBarItem.Resources>
+                                                    <Style TargetType="{x:Type dxb:Gallery}" x:Key="commonGalleryStyle">
+                                                        <Setter Property="ItemGlyphBorderTemplate">
+                                                            <Setter.Value>
+                                                                <ControlTemplate>
+                                                                    <dxdiag:ShapeStylePresenter Diagram="{Binding Path=Gallery.Tag, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxb:GalleryControl}}}" StyleId="{Binding Caption}" ToolTip="{Binding Caption.Name}" />
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Setter Property="ItemGlyphMargin" Value="6" />
+                                                        <Setter Property="ItemGlyphVerticalAlignment" Value="Center" />
+                                                        <Setter Property="ItemGlyphHorizontalAlignment" Value="Center" />
+                                                        <Setter Property="ItemAutoHeight" Value="True" />
+                                                        <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" />
+                                                        <Setter Property="ItemCaptionHorizontalAlignment" Value="Center" />
+                                                        <Setter Property="AllowToolTips" Value="False" />
+                                                        <Setter Property="IsItemDescriptionVisible" Value="False" />
+                                                        <Setter Property="IsItemCaptionVisible" Value="False" />
+                                                        <Setter Property="AllowFilter" Value="False" />
+                                                        <Setter Property="MinColCount" Value="7" />
+                                                        <Setter Property="ColCount" Value="7" />
+                                                        <Setter Property="AutoHideGallery" Value="False" />
+                                                        <Setter Property="ItemCheckMode" Value="Single" />
+                                                        <Setter Property="FirstCheckedItem" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=SelectionToolsModel[StyleInfo], Mode=TwoWay, Converter={dxdiag:StyleInfoToStyleIdConverter}}" />
+                                                    </Style>
+                                                    <CollectionViewSource x:Key="StylesCollection" Source="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=ShapeStyles}">
+                                                        <CollectionViewSource.GroupDescriptions>
+                                                            <PropertyGroupDescription PropertyName="Id" Converter="{dxdiag:StyleIdToGroupNameConverter}" />
+                                                        </CollectionViewSource.GroupDescriptions>
+                                                    </CollectionViewSource>
+                                                </dxr:RibbonGalleryBarItem.Resources>
+                                                <dxr:RibbonGalleryBarItem.Gallery>
+                                                    <dxb:Gallery Style="{StaticResource commonGalleryStyle}">
+                                                        <dxb:GalleryItemGroup ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Path=ShapeStyles}" ItemTemplate="{StaticResource galleryControlItemTemplate}" />
+                                                    </dxb:Gallery>
+                                                </dxr:RibbonGalleryBarItem.Gallery>
+                                                <dxr:RibbonGalleryBarItem.DropDownGallery>
+                                                    <dxb:Gallery Style="{StaticResource commonGalleryStyle}" GroupsSource="{Binding Source={StaticResource StylesCollection}, Path=Groups}">
+                                                        <dxb:Gallery.GroupTemplate>
+                                                            <DataTemplate>
+                                                                <ContentControl>
+                                                                    <dxb:GalleryItemGroup ItemsSource="{Binding Items}" Caption="{Binding Name}" ItemTemplate="{StaticResource galleryControlItemTemplate}" />
+                                                                </ContentControl>
+                                                            </DataTemplate>
+                                                        </dxb:Gallery.GroupTemplate>
+                                                    </dxb:Gallery>
+                                                </dxr:RibbonGalleryBarItem.DropDownGallery>
+                                            </dxr:RibbonGalleryBarItem>
+                                            <dxb:BarSplitButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=ShapeBackgroundColorSplitButtonStyle}}">
+                                                <dxb:BarSplitButtonItem.PopupControl>
+                                                    <dxb:PopupControlContainer>
+                                                        <dxdiag:ExtendedColorEdit AllowNullInput="True" ShowDefaultColorButton="False" Palettes="{Binding Palettes, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" EditValue="{Binding ShapeBackgroundColor, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" EditColorPaletteName="{Binding BackgroundPaletteName, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" ShowBorder="False" />
+                                                    </dxb:PopupControlContainer>
+                                                </dxb:BarSplitButtonItem.PopupControl>
+                                            </dxb:BarSplitButtonItem>
+                                            <dxb:BarSplitButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=ShapeStrokeColorSplitButtonStyle}}">
+                                                <dxb:BarSplitButtonItem.PopupControl>
+                                                    <dxb:PopupControlContainer>
+                                                        <dxdiag:ExtendedColorEdit AllowNullInput="True" ShowDefaultColorButton="False" Palettes="{Binding Palettes, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" EditValue="{Binding ShapeStrokeColor, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" EditColorPaletteName="{Binding StrokePaletteName, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" ShowBorder="False" />
+                                                    </dxb:PopupControlContainer>
+                                                </dxb:BarSplitButtonItem.PopupControl>
+                                            </dxb:BarSplitButtonItem>
+                                        </dxr:RibbonPageGroup>
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_Arrange, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxb:BarSplitButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=BringToFrontSplitButtonStyle}}">
+                                                <dxb:BarSplitButtonItem.PopupControl>
+                                                    <dxb:PopupMenu>
+                                                        <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=BringForwardButtonStyle}}" />
+                                                        <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=BringToFrontButtonStyle}}" />
+                                                    </dxb:PopupMenu>
+                                                </dxb:BarSplitButtonItem.PopupControl>
+                                            </dxb:BarSplitButtonItem>
+                                            <dxb:BarSplitButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SendToBackSplitButtonStyle}}">
+                                                <dxb:BarSplitButtonItem.PopupControl>
+                                                    <dxb:PopupMenu>
+                                                        <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SendBackwardButtonStyle}}" />
+                                                        <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SendToBackButtonStyle}}" />
+                                                    </dxb:PopupMenu>
+                                                </dxb:BarSplitButtonItem.PopupControl>
+                                            </dxb:BarSplitButtonItem>
+                                        </dxr:RibbonPageGroup>
+                                    </dxr:RibbonPage>
+                                    <dxr:RibbonPage Caption="{Binding ConverterParameter=RibbonPage_Design, Converter={StaticResource DiagramStringIdConverter}}">
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_PageSetup, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxb:BarSubItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=PaperOrientationBarItemStyle}}">
+                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=PaperVerticalOrientationButtonStyle}}" />
+                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=PaperHorizontalOrientationButtonStyle}}" />
+                                            </dxb:BarSubItem>
+                                            <dxb:BarSubItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=PageSizeBarItemStyle}}">
+                                                <dxb:BarItemSelector ItemLinksSource="{Binding PageSizesInfo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" SelectedItem="{Binding SelectedPageSizeInfo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Mode=TwoWay}" AllowEmptySelection="True">
+                                                    <dxb:BarItemSelector.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <ContentControl>
+                                                                <dxdiag:BarMouseCheckOnlyItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=PageSizeButtonsStyle}}" />
+                                                            </ContentControl>
+                                                        </DataTemplate>
+                                                    </dxb:BarItemSelector.ItemTemplate>
+                                                </dxb:BarItemSelector>
+                                                <dxb:BarItemSeparator />
+                                                <dxb:BarEditItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=PageSizeWidthEditorStyle}}" EditValue="{Binding CustomPageWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Mode=TwoWay}">
+                                                    <dxb:BarEditItem.EditSettings>
+                                                        <dxe:SpinEditSettings MinValue="100" MaxValue="5000" Increment="100" />
+                                                    </dxb:BarEditItem.EditSettings>
+                                                </dxb:BarEditItem>
+                                                <dxb:BarEditItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=PageSizeHeightEditorStyle}}" EditValue="{Binding CustomPageHeight, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Mode=TwoWay}">
+                                                    <dxb:BarEditItem.EditSettings>
+                                                        <dxe:SpinEditSettings MaxWidth="100" MinValue="100" MaxValue="5000" Increment="100" />
+                                                    </dxb:BarEditItem.EditSettings>
+                                                </dxb:BarEditItem>
+                                                <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SetPageSizeButtonStyle}}" />
+                                            </dxb:BarSubItem>
+                                            <dxb:BarSubItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=CanvasAutoSizeBarItemStyle}}">
+                                                <dxb:BarItemSelector ItemLinksSource="{Binding CanvasSizeModesInfo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" SelectedItem="{Binding SelectedSizeModeInfo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Mode=TwoWay}" AllowEmptySelection="False">
+                                                    <dxb:BarItemSelector.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <ContentControl>
+                                                                <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=CanvasAutoSizeButtonStyle}}" />
+                                                            </ContentControl>
+                                                        </DataTemplate>
+                                                    </dxb:BarItemSelector.ItemTemplate>
+                                                </dxb:BarItemSelector>
+                                            </dxb:BarSubItem>
+                                        </dxr:RibbonPageGroup>
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_Themes, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxr:RibbonGalleryBarItem Content="{Binding ConverterParameter=RibbonPageGroup_Themes, Converter={StaticResource DiagramStringIdConverter}}">
+                                                <dxr:RibbonGalleryBarItem.Resources>
+                                                    <Style TargetType="{x:Type dxb:Gallery}" x:Key="themeGalleryStyle">
+                                                        <Setter Property="ItemGlyphBorderTemplate">
+                                                            <Setter.Value>
+                                                                <ControlTemplate>
+                                                                    <dxdiag:ThemePresenter DataContext="{Binding Path=Item.Caption, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type dxb:GalleryItemControl}}}" DiagramTheme="{Binding}" ToolTip="{Binding}" />
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Setter Property="ItemGlyphVerticalAlignment" Value="Center" />
+                                                        <Setter Property="ItemGlyphHorizontalAlignment" Value="Center" />
+                                                        <Setter Property="ItemAutoHeight" Value="True" />
+                                                        <Setter Property="AllowToolTips" Value="False" />
+                                                        <Setter Property="IsItemDescriptionVisible" Value="False" />
+                                                        <Setter Property="IsItemCaptionVisible" Value="False" />
+                                                        <Setter Property="IsGroupCaptionVisible" Value="False" />
+                                                        <Setter Property="AllowFilter" Value="False" />
+                                                        <Setter Property="MinColCount" Value="8" />
+                                                        <Setter Property="ColCount" Value="8" />
+                                                        <Setter Property="AutoHideGallery" Value="False" />
+                                                        <Setter Property="ItemCheckMode" Value="Single" />
+                                                        <Setter Property="FirstCheckedItem" Value="{Binding Path=DesignerThemeInternal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Mode=TwoWay}" />
+                                                    </Style>
+                                                </dxr:RibbonGalleryBarItem.Resources>
+                                                <dxr:RibbonGalleryBarItem.Gallery>
+                                                    <dxb:Gallery Style="{StaticResource themeGalleryStyle}">
+                                                        <dxb:GalleryItemGroup ItemsSource="{x:Static dxdiagcore:ThemeRegistrator.Themes}" ItemTemplate="{StaticResource galleryControlItemTemplate}" />
+                                                    </dxb:Gallery>
+                                                </dxr:RibbonGalleryBarItem.Gallery>
+                                                <dxr:RibbonGalleryBarItem.DropDownGallery>
+                                                    <dxb:Gallery Style="{StaticResource themeGalleryStyle}">
+                                                        <dxb:GalleryItemGroup ItemsSource="{x:Static dxdiagcore:ThemeRegistrator.Themes}" ItemTemplate="{StaticResource galleryControlItemTemplate}" />
+                                                    </dxb:Gallery>
+                                                </dxr:RibbonGalleryBarItem.DropDownGallery>
+                                            </dxr:RibbonGalleryBarItem>
+                                        </dxr:RibbonPageGroup>
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_Options, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SnapToGridButtonStyle}}" />
+                                            <dxb:BarCheckItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SnapToItemsButtonStyle}}" />
+                                            <dxb:BarEditItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=SnapDistanceEditorStyle}}">
+                                                <dxb:BarEditItem.EditSettings>
+                                                    <dxe:SpinEditSettings MinValue="2" MaxValue="20" />
+                                                </dxb:BarEditItem.EditSettings>
+                                            </dxb:BarEditItem>
+                                        </dxr:RibbonPageGroup>
+                                        <dxr:RibbonPageGroup Caption="{Binding ConverterParameter=RibbonPageGroup_TreeLayout, Converter={StaticResource DiagramStringIdConverter}}">
+                                            <dxb:BarSubItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=TreeLayoutDirectionButtonStyle}}">
+                                                <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=TreeLayoutLeftToRightButtonStyle}}" />
+                                                <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=TreeLayoutRightToLeftButtonStyle}}" />
+                                                <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=TreeLayoutTopToBottomButtonStyle}}" />
+                                                <dxb:BarButtonItem Style="{DynamicResource {dxdiagt:DiagramDesignerControlThemeKeys ResourceKey=TreeLayoutBottomToTopButtonStyle}}" />
+                                            </dxb:BarSubItem>
+                                        </dxr:RibbonPageGroup>
+                                    </dxr:RibbonPage>
+                                </dxr:RibbonDefaultPageCategory>
+                            </dxr:RibbonControl>
+                            <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom">
+                                <dxr:RibbonStatusBarControl.RightItems>
+                                    <dxb:BarEditItem Content="{TemplateBinding ZoomFactor, Converter={dxmvvm:FormatStringConverter FormatString=P0}}" EditValue="{Binding ZoomFactor, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Converter={dxdiag:NonlinearZoomConverter}, Mode=TwoWay}" EditWidth="100">
+                                        <dxb:BarEditItem.EditSettings>
+                                            <dxe:TrackBarEditSettings Minimum="0" Maximum="1" SmallStep="0.01" LargeStep="0.1" TickFrequency="0.5" />
+                                        </dxb:BarEditItem.EditSettings>
+                                    </dxb:BarEditItem>
+                                </dxr:RibbonStatusBarControl.RightItems>
+                                <dxr:RibbonStatusBarControl.LeftItems>
+                                    <dxb:BarStaticItem RibbonStyle="SmallWithText">
+                                        <dxb:BarStaticItem.Content>
+                                            <MultiBinding Converter="{dxdiag:ItemPropertiesToStringConverter}">
+                                                <Binding Path="SelectionToolsModel[Size]" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}" />
+                                                <Binding Path="SelectionToolsModel[Angle]" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}" />
+                                            </MultiBinding>
+                                        </dxb:BarStaticItem.Content>
+                                    </dxb:BarStaticItem>
+                                </dxr:RibbonStatusBarControl.LeftItems>
+                            </dxr:RibbonStatusBarControl>
+                            <dxdo:DockLayoutManager DockPanel.Dock="Left">
+                                <dxdo:LayoutGroup Orientation="Horizontal">
+                                    <dxdo:LayoutPanel x:Name="PART_ToolboxPane" ItemWidth="250" MaxWidth="500" Style="{StaticResource DiagramLayoutPanelStyle}" AllowDock="True" AllowFloat="False" AllowContextMenu="False" AllowDockToDocumentGroup="False">
+                                        <dxdo:LayoutPanel.CaptionTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding ConverterParameter=Panel_Shapes_Name, Converter={StaticResource DiagramStringIdConverter}}" Visibility="{Binding ElementName=CollapsedBehavior, Path=IsCompact, Converter={dxmvvm:BooleanToVisibilityConverter Inverse=True}}" />
+                                            </DataTemplate>
+                                        </dxdo:LayoutPanel.CaptionTemplate>
+                                        <dxdo:LayoutPanel.ControlBoxContent>
+                                            <ToggleButton Style="{StaticResource HideButtonStyle}" x:Name="CollapseButton" IsChecked="{Binding ElementName=CollapsedBehavior, Path=ButtonChecked, Mode=TwoWay}" />
+                                        </dxdo:LayoutPanel.ControlBoxContent>
+                                        <dxmvvm:Interaction.Behaviors>
+                                            <dxdiag:PanelCollapsedBehavior x:Name="CollapsedBehavior" ButtonChecked="{Binding CollapsedButtonChecked, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}, Mode=TwoWay}" LayoutError="{Binding ElementName=Toolbox, Path=LayoutError}" />
+                                        </dxmvvm:Interaction.Behaviors>
+                                        <dxdiag:DiagramToolboxControl x:Name="Toolbox" DiagramControl="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" DefaultStencils="{Binding DefaultStencils, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}" IsCompact="{Binding ElementName=CollapsedBehavior, Path=IsCompact}" ViewModel="{dxdiag:DiagramToolboxControlViewModel}" />
+                                    </dxdo:LayoutPanel>
+                                    <dxdo:DocumentPanel>
+                                        <ScrollViewer Background="{DynamicResource {dxdiagt:DiagramControlThemeKeys ResourceKey=DiagramControlBackground}}" dx:ScrollBarExtensions.ScrollBarMode="TouchOverlap" CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Name="ScrollViewer">
+                                            <dxdiag:LayersHost x:Name="LayersHost" Focusable="True" FocusVisualStyle="{x:Null}" />
+                                        </ScrollViewer>
+                                    </dxdo:DocumentPanel>
+                                    <dxdo:LayoutPanel x:Name="PART_PropertiesPane" AllowClose="True" Style="{StaticResource DiagramLayoutPanelStyle}" AllowHide="True" MinWidth="200" MaxWidth="500" ItemWidth="300" Caption="{Binding ConverterParameter=Panel_Properties_Name, Converter={StaticResource DiagramStringIdConverter}}">
+                                        <dxpg:PropertyGridControl ScrollViewer.VerticalScrollBarVisibility="Auto" ShowCategories="False" SelectedObject="{Binding SelectionModel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dxdiag:DiagramDesignerControl}}}">
+                                            <dxpg:PropertyGridControl.Resources>
+                                                <DataTemplate x:Key="propertyGridComboboxEdit">
+                                                    <dxe:ComboBoxEdit x:Name="PART_Editor" ItemsSource="{Binding StandardValues}" />
+                                                </DataTemplate>
+                                            </dxpg:PropertyGridControl.Resources>
+                                        </dxpg:PropertyGridControl>
+                                    </dxdo:LayoutPanel>
+                                </dxdo:LayoutGroup>
+                            </dxdo:DockLayoutManager>
+                        </DockPanel>
+                    </dxb:BarManager>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

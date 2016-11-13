@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/ChartControl.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Axis.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Axis2D.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Axis3D.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/AxisScrollBar.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Diagram2D.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/SimpleDiagram2D.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/CircularDiagram2D.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Diagram3D.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Bar2DModels.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Marker2DModels.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Pie2DModels.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/RangeBar2DModels.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/CandleStick2DModels.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Stock2DModels.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Series.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Indicators.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/SeriesPoint.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/SeriesLabel.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Legend.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/Titles.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/TitlesLayoutControl.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/LegendMarker.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/ToolTip.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Charts/Generic/ChartRangeControlClient.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

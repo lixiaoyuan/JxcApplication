@@ -1,0 +1,285 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" xmlns:dxwuit="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/themekeys" xmlns:dxwuii="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/internal" xmlns:dxwuin="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/navigation" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation" xmlns:dxnavi="clr-namespace:DevExpress.Xpf.Navigation.Internal;assembly=DevExpress.Xpf.Controls.v15.2" xmlns:dxcop="clr-namespace:DevExpress.Xpf.Controls.Primitives;assembly=DevExpress.Xpf.Controls.v15.2" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs" xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm">    
+    <dx:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+
+    <dxmvvm:ObjectToObjectConverter x:Key="orientationToAngleConverter">
+        <dxmvvm:MapItem Source="Default" Target="0.0" />
+        <dxmvvm:MapItem Source="Inverted" Target="180.0" />
+    </dxmvvm:ObjectToObjectConverter>
+
+    <dxmvvm:ObjectToObjectConverter x:Key="arrowDirectionToAngleConverter">
+        <dxmvvm:MapItem Source="Left" Target="90.0" />
+        <dxmvvm:MapItem Source="Up" Target="180.0" />
+        <dxmvvm:MapItem Source="Right" Target="-90.0" />
+        <dxmvvm:MapItem Source="Down" Target="0.0" />
+    </dxmvvm:ObjectToObjectConverter>
+
+    <!--ScrolllaleControl-->
+    <SolidColorBrush x:Key="ItemBackgroundDefault" Color="#7F0072C6" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="ItemBackgroundHover" Color="#3F0072C6" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="ItemBackgroundPressed" Color="#FF0072C6" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="pathFillDefault" Color="#FF0072C6" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="pathFillHover" Color="#FF0072C6" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="pathFillPressed" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0006" />
+    <ControlTemplate x:Key="{dxwuit:WindowsUIElementsThemeKey ResourceKey=ScrollableControlButtonTemplate}" TargetType="dxcop:ScrollableControlButton">
+        <Grid x:Name="Root" Background="Transparent" cs:Name="Grid_0001">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="State">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ItemBackgroundHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="State">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathLeft">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathRight">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathUp">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathDown">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="State">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ItemBackgroundPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="State">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ItemBackgroundPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathLeft">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathRight">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathUp">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathDown">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Visibility" dxcn:ValueSetter.Visibility="Collapsed" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="Rotations">
+                    <VisualState x:Name="Left">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PathLeft" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Right">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PathRight" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Up">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PathUp" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Down">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PathDown" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border x:Name="State" CornerRadius="2" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" />
+            <Path x:Name="PathLeft" Stretch="Fill" Fill="{StaticResource pathFillDefault}" Data="M 0 0 L 0 8 L 4 4 Z" Width="6" Height="12" Margin="1,0,-1,0" Opacity="0" />
+            <Path x:Name="PathRight" Stretch="Fill" Fill="{StaticResource pathFillDefault}" Data="M 0 4 L 4 8 L 4 0 Z" Width="6" Height="12" Margin="-1,0,1,0" Opacity="0" />
+            <Path x:Name="PathUp" Stretch="Fill" Fill="{StaticResource pathFillDefault}" Data="M 0 4 L 7 4 L 3.5 0 Z" Width="12" Height="6" Margin="0,-1,0,1" Opacity="0" />
+            <Path x:Name="PathDown" Stretch="Fill" Fill="{StaticResource pathFillDefault}" Data="M 0 0 L 3.5 4 L 7 0 Z" Width="12" Height="6" Margin="0,1,0,-1" Opacity="0" />
+        </Grid>
+    </ControlTemplate>
+    <!--TileNavPane-->
+    <Color x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavButtonForegroundColor}" cs:Name="Color_0001">#EFFFFFFF</Color>
+    <SolidColorBrush x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavButtonForeground}" Color="#E9FFFFFF" cs:Name="SolidColorBrush_0007" />
+    <SolidColorBrush x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileSelectorItemSelection}" Color="#FF0072C6" cs:Name="SolidColorBrush_0008" />
+    <SolidColorBrush x:Key="NavButtonHoverBrush" Color="#2FFFFFFF" cs:Name="SolidColorBrush_0009" />
+    <Color x:Key="NavButtonPressedForeColor" cs:Name="Color_0002">#FF0072C6</Color> 
+    <SolidColorBrush x:Key="NavButtonHoveredForeBrush" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0010" />
+    <SolidColorBrush x:Key="NavButtonPressedForeBrush" Color="#FF0072C6" cs:Name="SolidColorBrush_0011" />
+    <SolidColorBrush x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavPaneFlyoutBackground}" Color="#FFF0F0F0" cs:Name="SolidColorBrush_0012" />
+    <SolidColorBrush x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavPaneBackground}" Color="#FF0072C6" cs:Name="SolidColorBrush_0013" />
+    <SolidColorBrush x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileSelectorItemBackground}" Color="#FF0072C6" cs:Name="SolidColorBrush_0014" />
+    <Color x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileSelectorItemForegroundColor}" cs:Name="Color_0003">#EFFFFFFF</Color>
+    <SolidColorBrush x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileSelectorItemForeground}" Color="#E9FFFFFF" cs:Name="SolidColorBrush_0015" />
+    <SolidColorBrush x:Key="TileItemHoverBackground" Color="#3FFFFFFF" cs:Name="SolidColorBrush_0016" />
+    <DataTemplate x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavButtonSeparatorTemplate}">
+        <Path Stretch="Fill" Fill="#FFEBECEF" Data="F1 M 16,8L 10,14L 7,14L 12,9L 0,9L 0,7L 12,7L 7,2L 10,2L 16,8 Z " Width="16" Height="12" cs:Name="Path_0001" />
+    </DataTemplate>
+    <DataTemplate x:Key="NavButtonDropDownTemplate">
+        <Path Stretch="Fill" Data="F1 M 0,0L 14.002,0L 7,7L 0,0 Z " Width="9" Height="5" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5, 0.5">
+            <Path.RenderTransform>
+                <RotateTransform CenterX="0.5" CenterY="0.5">
+                    <RotateTransform.Angle>
+                        <Binding RelativeSource="{RelativeSource AncestorType=dxnav:TileNavPane}" Path="FlyoutShowDirection" Converter="{StaticResource orientationToAngleConverter}" />
+                    </RotateTransform.Angle>
+                </RotateTransform>
+            </Path.RenderTransform>
+        </Path>
+    </DataTemplate>
+    <ControlTemplate TargetType="dxnavi:TileBarItemArrowControl" x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileBarArrowTemplate}">
+        <Grid Background="{TemplateBinding Background}">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="hoverBorder" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="hoverBorder" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="CheckedStates">
+                    <VisualState x:Name="EmptyCheckedState" />
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="hoverBorder" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Unchecked" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border Background="{StaticResource TileItemHoverBackground}" x:Name="hoverBorder" Opacity="0" />
+            <Rectangle Fill="#7FFFFFFF" Width="1" HorizontalAlignment="Left" cs:Name="Rectangle_0001" />
+            <Path x:Name="Glyph" Stretch="Fill" Fill="{TemplateBinding Foreground}" Data="F1 M 0,0L 14.002,0L 7,7L 0,0 Z " Width="9" Height="5" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <RotateTransform CenterX="0.5" CenterY="0.5" x:Name="ArrowRotateTransform">
+                        <RotateTransform.Angle>
+                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="ArrowDirection" Converter="{StaticResource arrowDirectionToAngleConverter}" />
+                        </RotateTransform.Angle>
+                    </RotateTransform>
+                </Path.RenderTransform>
+            </Path>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate TargetType="dxnavi:TileButtonControl" x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileButtonControlTemplate}">
+        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <Border Background="{StaticResource TileItemHoverBackground}" x:Name="hoverBorder" Opacity="0" />
+                <Grid Margin="{TemplateBinding Padding}">
+                    <Image Source="{TemplateBinding Glyph}" Stretch="None" UseLayoutRounding="True" HorizontalAlignment="{TemplateBinding HorizontalGlyphAlignment}" VerticalAlignment="{TemplateBinding VerticalGlyphAlignment}" dxb:ImageColorizer.IsEnabled="{TemplateBinding AllowGlyphTheming}" dxb:ImageColorizer.Color="{TemplateBinding ActualGlyphColor}" />
+                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="hoverBorder" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="hoverBorder" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" Duration="0" To="0.35" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate TargetType="dxnav:NavButton" x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavButtonTemplate}">
+        <Border x:Name="Root" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <Border x:Name="HoverState" Background="{StaticResource NavButtonHoverBrush}" Opacity="0" />
+                <Border x:Name="PressedState" Background="{DynamicResource {dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavPaneFlyoutBackground}}" Opacity="0" />
+                <dxnavi:NavButtonPanel Content1Location="{TemplateBinding GlyphAlignment}" Margin="{TemplateBinding Padding}" GlyphSpace="{TemplateBinding GlyphSpace}">
+                    <dxnavi:NavButtonPanel.Content1>
+                        <dx:PixelSnapper VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsGlyphActuallyVisible,Converter={StaticResource ResourceKey=boolToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Image Stretch="None" Source="{TemplateBinding Glyph}" x:Name="Glyph" dxb:ImageColorizer.IsEnabled="{TemplateBinding AllowGlyphTheming}" dxb:ImageColorizer.Color="{Binding Path=(dxb:ImageColorizer.Color), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </dx:PixelSnapper>
+                    </dxnavi:NavButtonPanel.Content1>
+                    <dxnavi:NavButtonPanel.Content2>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <ContentControl Foreground="{TemplateBinding Foreground}" x:Name="Content" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" Visibility="{Binding IsContentActuallyVisible,Converter={StaticResource ResourceKey=boolToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center" />
+                            <dxwuii:ShapeContentPresenter x:Name="DrowDownButton" Foreground="{TemplateBinding Foreground}" ContentTemplate="{StaticResource NavButtonDropDownTemplate}" Margin="{DynamicResource {dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavButtonDropDownButtonMargin}}" Visibility="{Binding IsFlyoutButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ResourceKey=boolToVisibilityConverter}}" />
+                        </StackPanel>
+                    </dxnavi:NavButtonPanel.Content2>
+                </dxnavi:NavButtonPanel>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource NavButtonHoveredForeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DrowDownButton" Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource NavButtonHoveredForeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <!-- <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(dxb:ImageColorizer.Color)" Duration="0" To="{StaticResource NavButtonPressedForeColor}" /> -->
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource NavButtonPressedForeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource NavButtonPressedForeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DrowDownButton" Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource NavButtonPressedForeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(dxb:ImageColorizer.Color)" Duration="0" To="{StaticResource NavButtonPressedForeColor}" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" Duration="0" To="0.35" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Normal" />
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="CheckedStates">
+                    <VisualState x:Name="EmptyCheckedState" />
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource NavButtonPressedForeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DrowDownButton" Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource NavButtonPressedForeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(dxb:ImageColorizer.Color)" Duration="0" To="{StaticResource NavButtonPressedForeColor}" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Unchecked" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Border>
+    </ControlTemplate>
+    <Thickness x:Key="{dxwuit:TileNavPaneElementsThemeKey ResourceKey=TileNavButtonDropDownButtonMargin}">10,0,0,0</Thickness>
+</ResourceDictionary>

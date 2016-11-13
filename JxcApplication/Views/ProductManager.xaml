@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="JxcApplication.Views.ProductManager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:JxcApplication.Views"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:viewModels="clr-namespace:JxcApplication.ViewModels"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:selector="clr-namespace:JxcApplication.Selector"
+
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             mc:Ignorable="d"
+             d:DesignHeight="414.376" d:DesignWidth="905.27">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
+                                    CustomNotificationPosition="BottomRight"
+                                    CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
+        <dxmvvm:EventToCommand SourceName="GridControlProduct" EventName="CustomColumnDisplayText"
+                               Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True" />
+        <dxmvvm:EventToCommand SourceName="TableViewUser" EventName="InitNewRow"
+                               Command="{Binding OnInitNewRowCommand}" PassEventArgsToCommand="True" />
+        <dxmvvm:EventToCommand SourceName="LookUpEditProductType" EventName="EditValueChanged"
+                               Command="{Binding EditValueChangedCommand}" />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxb:BarManager>
+            <dxb:BarManager.Items>
+                <dxb:BarButtonItem x:Name="PM_BT_Refresh" KeyGesture="Ctrl+F5" Content="刷新"
+                                   LargeGlyph="{dx:DXImage Image=Refresh2_32x32.png}"
+                                   Command="{Binding InitDataCommand}" />
+
+                <dxb:BarButtonItem x:Name="PM_BT_Add" KeyGesture="Ctrl+F1" Content="新增"
+                                   LargeGlyph="{dx:DXImageGrayscale Image=Add_32x32.png}"
+                                   Command="{Binding AddCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlProduct}" />
+
+                <dxb:BarButtonItem x:Name="PM_BT_Delete" KeyGesture="Ctrl+F3" Content="删除"
+                                   LargeGlyph="{dx:DXImage Image=ResetModelDifferences_32x32.png}"
+                                   Command="{Binding DelCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlProduct}" />
+
+                <dxb:BarButtonItem x:Name="PM_BT_Save" KeyGesture="Ctrl+S" Content="保存"
+                                   LargeGlyph="{dx:DXImage Image=SaveAll_32x32.png}"
+                                   Command="{Binding SaveCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlProduct}" />
+                <!--<dxb:BarButtonItem x:Name="UM_BT_ResetPassword" Content="重置密码" LargeGlyph="pack://application:,,,/DevExpress.Images.v15.2;component/DevAV/Actions/ViewReset_32x32.png" 
+                                   Command="{Binding ReSetPasswordCommand}" CommandParameter="{Binding ElementName=GridControlUser,Path=SelectedItem}"/>
+
+                <dxb:BarButtonItem x:Name="UM_BT_UserRole" Content="分配角色" LargeGlyph="{dx:DXImage Image=Role_32x32.png}" 
+                                   Command="{Binding SetRoleCommand}" CommandParameter="{Binding ElementName=GridControlUser}"/>-->
+            </dxb:BarManager.Items>
+            <DockPanel>
+                <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2010"
+                                   CategoriesSource="{Binding RibbonNodes}">
+                    <dxr:RibbonControl.CategoryTemplateSelector>
+                        <selector:CategoryTemplateSelector
+                            CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
+                            DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
+                    </dxr:RibbonControl.CategoryTemplateSelector>
+                </dxr:RibbonControl>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" CornerRadius="7" Background="LightSteelBlue" >
+                        <dxlc:LayoutControl >
+
+
+                            <dxlc:LayoutGroup View="Group">
+
+                                <dxlc:LayoutItem Label="产品类别:" HorizontalAlignment="Left">
+                                    <dxg:LookUpEdit Name="LookUpEditProductType" Width="150" PopupWidth="300"
+                                                    ItemsSource="{Binding ProductTypeLookUp}"
+                                                    PopupContentTemplate="{StaticResource ControlTemplateLookUpProductType}"
+                                                    ValueMember="Code"
+                                                    DisplayMember="Name"
+                                                    EditValue="{Binding ProductTypeCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                    AutoPopulateColumns="False"
+                                                    IncrementalFiltering="True"
+                                                    ImmediatePopup="True">
+                                        <dxg:LookUpEdit.StyleSettings>
+                                            <dxg:SearchLookUpEditStyleSettings />
+                                        </dxg:LookUpEdit.StyleSettings>
+                                    </dxg:LookUpEdit>
+                                </dxlc:LayoutItem>
+
+                            </dxlc:LayoutGroup>
+
+                        </dxlc:LayoutControl>
+                    </Border>
+                    <dxg:GridControl Name="GridControlProduct" Grid.Row="2"
+                                     ItemsSource="{Binding Products,Mode=TwoWay}">
+                        <dxg:GridControl.View>
+                            <dxg:TableView Name="TableViewUser" AllowEditing="True" />
+                        </dxg:GridControl.View>
+                        <dxg:GridControl.Columns>
+                            <!--<dxg:GridColumn FieldName="ProductType" Header="类别"></dxg:GridColumn>-->
+                            <dxg:GridColumn FieldName="Code" Header="编码" SortIndex="1" AllowEditing="False"
+                                            HeaderStyle="{StaticResource GridColumnHeaderConstant}" />
+                            <dxg:GridColumn FieldName="Name" Header="名称" Width="200" />
+                            <dxg:GridColumn FieldName="PyCode" Header="拼音编码" />
+                            <dxg:GridColumn FieldName="ProductAsType" Header="产品分类">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:ComboBoxEditSettings ItemsSource="{Binding ProductAsTypeLookUp}" ValueMember="Id" DisplayMember="Name"></dxe:ComboBoxEditSettings>
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="Specification" Header="规格" />
+                            <dxg:GridColumn FieldName="Unit" Header="单位" />
+                            <dxg:GridColumn FieldName="UnitPrice" Header="初始单价">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="StockRemind" Header="库存提醒">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings Mask="n" MaskType="Numeric" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="LifeDay" Header="保质期(天)" />
+                            <dxg:GridColumn FieldName="Enable" Header="是否有效" />
+                        </dxg:GridControl.Columns>
+                    </dxg:GridControl>
+                </Grid>
+            </DockPanel>
+        </dxb:BarManager>
+    </Grid>
+</UserControl>

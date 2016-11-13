@@ -1,0 +1,307 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxtEx="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys" xmlns:dxei="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ButtonEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/Brushes.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/InplaceBaseEdit.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=SpinUpGlyph}">
+        <dxn:RenderPath Name="Path" Stretch="Fill" Data="F1 M 1,7L 1,5L 4,2L 7,5L 7,7L 4,4L 1,7 Z " Margin="3,0,3,0" Width="7" Height="6" />
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderBinding ValueSource="DataContext" TargetName="Path" TargetProperty="Fill" />
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=SpinDownGlyph}">
+        <dxn:RenderPath Name="Path" Stretch="Fill" Data="F1 M 1,2L 1,4L 4,7L 7,4L 7,2L 4,5L 1,2 Z " Margin="3,0,3,1" Width="7" Height="6" />
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderBinding ValueSource="DataContext" TargetName="Path" TargetProperty="Fill" />
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=SpinLeftGlyph}">
+        <dxn:RenderPath Name="Path" Stretch="Fill" Data="F1 M 6.5013,1.5L 4.5013,1.5L 1.5013,4.5L 4.5013,7.5L 6.5013,7.5L 3.5013,4.5L 6.5013,1.5 Z  " Margin="3,0,3,0" Width="6" Height="7" />
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderBinding ValueSource="DataContext" TargetName="Path" TargetProperty="Fill" />
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=SpinRightGlyph}">
+        <dxn:RenderPath Name="Path" Stretch="Fill" Data="F1 M 1.5,1.5L 3.5,1.5L 6.5,4.5L 3.5,7.5L 1.5,7.5L 4.5,4.5L 1.5,1.5 Z  " Margin="3,0,3,0" Width="6" Height="7" />
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderBinding ValueSource="DataContext" TargetName="Path" TargetProperty="Fill" />
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+
+
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=DropDownGlyph}">
+        <dxn:RenderPanel Margin="4,0,4,0">
+            <dxn:RenderPath Stretch="Fill" Data="F1 M 1,2L 1,4L 4,7L 7,4L 7,2L 4,5L 1,2 Z  " Width="7" Height="6">
+                <dxn:RenderPath.Fill>
+                    <SolidColorBrush Color="{StaticResource {dxet:SpinEditThemeKey ResourceKey=ArrowBrushColor}}" />
+                </dxn:RenderPath.Fill>
+            </dxn:RenderPath>
+        </dxn:RenderPanel>
+    </dxn:RenderTemplate>
+
+    
+    <SolidColorBrush x:Key="CheckEdit.Normal.FocusBorder.BorderBrush" cs:Name="SolidColorBrush_0001">#FF0072C6</SolidColorBrush>
+    <SolidColorBrush x:Key="CheckEdit.Normal.TriState.Background" cs:Name="SolidColorBrush_0002">#FF222222</SolidColorBrush>
+    <SolidColorBrush x:Key="CheckEdit.Normal.OuterBorder.Background" cs:Name="SolidColorBrush_0003">#FFFFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="CheckEdit.Normal.OuterBorder.BorderBrush" cs:Name="SolidColorBrush_0004">#7F2C2C2C</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="CheckEdit.Hover.OuterBorder.Background" cs:Name="SolidColorBrush_0005">#FFF3F9FF</SolidColorBrush>
+    <SolidColorBrush x:Key="CheckEdit.Hover.OuterBorder.BorderBrush" cs:Name="SolidColorBrush_0006">#FF379BFF</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="CheckEdit.Pressed.OuterBorder.Background" cs:Name="SolidColorBrush_0007">#FFD9ECFF</SolidColorBrush>
+    <SolidColorBrush x:Key="CheckEdit.Pressed.OuterBorder.BorderBrush" cs:Name="SolidColorBrush_0008">#FF057FDF</SolidColorBrush>
+    <Visibility x:Key="Visible">Visible</Visibility>
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=RenderCheckBoxTemplate}">
+        <dxn:RenderPanel LayoutProvider="{dxn:DockPanelLayoutProvider LastChildFill=True}">
+            <dxn:RenderPanel Name="CheckBox" Width="13" Height="13" VerticalAlignment="Center" Dock="Left" FlowDirection="LeftToRight">
+                <dxn:RenderBorder Name="OuterBorder" Background="{StaticResource CheckEdit.Normal.OuterBorder.Background}" BorderBrush="{StaticResource CheckEdit.Normal.OuterBorder.BorderBrush}" BorderThickness="1" />
+                <dxn:RenderBorder Name="FocusBorder" BorderBrush="{StaticResource CheckEdit.Normal.FocusBorder.BorderBrush}" BorderThickness="1" Visibility="Collapsed" />
+                <dxn:RenderBorder Name="TriState" HorizontalAlignment="Center" VerticalAlignment="Center" Width="7" Height="7" Background="{StaticResource CheckEdit.Normal.TriState.Background}" Visibility="Collapsed" />
+                <dxn:RenderPath Name="CheckElement" Fill="#FF3C3C3C" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Width="9" Height="9" Data="F1 M 2.48437,9L -1.02756e-007,6L -6.30195e-008,3.42969L 2.54687,6.52344L 9,0.507813L 9,3L 2.48437,9 Z  " Visibility="Collapsed" cs:Name="RenderPath_0001" />
+            </dxn:RenderPanel>
+            <dxn:RenderContentPresenter Name="PART_ContentPresenter" Visibility="Collapsed" />
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>  
+            <dxn:RenderStateGroup Name="TouchStates">
+                <dxn:RenderStateTrigger Name="NonTouch" /> 
+                <dxn:RenderStateTrigger Name="Touch">
+                    <dxn:RenderSetter Property="Width" TargetName="TriState" Value="16" />
+                    <dxn:RenderSetter Property="Height" TargetName="TriState" Value="16" />
+                    <dxn:RenderSetter Property="Width" TargetName="CheckElement" Value="18" />
+                    <dxn:RenderSetter Property="Height" TargetName="CheckElement" Value="18" />
+                    <dxn:RenderSetter Property="Data" TargetName="CheckElement" Value="F1 M 0,13L 5,18L 18,5L 18,1L 5,14L 0,9L 0,13 Z " />
+                    <dxn:RenderSetter Property="Width" TargetName="CheckBox" Value="28" />
+                    <dxn:RenderSetter Property="Height" TargetName="CheckBox" Value="28" />
+                    <dxn:RenderSetter Property="Margin" TargetName="CheckBox" Value="0,4,0,4" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="Pressed" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter TargetName="OuterBorder" Property="Background" Value="{StaticResource CheckEdit.Hover.OuterBorder.Background}" />
+                    <dxn:RenderSetter TargetName="OuterBorder" Property="BorderBrush" Value="{StaticResource CheckEdit.Hover.OuterBorder.BorderBrush}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Disabled">
+                    <dxn:RenderSetter TargetName="CheckBox" Property="Opacity" Value="0.35" />
+                    <dxn:RenderSetter TargetName="PART_ContentPresenter" Property="Opacity" Value="0.35" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="CheckStates">
+                <dxn:RenderStateTrigger Name="Checked">
+                    <dxn:RenderSetter TargetName="CheckElement" Property="Visibility" Value="{StaticResource Visible}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Unchecked" />
+                <dxn:RenderStateTrigger Name="Indeterminate">
+                    <dxn:RenderSetter TargetName="TriState" Property="Visibility" Value="{StaticResource Visible}" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="FocusStates">
+                <dxn:RenderStateTrigger Name="Unfocused" />
+                <dxn:RenderStateTrigger Name="Focused">
+                    <dxn:RenderSetter TargetName="FocusBorder" Property="Visibility" Value="{StaticResource Visible}" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="ContentStates">
+                <dxn:RenderStateTrigger Name="HasNoContent" />
+                <dxn:RenderStateTrigger Name="HasContent">
+                    <dxn:RenderSetter TargetName="PART_ContentPresenter" Property="Visibility" Value="{StaticResource Visible}" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+    
+    <SolidColorBrush Color="#FFACACAC" x:Key="Button.Normal.Outer.BorderBrush" cs:Name="SolidColorBrush_0009" />
+    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" x:Key="Button.Normal.Outer.Background" cs:Name="LinearGradientBrush_0108">
+        <GradientStop Color="#FFF0F0F0" Offset="0" cs:Name="GradientStop_0001" />
+        <GradientStop Color="#FFE5E5E5" Offset="1" cs:Name="GradientStop_0002" />
+    </LinearGradientBrush>
+    
+    <SolidColorBrush Color="#FF7EB4EA" x:Key="Button.MouseOver.Outer.BorderBrush" cs:Name="SolidColorBrush_0010" />
+    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" x:Key="Button.MouseOver.Outer.Background" cs:Name="LinearGradientBrush_0109">
+        <GradientStop Color="#FFECF4FC" Offset="0" cs:Name="GradientStop_0003" />
+        <GradientStop Color="#FFDCECFC" Offset="1" cs:Name="GradientStop_0004" />
+    </LinearGradientBrush>
+    
+    <SolidColorBrush Color="#FF569DE5" x:Key="Button.Pressed.Outer.BorderBrush" cs:Name="SolidColorBrush_0011" />
+    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" x:Key="Button.Pressed.Outer.Background" cs:Name="LinearGradientBrush_0110">
+        <GradientStop Color="#FFDAECFC" Offset="0" cs:Name="GradientStop_0005" />
+        <GradientStop Color="#FFC4E0FC" Offset="1" cs:Name="GradientStop_0006" />
+    </LinearGradientBrush>
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=RenderButtonTemplate}">
+        <dxn:RenderPanel Name="Root">
+            <dxn:RenderBorder Name="Outer" BorderBrush="{StaticResource Button.Normal.Outer.BorderBrush}" BorderThickness="1" Background="{StaticResource Button.Normal.Outer.Background}" />
+            <dxn:RenderContentPresenter Name="PART_ContentPresenter" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.MouseOver.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.MouseOver.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Pressed">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Disabled" />
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="CheckedStates">
+                <dxn:RenderStateTrigger Name="Unchecked" />
+                <dxn:RenderStateTrigger Name="Checked">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="TouchStates">
+                <dxn:RenderStateTrigger Name="NonTouch" />
+                <dxn:RenderStateTrigger Name="Touch">
+                    <dxn:RenderSetter TargetName="Root" Property="MinWidth" Value="40" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>            
+            <dxn:RenderTrigger Property="GlyphKind" Value="User">
+                <dxn:RenderSetter TargetName="PART_ContentPresenter" Property="Margin" Value="5,0" />
+            </dxn:RenderTrigger>
+            <dxn:RenderTrigger Property="GlyphKind" Value="None">
+                <dxn:RenderSetter TargetName="PART_ContentPresenter" Property="Margin" Value="5,0" />
+            </dxn:RenderTrigger>
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+
+
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=RenderSpinDownButtonTemplate}">
+        <dxn:RenderPanel Name="Root">
+            <dxn:RenderBorder Name="Outer" BorderBrush="{StaticResource Button.Normal.Outer.BorderBrush}" BorderThickness="1,0,1,1" Background="{StaticResource Button.Normal.Outer.Background}" />
+            <dxn:RenderContentPresenter Name="PART_ContentPresenter" VerticalAlignment="Center" MinWidth="15" HorizontalAlignment="Center" />
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.MouseOver.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.MouseOver.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Pressed">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Disabled" />
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="CheckedStates">
+                <dxn:RenderStateTrigger Name="Unchecked" />
+                <dxn:RenderStateTrigger Name="Checked">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="TouchStates">
+                <dxn:RenderStateTrigger Name="NonTouch" />
+                <dxn:RenderStateTrigger Name="Touch">
+                    <dxn:RenderSetter TargetName="Root" Property="MinWidth" Value="40" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>            
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=RenderSpinUpButtonTemplate}">
+        <dxn:RenderPanel Name="Root">
+            <dxn:RenderBorder Name="Outer" BorderBrush="{StaticResource Button.Normal.Outer.BorderBrush}" BorderThickness="1,1,1,0" Background="{StaticResource Button.Normal.Outer.Background}" />
+            <dxn:RenderContentPresenter Name="PART_ContentPresenter" MinWidth="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.MouseOver.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.MouseOver.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Pressed">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Disabled" />
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="CheckedStates">
+                <dxn:RenderStateTrigger Name="Unchecked" />
+                <dxn:RenderStateTrigger Name="Checked">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="TouchStates">
+                <dxn:RenderStateTrigger Name="NonTouch" />
+                <dxn:RenderStateTrigger Name="Touch">
+                    <dxn:RenderSetter TargetName="Root" Property="MinWidth" Value="40" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>            
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=RenderSpinLeftButtonTemplate}">
+        <dxn:RenderPanel Name="Root">
+            <dxn:RenderBorder Name="Outer" BorderBrush="{StaticResource Button.Normal.Outer.BorderBrush}" BorderThickness="0,1,1,1" Background="{StaticResource Button.Normal.Outer.Background}" />
+            <dxn:RenderContentPresenter Name="PART_ContentPresenter" MinWidth="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.MouseOver.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.MouseOver.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Pressed">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Disabled" />
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="CheckedStates">
+                <dxn:RenderStateTrigger Name="Unchecked" />
+                <dxn:RenderStateTrigger Name="Checked">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="TouchStates">
+                <dxn:RenderStateTrigger Name="NonTouch" />
+                <dxn:RenderStateTrigger Name="Touch">
+                    <dxn:RenderSetter TargetName="Root" Property="MinWidth" Value="40" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>            
+        </dxn:RenderTemplate.Triggers>        
+    </dxn:RenderTemplate>
+    <dxn:RenderTemplate x:Key="{dxet:InplaceBaseEditThemeKey ResourceKey=RenderSpinRightButtonTemplate}">
+        <dxn:RenderPanel Name="Root">
+            <dxn:RenderBorder Name="Outer" BorderBrush="{StaticResource Button.Normal.Outer.BorderBrush}" BorderThickness="1,1,0,1" Background="{StaticResource Button.Normal.Outer.Background}" />
+            <dxn:RenderContentPresenter Name="PART_ContentPresenter" MinWidth="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.MouseOver.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.MouseOver.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Pressed">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Disabled" />
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="CheckedStates">
+                <dxn:RenderStateTrigger Name="Unchecked" />
+                <dxn:RenderStateTrigger Name="Checked">
+                    <dxn:RenderSetter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Button.Pressed.Outer.BorderBrush}" />
+                    <dxn:RenderSetter TargetName="Outer" Property="Background" Value="{StaticResource Button.Pressed.Outer.Background}" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="TouchStates">
+                <dxn:RenderStateTrigger Name="NonTouch" />
+                <dxn:RenderStateTrigger Name="Touch">
+                    <dxn:RenderSetter TargetName="Root" Property="MinWidth" Value="40" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>            
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+</ResourceDictionary>

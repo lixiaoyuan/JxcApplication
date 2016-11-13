@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8617D72C-D442-4052-A477-16A5DDD6485A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApplicationDb.Cor</RootNamespace>
+    <AssemblyName>ApplicationDb.Cor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="ApplicationDbContextFunction.cs" />
+    <Compile Include="Business\ForleaveTypeManager.cs" />
+    <Compile Include="Business\OrganizationStructureManager.cs" />
+    <Compile Include="Business\RibbonNodeManager.cs" />
+    <Compile Include="Business\SystemAccountManager.cs" />
+    <Compile Include="Business\MenuManager.cs" />
+    <Compile Include="Business\RoleManager.cs" />
+    <Compile Include="Business\WorkApprovalManager.cs" />
+    <Compile Include="Business\WorkApprovalOrderManager.cs" />
+    <Compile Include="Business\ZhangtaoManager.cs" />
+    <Compile Include="EntityMapping\AuthMenuMap.cs" />
+    <Compile Include="EntityMapping\AuthMenuToolButtonMap.cs" />
+    <Compile Include="EntityMapping\AuthRibbonNodeMap.cs" />
+    <Compile Include="EntityMapping\AuthRoleMap.cs" />
+    <Compile Include="EntityMapping\AuthRoleMenuMap.cs" />
+    <Compile Include="EntityMapping\AuthToolButtonMap.cs" />
+    <Compile Include="EntityMapping\AuthUserRoleMap.cs" />
+    <Compile Include="EntityMapping\ForleaveTypeMap.cs" />
+    <Compile Include="EntityMapping\OrganizationMap.cs" />
+    <Compile Include="EntityMapping\OrganizationUserMap.cs" />
+    <Compile Include="EntityMapping\SystemProgramMap.cs" />
+    <Compile Include="EntityMapping\SystemUserMap.cs" />
+    <Compile Include="EntityMapping\WorkApprovalCopyUserMap.cs" />
+    <Compile Include="EntityMapping\WorkApprovalMap.cs" />
+    <Compile Include="EntityMapping\WorkApprovalOrderCopyUserMap.cs" />
+    <Compile Include="EntityMapping\WorkApprovalOrderMap.cs" />
+    <Compile Include="EntityMapping\WorkApprovalOrderUserMap.cs" />
+    <Compile Include="EntityMapping\WorkApprovalUserMap.cs" />
+    <Compile Include="EntityMapping\ZhangtaoMap.cs" />
+    <Compile Include="EntityModels\AuthMenu.cs" />
+    <Compile Include="EntityModels\AuthMenuToolButton.cs" />
+    <Compile Include="EntityModels\AuthRibbonNode.cs" />
+    <Compile Include="EntityModels\AuthRole.cs" />
+    <Compile Include="EntityModels\AuthRoleMenu.cs" />
+    <Compile Include="EntityModels\AuthToolButton.cs" />
+    <Compile Include="EntityModels\AuthUserRole.cs" />
+    <Compile Include="EntityModels\ForleaveType.cs" />
+    <Compile Include="EntityModels\Organization.cs" />
+    <Compile Include="EntityModels\OrganizationUser.cs" />
+    <Compile Include="EntityModels\SystemUser.cs" />
+    <Compile Include="EntityModels\WorkApproval.cs" />
+    <Compile Include="EntityModels\WorkApprovalCopyUser.cs" />
+    <Compile Include="EntityModels\WorkApprovalOrder.cs" />
+    <Compile Include="EntityModels\WorkApprovalOrderCopyUser.cs" />
+    <Compile Include="EntityModels\WorkApprovalOrderUser.cs" />
+    <Compile Include="EntityModels\WorkApprovalUser.cs" />
+    <Compile Include="EntityModels\Zhangtao.cs" />
+    <Compile Include="Helper\ConnectStringHelper.cs" />
+    <Compile Include="Helper\DBUnit.cs" />
+    <Compile Include="Migrations\201607301317292_DataBaseInit.cs" />
+    <Compile Include="Migrations\201607301317292_DataBaseInit.Designer.cs">
+      <DependentUpon>201607301317292_DataBaseInit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608051410357_AddOrganiation.cs" />
+    <Compile Include="Migrations\201608051410357_AddOrganiation.Designer.cs">
+      <DependentUpon>201608051410357_AddOrganiation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608070055304_AddOrganizationUser.cs" />
+    <Compile Include="Migrations\201608070055304_AddOrganizationUser.Designer.cs">
+      <DependentUpon>201608070055304_AddOrganizationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608131354324_addRibbonNode.cs" />
+    <Compile Include="Migrations\201608131354324_addRibbonNode.Designer.cs">
+      <DependentUpon>201608131354324_addRibbonNode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608151220122_adduri.cs" />
+    <Compile Include="Migrations\201608151220122_adduri.Designer.cs">
+      <DependentUpon>201608151220122_adduri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608151249166_addcolor.cs" />
+    <Compile Include="Migrations\201608151249166_addcolor.Designer.cs">
+      <DependentUpon>201608151249166_addcolor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608151257414_modeiftyAuthRibbonNode.cs" />
+    <Compile Include="Migrations\201608151257414_modeiftyAuthRibbonNode.Designer.cs">
+      <DependentUpon>201608151257414_modeiftyAuthRibbonNode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608151300318_modeiftyAuthRibbonNode1.cs" />
+    <Compile Include="Migrations\201608151300318_modeiftyAuthRibbonNode1.Designer.cs">
+      <DependentUpon>201608151300318_modeiftyAuthRibbonNode1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608151320010_modeiftyAuthRibbonNode2.cs" />
+    <Compile Include="Migrations\201608151320010_modeiftyAuthRibbonNode2.Designer.cs">
+      <DependentUpon>201608151320010_modeiftyAuthRibbonNode2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608151325305_modiftyAuthRoleMenu.cs" />
+    <Compile Include="Migrations\201608151325305_modiftyAuthRoleMenu.Designer.cs">
+      <DependentUpon>201608151325305_modiftyAuthRoleMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609071116325_addWorkApproval.cs" />
+    <Compile Include="Migrations\201609071116325_addWorkApproval.Designer.cs">
+      <DependentUpon>201609071116325_addWorkApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609071143446_addWorkApprovalorder.cs" />
+    <Compile Include="Migrations\201609071143446_addWorkApprovalorder.Designer.cs">
+      <DependentUpon>201609071143446_addWorkApprovalorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100027558_updateWorkApproval.cs" />
+    <Compile Include="Migrations\201609100027558_updateWorkApproval.Designer.cs">
+      <DependentUpon>201609100027558_updateWorkApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100047564_updateWorkApprovalOrder.cs" />
+    <Compile Include="Migrations\201609100047564_updateWorkApprovalOrder.Designer.cs">
+      <DependentUpon>201609100047564_updateWorkApprovalOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100104519_updateworkapproval2.cs" />
+    <Compile Include="Migrations\201609100104519_updateworkapproval2.Designer.cs">
+      <DependentUpon>201609100104519_updateworkapproval2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100216532_addworkapprovaluser.cs" />
+    <Compile Include="Migrations\201609100216532_addworkapprovaluser.Designer.cs">
+      <DependentUpon>201609100216532_addworkapprovaluser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100549141_updateworkapproval3.cs" />
+    <Compile Include="Migrations\201609100549141_updateworkapproval3.Designer.cs">
+      <DependentUpon>201609100549141_updateworkapproval3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100554480_workapprovalcopyuser.cs" />
+    <Compile Include="Migrations\201609100554480_workapprovalcopyuser.Designer.cs">
+      <DependentUpon>201609100554480_workapprovalcopyuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100730217_updatesome.cs" />
+    <Compile Include="Migrations\201609100730217_updatesome.Designer.cs">
+      <DependentUpon>201609100730217_updatesome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100751142_addsort.cs" />
+    <Compile Include="Migrations\201609100751142_addsort.Designer.cs">
+      <DependentUpon>201609100751142_addsort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609110149007_updateworkapprovalorder4.cs" />
+    <Compile Include="Migrations\201609110149007_updateworkapprovalorder4.Designer.cs">
+      <DependentUpon>201609110149007_updateworkapprovalorder4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609251204158_addForleaveType.cs" />
+    <Compile Include="Migrations\201609251204158_addForleaveType.Designer.cs">
+      <DependentUpon>201609251204158_addForleaveType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\NavigationMenuGroup.cs" />
+    <Compile Include="Model\RibbonNodeCollection.cs" />
+    <Compile Include="Model\RibbonNodeModel.cs" />
+    <Compile Include="Model\RibbonNodeType.cs" />
+    <Compile Include="Model\WorkApprovalOrderResult.cs" />
+    <Compile Include="Model\WorkApprovalOrderStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EntityModels\SystemProgram.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{39dc3979-d4e1-4c49-a306-7158d4c3dc3c}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201607301317292_DataBaseInit.resx">
+      <DependentUpon>201607301317292_DataBaseInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608051410357_AddOrganiation.resx">
+      <DependentUpon>201608051410357_AddOrganiation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608070055304_AddOrganizationUser.resx">
+      <DependentUpon>201608070055304_AddOrganizationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608131354324_addRibbonNode.resx">
+      <DependentUpon>201608131354324_addRibbonNode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608151220122_adduri.resx">
+      <DependentUpon>201608151220122_adduri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608151249166_addcolor.resx">
+      <DependentUpon>201608151249166_addcolor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608151257414_modeiftyAuthRibbonNode.resx">
+      <DependentUpon>201608151257414_modeiftyAuthRibbonNode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608151300318_modeiftyAuthRibbonNode1.resx">
+      <DependentUpon>201608151300318_modeiftyAuthRibbonNode1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608151320010_modeiftyAuthRibbonNode2.resx">
+      <DependentUpon>201608151320010_modeiftyAuthRibbonNode2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608151325305_modiftyAuthRoleMenu.resx">
+      <DependentUpon>201608151325305_modiftyAuthRoleMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609071116325_addWorkApproval.resx">
+      <DependentUpon>201609071116325_addWorkApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609071143446_addWorkApprovalorder.resx">
+      <DependentUpon>201609071143446_addWorkApprovalorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100027558_updateWorkApproval.resx">
+      <DependentUpon>201609100027558_updateWorkApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100047564_updateWorkApprovalOrder.resx">
+      <DependentUpon>201609100047564_updateWorkApprovalOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100104519_updateworkapproval2.resx">
+      <DependentUpon>201609100104519_updateworkapproval2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100216532_addworkapprovaluser.resx">
+      <DependentUpon>201609100216532_addworkapprovaluser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100549141_updateworkapproval3.resx">
+      <DependentUpon>201609100549141_updateworkapproval3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100554480_workapprovalcopyuser.resx">
+      <DependentUpon>201609100554480_workapprovalcopyuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100730217_updatesome.resx">
+      <DependentUpon>201609100730217_updatesome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100751142_addsort.resx">
+      <DependentUpon>201609100751142_addsort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609110149007_updateworkapprovalorder4.resx">
+      <DependentUpon>201609110149007_updateworkapprovalorder4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609251204158_addForleaveType.resx">
+      <DependentUpon>201609251204158_addForleaveType.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

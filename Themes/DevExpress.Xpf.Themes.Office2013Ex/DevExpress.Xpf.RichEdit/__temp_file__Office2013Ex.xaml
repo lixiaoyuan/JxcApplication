@@ -1,0 +1,43 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxec="clr-namespace:DevExpress.Xpf.Editors.Controls;assembly=DevExpress.Xpf.Core.v15.2" xmlns:dxre="http://schemas.devexpress.com/winfx/2008/xaml/richedit" xmlns:dxreui="http://schemas.devexpress.com/winfx/2008/xaml/richedit" xmlns:dxoui="http://schemas.devexpress.com/winfx/2008/xaml/office" xmlns:dxrec="http://schemas.devexpress.com/winfx/2008/xaml/richedit/internal" xmlns:util="http://schemas.devexpress.com/winfx/2008/xaml/richedit/internal" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <SolidColorBrush x:Key="ThemeColorsThemeKey_WhiteForegroundColor" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="ThemeColorsThemeKey_BlackForegroundColor" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0002" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.RichEdit/Office2013Ex/Colors.xaml" />
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.RichEdit/Office2013Ex/PageNumberWindow.xaml" />
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.RichEdit/Office2013Ex/XpfRichEditFlowSelection.xaml" />
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.RichEdit/Office2013Ex/XpfRichEditSizerSelection.xaml" />
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.RichEdit/Office2013Ex/RichEditViewPage.xaml" />
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.RichEdit/Office2013Ex/Ruler.xaml" />
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.RichEdit/Office2013Ex/RichEditControl.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

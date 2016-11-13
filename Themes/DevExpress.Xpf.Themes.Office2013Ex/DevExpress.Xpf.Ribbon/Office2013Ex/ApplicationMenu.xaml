@@ -1,0 +1,42 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys" xmlns:interop="clr-namespace:System.Windows.Interop;assembly=PresentationFramework" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <ControlTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=ApplicationMenuBackgroundTemplate}" TargetType="{x:Type ContentControl}">
+        <Border Background="#FFFFFFFF" cs:Name="Border_0001" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=ApplicationMenuBarControlBorderTemplate2007}" TargetType="{x:Type ContentControl}">
+        <Grid SnapsToDevicePixels="True">
+            <Border x:Name="Border" Background="#FF0072C6" BorderBrush="#FF0072C6" BorderThickness="1" cs:Name="Border_0003">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" MinHeight="23" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Border Background="#FFFFFFFF" Grid.Row="1" cs:Name="Border_0005">
+                        <ContentPresenter />
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(interop:BrowserInteropHelper.IsBrowserHosted)}" Value="True"></DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=ApplicationMenuBottomPaneTemplate}" TargetType="{x:Type ContentControl}">
+        <Border x:Name="Footer" Background="#FF0072C6" BorderBrush="#FF0072C6" BorderThickness="0,1,0,0" cs:Name="Border_0007">
+            <ContentPresenter Margin="4" HorizontalAlignment="Right" SnapsToDevicePixels="True" />
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=ApplicationMenuRightPaneTemplate}" TargetType="{x:Type ContentControl}">
+        <Border Background="#FFFFFFFF" BorderBrush="#FFD6D6D6" BorderThickness="1,0,0,0" HorizontalAlignment="Stretch" cs:Name="Border_0009">
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=ApplicationMenuContentControlBorderTemplate}" TargetType="{x:Type ContentControl}">
+        <ContentPresenter Content="{TemplateBinding Content}" Margin="1" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=ApplicationMenuBarControlBorderTemplate2010}" TargetType="{x:Type ContentControl}">
+        <ContentControl Template="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=ApplicationMenuBarControlBorderTemplate2007}}">
+            <ContentPresenter />
+        </ContentControl>
+    </ControlTemplate>
+    <SolidColorBrush x:Key="{dxrt:RibbonThemeKey ResourceKey=ApplicationMenuRightPaneForeground}" Color="#FF444444" cs:Name="SolidColorBrush_0001" />
+</ResourceDictionary>

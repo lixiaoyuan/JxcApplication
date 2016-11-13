@@ -1,0 +1,279 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxtEx="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxeh="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxep="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    
+
+    
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/Common.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <dx:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <Thickness x:Key="{dxet:ButtonsThemeKey ResourceKey=ButtonMargin}">-1</Thickness>
+    <Thickness x:Key="{dxet:ButtonsThemeKey ResourceKey=ButtonMarginCorrection}">0</Thickness>
+
+    
+    <Style x:Key="{dxet:ButtonsThemeKey ResourceKey=ButtonStyle}" TargetType="{x:Type ButtonBase}">
+        <Setter Property="dx:FocusHelper2.Focusable" Value="False" />
+        <Setter Property="Foreground" Value="{Binding Path=Foreground}" />
+        <Setter Property="Content" Value="{Binding Path=Content}" />
+        <Setter Property="ContentTemplate" Value="{Binding Path=ContentTemplate}" />
+        <Setter Property="Command" Value="{Binding Path=Command}" />
+        <Setter Property="CommandParameter" Value="{Binding Path=CommandParameter}" />
+        <Setter Property="ClickMode" Value="{Binding Path=ClickMode}" />
+        <Setter Property="IsEnabled" Value="{Binding Path=IsEnabled}" />
+        <Setter Property="Visibility" Value="{Binding Path=(dxe:ButtonInfo.Visibility)}" />
+        <Setter Property="Template" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ButtonTemplate}}" />
+        
+        <Setter Property="CommandTarget" Value="{Binding Path=CommandTarget}" />
+        <Setter Property="ToolTip" Value="{Binding Path=ToolTip}" />
+        <Setter Property="ToolTipService.ShowDuration" Value="{Binding Path=(ToolTipService.ShowDuration)}" />
+        <Setter Property="ToolTipService.InitialShowDelay" Value="{Binding Path=(ToolTipService.InitialShowDelay)}" />
+        
+        
+    </Style>
+    <Style x:Key="{dxet:ButtonsThemeKey ResourceKey=SpinButtonInfoHorizontalStyle}" TargetType="{x:Type FrameworkElement}">
+        
+    </Style>
+    <Style x:Key="{dxet:ButtonsThemeKey ResourceKey=SpinButtonInfoVerticalStyle}" TargetType="{x:Type FrameworkElement}">
+        
+    </Style>
+    <DataTemplate x:Key="{dxet:ButtonsThemeKey ResourceKey=ButtonInfoTemplate}">
+        <dx:DXBorder Margin="{Binding Path=ActualMargin}" UseLayoutRounding="True">
+            <Button x:Name="PART_Item" Style="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ButtonStyle}}" />
+        </dx:DXBorder>
+    </DataTemplate>
+    <DataTemplate x:Key="{dxet:ButtonsThemeKey ResourceKey=RepeatButtonInfoTemplate}">
+        <dx:DXBorder Margin="{Binding Path=ActualMargin}" UseLayoutRounding="True">
+            <RepeatButton x:Name="PART_Item" Style="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ButtonStyle}}" />
+        </dx:DXBorder>
+    </DataTemplate>
+    <DataTemplate x:Key="{dxet:ButtonsThemeKey ResourceKey=ToggleButtonInfoTemplate}">
+        <dx:DXBorder Margin="{Binding Path=ActualMargin}" UseLayoutRounding="True">
+            <ToggleButton x:Name="PART_Item" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" Style="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ButtonStyle}}" />
+        </dx:DXBorder>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="{dxet:ButtonsThemeKey ResourceKey=DefaultToggleButtonInfoTemplate}">
+        <dx:DXBorder UseLayoutRounding="True" Margin="{Binding Path=ActualMargin}">
+            <dx:ToggleStateButton IsChecked="{Binding Path=(dxe:BaseEdit.OwnerEdit).IsPopupOpen, RelativeSource={RelativeSource Self}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="PART_Item" Style="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ButtonStyle}}" />
+        </dx:DXBorder>
+    </DataTemplate>
+    <ControlTemplate x:Key="{dxet:ButtonEditThemeKey ResourceKey=TemplateWithoutEditBox}" TargetType="{x:Type dxe:ButtonEdit}">
+        <ContentControl Template="{TemplateBinding ActualBorderTemplate}" IsTabStop="False" dxeh:ControlHelper.ShowFocusedState="{Binding Path=IsKeyboardFocusWithin, RelativeSource={RelativeSource TemplatedParent}}">
+            <Grid Margin="{DynamicResource {dxet:ButtonEditThemeKey ResourceKey=ButtonEditPaddingCorrection}}">
+                <dxep:EditorControl x:Name="PART_Content" Opacity="0" IsEnabled="False" VerticalAlignment="Stretch" Template="{TemplateBinding ActualEditorControlTemplate}" />
+                <dxep:ButtonsControl x:Name="PART_Buttons" ItemsSource="{TemplateBinding SortedButtons}" Visibility="{Binding ShowEditorButtons, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                    <dxep:ButtonsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <dxep:ButtonsPanel />
+                        </ItemsPanelTemplate>
+                    </dxep:ButtonsControl.ItemsPanel>
+                </dxep:ButtonsControl>
+            </Grid>
+        </ContentControl>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="{dxet:ButtonEditThemeKey ResourceKey=Template}" TargetType="{x:Type dxe:ButtonEdit}">
+        <ContentControl x:Name="PART_Root" Template="{TemplateBinding ActualBorderTemplate}" dx:FocusHelper2.Focusable="False" dxeh:ControlHelper.ShowFocusedState="{Binding Path=IsKeyboardFocusWithin, RelativeSource={RelativeSource TemplatedParent}}">
+            <Grid x:Name="ButtonEditGrid" SnapsToDevicePixels="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <dxep:ErrorControl x:Name="PART_ErrorPresenter" />
+                <dxep:ButtonsControl x:Name="PART_LeftButtons" Grid.Column="1" ItemsSource="{TemplateBinding LeftButtons}" Visibility="{Binding Path=(dxe:BaseEdit.OwnerEdit).(dxe:ActualPropertyProvider.Properties).ShowLeftButtons, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource Self}}" />
+                <dxep:EditorControl x:Name="PART_Content" VerticalAlignment="Stretch" Grid.Column="2" dx:FocusHelper2.Focusable="False" Template="{TemplateBinding ActualEditorControlTemplate}" />
+                <dxep:ButtonsControl x:Name="PART_RightButtons" Grid.Column="3" ItemsSource="{TemplateBinding RightButtons}" Visibility="{Binding Path=(dxe:BaseEdit.OwnerEdit).(dxe:ActualPropertyProvider.Properties).ShowRightButtons, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource Self}}" />
+            </Grid>
+        </ContentControl>
+        <ControlTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(dxe:BaseEdit.OwnerEdit).(dxe:ActualPropertyProvider.Properties).IsTextEditable, RelativeSource={RelativeSource Self}}" Value="true" />
+                    <Condition Binding="{Binding Path=EditMode, RelativeSource={RelativeSource Self}}" Value="Standalone" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="Template" TargetName="PART_Content" Value="{Binding Path=EditTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(dxe:BaseEdit.OwnerEdit).(dxe:ActualPropertyProvider.Properties).IsTextEditable, RelativeSource={RelativeSource Self}}" Value="false" />
+                    <Condition Binding="{Binding Path=EditMode, RelativeSource={RelativeSource Self}}" Value="Standalone" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="Template" TargetName="PART_Content" Value="{Binding Path=EditNonEditableTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="ButtonInfoBaseStyle" TargetType="{x:Type dxe:ButtonInfoBase}">
+        <Setter Property="Foreground" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=Foreground}}" />
+        <Setter Property="Margin" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=RightButtonMargin}}" />
+        <Setter Property="MarginCorrection" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=RightButtonMarginCorrection}}" />
+        <Style.Triggers>
+            <Trigger Property="IsLeft" Value="True">
+                <Setter Property="Margin" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=LeftButtonMargin}}" />
+                <Setter Property="MarginCorrection" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=LeftButtonMarginCorrection}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Editors.ButtonInfo}" TargetType="{x:Type dxe:ButtonInfo}" BasedOn="{StaticResource ButtonInfoBaseStyle}">
+        <Setter Property="Template" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ButtonInfoTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="ButtonKind" Value="Repeat">
+                <Setter Property="Template" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=RepeatButtonInfoTemplate}}" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ButtonKind" Value="Toggle" />
+                    <Condition Property="IsDefaultButton" Value="False" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Template" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ToggleButtonInfoTemplate}}" />
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ButtonKind" Value="Toggle" />
+                    <Condition Property="IsDefaultButton" Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Template" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=DefaultToggleButtonInfoTemplate}}" />
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <Trigger Property="GlyphKind" Value="DropDown">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=DropDownGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Regular">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=RegularGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Up">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=UpGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Down">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=DownGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Left">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=LeftGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Right">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=RightGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Cancel">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=CancelGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Apply">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ApplyGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Plus">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=PlusGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Minus">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=MinusGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Undo">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=UndoGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Redo">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=RedoGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Refresh">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=RefreshGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Search">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SearchGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="NextPage">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=NextPageGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="PrevPage">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=PrevPageGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Last">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=LastGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="First">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=FirstGlyph}}" />
+            </Trigger>
+            <Trigger Property="GlyphKind" Value="Edit">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=EditGlyph}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <DataTemplate x:Key="{dxet:ButtonsThemeKey ResourceKey=SpinButtonInfoVerticalTemplate}">
+        <dx:DXBorder UseLayoutRounding="True" Margin="{Binding Path=ActualMargin}">
+            <Grid Style="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinButtonInfoVerticalStyle}}" x:Name="MainGrid" Height="Auto" Visibility="{Binding Path=Visibility}" SnapsToDevicePixels="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <dxep:SpinButton Template="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinUpButtonTemplate}}" x:Name="PART_SpinUpButton" Foreground="{Binding Path=Foreground}" IsEnabled="{Binding IsEnabled}" dx:FocusHelper2.Focusable="False" Grid.Row="0" ClickMode="{Binding Path=ClickMode}" Interval="500" ContentTemplate="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinUpGlyph}}" Command="{Binding SpinUpCommand}" CommandParameter="{Binding SpinUpCommandParameter}">
+                    
+                    <dxep:SpinButton.CommandTarget>
+                        <Binding Path="SpinUpCommandTarget" />
+                    </dxep:SpinButton.CommandTarget>
+                    
+                </dxep:SpinButton>
+                <dxep:SpinButton Template="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinDownButtonTemplate}}" x:Name="PART_SpinDownButton" Foreground="{Binding Path=Foreground}" IsEnabled="{Binding IsEnabled}" dx:FocusHelper2.Focusable="False" Grid.Row="1" ClickMode="{Binding Path=ClickMode}" Interval="500" ContentTemplate="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinDownGlyph}}" Command="{Binding SpinDownCommand}" CommandParameter="{Binding SpinDownCommandParameter}">
+                    
+                    <dxep:SpinButton.CommandTarget>
+                        <Binding Path="SpinDownCommandTarget" />
+                    </dxep:SpinButton.CommandTarget>
+                    
+                </dxep:SpinButton>
+            </Grid>
+        </dx:DXBorder>
+    </DataTemplate>
+    <DataTemplate x:Key="{dxet:ButtonsThemeKey ResourceKey=SpinButtonInfoHorizontalTemplate}">
+        <dx:DXBorder UseLayoutRounding="True" Margin="{Binding Path=ActualMargin}">
+            <Grid Style="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinButtonInfoHorizontalStyle}}" x:Name="MainGrid" Height="Auto" Visibility="{Binding Path=Visibility}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <dxep:SpinButton Template="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinLeftButtonTemplate}}" x:Name="PART_SpinDownButton" Foreground="{Binding Path=Foreground}" IsEnabled="{Binding IsEnabled}" dx:FocusHelper2.Focusable="False" Grid.Column="0" ClickMode="{Binding Path=ClickMode}" Interval="500" ContentTemplate="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinLeftGlyph}}" Command="{Binding SpinDownCommand}" CommandParameter="{Binding SpinDownCommandParameter}">
+                    
+                    <dxep:SpinButton.CommandTarget>
+                        <Binding Path="SpinDownCommandTarget" />
+                    </dxep:SpinButton.CommandTarget>
+                    
+                </dxep:SpinButton>
+                <dxep:SpinButton Template="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinRightButtonTemplate}}" x:Name="PART_SpinUpButton" Foreground="{Binding Path=Foreground}" IsEnabled="{Binding IsEnabled}" dx:FocusHelper2.Focusable="False" Grid.Column="1" ClickMode="{Binding Path=ClickMode}" Interval="500" ContentTemplate="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinRightGlyph}}" Command="{Binding SpinUpCommand}" CommandParameter="{Binding SpinUpCommandParameter}">
+                    
+                    <dxep:SpinButton.CommandTarget>
+                        <Binding Path="SpinUpCommandTarget" />
+                    </dxep:SpinButton.CommandTarget>
+                    
+                </dxep:SpinButton>
+            </Grid>
+        </dx:DXBorder>
+    </DataTemplate>
+
+    
+
+    
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Editors.SpinButtonInfo}" TargetType="{x:Type dxe:SpinButtonInfo}" BasedOn="{StaticResource ButtonInfoBaseStyle}">
+        
+        <Style.Triggers>
+            <Trigger Property="SpinStyle" Value="Horizontal">
+                <Setter Property="Template" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinButtonInfoHorizontalTemplate}}" />
+            </Trigger>
+            <Trigger Property="SpinStyle" Value="Vertical">
+                <Setter Property="Template" Value="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=SpinButtonInfoVerticalTemplate}}" />
+            </Trigger>
+        </Style.Triggers>
+        
+    </Style>
+    
+    <Style x:Key="{dxet:ButtonsThemeKey ResourceKey=ButtonContainerStyle}" TargetType="{x:Type ContentPresenter}">
+        
+        <Setter Property="ContentTemplate" Value="{Binding Path=Template}" />
+        
+        
+    </Style>
+    
+
+</ResourceDictionary>

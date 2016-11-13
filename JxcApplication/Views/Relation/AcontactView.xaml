@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="JxcApplication.Views.Relation.AcontactView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JxcApplication.Views.Relation"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:relation="clr-namespace:JxcApplication.ViewModels.Relation"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="294.878" d:DesignWidth="774.146">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
+    		CustomNotificationPosition="BottomRight"
+    		CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
+        <dxmvvm:EventToCommand EventName="InitNewRow" SourceName="TableView1" Command="{Binding InitNewRowCommand}" PassEventArgsToCommand="True"/>
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxb:BarManager>
+            <dxb:BarManager.Items>
+                <dxb:BarButtonItem x:Name="RA_BT_Refresh" KeyGesture="Ctrl+F5" Content="刷新" LargeGlyph="{dx:DXImage Image=Refresh2_32x32.png}"
+					Command="{Binding RefreshCommand}" CommandParameter="{Binding ElementName=GridControlAcontact}"/>
+
+                <dxb:BarButtonItem x:Name="RA_BT_Add" KeyGesture="Ctrl+F1" Content="新增" LargeGlyph="{dx:DXImageGrayscale Image=Add_32x32.png}" 
+					Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=GridControlAcontact}"/>
+
+                <dxb:BarButtonItem x:Name="RA_BT_Save" KeyGesture="Ctrl+F2" Content="保存" LargeGlyph="{dx:DXImageOffice2013 Image=SaveAll_32x32.png}" 
+					Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=GridControlAcontact}"/>
+
+                <dxb:BarButtonItem x:Name="RA_BT_Delete" KeyGesture="Ctrl+F3" Content="删除" LargeGlyph="{dx:DXImage Image=ResetModelDifferences_32x32.png}" 
+					Command="{Binding DelCommand}" CommandParameter="{Binding ElementName=GridControlAcontact}"/>
+            </dxb:BarManager.Items>
+            <dxb:BarManager.Bars>
+                <dxb:Bar Caption="工具栏">
+                    <dxmvvm:Interaction.Behaviors>
+                        <behaviors:DynamicItemsBehavior DynamicItems="{Binding LayoutItemLinks}" />
+                    </dxmvvm:Interaction.Behaviors>
+                    <!--<dxb:BarButtonItemLink BarItemName="RA_BT_Add"/>
+                    <dxb:BarButtonItemLink BarItemName="RA_BT_Delete"/>
+                    <dxb:BarButtonItemLink BarItemName="RA_BT_Save"/>
+                    <dxb:BarItemLinkSeparator/>
+                    <dxb:BarButtonItemLink BarItemName="RA_BT_Refresh"/>-->
+                </dxb:Bar>
+            </dxb:BarManager.Bars>
+
+            <dxg:GridControl x:Name="GridControlAcontact" ItemsSource="{Binding Acontacts}">
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="TableView1" />
+                </dxg:GridControl.View>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="Code" Header="编码" SortIndex="1" AllowEditing="False" HeaderStyle="{StaticResource GridColumnHeaderConstant}">
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="Name" Header="名称"/>
+                    <dxg:GridColumn FieldName="Sex" Header="性别"/>
+                    <dxg:GridColumn FieldName="Phone" Header="手机"/>
+                    <dxg:GridColumn FieldName="Tel" Header="电话"/>
+                    <dxg:GridColumn FieldName="MainAcontact" Header="是否主联系人"/>
+                    <dxg:GridColumn FieldName="Address" Header="地址" Width="300"/>
+                    <dxg:GridColumn FieldName="Enable" Header="是否启用"/>
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+        </dxb:BarManager>
+    </Grid>
+</UserControl>

@@ -1,0 +1,166 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:ViewModels="clr-namespace:JxcApplication.ViewModels"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    xmlns:selector="clr-namespace:JxcApplication.Selector"
+    xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing"
+    xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"
+    x:Class="JxcApplication.Views.ReportSalesDetails"
+    mc:Ignorable="d"
+    d:DesignHeight="303.659" d:DesignWidth="730.244">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:DispatcherService />
+        <dxmvvm:EventToCommand SourceName="ListBoxEditShowType" EventName="SelectedIndexChanged"
+                               Command="{Binding ShowTypeIndexChangedCommand}" CommandParameter="{Binding ElementName=ListBoxEditShowType,Path=SelectedIndex}"></dxmvvm:EventToCommand>
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxb:BarManager>
+            <dxb:BarManager.Items>
+                <dxb:BarButtonItem Name="PSD_BT_Print" Content="打印预览" LargeGlyph="{dx:DXImage Image=Printer_32x32.png}"
+                                   Glyph="{dx:DXImage Image=Printer_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ShowPrintPreviewCommand}" />
+                <dxb:BarSubItem Name="PSD_SB_Export" Content="导出" LargeGlyph="{dx:DXImage Image=Export_32x32.png}">
+                    <dxb:BarButtonItem Content="导出到PDF" LargeGlyph="{dx:DXImage Image=ExportToPDF_32x32.png}"
+                                       Glyph="{dx:DXImage Image=ExportToPDF_16x16.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Pdf" />
+                    <dxb:BarButtonItem Content="导出到HTM" LargeGlyph="{dx:DXImage Image=ExportToHTML_32x32.png}"
+                                       Glyph="{dx:DXImage Image=ExportToHTML_16x16.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Htm" />
+                    <dxb:BarButtonItem Content="导出到MHT" LargeGlyph="{dx:DXImage Image=ExportToHTML_32x32.png}"
+                                       Glyph="{dx:DXImage Image=ExportToHTML_16x16.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Mht" />
+                    <dxb:BarButtonItem Content="导出到RTF" LargeGlyph="{dx:DXImage Image=ExportToRTF_32x32.png}"
+                                       Glyph="{dx:DXImage Image=ExportToRTF_16x16.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Rtf" />
+                    <dxb:BarButtonItem Content="导出到XLSX" LargeGlyph="{dx:DXImage Image=ExportToXLSX_32x32.png}"
+                                       Glyph="{dx:DXImage Image=ExportToXLSX_16x16.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Xlsx" />
+                    <dxb:BarButtonItem Content="导出到XLS" LargeGlyph="{dx:DXImage Image=ExportToXLS_32x32.png}"
+                                       Glyph="{dx:DXImage Image=ExportToXLSX_16x16.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Xls" />
+                    <dxb:BarButtonItem Content="导出到TXT" LargeGlyph="{dx:DXImage Image=ExportToTXT_32x32.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Txt" Glyph="{dx:DXImage Image=ExportToTXT_16x16.png}" />
+                    <dxb:BarButtonItem Content="导出到IMAGE" LargeGlyph="{dx:DXImage Image=ExportToIMG_32x32.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Image" Glyph="{dx:DXImage Image=ExportToIMG_16x16.png}" />
+                    <dxb:BarButtonItem Content="导出到XPS" LargeGlyph="{dx:DXImage Image=ExportToXPS_32x32.png}"
+                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                       CommandParameter="Xps" Glyph="{dx:DXImage Image=ExportToXPS_16x16.png}" />
+                </dxb:BarSubItem>
+            </dxb:BarManager.Items>
+            <DockPanel>
+                <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2010"
+                                   CategoriesSource="{Binding RibbonNodes}">
+                    <dxr:RibbonControl.CategoryTemplateSelector>
+                        <selector:CategoryTemplateSelector
+                            CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
+                            DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
+                    </dxr:RibbonControl.CategoryTemplateSelector>
+                </dxr:RibbonControl>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" CornerRadius="7" Background="LightSteelBlue" >
+                        <dxlc:LayoutControl  Orientation="Vertical">
+
+                            <dxlc:LayoutGroup View="Group">
+
+                                <dxlc:LayoutItem Label="开始日期:" HorizontalAlignment="Left">
+                                    <dxe:DateEdit Width="120" EditValue="{Binding StartDate, Mode=TwoWay}">
+                                        <dxe:DateEdit.StyleSettings>
+                                            <dxe:DateEditCalendarStyleSettings />
+                                        </dxe:DateEdit.StyleSettings>
+                                    </dxe:DateEdit>
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem Label="结束日期:" HorizontalAlignment="Left">
+                                    <dxe:DateEdit Width="120" EditValue="{Binding EndDate, Mode=TwoWay}">
+                                        <dxe:DateEdit.StyleSettings>
+                                            <dxe:DateEditCalendarStyleSettings />
+                                        </dxe:DateEdit.StyleSettings>
+                                    </dxe:DateEdit>
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem  Label="统计类型:" HorizontalAlignment="Left" >
+                                    <dxe:ListBoxEdit x:Name="ListBoxEditShowType" SelectedIndex="0">
+                                        <dxe:ListBoxEditItem Content="明细" />
+                                        <dxe:ListBoxEditItem Content="客户" Margin="5,0,0,0"/>
+                                        <dxe:ListBoxEditItem Content="业务员" Margin="5,0,0,0"/>
+                                        <dxe:ListBoxEdit.StyleSettings>
+                                            <dxe:RadioListBoxEditStyleSettings/>
+                                        </dxe:ListBoxEdit.StyleSettings>
+                                        <dxe:ListBoxEdit.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </dxe:ListBoxEdit.ItemsPanel>
+                                    </dxe:ListBoxEdit>
+                                </dxlc:LayoutItem>
+                            </dxlc:LayoutGroup>
+
+                        </dxlc:LayoutControl>
+                        </Border>
+                    <dxg:GridControl x:Name="GridControlProduct" ShowLoadingPanel="{Binding ShowLoadingPanel}"
+                                     Grid.Row="1" ItemsSource="{Binding Datas}" AutoGenerateColumns="RemoveOld"
+                                     EnableSmartColumnsGeneration="True">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="TableView" Style="{StaticResource RepotTable}">
+                                <dxmvvm:Interaction.Behaviors>
+                                    <behaviors:DataViewExportBehavior x:Name="ViewExportBehavior">
+                                        <behaviors:DataViewExportBehavior.HeadTemplate>
+                                            <DataTemplate>
+                                                <Grid Width="{Binding Path=UsablePageWidth}">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <dxe:TextEdit Grid.Row="0" HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" Padding="12"
+                                                                  FontSize="24" IsPrintingMode="True"
+                                                                  EditValue="厦门比格维尔食品有限公司" />
+                                                    <dxe:TextEdit Grid.Row="1" HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" Padding="12"
+                                                                  FontSize="20" IsPrintingMode="True"
+                                                                  EditValue="销售明细报表" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </behaviors:DataViewExportBehavior.HeadTemplate>
+                                    </behaviors:DataViewExportBehavior>
+                                </dxmvvm:Interaction.Behaviors>
+                            </dxg:TableView>
+                        </dxg:GridControl.View>
+                        <dxg:GridControl.TotalSummary>
+                            <dxg:GridSummaryItem SummaryType="Sum" ShowInColumn="OutStock" FieldName="OutStock"
+                                                 DisplayFormat="汇总数量:{0}" />
+                            <dxg:GridSummaryItem SummaryType="Sum" ShowInColumn="SumPrice" FieldName="SumPrice"
+                                                 DisplayFormat="汇总金额:{0:c}" />
+                        </dxg:GridControl.TotalSummary>
+                        <dxg:GridControl.GroupSummary>
+                            <dxg:GridSummaryItem SummaryType="Sum" ShowInColumn="SumPrice" FieldName="SumPrice"
+                                                 DisplayFormat="总金额:{0:c}" />
+                            <dxg:GridSummaryItem SummaryType="Sum" ShowInColumn="OutStock" FieldName="OutStock"
+                                                 DisplayFormat="总数量:{0}" />
+                        </dxg:GridControl.GroupSummary>
+                    </dxg:GridControl>
+                </Grid>
+            </DockPanel>
+        </dxb:BarManager>
+    </Grid>
+</UserControl>

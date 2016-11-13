@@ -1,0 +1,905 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00FB5D0B-3382-44C3-ACAC-303F04D6AD68}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JxcApplication</RootNamespace>
+    <AssemblyName>JxcApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\Icons\icon2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Lixiaoyuan.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v15.2.UI, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Carousel.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Core.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Docking.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Printing.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v15.2.Extensions, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Layout.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.LayoutControl.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.NavBar.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Scheduler.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2013.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Seven.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v15.2.Extensions, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Behaviors\DataViewExportBehavior.cs" />
+    <Compile Include="Behaviors\DynamicItemsBehavior.cs" />
+    <Compile Include="Behaviors\DynamicItemLinkBehavior.cs" />
+    <Compile Include="Control\DocumentPanel.cs" />
+    <Compile Include="Control\ExceptionWindow.xaml.cs">
+      <DependentUpon>ExceptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ExportProgressWaitIndicator.xaml.cs">
+      <DependentUpon>ExportProgressWaitIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ExportWaitIndicator.xaml.cs">
+      <DependentUpon>ExportWaitIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\InputMoneyDialog.xaml.cs">
+      <DependentUpon>InputMoneyDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\OrderInBrowser.xaml.cs">
+      <DependentUpon>OrderInBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\RibbonPageGroup.cs" />
+    <Compile Include="Control\RoleEdit.xaml.cs">
+      <DependentUpon>RoleEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SelectOrder.xaml.cs">
+      <DependentUpon>SelectOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SelectUser.xaml.cs">
+      <DependentUpon>SelectUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UserEdit.xaml.cs">
+      <DependentUpon>UserEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Convert\CheckBoxValueConverter.cs" />
+    <Compile Include="Convert\ColorToStringConvert.cs" />
+    <Compile Include="Convert\EnumConvert.cs" />
+    <Compile Include="Convert\NumberToVisibilityConverter.cs" />
+    <Compile Include="Convert\ShortDecimalConverter.cs" />
+    <Compile Include="Convert\TestConvert.cs" />
+    <Compile Include="Convert\ToParameterTypeInstanceConvert.cs" />
+    <Compile Include="Convert\WorkApprovalToDataContextConvert.cs" />
+    <Compile Include="Core\ApprovalOrderCor.cs" />
+    <Compile Include="Core\EnumHelper.cs" />
+    <Compile Include="Core\EnumItemsSource.cs" />
+    <Compile Include="Core\EnumItemsSource2.cs" />
+    <Compile Include="Core\EnumMemberInfo.cs" />
+    <Compile Include="Core\Extend.cs" />
+    <Compile Include="Core\FieldTemplateSelector.cs" />
+    <Compile Include="Core\ICreateBarItemLink.cs" />
+    <Compile Include="Core\OrganNodeImageSelector.cs" />
+    <Compile Include="Core\SortCodeGenerate.cs" />
+    <Compile Include="Core\WorkApprovalData\BusinessTripData.cs" />
+    <Compile Include="Core\WorkApprovalData\ForleaveData.cs" />
+    <Compile Include="Core\WorkApprovalData\ReimburseData.cs" />
+    <Compile Include="DXWindow1.xaml.cs">
+      <DependentUpon>DXWindow1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NaviagtionParameter.cs" />
+    <Compile Include="Model\TileModel.cs" />
+    <Compile Include="ModiftyPassword.xaml.cs">
+      <DependentUpon>ModiftyPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report.cs" />
+    <Compile Include="Report\XtraReportCharge.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReportCharge.Designer.cs">
+      <DependentUpon>XtraReportCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReportProductInStore.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReportProductInStore.Designer.cs">
+      <DependentUpon>XtraReportProductInStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReportOutProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReportOutProduct.Designer.cs">
+      <DependentUpon>XtraReportOutProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReportProductReturn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReportProductReturn.Designer.cs">
+      <DependentUpon>XtraReportProductReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReportWage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReportWage.Designer.cs">
+      <DependentUpon>XtraReportWage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Selector\CategoryTemplateSelector.cs" />
+    <Compile Include="TemplateSelector\BarItemTemplateSelector.cs" />
+    <Compile Include="TestViewModel.cs" />
+    <Compile Include="ViewModels\CopyMeWorkApprovalOrderViewModel.cs" />
+    <Compile Include="ViewModels\CustomNotificationViewModel.cs" />
+    <Compile Include="ViewModels\ExpensesInViewModel.cs" />
+    <Compile Include="ViewModels\ExpensesViewModel.cs" />
+    <Compile Include="ViewModels\Inherit\ViewModelTabItem.cs" />
+    <Compile Include="ViewModels\Inherit\WorkApprovalOrderViewDataContext.cs" />
+    <Compile Include="ViewModels\LastStoreQueViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MeNewWorkApprovalOrderViewModel.cs" />
+    <Compile Include="ViewModels\MeWorkApprovalOrderViewModel.cs" />
+    <Compile Include="ViewModels\NewWorkApprovalOrderViewModel.cs" />
+    <Compile Include="ViewModels\OrganizationStructureViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\Relation\AcontactViewModel.cs" />
+    <Compile Include="ViewModels\Relation\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\Relation\SuppliersViewModel.cs" />
+    <Compile Include="ViewModels\ReportAccountTransactionRecordViewModel.cs" />
+    <Compile Include="ViewModels\ReportExpensesViewModel.cs" />
+    <Compile Include="ViewModels\ReportHasReceivableViewModel.cs" />
+    <Compile Include="ViewModels\ReportNoPaymentViewModel.cs" />
+    <Compile Include="ViewModels\ReportPaymentedViewModel.cs" />
+    <Compile Include="ViewModels\ReportSalesDetailsViewModel.cs" />
+    <Compile Include="ViewModels\ReportAccountInfoViewModel.cs" />
+    <Compile Include="ViewModels\RepotProductInStoreViewModel.cs" />
+    <Compile Include="ViewModels\RibbonNodeMaintainViewModel.cs" />
+    <Compile Include="ViewModels\RibbonNodeViewModel.cs" />
+    <Compile Include="ViewModels\WageViewModel.cs" />
+    <Compile Include="ViewModels\WaitWorkApprovalOrderViewModel.cs" />
+    <Compile Include="ViewModels\WorkApprovalMaintainViewModel.cs" />
+    <Compile Include="Views\CopyMeWorkApprovalOrder.xaml.cs">
+      <DependentUpon>CopyMeWorkApprovalOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Expenses.xaml.cs">
+      <DependentUpon>Expenses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExpensesIn.xaml.cs">
+      <DependentUpon>ExpensesIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MeNewWorkApprovalOrder.xaml.cs">
+      <DependentUpon>MeNewWorkApprovalOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MeWorkApprovalOrder.xaml.cs">
+      <DependentUpon>MeWorkApprovalOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewWorkApprovalOrder.xaml.cs">
+      <DependentUpon>NewWorkApprovalOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrganizationStructure.xaml.cs">
+      <DependentUpon>OrganizationStructure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportAccountTransactionRecord.xaml.cs">
+      <DependentUpon>ReportAccountTransactionRecord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportExpenses.xaml.cs">
+      <DependentUpon>ReportExpenses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportHasReceivable.xaml.cs">
+      <DependentUpon>ReportHasReceivable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportNoPayment.xaml.cs">
+      <DependentUpon>ReportNoPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportPaymented.xaml.cs">
+      <DependentUpon>ReportPaymented.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportAccountInfo.xaml.cs">
+      <DependentUpon>ReportAccountInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepotProductInStore.xaml.cs">
+      <DependentUpon>RepotProductInStore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepotProductOutStore.xaml.cs">
+      <DependentUpon>RepotProductOutStore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\RepotProductOutStoreViewModel.cs" />
+    <Compile Include="ViewModels\RoleManagerViewModel.cs" />
+    <Compile Include="ViewModels\RoleMenuManagerViewModel.cs" />
+    <Compile Include="ViewModels\Sell\ChargeViewModel.cs" />
+    <Compile Include="ViewModels\Sell\ProductReturnViewModel.cs" />
+    <Compile Include="ViewModels\Sell\SalesBillingViewModel.cs" />
+    <Compile Include="ViewModels\Storage\FixedInStorageViewModel.cs" />
+    <Compile Include="ViewModels\Storage\ProductInBaseViewModel.cs" />
+    <Compile Include="ViewModels\Storage\ProductInStorageViewModel.cs" />
+    <Compile Include="ViewModels\Storage\RawInStorageViewModel.cs" />
+    <Compile Include="ViewModels\Storage\RawOutStorageViewModel.cs" />
+    <Compile Include="ViewModels\Storage\StockAlarmViewModel.cs" />
+    <Compile Include="ViewModels\UserManagerViewModel.cs" />
+    <Compile Include="ViewModels\Inherit\ViewModelBaseCor.cs" />
+    <Compile Include="Views\LastStoreQue.xaml.cs">
+      <DependentUpon>LastStoreQue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManager.xaml.cs">
+      <DependentUpon>ProductManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relation\AcontactView.xaml.cs">
+      <DependentUpon>AcontactView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relation\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Relation\SuppliersView.xaml.cs">
+      <DependentUpon>SuppliersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportSalesDetails.xaml.cs">
+      <DependentUpon>ReportSalesDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RibbonNode.xaml.cs">
+      <DependentUpon>RibbonNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RibbonNodeMaintain.xaml.cs">
+      <DependentUpon>RibbonNodeMaintain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RoleManager.xaml.cs">
+      <DependentUpon>RoleManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RoleMenuManager.xaml.cs">
+      <DependentUpon>RoleMenuManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sell\ChargeView.xaml.cs">
+      <DependentUpon>ChargeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sell\ProductReturnView.xaml.cs">
+      <DependentUpon>ProductReturnView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sell\SalesBillingView.xaml.cs">
+      <DependentUpon>SalesBillingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storage\FixedInStorageView.xaml.cs">
+      <DependentUpon>FixedInStorageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storage\ProductInStorageView.xaml.cs">
+      <DependentUpon>ProductInStorageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storage\RawInStorageView.xaml.cs">
+      <DependentUpon>RawInStorageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storage\RawOutStorageView.xaml.cs">
+      <DependentUpon>RawOutStorageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storage\StockAlarm.xaml.cs">
+      <DependentUpon>StockAlarm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserManager.xaml.cs">
+      <DependentUpon>UserManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WaitWorkApprovalOrder.xaml.cs">
+      <DependentUpon>WaitWorkApprovalOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Wage.xaml.cs">
+      <DependentUpon>Wage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkApprovalMaintain.xaml.cs">
+      <DependentUpon>WorkApprovalMaintain.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DXSplashScreen\ProgressWindow.xaml.cs">
+      <DependentUpon>ProgressWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DXSplashScreen\SplashScreenWindow.xaml.cs">
+      <DependentUpon>SplashScreenWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReportCharge.resx">
+      <DependentUpon>XtraReportCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReportProductInStore.resx">
+      <DependentUpon>XtraReportProductInStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReportOutProduct.resx">
+      <DependentUpon>XtraReportOutProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReportProductReturn.resx">
+      <DependentUpon>XtraReportProductReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReportWage.resx">
+      <DependentUpon>XtraReportWage.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Lixiaoyuan.snk" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\BusinessDb.Cor.Models.ReportDataModel.ChargeData.datasource" />
+    <None Include="Properties\DataSources\BusinessDb.Cor.Models.ReportDataModel.ProductReturnData.datasource" />
+    <None Include="Properties\DataSources\BusinessDb.Cor.Models.ReportDataModel.WageData.datasource" />
+    <None Include="Properties\DataSources\ErpDb.Cor.Models.ReportDataModel.OutProductData.datasource" />
+    <None Include="Properties\DataSources\ErpDb.Cor.Models.ReportDataModel.ProductInStroeData.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Control\ExceptionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ExportProgressWaitIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ExportWaitIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\InputMoneyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\OrderInBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\RoleEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\SelectOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\SelectUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\UserEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DXSplashScreen\ProgressWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DXSplashScreen\SplashScreenWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DXWindow1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\RibbonTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\ViewModelTemplatesDictionart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\WorkOrderTemplatesDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CopyMeWorkApprovalOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModiftyPassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\dragdrop.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Expenses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExpensesIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MeNewWorkApprovalOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MeWorkApprovalOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewWorkApprovalOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OrganizationStructure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportAccountTransactionRecord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportExpenses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportHasReceivable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportNoPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportPaymented.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportAccountInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RepotProductInStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RepotProductOutStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LastStoreQue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Relation\AcontactView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Relation\CustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Relation\SuppliersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportSalesDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RibbonNode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RibbonNodeMaintain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RoleManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RoleMenuManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Sell\ChargeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Sell\ProductReturnView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Sell\SalesBillingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\FixedInStorageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\ProductInStorageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\RawInStorageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\RawOutStorageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\StockAlarm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WaitWorkApprovalOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Wage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkApprovalMaintain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DXSplashScreen\Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DXSplashScreen\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationDb.Cor\ApplicationDb.Cor.csproj">
+      <Project>{8617d72c-d442-4052-a477-16a5ddd6485a}</Project>
+      <Name>ApplicationDb.Cor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ErpDb.Cor\BusinessDb.Cor.csproj">
+      <Project>{ecdb59ef-3878-4062-939f-c5c7ef50945b}</Project>
+      <Name>BusinessDb.Cor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{39dc3979-d4e1-4c49-a306-7158d4c3dc3c}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\icon2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login-log.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\UI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Dropbox_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Chase_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\com_vine_iphone_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Livejournal_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\weathereyeiphone_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\VSCO_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Plex_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\WWDC_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Outlook_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\myverizon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Gindr_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Flux_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\PPClient_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\FitBit_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\flickr_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Flipboard_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\GoodMorning_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Weatherline_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Mint_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\iCleaner_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\LinkedIN_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\iAliens_rocket_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Darksky_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Clear_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Ingress_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Murcury_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\iBooks_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Google_Wallet_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Scannable_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Springtomise_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Winterboard_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Contacts_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\TD_Bank_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\com_tinyspeck_chatyio_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\lALOD8EH6szIzMg_200_200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\lALOD8EH6szIzMg_CopyMe_200_200.png" />
+    <Resource Include="Images\Tile\lALOD8EH6szIzMg_MeApproval_200_200.png" />
+    <Resource Include="Images\Tile\lALOD8EH6szIzMg_MeNew_200_200.png" />
+    <Resource Include="Images\Tile\lALOD8EH6szIzMg_Wait_200_200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\money_bag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\checked_32px.png" />
+    <Resource Include="Images\Tile\entry_no_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\Go_back_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\eye_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tile\transfer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\accept.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

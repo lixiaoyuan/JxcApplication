@@ -1,0 +1,21 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/charts/themekeys" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:local="http://schemas.devexpress.com/winfx/2008/xaml/charts" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <sys:Double x:Key="{dxt:ChartControlThemeKey ResourceKey=AxisLabelFontSize}">12</sys:Double>
+    <sys:Double x:Key="{dxt:ChartControlThemeKey ResourceKey=AxisTitleFontSize}">16</sys:Double>
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=AxisBrush}" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=Axis2DInterlacedBrush}" Color="#07000000" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=StripBrush}" Color="#3FFF0000" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=ConstantLineBrush}" Color="#7FFF0000" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=ConstantLineTitleForeground}" Color="#FFCC0000" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=GridLineBrush}" Color="#26000000" cs:Name="SolidColorBrush_0006" />
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=MinorGridLineBrush}" Color="#0F000000" cs:Name="SolidColorBrush_0007" />
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=AxisLabelForeground}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0008" />
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=AxisTitleForeground}" Color="#FF0072C6" cs:Name="SolidColorBrush_0009" />
+    <Color x:Key="{dxt:ChartBrushesThemeKey ResourceKey=StripBorderColor}" cs:Name="Color_0001">#7F0072C6</Color>
+    <Thickness x:Key="{dxt:ChartControlThemeKey ResourceKey=AxisLabelPadding}">5,1</Thickness>
+    <DataTemplate x:Key="{dxt:ChartControlThemeKey ResourceKey=AxisLabelTemplate}">
+        <ContentPresenter Content="{Binding Path=Content}" />
+    </DataTemplate>
+    <!--BEGIN WPF-->
+    <SolidColorBrush x:Key="{dxt:ChartBrushesThemeKey ResourceKey=Axis3DInterlacedBrush}" Color="#07000000" cs:Name="SolidColorBrush_0010" />
+    <!--END WPF-->
+</ResourceDictionary>

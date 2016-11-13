@@ -1,0 +1,134 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    <!--BEGIN WPF-->
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Ribbon.v15.2;component/Themes/Generic/DXTreeViewItem.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <!--END WPF-->
+    <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverterInverted" Invert="True" />
+    <ControlTemplate x:Key="{dxrt:DXTreeViewItemThemeKey ResourceKey=ExpanderTemplate}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Grid Background="#00000000" Width="14" Height="14" SnapsToDevicePixels="True" cs:Name="Grid_0001">
+            <Path x:Name="GlyphCollapsed" Stretch="Fill" Fill="#FF666666" Data="F1 M 1.27157e-006,1.90735e-006L 1.27157e-006,8L 4,4L 1.27157e-006,1.90735e-006 " Width="4" Height="8" SnapsToDevicePixels="True" Visibility="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverterInverted}}" cs:Name="Path_0001" />
+            <Path x:Name="GlyphExpanded" Stretch="Fill" Fill="#FF666666" Data="F1 M 0,6L 6,0L 6,6L 0,6 Z " Width="6" Height="6" SnapsToDevicePixels="True" Visibility="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" cs:Name="Path_0002" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Hover">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="GlyphCollapsed" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0001" />
+                            <ColorAnimation Storyboard.TargetName="GlyphExpanded" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0002" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="GlyphCollapsed" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0003" />
+                            <ColorAnimation Storyboard.TargetName="GlyphExpanded" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0004" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+    <Style x:Key="{dxrt:DXTreeViewItemThemeKey ResourceKey=ExpanderStyle}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Style.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" Value="12" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Template" Value="{DynamicResource {dxrt:DXTreeViewItemThemeKey ResourceKey=ExpanderTemplate}}" />
+        <Setter Property="Margin" Value="4" />
+    </Style>
+    <Style x:Key="{dxrt:DXTreeViewItemThemeKey ResourceKey=ItemsPresenterStyle}" TargetType="{x:Type ItemsPresenter}">
+        <Style.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" Value="40,0,0,0" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Margin" Value="20,0,0,0" />
+    </Style>
+    <Style x:Key="{dxrt:DXTreeViewItemThemeKey ResourceKey=ContentStyle}" TargetType="{x:Type ContentControl}">
+        <Style.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" Value="12,12,12,12" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Margin" Value="2,1,2,1" />
+        <Setter Property="Foreground" Value="#FF3C3C3C" cs:Name="Setter_0001" />
+    </Style>
+    <Style x:Key="{dxrt:DXTreeViewItemThemeKey ResourceKey=GlyphStyle}" TargetType="{x:Type Image}">
+        <Style.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" Value="12,12,0,12" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Margin" Value="2,1,2,1" />
+    </Style>
+    <!-- For Removing -->
+    <Style x:Key="{dxrt:DXTreeViewItemThemeKey ResourceKey=GlyphContainerStyle}" TargetType="{x:Type ContentControl}" />
+    <ControlTemplate x:Key="{dxrt:DXTreeViewItemThemeKey ResourceKey=BorderTemplate}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Grid SnapsToDevicePixels="True">
+            <Border x:Name="PART_Normal" />
+            <Border x:Name="PART_Hover" Background="#FFCDE6F7" Opacity="0" cs:Name="Border_0001" />
+            <Border x:Name="PART_Pressed" Background="#FF92C0E0" Opacity="0" cs:Name="Border_0002" />
+            <ContentControl Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_Hover" Storyboard.TargetProperty="Opacity" Duration="0" To="0" />
+                            <DoubleAnimation Storyboard.TargetName="PART_Pressed" Storyboard.TargetProperty="Opacity" Duration="0" To="0" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Hover">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_Hover" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <DoubleAnimation Storyboard.TargetName="PART_Pressed" Storyboard.TargetProperty="Opacity" Duration="0" To="0" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_Hover" Storyboard.TargetProperty="Opacity" Duration="0" To="0" />
+                            <DoubleAnimation Storyboard.TargetName="PART_Pressed" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_Hover" Storyboard.TargetProperty="Opacity" Duration="0" To="0" />
+                            <DoubleAnimation Storyboard.TargetName="PART_Pressed" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PART_Hover" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <DoubleAnimation Storyboard.TargetName="PART_Pressed" Storyboard.TargetProperty="Opacity" Duration="0" To="0" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+    <Style x:Key="{dxrt:DXTreeViewItemThemeKey ResourceKey=BorderStyle}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Setter Property="Template" Value="{DynamicResource {dxrt:DXTreeViewItemThemeKey ResourceKey=BorderTemplate}}" />
+    </Style>
+    <!--GroupItem-->
+    <Style x:Key="{dxrt:DXTreeViewGroupItemThemeKey ResourceKey=ItemsPresenterStyle}" TargetType="{x:Type ItemsPresenter}">
+        <Setter Property="Margin" Value="0,1,0,1" />
+    </Style>
+    <Style x:Key="{dxrt:DXTreeViewGroupItemThemeKey ResourceKey=ContentStyle}" TargetType="{x:Type ContentControl}">
+        <Style.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" Value="12" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Foreground" Value="#FF0072C6" cs:Name="Setter_0002" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="Margin" Value="4" />
+    </Style>
+    <ControlTemplate x:Key="{dxrt:DXTreeViewGroupItemThemeKey ResourceKey=BorderTemplate}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <ContentControl Content="{TemplateBinding Content}" Margin="1" />
+    </ControlTemplate>
+    <Style x:Key="{dxrt:DXTreeViewGroupItemThemeKey ResourceKey=BorderStyle}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Setter Property="Template" Value="{DynamicResource {dxrt:DXTreeViewGroupItemThemeKey ResourceKey=BorderTemplate}}" />
+    </Style>
+</ResourceDictionary>

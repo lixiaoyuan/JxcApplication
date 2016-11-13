@@ -1,0 +1,2297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A46E1A7E-0A4F-4EC8-BEAB-ACE9CBAAA2FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DevExpress.Xpf.Themes.Office2013Ex</RootNamespace>
+    <AssemblyName>DevExpress.Xpf.Themes.Office2013Ex.v15.2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseIntermediateOutputPath>obj.Wpf</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Charts.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Data.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Diagram.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Diagram.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Printing.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Pdf.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v15.2.Drawing">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Pdf.v15.2.Drawing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Carousel.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Carousel.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Charts.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Charts.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Controls.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Controls.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Core.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Diagram.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Diagram.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Docking.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Docking.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Grid.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Grid.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Layout.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Layout.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.LayoutControl.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.LayoutControl.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.NavBar.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.NavBar.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.DocumentViewer.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.DocumentViewer.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.PdfViewer.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.PdfViewer.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Mvvm.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.PivotGrid.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.PivotGrid.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.PropertyGrid.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.PropertyGrid.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Printing.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Ribbon.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Ribbon.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Scheduler.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Scheduler.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.PivotGrid.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Office.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.RichEdit.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.RichEdit.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.RichEdit.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Spreadsheet.v15.2">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Xpf.Spreadsheet.v15.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Spreadsheet.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.Spreadsheet.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v15.2.Core">
+      <HintPath>..\..\..\Bin\Framework\DevExpress.XtraScheduler.v15.2.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DevExpress.Xpf.Carousel\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Carousel\Themes\GenericResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Carousel\Themes\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\AxisScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\ChartRangeControlClient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\CircularDiagram2D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Indicators.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\LegendMarker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Pie2DModels.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\RangeBar2DModels.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\SimpleDiagram2D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\ToolTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\AxisScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\Diagram2D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\Diagram3D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Content Include="DevExpress.Build.XamlResourceProcessing.targets" />
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\ToolTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\Wizard\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\Wizard\Generic\WizardButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\TabControl\Themes\Generic.Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\TabControl\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\ConditionalFormatting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\ConditionalFormatting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Generic\Adorners.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Generic\Controls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Generic\DiagramControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Generic\RibbonItemsStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Generic\Ruler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Generic\Toolbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Office2013Ex\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Diagram\Office2013Ex\Controls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.DocumentViewer\Generic\DefaultStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.DocumentViewer\Generic\Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.DocumentViewer\Office2013Ex.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.DocumentViewer\Office2013Ex\Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\Office2013Ex.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\AppBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\CommandButtonGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\DXFrame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\FadingButtonGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\FlipViewGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\FlyoutGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\MessageBoxGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\NavigationHeaderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\NavigationPageGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\PageAdornerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\PageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\SlideViewGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\TileNavPaneGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\TouchNavigatorGeneric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Generic\ViewPresenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\AppBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\CommandButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\FadingButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\FlipView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\Flyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\MessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\PageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\SlideView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\TileNavPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Controls\WindowsUI\Office2013Ex\TouchNavigator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\BarItemLinkMenuHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\BarItemsInRadialMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\RadialMenuControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\RadialMenuLevelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarItemLinkMenuHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\GlyphSideControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\ThemePart\RadialMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\AutoCompleteBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\BarItemTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\BarCodeEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\BrushEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ColorChooser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\Common.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\DataPager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\DateNavigator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\DateTimePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ExpressionEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\Flyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\FontComboBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\FontEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\FontSizeComboBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\GradientMultiSlider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\InplaceBaseEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\RangeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\SparklineEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\TextEditBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\AutoCompleteBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\BarCodeEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\BrushEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\DataPager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\DateNavigator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\DateTimePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ExprEdCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\Flyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\GradientMultiSlider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\InplaceBaseEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\RangeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\SparkLineEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\TextEditBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\DXPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\CustomTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\SearchPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\GroupBoxAndGroupFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\AeroWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\CustomTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\SearchPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\SuperTip.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\WaitIndicators.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DevExpress.Xpf.Charts\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Axis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Axis2D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Axis3D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Bar2DModels.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\CandleStick2DModels.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\ChartControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Diagram2D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Diagram3D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Legend.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Marker2DModels.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Series.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\SeriesLabel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\SeriesPoint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Stock2DModels.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\Titles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Generic\TitlesLayoutControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\Axis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\ChartControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\Legend.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\SeriesLabel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Charts\Office2013Ex\Titles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\CornerBox.Wpf.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\CornerBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\BarContainerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\BarControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\BarItems.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\Customization.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\DefaultStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\FloatingBarPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\Gallery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\SubMenuBarControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\TextSplitterControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarButtonItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarCheckItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarContainerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarEditItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarItems.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarItemSeparator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarSplitButtonItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarSplitCheckItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarStaticItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarSubItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\Customization.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\FloatingBarPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\Gallery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\PopupControlContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\SubMenuBarControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\TextSplitterControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ButtonEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\CalcEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\CalcEditDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\CheckEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ColorEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ComboBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\DateEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ErrorPresenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\FilterControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\FilterPanelControlBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ImageEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ListBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\MemoEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\PasswordBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\PopupBaseEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\PopupListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\ProgressBarEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\TextEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Generic\TrackBarEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ButtonEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\CalcEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\CheckEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ColorChooser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ColorEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ComboBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\DateEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ErrorPresenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\FilterControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\FPanelCtrlBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ImageEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ListBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\MemoEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\PasswordBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\PopupBaseEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\PopupListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\ProgressBarEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\SpinEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\TextEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\Office2013Ex\TrackBarEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Editors\Themes\TransferStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\TabControl\Themes\Office2013Ex.XAML">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\DragIconControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\MessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Popup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\PseudoWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\SuperTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Generic\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\PopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\PseudoWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\UserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\Office2013Ex\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControlStyles.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\ComboBoxItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\GridSplitter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\ListBoxItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\ScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\ScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\Separator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\SharedResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\Slider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TabItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\ToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\StandardControls\TreeViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\TransferControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\DevExpress.Xpf.Core\Themes\TransferStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Core\Generic.Wpf\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\CaptionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\ControlBoxControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\Customization.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\DockLayoutManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\DockLayoutManagerContainers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\DockLayoutManagerElements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\DockVisualizerElements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\DocumentSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\DropBoundsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\GenericTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Generic\MultiTemplateControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\AutoHidePanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\ControlBoxElements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\ControlItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="DevExpress.Xpf.Docking\Office2013Ex\FloatPane.WinFormsHost.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\CustomizationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\DockPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\DocumentPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\FixedItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\FloatPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\LayoutItemsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\TabbedLayoutGroupPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\TabbedPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Docking\Office2013Ex\VisualizerElements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\CardTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\CardViewPrintingTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\ColumnHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\ConditionalFormatting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\DefaultGridViewStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\GridControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\GridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\HeaderFooterItemsControlStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\LightweightStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\LookUpEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\PrintingTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\RowIndicator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Generic\Rows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\CardTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\CardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\ColumnHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\ColumnHeaderDragIndicator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\ConditionalFormatting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\Constants.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\ExpandButtons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\GridCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\GridControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\GridControlElements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\GridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\LightweightStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\LookUpEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\RowIndicator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\Rows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\ScrollBars.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\TotalSummary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\TreeListIndentItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Grid\Office2013Ex\WaitIndicators.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.LayoutControl\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.LayoutControl\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.LayoutControl\Styles.Wpf.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Generic\CommonElements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Generic\ExplorerBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Generic\NavBarGroupControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Generic\NavBarItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Generic\NavigationPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Generic\SideBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Generic\DefaultStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Office2013Ex.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Office2013Ex\CommonElements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Office2013Ex\ExplorerBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Office2013Ex\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.NavBar\Office2013Ex\NavigationPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PdfViewer\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PdfViewer\Generic\DefaultStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PdfViewer\Generic\Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PdfViewer\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PdfViewer\Office2013Ex\Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Generic\FieldHeaders.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Generic\FieldList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Generic\MiscControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Generic\PivotGridControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Generic\PrintingTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Generic\ScrollableArea.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Office2013Ex\ExpandButtons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Office2013Ex\FieldHeaders.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Office2013Ex\PivotGridControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Office2013Ex\ScrollableArea.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\Office2013Ex\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PivotGrid\OfficeGeneric\FieldHeaders.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Printing\Office2013Ex.XAML">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Printing\Office2013Ex\PageBorderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevExpress.Xpf.Printing\Office2013Ex\PreviewSurface.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Generic\BrushEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Generic\CategoryRowControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Generic\DataRowControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Generic\DefaultStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Generic\PropertyGridControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Generic\PropertyGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Generic\RenderTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Office2013Ex\BrushEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Office2013Ex\CategoryRowControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Office2013Ex\DataRowControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Office2013Ex\PropertyGridControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Office2013Ex\PropertyGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.PropertyGrid\Office2013Ex\RenderTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\ApplicationButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\ApplicationMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\BackstageButtonItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\BackstageSeparatorItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\BackstageTabItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\BackstageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\BarItems.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\DropDownGallery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\DXTreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\DXTreeViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\IndependentPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\InRibbonGallery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\QuickAccessToolbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\Ribbon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\RibbonAeroWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\RibbonAutoHide.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\RibbonHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\RibbonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\RibbonPageCategory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\RibbonPageGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\RibbonStatusBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Generic\RibbonWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\ApplicationButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\ApplicationMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\BackstageButtonItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\BackstageSeparatorItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\BackstageTabItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\BackstageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\BarItems.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\DropDownGallery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\DXTreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\DXTreeViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\InRibbonGallery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\QuickAccessToolbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\Ribbon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\RibbonAeroWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\RibbonHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\RibbonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\RibbonPageCategory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\RibbonPageGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\RibbonStatusBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Ribbon\Office2013Ex\RibbonWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\BarItemTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\FontSizeListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\PageNumberWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\RichEditControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\RichEditFontSizeComboBoxEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\RichEditStyleEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\RichEditViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\Ruler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\XpfRichEditCaret.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\XpfRichEditDragCaret.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\XpfRichEditFlowSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\XpfRichEditImageSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\XpfRichEditSizerSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Generic\ZoomComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Office2013Ex\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Office2013Ex\PageNumberWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Office2013Ex\RichEditControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Office2013Ex\RichEditViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Office2013Ex\Ruler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Office2013Ex\XpfRichEditFlowSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.RichEdit\Office2013Ex\XpfRichEditSizerSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\Appointment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\AppointmentResourceEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\AppointmentStatusEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\Appointments\AppointmentContentControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\BaseView\HorizontalResourceHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\BaseView\VerticalResourceHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\ContentStyleSelectors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\AllDayAreaControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\Column.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\DayHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\GroupByDate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\GroupByNone.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\GroupByResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\Headers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\HorizontalCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\HorizontalTimeMarkerContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\MoreButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\ResourceDays.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\SchedulerScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\TimeRuler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DayView\VerticalCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\DefaultStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\GanttView\GroupByDate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\InplaceEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\MonthView\DayHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\MonthView\GroupByNone.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\MonthView\GroupByResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\MonthView\MonthHorizontal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\MonthView\MonthVertical.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\MonthView\Week.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\RangeControl\RangeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\ResourceNavigator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\ResourcesEditControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\SchedulerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\Cell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\CellContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\CellContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\GroupByDate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\GroupByNone.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\Header.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\ScaleSingleLevel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\SelectionBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\SelectionBarCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\TimelineHorizontal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\TimeScaleHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\TimelineView\VerticalTimeMarkerContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\WeekView\Day.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\WeekView\DayHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\WeekView\DayOfWeekHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\WeekView\GroupByDate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\WeekView\GroupByNone.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\WeekView\GroupByResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\WeekView\MonthHorizontal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Generic\WeekView\VerticalWeek.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Appointments\DragDropHoverTimeCells.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Appointments\HorizontalAppointment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Appointments\HAppointmentLongerThanADay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Appointments\HorizontalAppointmentSameDay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Appointments\VerticalAppointment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\BaseView\Header.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\BaseView\MoreButtonTooltip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Containers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\CurrentTimeIndicator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\DayView\HorizontalTimeMarker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\DayView\MoreButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\DayView\TimeRuler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\NavigationButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\RangeControl\Header.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\RangeControl\RulerCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\RangeControl\Thumbnail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\ResourceNavigator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\SchedulerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\SchedulerScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\Selection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Scheduler\Office2013Ex\TimelineView\VerticalTimeMarker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Spreadsheet\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Spreadsheet\Generic\DefaultStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Spreadsheet\Office2013Ex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DevExpress.Xpf.Spreadsheet\Office2013Ex\SpreadsheetControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ControlStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DevExpress.Xpf.Ribbon\Images\BackstageBackgroundGlyph.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\HandleDecorator\decorator_bottom.png" />
+    <EmbeddedResource Include="Images\HandleDecorator\decorator_left.png" />
+    <EmbeddedResource Include="Images\HandleDecorator\decorator_right.png" />
+    <EmbeddedResource Include="Images\HandleDecorator\decorator_top.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="DevExpress.Build.XamlResourceProcessing.targets" />
+  <PropertyGroup></PropertyGroup>
+  <PropertyGroup></PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

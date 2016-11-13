@@ -1,0 +1,1704 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/TrackBarEdit.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <SolidColorBrush x:Key="TrackBarEdit.Track.Background" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="TrackBarEdit.Tick.Background" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="TrackBarEdit.Focus.Background" Color="#FF0072C6" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="TrackBarEdit.SelectionRange.Background" Color="#FF0072C6" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="TrackBarEditThumb.DefaultState" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="TrackBarEditThumb.HoverState" Color="#FF0072C6" cs:Name="SolidColorBrush_0006" />
+    <SolidColorBrush x:Key="TrackBarEditThumb.PressedState" Color="#FF0072C6" cs:Name="SolidColorBrush_0007" />
+    <SolidColorBrush x:Key="TrackBarEditThumb.DisabledState" Color="#FF999999" cs:Name="SolidColorBrush_0008" />
+    <SolidColorBrush x:Key="{dxet:TrackBarEditThemeKey ResourceKey=Background}" cs:Name="SolidColorBrush_0009">#FFE3E3E3</SolidColorBrush>
+    <SolidColorBrush x:Key="{dxet:TrackBarEditThemeKey ResourceKey=Foreground}" cs:Name="SolidColorBrush_0010">#FF3C3C3C</SolidColorBrush>
+    <sys:Double x:Key="{dxet:TrackBarEditThemeKey ResourceKey=LeftStepButtonSize}">15</sys:Double>
+    <sys:Double x:Key="{dxet:TrackBarEditThemeKey ResourceKey=RightStepButtonSize}">15</sys:Double>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThemeKey ResourceKey=VerticalBackgroundTemplate}" TargetType="{x:Type ContentControl}">
+        <Grid x:Name="TrackBackground" HorizontalAlignment="Center">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="InternalFocusStates">
+                    <VisualState x:Name="InternalFocused">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="FocusElement" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="InternalUnfocused" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <dx:DXBorder Background="{StaticResource {dxet:TrackBarEditThemeKey ResourceKey=Foreground}}" BorderBrush="#FFFFFFFF" BorderThickness="1,0,1,0" Width="4" cs:Name="Border_0001" />
+            <dx:DXBorder x:Name="FocusElement" BorderBrush="{StaticResource TrackBarEdit.Focus.Background}" BorderThickness="1" Margin="1" Opacity="0" />
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThemeKey ResourceKey=HorizontalBackgroundTemplate}" TargetType="{x:Type ContentControl}">
+        <Grid x:Name="TrackBackground" VerticalAlignment="Center">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="InternalFocusStates">
+                    <VisualState x:Name="InternalFocused">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="FocusElement" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="InternalUnfocused" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <dx:DXBorder Background="{StaticResource {dxet:TrackBarEditThemeKey ResourceKey=Foreground}}" BorderBrush="#FFFFFFFF" BorderThickness="0,1,0,1" Height="4" cs:Name="Border_0002" />
+            <dx:DXBorder x:Name="FocusElement" BorderBrush="{StaticResource TrackBarEdit.Focus.Background}" BorderThickness="1" Margin="1" Opacity="0" />
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThemeKey ResourceKey=LeftStepButtonTemplate}" TargetType="{x:Type RepeatButton}">
+        <Grid x:Name="Root" Background="Transparent" cs:Name="Grid_0001">
+            <Rectangle x:Name="Glyph" Stretch="Fill" Fill="{StaticResource {dxet:TrackBarEditThemeKey ResourceKey=Foreground}}" Stroke="#FFFFFFFF" StrokeThickness="1" Width="10" Height="4" Margin="0,1,0,0" cs:Name="Rectangle_0001" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF3C3C3C" cs:Name="ColorAnimation_0001" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0002" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0003" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF999999" cs:Name="ColorAnimation_0004" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThemeKey ResourceKey=RightStepButtonTemplate}" TargetType="{x:Type RepeatButton}">
+        <Grid x:Name="Root" Background="Transparent" Margin="1,1,0,0" cs:Name="Grid_0002">
+            <Path Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 0,3L 3,3L 3,0L 7,0L 7,3L 10,3L 10,7L 7,7L 7,10L 3,10L 3,7L 0,7L 0,3 Z " Width="10" Height="10" cs:Name="Path_0001" />
+            <Path x:Name="Glyph" Stretch="Fill" Fill="{StaticResource {dxet:TrackBarEditThemeKey ResourceKey=Foreground}}" Data="F1 M 4,1L 6,1L 6,4L 9,4L 9,6L 6,6L 6,9L 4,9L 4,6L 1,6L 1,4L 4,4L 4,1 Z " Width="8" Height="8" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF3C3C3C" cs:Name="ColorAnimation_0005" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0006" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0007" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Glyph" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF999999" cs:Name="ColorAnimation_0008" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup> 
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThemeKey ResourceKey=HorizontalSelectionRangeBackgroundTemplate}" TargetType="ContentControl">
+        <dx:DXBorder Background="{StaticResource TrackBarEdit.SelectionRange.Background}" BorderBrush="#FFFFFFFF" BorderThickness="0,1,0,1" Height="4" cs:Name="Border_0003" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThemeKey ResourceKey=VerticalSelectionRangeBackgroundTemplate}" TargetType="ContentControl">
+        <dx:DXBorder Background="{StaticResource TrackBarEdit.SelectionRange.Background}" BorderBrush="#FFFFFFFF" BorderThickness="1,0,1,0" Width="4" cs:Name="Border_0004" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=HorizontalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="5" Height="10" cs:Name="Grid_0003">
+            <Grid x:Name="grid1" Margin="0">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0005" />
+                <Grid x:Name="grid" Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="43" />
+                <Setter Property="Height" TargetName="Root" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="19,14,19,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=VerticalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="10" Height="5" Margin="0" cs:Name="Grid_0004">
+            <Grid x:Name="grid" Margin="0">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0006" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="44" />
+                <Setter Property="Height" TargetName="Root" Value="43" />
+                <Setter Property="Margin" TargetName="grid" Value="14,19,14,19" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=LeftHorizontalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="5" Height="10" cs:Name="Grid_0005">
+            <Grid x:Name="grid" Margin="0">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0007" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="43" />
+                <Setter Property="Height" TargetName="Root" Value="44" />
+                <Setter Property="Margin" TargetName="grid" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=RightHorizontalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="5" Height="10" cs:Name="Grid_0006">
+            <Grid x:Name="grid">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0008" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="grid" Value="0,14,38,14" />
+                <Setter Property="Width" TargetName="Root" Value="43" />
+                <Setter Property="Height" TargetName="Root" Value="44" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableLeftHorizontalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="5" Height="10" cs:Name="Grid_0007">
+            <Grid x:Name="grid">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0009" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="43" />
+                <Setter Property="Height" TargetName="Root" Value="44" />
+                <Setter Property="Margin" TargetName="grid" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableRightHorizontalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="5" Height="10" cs:Name="Grid_0008">
+            <Grid x:Name="grid">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0010" />
+                <Grid>
+                    <Grid Margin="1">
+                        <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                        <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                        <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                        <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                    </Grid>
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="43" />
+                <Setter Property="Height" TargetName="Root" Value="44" />
+                <Setter Property="Margin" TargetName="grid" Value="0,14,38,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableCenterHorizontalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="5" Height="10" cs:Name="Grid_0009">
+            <Grid x:Name="grid">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0011" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="43" />
+                <Setter Property="Height" TargetName="Root" Value="44" />
+                <Setter Property="Margin" TargetName="grid" Value="19,14,19,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=LeftVerticalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="10" Height="5" cs:Name="Grid_0010">
+            <Grid x:Name="grid">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0012" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="grid" Value="14,0,14,38" />
+                <Setter Property="Width" TargetName="Root" Value="44" />
+                <Setter Property="Height" TargetName="Root" Value="43" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=RightVerticalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="10" Height="5" cs:Name="Grid_0011">
+            <Grid x:Name="grid">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0013" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="44" />
+                <Setter Property="Height" TargetName="Root" Value="43" />
+                <Setter Property="Margin" TargetName="grid" Value="14,38,14,0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableLeftVerticalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="10" Height="5" cs:Name="Grid_0012">
+            <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0014" />
+            <Grid x:Name="grid">
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="44" />
+                <Setter Property="Height" TargetName="Root" Value="43" />
+                <Setter Property="Margin" TargetName="grid" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableRightVerticalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="10" Height="5" cs:Name="Grid_0013">
+            <Grid x:Name="grid">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0015" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="44" />
+                <Setter Property="Height" TargetName="Root" Value="43" />
+                <Setter Property="Margin" TargetName="grid" Value="0,14,38,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableCenterVerticalThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="Root" Background="Transparent" Width="10" Height="5" cs:Name="Grid_0014">
+            <Grid x:Name="grid">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_1015" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" Opacity="0" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DefaultState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="DisabledState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Root" Value="44" />
+                <Setter Property="Height" TargetName="Root" Value="43" />
+                <Setter Property="Margin" TargetName="grid" Value="19,14,19,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=LeftHorizontalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0018" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=RightHorizontalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0019" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="0,14,38,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableLeftHorizontalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0020" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableRightHorizontalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0021" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="0,14,38,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableCenterHorizontalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0022" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="19,14,19,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=LeftHorizontalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0024" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=RightHorizontalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0025" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="0,14,38,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableLeftHorizontalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0026" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableRightHorizontalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0027" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="0,14,38,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableCenterHorizontalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0028" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="19,14,19,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=HorizontalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0029" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="19,14,19,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=LeftHorizontalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0030" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=RightHorizontalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0031" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="0,14,38,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableLeftHorizontalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0032" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableRightHorizontalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0033" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="38,14,0,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableCenterHorizontalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="5" Height="10">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0034" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="43" />
+                <Setter Property="Height" TargetName="grid" Value="44" />
+                <Setter Property="Margin" TargetName="grid1" Value="19,14,19,14" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=LeftVerticalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0035" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,38,14,0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=RightVerticalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0036" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,0,14,38" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableLeftVerticalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0038" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,0,14,38" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableRightVerticalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0039" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,0,14,38" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableCenterVerticalThumbTickPlacementTopLeftTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_1035" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,19,14,19" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=RightVerticalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0042" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,0,14,38" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=LeftVerticalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0043" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,38,14,0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableRightVerticalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0044" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,0,14,38" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableLeftVerticalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0045" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,38,14,0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableCenterVerticalThumbTickPlacementBottomRightTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0046" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,19,14,19" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=LeftVerticalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0048" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,38,14,0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=RightVerticalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0049" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,0,14,38" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableLeftVerticalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_1050" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,38,14,0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableRightVerticalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0050" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,0,14,38" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:TrackBarEditThumbThemeKey ResourceKey=ScrollableCenterVerticalThumbTickPlacementBothTemplate}" TargetType="{x:Type Thumb}">
+        <Grid x:Name="grid" Width="10" Height="5">
+            <Grid x:Name="grid1">
+                <dx:DXBorder Background="#FFFFFFFF" cs:Name="Border_0051" />
+                <Grid Margin="1">
+                    <dx:DXBorder x:Name="DefaultState" Background="{StaticResource TrackBarEditThumb.DefaultState}" />
+                    <dx:DXBorder x:Name="HoverState" Background="{StaticResource TrackBarEditThumb.HoverState}" Opacity="0" />
+                    <dx:DXBorder x:Name="PressedState" Background="{StaticResource TrackBarEditThumb.PressedState}" Opacity="0" />
+                    <dx:DXBorder x:Name="DisabledState" Background="{StaticResource TrackBarEditThumb.DisabledState}" Opacity="0" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="1" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="0" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="HoverState" Value="0" />
+                <Setter Property="Opacity" TargetName="PressedState" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="DefaultState" Value="0" />
+                <Setter Property="Opacity" TargetName="DisabledState" Value="1" />
+            </Trigger>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="grid" Value="44" />
+                <Setter Property="Height" TargetName="grid" Value="43" />
+                <Setter Property="Margin" TargetName="grid1" Value="14,19,14,19" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+</ResourceDictionary>

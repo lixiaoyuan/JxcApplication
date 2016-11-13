@@ -1,0 +1,17 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler" xmlns:dxscht="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/themekeys" xmlns:dxschd="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/internal" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+
+    <ControlTemplate x:Key="{dxscht:RangeControlThemeKey ResourceKey=RulerHeaderControlTemplate}" TargetType="{x:Type dxsch:RulerHeaderControl}">
+        <dxschd:HeaderControl Orientation="Horizontal" SnapsToDevicePixels="True" dxschd:SchedulerItemsControl.ElementPosition="Middle,Middle,End,End" ResourceColor="{x:Null}" Content="{TemplateBinding Caption}" ContentTemplate="{DynamicResource {dxscht:RangeControlThemeKey ResourceKey=RulerHeaderContentTemplate}}" />
+    </ControlTemplate>
+    <DataTemplate x:Key="{dxscht:RangeControlThemeKey ResourceKey=RulerHeaderContentTemplate}">
+        <TextBlock SnapsToDevicePixels="True" HorizontalAlignment="Center" Foreground="{DynamicResource {dxscht:SchedulerViewThemeKey ResourceKey=HeaderForegroundColor}}" Text="{Binding}">
+                <!--BEGIN WPF-->
+            <TextBlock.TextTrimming>
+                <TextTrimming>
+                    CharacterEllipsis
+                </TextTrimming>
+            </TextBlock.TextTrimming>
+                <!--END WPF-->
+        </TextBlock>
+    </DataTemplate>
+</ResourceDictionary>

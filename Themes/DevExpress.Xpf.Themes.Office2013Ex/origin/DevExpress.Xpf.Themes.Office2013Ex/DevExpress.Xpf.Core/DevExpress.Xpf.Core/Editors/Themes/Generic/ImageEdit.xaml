@@ -1,0 +1,314 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxtEx="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxei="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxep="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxbt="http://schemas.devexpress.com/winfx/2008/xaml/bars/themekeys" xmlns:help="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxeh="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys" xmlns:dxef="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+
+    <dx:BoolToVisibilityInverseConverter x:Key="inverseBoolToVisibilityConverter" />
+    <dx:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+    <dx:EmbeddedResourceImageConverter x:Key="EmbeddedResourceImageConverter" />
+    <SolidColorBrush x:Key="ImageEditToolSeparatorBackground" Color="#FFDADADA" />
+
+    <ControlTemplate x:Key="{dxet:CameraControlThemeKey ResourceKey=TakePictureControlTemplate}" TargetType="{x:Type dxei:TakePictureControl}">
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <dxef:CameraControl x:Name="PART_Camera" Visibility="{Binding HasCapture, Converter={StaticResource inverseBoolToVisibilityConverter}}" />
+            <Image Visibility="{Binding HasCapture, Converter={StaticResource boolToVisibilityConverter}}" Source="{Binding Image}" />
+            <Grid Grid.Row="1" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Content="{Binding CaptureCaption}" Command="{Binding CaptureCommand}" Width="100" />
+                <Button Grid.Column="1" Margin="10,0,0,0" Content="{Binding SaveCaption}" Command="{Binding SaveCommand}" IsEnabled="{Binding HasCapture}" Width="75" />
+                <Button Grid.Column="2" Margin="10,0,0,0" Content="{Binding CancelCaption}" Command="{Binding CancelCommand}" Width="75" />
+            </Grid>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:CameraControlThemeKey ResourceKey=Template}" TargetType="{x:Type dxe:CameraControl}">
+        <ContentControl x:Name="contentControl" Background="{TemplateBinding Background}" Template="{TemplateBinding BorderTemplate}" dx:FocusHelper2.Focusable="False">
+            <Grid Background="Transparent">
+                <Image x:Name="PART_Image" Stretch="{TemplateBinding Stretch}" StretchDirection="{TemplateBinding StretchDirection}" Source="{Binding NativeImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                <ToggleButton x:Name="button" Opacity="0" Visibility="{Binding PropertyProvider.IsSettingsButtonVisible, Converter={StaticResource boolToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource {dxet:CameraControlThemeKey ResourceKey=SettingsButtonStyle}}" />
+                <dxef:FlyoutControl VerticalAlignment="Top" HorizontalAlignment="Right" AllowMoveAnimation="False" PlacementTarget="{Binding ElementName=contentControl}" IsOpen="{Binding ElementName=button, Path=IsChecked, Mode=TwoWay}">
+                    <dxef:FlyoutControl.Settings>
+                        <dxef:FlyoutSettings Placement="Right" />
+                    </dxef:FlyoutControl.Settings>
+                    <ContentPresenter Content="{Binding Path=PropertyProvider.Settings, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{DynamicResource {dxet:CameraControlThemeKey ResourceKey=CameraSettingsTemplate}}" />
+                </dxef:FlyoutControl>
+                <StackPanel VerticalAlignment="Center" Orientation="Vertical" Visibility="{Binding PropertyProvider.IsBusy, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToVisibilityConverter}}">
+                    <Image HorizontalAlignment="Center" Width="14" Height="14" Stretch="Fill" Source="{dx:EmbeddedResourceImage Source=DevExpress.Xpf.Core.Editors.Images.error.png}" />
+                    <TextBlock Text="{Binding PropertyProvider.ErrorCaption, RelativeSource={RelativeSource TemplatedParent}}" TextWrapping="Wrap" />
+                    <Button Content="{Binding PropertyProvider.RefreshButtonCaption, RelativeSource={RelativeSource TemplatedParent}}" Command="{Binding PropertyProvider.RefreshCommand, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" Margin="0,5,0,0" />
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Orientation="Vertical" Visibility="{Binding PropertyProvider.HasDevices, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource inverseBoolToVisibilityConverter}}">
+                    <Image HorizontalAlignment="Center" Width="14" Height="14" Stretch="Fill" Source="{dx:EmbeddedResourceImage Source=DevExpress.Xpf.Core.Editors.Images.error.png}" />
+                    <TextBlock Text="{Binding PropertyProvider.NoDevicesErrorCaption, RelativeSource={RelativeSource TemplatedParent}}" TextWrapping="Wrap" />
+                    <Button Content="{Binding PropertyProvider.RefreshButtonCaption, RelativeSource={RelativeSource TemplatedParent}}" Command="{Binding PropertyProvider.RefreshCommand, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" Margin="0,5,0,0" />
+                </StackPanel>
+            </Grid>
+        </ContentControl>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ShowBorder" Value="False">
+                <Setter TargetName="contentControl" Property="Template" Value="{DynamicResource {dxet:CameraControlThemeKey ResourceKey=EmptyBorderTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="button" Storyboard.TargetProperty="Opacity" Duration="0:0:0.21" To="1" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="button" Storyboard.TargetProperty="Opacity" Duration="0:0:0.21" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <DataTemplate x:Key="{dxet:CameraControlThemeKey ResourceKey=CameraSettingsTemplate}" DataType="{x:Type dxe:CameraSettingsProvider}">
+        <Grid>
+            <GroupBox Header="{Binding SettingsCaption}" Width="280" Margin="5">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Device.Caption}" />
+                        <dxef:ComboBoxEdit Grid.Column="1" ItemsSource="{Binding Device.AvaliableValues}" EditValuePostMode="Immediate" AllowNullInput="True" ShowCustomItems="True" DisplayMember="Name" EditValue="{Binding ActualDevice, UpdateSourceTrigger=PropertyChanged}" IsTextEditable="False" />
+                    </Grid>
+                    <Grid Margin="0,10,0,0" IsEnabled="{Binding EnableSettings}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Resolution.Caption}" />
+                        <dxef:ComboBoxEdit Grid.Column="1" ItemsSource="{Binding Resolution.AvaliableValues}" ValueMember="Resolution" DisplayMember="DisplayText" EditValuePostMode="Immediate" EditValue="{Binding ActualResolution, UpdateSourceTrigger=PropertyChanged}" IsTextEditable="False" ValidateOnTextInput="True" />
+                    </Grid>
+                    <Grid Margin="0,10,0,0" IsEnabled="{Binding EnableSettings}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Brightness.Caption}" />
+                        <dxef:TrackBarEdit Grid.Column="1" Minimum="{Binding Brightness.MinValue}" Maximum="{Binding Brightness.MaxValue}" EditValue="{Binding ActualBrightness, UpdateSourceTrigger=PropertyChanged}" SmallStep="1" LargeStep="10" TickPlacement="None" />
+                    </Grid>
+                    <Grid Margin="0,10,0,0" IsEnabled="{Binding EnableSettings}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Contrast.Caption}" />
+                        <dxef:TrackBarEdit Grid.Column="1" Minimum="{Binding Contrast.MinValue}" Maximum="{Binding Contrast.MaxValue}" EditValue="{Binding ActualContrast, UpdateSourceTrigger=PropertyChanged}" SmallStep="1" LargeStep="10" TickPlacement="None" />
+                    </Grid>
+                    <Grid Margin="0,10,0,10" IsEnabled="{Binding EnableSettings}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Desaturate.Caption}" />
+                        <dxef:CheckEdit Grid.Column="1" EditValue="{Binding CanDesaturate, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" />
+                    </Grid>
+                    <Button Content="{Binding Reset.Caption}" Command="{Binding ResetToDefaultCommand}" IsEnabled="{Binding EnableSettings}" />
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </DataTemplate>
+    <Style x:Key="{dxet:CameraControlThemeKey ResourceKey=SettingsButtonStyle}" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid x:Name="grid" Opacity="0.5" Background="Transparent">
+                        <Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Source=DevExpress.Xpf.Core.Editors.Images.camerasettings.png, Converter={StaticResource EmbeddedResourceImageConverter}}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="grid" Storyboard.TargetProperty="Opacity" Duration="0:0:0.21" To="1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="grid" Storyboard.TargetProperty="Opacity" Duration="0:0:0.21" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="{dxet:CameraControlThemeKey ResourceKey=EmptyBorderTemplate}" TargetType="{x:Type ContentControl}">
+        <Border>
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{dxet:ImageEditThemeKey ResourceKey=Template}" TargetType="{x:Type dxe:ImageEdit}">
+        <Grid x:Name="PART_Root">
+            <!--ONLY SL
+            <Grid.Resources>
+                <ControlTemplate x:Key="EmptyBorderTemplate" TargetType="ContentControl">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Grid.Resources>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="EnabledStates">
+                    <VisualState x:Name="Enabled"/>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames BeginTime="0" Duration="0" Storyboard.TargetName="PART_Content" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.35"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="ReadOnlyStates">
+                    <VisualState x:Name="Editable"/>
+                    <VisualState x:Name="ReadOnly"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            ONLY SL-->
+            <ContentControl Background="{TemplateBinding Background}" Template="{TemplateBinding ActualBorderTemplate}" dx:FocusHelper2.Focusable="False" x:Name="Border" dxeh:ControlHelper.ShowFocusedState="{Binding Path=IsKeyboardFocusWithin, RelativeSource={RelativeSource TemplatedParent}}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <dxef:ErrorControl x:Name="PART_ErrorPresenter" Grid.Column="0" />
+                    <dxef:EditorControl x:Name="PART_Content" Grid.Column="1" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" Template="{TemplateBinding ActualEditorControlTemplate}" />
+                </Grid>
+            </ContentControl>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{dxet:ImageEditThemeKey ResourceKey=EmptyBorderTemplate}" TargetType="{x:Type ContentControl}">
+        <ContentPresenter />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{dxet:ImageEditThemeKey ResourceKey=MenuTemplate}" TargetType="{x:Type ContentControl}">
+        <StackPanel x:Name="PART_MenuContent" Orientation="Horizontal">
+            <!--BEGIN WPF-->
+            <dxef:ImageEditCutToolButton />
+            <dxef:ImageEditCopyToolButton />
+            <dxef:ImageEditPasteToolButton />
+            <dxef:ImageEditClearToolButton />
+            <dxef:ImageEditToolSeparator />
+            <dxef:ImageEditLoadToolButton />
+            <dxef:ImageEditSaveToolButton />
+            <dxef:ImageEditTakePictureButton />
+            <!--END WPF-->
+            <!--ONLY SL
+                <dxe:ImageEditClearToolButton />
+                <dxe:ImageEditLoadToolButton />
+                ONLY SL-->
+        </StackPanel>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{dxet:PopupImageEditThemeKey ResourceKey=MenuTemplate}" TargetType="{x:Type ContentControl}">
+        <StackPanel x:Name="PART_MenuContent" Orientation="Horizontal">
+            <!--BEGIN WPF-->
+            <dxef:ImageEditCutToolButton />
+            <dxef:ImageEditCopyToolButton />
+            <dxef:ImageEditPasteToolButton />
+            <dxef:ImageEditClearToolButton />
+            <dxef:ImageEditToolSeparator />
+            <dxef:ImageEditLoadToolButton />
+            <dxef:ImageEditSaveToolButton />
+            <dxef:ImageEditTakePictureButton />
+            <!--END WPF-->
+            <!--ONLY SL
+            <dxe:ImageEditClearToolButton />
+            <dxe:ImageEditLoadToolButton />
+            ONLY SL-->
+            <dxef:ImageEditToolSeparator />
+            <dxef:PopupImageEditOKToolButton />
+            <dxef:PopupImageEditCancelToolButton />
+        </StackPanel>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{dxet:PopupImageEditThemeKey ResourceKey=PopupContentTemplate}" TargetType="{x:Type ContentControl}">
+        <Grid SnapsToDevicePixels="True">
+            <dxef:ImageEdit x:Name="PART_PopupContent" ShowBorder="False" Stretch="{Binding Path=Tag.Stretch, RelativeSource={RelativeSource TemplatedParent}}" Effect="{Binding Path=Tag.ImageEffect, RelativeSource={RelativeSource TemplatedParent}}" Foreground="{Binding Path=Tag.Foreground, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{dxet:ImageEditThemeKey ResourceKey=EditTemplate}">
+        <Grid x:Name="PART_Container" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image x:Name="PART_Editor" Source="{Binding Path=(dxe:BaseEdit.OwnerEdit).Source, RelativeSource={RelativeSource TemplatedParent}}" Stretch="{Binding Path=(dxe:BaseEdit.OwnerEdit).Stretch, RelativeSource={RelativeSource TemplatedParent}}" Effect="{Binding Path=(dxe:BaseEdit.OwnerEdit).ImageEffect, RelativeSource={RelativeSource TemplatedParent}}" />
+            <ContentControl Template="{Binding Path=(dxe:BaseEdit.OwnerEdit).EmptyContentTemplate, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(dxe:BaseEdit.OwnerEdit).HasImage, Converter={StaticResource inverseBoolToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}" dx:FocusHelper2.Focusable="False" />
+            <Border Background="#FF404040" Grid.Row="1" Padding="8,2,0,2" x:Name="PART_InplaceMenu" Visibility="{Binding Path=(dxe:BaseEdit.OwnerEdit).(dxe:ActualPropertyProvider.Properties).InplaceMenuVisibility, RelativeSource={RelativeSource TemplatedParent}}">
+                <ContentControl Template="{Binding Path=(dxe:BaseEdit.OwnerEdit).MenuTemplate}" />
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+
+    <ControlTemplate x:Key="{dxet:ImageEditThemeKey ResourceKey=EditInplaceTemplate}">
+        <Grid x:Name="PART_Container" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Name="PART_Editor" Source="{Binding Path=(dxe:BaseEdit.OwnerEdit).Source, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Stretch="{Binding Path=(dxe:BaseEdit.OwnerEdit).Stretch, RelativeSource={RelativeSource TemplatedParent}}" Margin="{Binding Path=(dxe:BaseEdit.OwnerEdit).Padding, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" />
+            <Border Background="#FF404040" Grid.Row="1" Padding="8,2,0,2" x:Name="PART_InplaceMenu" Visibility="{Binding Path=(dxe:BaseEdit.OwnerEdit).(dxe:ActualPropertyProvider.Properties).InplaceMenuVisibility, RelativeSource={RelativeSource TemplatedParent}}">
+                <ContentControl Template="{Binding Path=(dxe:BaseEdit.OwnerEdit).MenuTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Editors.ImageEditToolButton}" TargetType="{x:Type dxe:ImageEditToolButton}">
+        <Style.Setters>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="dx:FocusHelper2.Focusable" Value="False" />
+            <Setter Property="Template" Value="{DynamicResource {dxet:ImageEditThemeKey ResourceKey=ToolButtonTemplate}}" />
+        </Style.Setters>
+    </Style>
+
+    <!--ONLY SL
+        <ControlTemplate x:Key="ImageEditShowEmptyIconTemplate">
+        <Grid x:Name="PART_Editor" Background="Transparent" Margin="{Binding Padding}">
+            <Image x:Name="PART_Icon" Stretch="None" Source="{Binding Source=DevExpress.Xpf.Core.Editors.Images.ImageEdit.inactive.png, Converter={StaticResource EmbeddedResourceImageConverter}}" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ImageEditShowIconTemplate">
+        <Grid x:Name="PART_Editor" Background="Transparent" Margin="{Binding Padding}">
+            <Image x:Name="PART_Icon" Stretch="None" Source="{Binding Source=DevExpress.Xpf.Core.Editors.Images.ImageEdit.active.png, Converter={StaticResource EmbeddedResourceImageConverter}}" />
+        </Grid>
+    </ControlTemplate>
+    
+    <Style TargetType="dxe:ImageEditToolSeparator">
+        <Style.Setters>
+            <Setter Property="Margin" Value="6,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Fill="{StaticResource ImageEditToolSeparatorBackground}" Width="1" Height="18" Opacity="0.25"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+    ONLY SL-->
+</ResourceDictionary>

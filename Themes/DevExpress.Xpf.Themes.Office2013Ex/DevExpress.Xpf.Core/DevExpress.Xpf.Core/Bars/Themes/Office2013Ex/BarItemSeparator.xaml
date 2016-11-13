@@ -1,0 +1,100 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxbt="http://schemas.devexpress.com/winfx/2008/xaml/bars/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InMenuTemplate}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <Grid SnapsToDevicePixels="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Width="{Binding Path=InMenuContentOffset, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Border x:Name="border" Background="#FFDDDDDD" Height="1" VerticalAlignment="Center" Margin="7,0,2,1" Grid.Column="1" SnapsToDevicePixels="True" cs:Name="Border_0001" />
+        </Grid>
+        <ControlTemplate.Triggers> 
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="12,0,5,0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=Template}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <dxc:PixelSnapper>
+            <Border x:Name="border" Background="#FFDDDDDD" Width="1" Margin="1,5,2,5" cs:Name="Border_0002" />
+        </dxc:PixelSnapper>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="4,12,5,12" />  
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonStatusBarRightPartTemplate}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <dxc:PixelSnapper>
+            <Border x:Name="border" Background="#FF2A8DD4" Width="1" Margin="1,2,2,3" cs:Name="Border_0003" />
+        </dxc:PixelSnapper>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="4" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonStatusBarLeftPartTemplate}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <dxc:PixelSnapper>
+            <Border x:Name="border" Background="#FF2A8DD4" Width="1" Margin="1,2,2,3" cs:Name="Border_0004" />
+        </dxc:PixelSnapper>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="4,4,5,4" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InStatusBarTemplate}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <dxc:PixelSnapper>
+            <Border x:Name="border" Background="#FF2A8DD4" Width="1" Margin="1,2,2,3" cs:Name="Border_0005" />
+        </dxc:PixelSnapper>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="4,4,5,4" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonPageGroupTemplate}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <dxc:PixelSnapper>
+            <Border x:Name="border" Background="#FFDDDDDD" Width="1" Margin="2,5,3,6" cs:Name="Border_0006" /> 
+        </dxc:PixelSnapper>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="4,12,5,12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonPageHeaderTemplate}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <dxc:PixelSnapper>
+            <Border x:Name="border" Background="#FFDDDDDD" Width="1" Margin="2,5,3,6" cs:Name="Border_0007" />
+        </dxc:PixelSnapper>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="4,12,5,12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonQuickAccessToolbarCommonTemplate}" TargetType="{x:Type Control}">
+        <dxc:PixelSnapper>
+            <Border x:Name="border" Background="#FFDDDDDD" Width="1" Margin="2,5,3,6" cs:Name="Border_0008" />
+        </dxc:PixelSnapper>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="4,12,5,12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonQuickAccessToolbarTemplate}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <ContentControl dxc:FocusHelper2.Focusable="False" Template="{StaticResource {dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonQuickAccessToolbarCommonTemplate}}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonQuickAccessToolbarFooterTemplate}" TargetType="{x:Type dxb:BarItemLinkSeparatorControl}">
+        <dxc:PixelSnapper>
+            <Border x:Name="border" Background="#FFFFFFFF" Width="1" Margin="2,5,3,6" cs:Name="Border_0009" />
+        </dxc:PixelSnapper>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxc:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="border" Value="4,12,5,12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

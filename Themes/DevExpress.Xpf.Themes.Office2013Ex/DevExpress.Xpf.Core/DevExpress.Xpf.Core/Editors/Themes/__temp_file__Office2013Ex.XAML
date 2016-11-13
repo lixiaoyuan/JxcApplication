@@ -1,0 +1,44 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Themes/StandardControlStyles.xaml" />
+        
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ButtonEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/SpinEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/SparklineEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/CheckEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ComboBoxEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/MemoEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/ColorChooser.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ColorChooser.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ErrorPresenter.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/BrushEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/PopupBaseEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/PopupListBox.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/TextEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/InplaceBaseEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/DateEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ListBoxEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/FilterControl.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/FPanelCtrlBase.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ExprEdCtrl.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/TrackBarEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ProgressBarEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/PasswordBoxEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ColorEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/CalcEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ImageEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/DateNavigator.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/DataPager.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/RangeControl.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/DateTimePicker.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/ColorPicker.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/FontEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/GradientMultiSlider.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/Flyout.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/BarItemTemplates.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/FontComboBoxEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/FontSizeComboBoxEdit.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/AutoCompleteBox.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/BarCodeEdit.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

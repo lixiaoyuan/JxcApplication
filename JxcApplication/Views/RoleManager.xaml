@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="JxcApplication.Views.RoleManager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:viewModels="clr-namespace:JxcApplication.ViewModels"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:selector="clr-namespace:JxcApplication.Selector"
+             xmlns:viewModels1="clr-namespace:JxcApplication.ViewModels"
+             xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
+             mc:Ignorable="d"
+             d:DesignHeight="399.2"
+             d:DesignWidth="644">
+
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
+                                    CustomNotificationPosition="BottomRight"
+                                    CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxb:BarManager>
+            <dxb:BarManager.Items>
+                <dxb:BarButtonItem x:Name="RM_BT_Refresh" KeyGesture="Ctrl+F5" Content="刷新"
+                                   LargeGlyph="{dx:DXImage Image=Refresh2_32x32.png}"
+                                   Command="{Binding RefreshCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+
+                <dxb:BarButtonItem x:Name="RM_BT_Add" KeyGesture="Ctrl+F1" Content="新增"
+                                   LargeGlyph="{dx:DXImageGrayscale Image=Add_32x32.png}"
+                                   Command="{Binding AddCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+
+                <dxb:BarButtonItem x:Name="RM_BT_Edit" KeyGesture="Ctrl+F2" Content="编辑"
+                                   LargeGlyph="{dx:DXImageOffice2013 Image=EditTask_32x32.png}"
+                                   Command="{Binding EditCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+
+                <dxb:BarButtonItem x:Name="RM_BT_Delete" KeyGesture="Ctrl+F3" Content="删除"
+                                   LargeGlyph="{dx:DXImage Image=ResetModelDifferences_32x32.png}"
+                                   Command="{Binding DelCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+
+            </dxb:BarManager.Items>
+            <DockPanel>
+                <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2010"
+                                   CategoriesSource="{Binding RibbonNodes}">
+                    <dxr:RibbonControl.CategoryTemplateSelector>
+                        <selector:CategoryTemplateSelector
+                            CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
+                            DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
+                    </dxr:RibbonControl.CategoryTemplateSelector>
+                </dxr:RibbonControl>
+
+                <dxg:GridControl Name="GridControlUser" ItemsSource="{Binding Roles}">
+                    <dxg:GridControl.View>
+                        <dxg:TableView Name="TableViewUser" AllowEditing="False" />
+                    </dxg:GridControl.View>
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="角色编码" />
+                        <dxg:GridColumn FieldName="Name" Header="角色名称" />
+                        <dxg:GridColumn FieldName="Enable" Header="是否启用" />
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </DockPanel>
+        </dxb:BarManager>
+    </Grid>
+</UserControl>

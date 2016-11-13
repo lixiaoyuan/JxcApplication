@@ -1,0 +1,73 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxbt="http://schemas.devexpress.com/winfx/2008/xaml/bars/themekeys" xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm">
+    <!--BEGIN WPF-->
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/BarItems.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/DropDownGallery.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/InRibbonGallery.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/QuickAccessToolbar.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/Ribbon.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/RibbonHeader.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/RibbonPage.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/RibbonPageCategory.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/RibbonPageGroup.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/RibbonStatusBar.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/BackstageButtonItem.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/BackstageTabItem.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/BackstageSeparatorItem.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/BackstageView.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/ApplicationMenu.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/ApplicationButton.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/RibbonWindow.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/RibbonAeroWindow.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/DXTreeView.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Ribbon/Office2013Ex/DXTreeViewItem.xaml" />
+        <!--
+          skipped
+          Source ={dxc:RibbonResource Themes/Office2013Ex/RibbonWindow.xaml, DenyXBAP=True}
+          ignoreSource = RibbonWindow.xaml, DenyXBAP=True-->
+    </ResourceDictionary.MergedDictionaries>
+    <!--END WPF-->
+    <SolidColorBrush x:Key="ThemeColorsThemeKey_WhiteForegroundColor" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="ThemeColorsThemeKey_BlackForegroundColor" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0002" />
+    <!--#include ..\DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\SubMenuBarControl.xaml-->
+    <!--#include \Office2013Ex\BarItems.xaml-->
+    <!--#include \Office2013Ex\DropDownGallery.xaml-->
+    <!--#include \Office2013Ex\InRibbonGallery.xaml-->
+    <!--#include \Office2013Ex\QuickAccessToolbar.xaml-->
+    <!--#include \Office2013Ex\Ribbon.xaml-->
+    <!--#include \Office2013Ex\RibbonHeader.xaml-->
+    <!--#include \Office2013Ex\RibbonPage.xaml-->
+    <!--#include \Office2013Ex\RibbonPageCategory.xaml-->
+    <!--#include \Office2013Ex\RibbonPageGroup.xaml-->
+    <!--#include \Office2013Ex\RibbonStatusBar.xaml-->
+    <!--#include \Office2013Ex\BackstageButtonItem.xaml-->
+    <!--#include \Office2013Ex\BackstageTabItem.xaml-->
+    <!--#include \Office2013Ex\BackstageSeparatorItem.xaml-->
+    <!--#include \Office2013Ex\BackstageView.xaml-->
+    <!--#include \Office2013Ex\ApplicationMenu.xaml-->
+    <!--#include \Office2013Ex\ApplicationButton.xaml-->
+    <!--#include \Office2013Ex\DXTreeView.xaml-->
+    <!--#include \Office2013Ex\DXTreeViewItem.xaml-->
+    <!--#include ..\DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\BarControl.xaml-->
+    <!--#include ..\DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Office2013Ex\SubMenuBarControl.xaml-->
+    <!--#include ..\DevExpress.Xpf.Core\DevExpress.Xpf.Core\Bars\Themes\Generic\SubMenuBarControl.xaml-->
+    <!--#include \Generic\BarItems.xaml-->
+    <!--#include \Generic\DropDownGallery.xaml-->
+    <!--#include \Generic\InRibbonGallery.xaml-->
+    <!--#include \Generic\QuickAccessToolbar.xaml-->
+    <!--#include \Generic\Ribbon.xaml-->
+    <!--#include \Generic\RibbonHeader.xaml-->
+    <!--#include \Generic\RibbonPage.xaml-->
+    <!--#include \Generic\RibbonPageCategory.xaml-->
+    <!--#include \Generic\RibbonPageGroup.xaml-->
+    <!--#include \Generic\RibbonStatusBar.xaml-->
+    <!--#include \Generic\BackstageButtonItem.xaml-->
+    <!--#include \Generic\BackstageTabItem.xaml-->
+    <!--#include \Generic\BackstageSeparatorItem.xaml-->
+    <!--#include \Generic\BackstageView.xaml-->
+    <!--#include \Generic\ApplicationMenu.xaml-->
+    <!--#include \Generic\ApplicationButton.xaml-->
+    <!--#include \Generic\DXTreeView.xaml-->
+    <!--#include \Generic\DXTreeViewItem.xaml-->
+    <!--#include \Generic\IndependentPart.xaml-->
+</ResourceDictionary>

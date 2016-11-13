@@ -1,0 +1,284 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxbt="http://schemas.devexpress.com/winfx/2008/xaml/bars/themekeys">
+    
+    <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter" />
+    <Thickness x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarFirstSeparatorMargin}">2,0,0,0</Thickness>
+    <Thickness x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLastSeparatorMargin}">0,0,2,0</Thickness>
+    
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLeftContentTemplate}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding ContentControl.Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLeftContentTemplateInPopup}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarRightContentTemplateInPopup}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLeftContentTemplateInFooter}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLeftContentTemplateInTitle}" TargetType="ContentControl">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Control x:Name="PART_FirstSeparator" Grid.Column="0" Margin="{DynamicResource {dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarFirstSeparatorMargin}}" Template="{DynamicResource {dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonQuickAccessToolbarCommonTemplate}}" />
+            <ContentPresenter Grid.Column="1" Content="{TemplateBinding Content}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(dxr:RibbonControl.Ribbon).IsInRibbonWindow, RelativeSource={RelativeSource Self}}" Value="False">
+                <Setter TargetName="PART_FirstSeparator" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>         
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLeftContentTemplate2010}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding ContentControl.Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarRightContentTemplate}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarRightContentTemplateInFooter}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarRightContentTemplateInTitle}" TargetType="ContentControl">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ContentPresenter x:Name="contentPresenter" Grid.Column="0" Content="{TemplateBinding Content}" />
+            <Control x:Name="PART_LastSeparator" Grid.Column="1" Margin="{DynamicResource {dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLastSeparatorMargin}}" Template="{DynamicResource {dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonQuickAccessToolbarCommonTemplate}}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(dxr:RibbonControl.Ribbon).IsInRibbonWindow, RelativeSource={RelativeSource Self}}" Value="True">
+                <Setter TargetName="PART_LastSeparator" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(dxr:RibbonControl.Ribbon).ToolbarShowCustomizationButton, RelativeSource={RelativeSource Self}}" Value="False">
+                <Setter TargetName="contentPresenter" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+</ControlTemplate.Triggers>        
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarRightContentTemplate2010}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarCustomizationButtonTemplate}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Grid x:Name="Grid1" MinWidth="0" MinHeight="0" Margin="0,0,0,1" SnapsToDevicePixels="True">
+            <dx:DXBorder x:Name="HoverState" Background="#FFCDE6F7" Opacity="0" cs:Name="Border_0001" />
+            <dx:DXBorder x:Name="PressedState" Background="#FF92C0E0" Opacity="0" cs:Name="Border_0002" />
+            <Path x:Name="Path" Stretch="Fill" Fill="#FF666666" Data="F1 M 4,6L 3.03165e-013,2L 8,2L 4,6 Z M 0,9.53674e-007L 8,9.53674e-007L 8,1L 0,1L 0,9.53674e-007 Z " Width="7" Height="6" Margin="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" cs:Name="Path_0001" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Hover">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0001" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0002" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0003" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0004" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinWidth" TargetName="Grid1" Value="44" />
+                <Setter Property="MinHeight" TargetName="Grid1" Value="44" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarCustomizationButtonTemplateInFooter}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Grid x:Name="Grid1" MinWidth="0" MinHeight="0" Margin="0,0,0,1" SnapsToDevicePixels="True">
+            <dx:DXBorder x:Name="HoverState" Background="#FFCDE6F7" Opacity="0" cs:Name="Border_0003" />
+            <dx:DXBorder x:Name="PressedState" Background="#FF92C0E0" Opacity="0" cs:Name="Border_0004" />
+            <Path x:Name="Path" Stretch="Fill" Fill="#FF666666" Data="F1 M 4,6L 3.03165e-013,2L 8,2L 4,6 Z M 0,9.53674e-007L 8,9.53674e-007L 8,1L 0,1L 0,9.53674e-007 Z " Width="7" Height="6" Margin="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" cs:Name="Path_0002" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Hover">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0005" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0006" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0007" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0008" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinWidth" TargetName="Grid1" Value="44" />
+                <Setter Property="MinHeight" TargetName="Grid1" Value="44" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarDropDownButtonTemplate}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Grid x:Name="Grid1" MinWidth="0" MinHeight="0" Margin="0,0,0,1" SnapsToDevicePixels="True">
+            <dx:DXBorder x:Name="HoverState" Background="#FFCDE6F7" Opacity="0" cs:Name="Border_0005" />
+            <dx:DXBorder x:Name="PressedState" Background="#FF92C0E0" Opacity="0" cs:Name="Border_0006" />
+            <Path x:Name="Path" Stretch="Fill" Fill="#FF666666" Data="F1 M 0,0L 4,4L 4,0L 8,4L 4,8L 4,4L 5.92119e-016,8L 0,0 Z " Margin="4,1,3,0" Width="8" Height="7" SnapsToDevicePixels="True" cs:Name="Path_0003" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Hover">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0009" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0010" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0011" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0012" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinWidth" TargetName="Grid1" Value="44" />
+                <Setter Property="MinHeight" TargetName="Grid1" Value="44" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarDropDownButtonTemplateInFooter}" TargetType="{x:Type dxr:RibbonCheckedBorderControl}">
+        <Grid x:Name="Grid1" MinWidth="0" MinHeight="0" Margin="0,0,0,1" SnapsToDevicePixels="True">
+            <dx:DXBorder x:Name="HoverState" Background="#FFCDE6F7" Opacity="0" cs:Name="Border_0007" /> 
+            <dx:DXBorder x:Name="PressedState" Background="#FF92C0E0" Opacity="0" cs:Name="Border_0008" />
+            <Grid Width="8" Height="6" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0,2,0">
+                <Path x:Name="Path1" Stretch="Fill" Fill="#FF666666" Data="F1 M 147,109L 150,112L 147,115L 147,109 Z" Margin="0,0,1,0" Width="3" HorizontalAlignment="Right" cs:Name="Path_0004" />
+                <Path x:Name="Path2" Stretch="Fill" Fill="#FF666666" Data="F1 M 143,109L 146,112L 143,115L 143,109 Z" Width="3" HorizontalAlignment="Left" cs:Name="Path_0005" />
+            </Grid>
+            <Path x:Name="Path" Stretch="Fill" Fill="#FF666666" Data="F1 M 0,0L 4,4L 4,0L 8,4L 4,8L 4,4L 5.92119e-016,8L 0,0 Z " Margin="3,0,3,0" Width="8" Height="7" SnapsToDevicePixels="True" cs:Name="Path_0006" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Hover">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path1" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0013" />
+                            <ColorAnimation Storyboard.TargetName="Path2" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0014" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path1" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0015" />
+                            <ColorAnimation Storyboard.TargetName="Path2" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0016" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path1" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0017" />
+                            <ColorAnimation Storyboard.TargetName="Path2" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0018" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ColorAnimation Storyboard.TargetName="Path1" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0019" />
+                            <ColorAnimation Storyboard.TargetName="Path2" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0020" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinWidth" TargetName="Grid1" Value="44" />
+                <Setter Property="MinHeight" TargetName="Grid1" Value="44" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarPopupBorderTemplate}" TargetType="{x:Type dxr:RibbonQuickAccessToolbarPopupBorderControl}">
+        <dx:DXBorder Background="#FFFFFFFF" BorderBrush="#FFD6D6D6" BorderThickness="1" cs:Name="Border_0010">
+            <ContentPresenter Content="{TemplateBinding Content}" Margin="1" />
+        </dx:DXBorder>
+    </ControlTemplate>
+    
+    
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLeftContentTemplateInAeroHeader}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding Content}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLeftContentTemplate2010InAeroHeader}" TargetType="ContentControl">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Control x:Name="PART_FirstSeparator" Grid.Column="0" Margin="{DynamicResource {dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarFirstSeparatorMargin}}" Template="{DynamicResource {dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonQuickAccessToolbarCommonTemplate}}" />
+            <ContentPresenter Grid.Column="1" Content="{TemplateBinding Content}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(dxr:RibbonControl.Ribbon).IsInRibbonWindow, RelativeSource={RelativeSource Self}}" Value="False">
+                <Setter TargetName="PART_FirstSeparator" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarRightContentTemplateInAeroHeader}" TargetType="ContentControl">
+        <ContentPresenter Content="{TemplateBinding Content}" Margin="5,2,0,2" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarRightContentTemplate2010InAeroHeader}" TargetType="ContentControl">
+        <Grid Margin="2,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ContentPresenter Grid.Column="0" Content="{TemplateBinding Content}" />
+            <Control x:Name="PART_LastSeparator" Grid.Column="1" Margin="{DynamicResource {dxrt:QuickAccessToolbarThemeKey ResourceKey=RibbonToolbarLastSeparatorMargin}}" Template="{DynamicResource {dxbt:BarItemSeparatorThemeKey ResourceKey=InRibbonQuickAccessToolbarCommonTemplate}}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(dxr:RibbonControl.Ribbon).IsInRibbonWindow, RelativeSource={RelativeSource Self}}" Value="False">
+                <Setter TargetName="PART_LastSeparator" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+</ResourceDictionary>

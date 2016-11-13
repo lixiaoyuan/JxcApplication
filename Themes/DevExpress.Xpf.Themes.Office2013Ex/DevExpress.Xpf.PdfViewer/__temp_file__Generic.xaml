@@ -1,0 +1,9 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:core="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.PdfViewer/Generic/DefaultStyles.xaml" />
+        <ResourceDictionary Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.PdfViewer/Office2013Ex.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <core:AgStyleStorage.IsDefaultTheme>
+        <Rectangle />
+    </core:AgStyleStorage.IsDefaultTheme>
+</ResourceDictionary>

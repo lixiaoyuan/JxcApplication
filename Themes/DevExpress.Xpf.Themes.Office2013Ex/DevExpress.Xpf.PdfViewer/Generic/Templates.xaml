@@ -1,0 +1,862 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:pdfViewer="http://schemas.devexpress.com/winfx/2008/xaml/pdf" xmlns:internal="http://schemas.devexpress.com/winfx/2008/xaml/pdf/internal" xmlns:themes="http://schemas.devexpress.com/winfx/2008/xaml/pdf/themekeys" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:pdf="clr-namespace:DevExpress.Pdf;assembly=DevExpress.Pdf.v15.2.Drawing" xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dxdv="http://schemas.devexpress.com/winfx/2008/xaml/documentviewer" xmlns:dxdvt="http://schemas.devexpress.com/winfx/2008/xaml/documentviewer/themekeys" xmlns:helpers="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxet="clr-namespace:DevExpress.Xpf.Editors.Themes;assembly=DevExpress.Xpf.Core.v15.2" xmlns:dxedp="clr-namespace:DevExpress.Xpf.Editors.DataPager;assembly=DevExpress.Xpf.Core.v15.2" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys" xmlns:dxdo="clr-namespace:DevExpress.Xpf.Docking;assembly=DevExpress.Xpf.Docking.v15.2" xmlns:dxdob="clr-namespace:DevExpress.Xpf.Docking.Base;assembly=DevExpress.Xpf.Docking.v15.2" xmlns:dxdove="http://schemas.devexpress.com/winfx/2008/xaml/docking/visualelements" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+
+    <Thickness x:Key="{themes:PdfViewerThemeKey ResourceKey=PagePaddingThickness}">5</Thickness>
+    <system:Boolean x:Key="TrueBoolean">True</system:Boolean>
+    <pdfViewer:CursorModeToCanMouseScrollConverter x:Key="cursorModeToCanMouseScrollConverter" />
+    <pdfViewer:CursorModeToSelectionVisibilityConverter x:Key="cursorModeToSelectionVisibilityConverter" />
+    <pdfViewer:DocumentHasPagesVisibilityConverter x:Key="DocumentHasPagesVisibilityConverter" />
+    <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=BarStaticItemContentTemplate}">
+        <StackPanel Orientation="Horizontal">
+            <dxe:SpinEdit MinValue="1" AllowRoundOutOfRangeValue="True" IsFloatValue="False" AllowDefaultButton="False" ValidateOnTextInput="False" SelectAllOnGotFocus="True" EditValue="{Binding Path=CurrentPageNumber, Mode=TwoWay}" MinWidth="30" x:Name="editor">
+                <dxmvvm:Interaction.Triggers>
+                    <dxmvvm:EventToCommand EventName="EditValueChanged" Command="{Binding Path=Command}" PassEventArgsToCommand="True" EventArgsConverter="{StaticResource textEditEditValueChangedConverter}">
+                    </dxmvvm:EventToCommand>
+                </dxmvvm:Interaction.Triggers>
+            </dxe:SpinEdit>
+            <TextBlock VerticalAlignment="Center" Text=" / " />
+            <TextBlock VerticalAlignment="Center" Text="{Binding Path=PagesCount}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PopupMenuItemTemplate}">
+        <dxb:BarButtonItem Glyph="{Binding Path=SmallGlyph, Converter={pdfViewer:UriToBitmapImageConverter}}" Content="{Binding Path=Caption}" Command="{Binding Path=Command}" />
+    </DataTemplate>
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PopupMenuMRUItemTemplate}">
+        <dxb:BarButtonItem Glyph="{Binding Path=SmallGlyph, Converter={pdfViewer:UriToBitmapImageConverter}}" Content="{Binding Path=Name}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=DocumentSource}" />
+    </DataTemplate>
+    <DataTemplate x:Key="{dxdvt:DocumentViewerThemeKey ResourceKey=SetZoomFactorAndModeItemSeparatorTemplate}">
+        <dxb:BarItemSeparator />
+    </DataTemplate>
+    <DataTemplate x:Key="{dxdvt:DocumentViewerThemeKey ResourceKey=SetZoomFactorItemTemplate}">
+        <dxb:BarCheckItem GroupIndex="{Binding Path=GroupIndex}" Content="{Binding Path=Caption}" Hint="{Binding Path=Hint}" Glyph="{Binding Path=SmallGlyph, Converter={dxdv:UriToBitmapImageConverter}}" LargeGlyph="{Binding Path=LargeGlyph, Converter={dxdv:UriToBitmapImageConverter}}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=ZoomFactor}" GlyphAlignment="Top" IsChecked="{Binding Path=IsChecked}" KeyGesture="{Binding Path=KeyGesture}" AllowUncheckInGroup="True" />
+    </DataTemplate>
+    <DataTemplate x:Key="{dxdvt:DocumentViewerThemeKey ResourceKey=SetZoomModeItemTemplate}">
+        <dxb:BarCheckItem GroupIndex="{Binding Path=GroupIndex}" Content="{Binding Path=Caption}" Hint="{Binding Path=Hint}" Glyph="{Binding Path=SmallGlyph, Converter={dxdv:UriToBitmapImageConverter}}" LargeGlyph="{Binding Path=LargeGlyph, Converter={dxdv:UriToBitmapImageConverter}}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=ZoomMode}" GlyphAlignment="Top" IsChecked="{Binding Path=IsChecked}" KeyGesture="{Binding Path=KeyGesture}" AllowUncheckInGroup="True" />
+    </DataTemplate>
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=SetPageLayoutItemTemplate}">
+        <dxb:BarCheckItem GroupIndex="{Binding Path=GroupIndex}" Content="{Binding Path=Caption}" Hint="{Binding Path=Hint}" Glyph="{Binding Path=SmallGlyph, Converter={dxdv:UriToBitmapImageConverter}}" LargeGlyph="{Binding Path=LargeGlyph, Converter={dxdv:UriToBitmapImageConverter}}" Command="{Binding Path=Command}" CommandParameter="{Binding Path=PageLayout}" GlyphAlignment="Top" IsChecked="{Binding Path=IsChecked}" KeyGesture="{Binding Path=KeyGesture}" AllowUncheckInGroup="True" />
+    </DataTemplate>
+    <dxmvvm:ObjectToObjectConverter x:Key="autoHideConverter">
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfOutlinesViewerPanelStyle>DockPanel</pdfViewer:PdfOutlinesViewerPanelStyle>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideMode>Default</dxdob:AutoHideMode>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfOutlinesViewerPanelStyle>Popup</pdfViewer:PdfOutlinesViewerPanelStyle>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideMode>Default</dxdob:AutoHideMode>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfOutlinesViewerPanelStyle>Tab</pdfViewer:PdfOutlinesViewerPanelStyle>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideMode>Inline</dxdob:AutoHideMode>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+    </dxmvvm:ObjectToObjectConverter>
+    <dxmvvm:ObjectToObjectConverter x:Key="autoHideExpandStateConverter">
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfOutlinesViewerState>Collapsed</pdfViewer:PdfOutlinesViewerState>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideExpandState>Hidden</dxdob:AutoHideExpandState>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfOutlinesViewerState>Visible</pdfViewer:PdfOutlinesViewerState>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideExpandState>Visible</dxdob:AutoHideExpandState>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfOutlinesViewerState>Expanded</pdfViewer:PdfOutlinesViewerState>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideExpandState>Expanded</dxdob:AutoHideExpandState>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+    </dxmvvm:ObjectToObjectConverter>
+    <dxmvvm:ObjectToObjectConverter x:Key="autoHideAttachmentsExpandStateConverter">
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfAttachmentsViewerState>Collapsed</pdfViewer:PdfAttachmentsViewerState>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideExpandState>Hidden</dxdob:AutoHideExpandState>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfAttachmentsViewerState>Visible</pdfViewer:PdfAttachmentsViewerState>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideExpandState>Visible</dxdob:AutoHideExpandState>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+        <dxmvvm:MapItem>
+            <dxmvvm:MapItem.Source>
+                <pdfViewer:PdfAttachmentsViewerState>Expanded</pdfViewer:PdfAttachmentsViewerState>
+            </dxmvvm:MapItem.Source>
+            <dxmvvm:MapItem.Target>
+                <dxdob:AutoHideExpandState>Expanded</dxdob:AutoHideExpandState>
+            </dxmvvm:MapItem.Target>
+        </dxmvvm:MapItem>
+    </dxmvvm:ObjectToObjectConverter>
+    <dxdove:NotNullConverter x:Key="notNullConverter" />
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=RibbonTemplate}">
+        <Grid>
+            <dxmvvm:Interaction.Behaviors>
+                <pdfViewer:PdfViewerSplashScreenService />
+                <dxb:ControllerBehavior Actions="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.Actions, RelativeSource={RelativeSource TemplatedParent}}" ExecutionMode="OnEvent">
+                    <dxb:ControllerBehavior.Triggers>
+                        <dxb:ActionTrigger EventName="Loaded" ExecuteOnce="True" />
+                    </dxb:ControllerBehavior.Triggers>
+                </dxb:ControllerBehavior>
+            </dxmvvm:Interaction.Behaviors>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <dxr:RibbonControl RibbonStyle="Office2010" RibbonTitleBarVisibility="Collapsed" ToolbarShowMode="Hide">
+                    <dxmvvm:Interaction.Behaviors>
+                        <dxb:ControllerBehavior Actions="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.RibbonActions, RelativeSource={RelativeSource TemplatedParent}}" ExecutionMode="OnEvent">
+                            <dxb:ControllerBehavior.Triggers>
+                                <dxb:ActionTrigger EventName="Loaded" ExecuteOnce="True" />
+                            </dxb:ControllerBehavior.Triggers>
+                        </dxb:ControllerBehavior>
+                    </dxmvvm:Interaction.Behaviors>
+                    <dxr:RibbonDefaultPageCategory pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.DefaultPageCategory}">
+                        <dxr:RibbonPage Caption="{pdfViewer:PdfViewerControlLocalizedString BarCaption}" pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.MainRibbonPage}">
+                            <dxr:RibbonPageGroup Caption="{pdfViewer:PdfViewerControlLocalizedString FileRibbonGroupCaption}" pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.FileRibbonGroup}">
+                                <pdfViewer:OpenDocumentFromWebBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.OpenFromWeb}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.OpenDocumentFromWebCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <pdfViewer:SaveAsBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.SaveAs}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.SaveAsCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <dxdv:CloseDocumentBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Close}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.CloseDocumentCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <pdfViewer:PrintDocumentBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Print}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PrintDocumentCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup Caption="{pdfViewer:PdfViewerControlLocalizedString NavigationRibbonGroupCaption}" pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.NavigationRibbonGroup}">
+                                <dxdv:PreviousPageBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.PreviousPage}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PreviousPageCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <dxdv:NextPageBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.NextPage}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.NextPageCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <pdfViewer:FindTextBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Find}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ShowFindTextCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{StaticResource TrueBoolean}" />
+                                <pdfViewer:PageLayoutBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.PageLayout}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PageLayoutCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{StaticResource TrueBoolean}" />
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup Caption="{pdfViewer:PdfViewerControlLocalizedString ZoomRibbonGroupCaption}" pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.ZoomRibbonGroup}">
+                                <dxdv:ZoomInBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.ZoomIn}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ZoomInCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <dxdv:ZoomOutBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.ZoomOut}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ZoomOutCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <dxdv:ZoomBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Zoom}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ZoomCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </dxr:RibbonPageGroup>
+                        </dxr:RibbonPage>
+                        <dxr:RibbonPage Caption="{pdfViewer:PdfViewerControlLocalizedString BarFormDataCaption}" pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.FormDataRibbonPage}" IsVisible="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).PropertyProvider.IsFormDataPageVisible, RelativeSource={RelativeSource TemplatedParent}}">
+                            <dxr:RibbonPageGroup Caption="{pdfViewer:PdfViewerControlLocalizedString FormDataRibbonGroupCaption}" pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.FormDataRibbonGroup}">
+                                <pdfViewer:ImportBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Import}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ImportFormDataCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <pdfViewer:ExportBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Export}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ExportFormDataCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </dxr:RibbonPageGroup>
+                        </dxr:RibbonPage>
+                    </dxr:RibbonDefaultPageCategory>
+                </dxr:RibbonControl>
+                <dxdo:DockLayoutManager Grid.Row="1" AutoHideExpandMode="MouseDown" AutoHideMode="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualDocumentMapSettings.OutlinesViewerPanelStyle, Converter={StaticResource autoHideConverter}, RelativeSource={RelativeSource Self}}">
+                    <dxmvvm:Interaction.Behaviors>
+                        <pdfViewer:ShowingDockHintsAttachedBehavior />
+                    </dxmvvm:Interaction.Behaviors>
+                    <dxdo:LayoutGroup x:Name="Root" Margin="0">
+                        <dxdo:LayoutPanel x:Name="autoHidePanel" Style="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfOutlinesViewerPanelStyle}}" AutoHideExpandState="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualDocumentMapSettings.OutlinesViewerState, Converter={StaticResource autoHideExpandStateConverter},  RelativeSource={RelativeSource Self}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).HasOutlines, RelativeSource={RelativeSource TemplatedParent}, Converter={dx:BooleanToVisibilityConverter}}">
+                            <pdfViewer:PdfOutlinesViewerControl x:Name="outlinesViewer" Settings="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualDocumentMapSettings, RelativeSource={RelativeSource Self}}" Style="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualDocumentMapSettings.OutlinesViewerStyle, RelativeSource={RelativeSource TemplatedParent}}">
+                            </pdfViewer:PdfOutlinesViewerControl>
+                        </dxdo:LayoutPanel>
+                        <dxdo:LayoutPanel AutoHideExpandState="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualAttachmentsViewerSettings.AttachmentsViewerState, Converter={StaticResource autoHideAttachmentsExpandStateConverter},  RelativeSource={RelativeSource Self}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfAttachmentsViewerPanelStyle}}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).HasAttachments, RelativeSource={RelativeSource TemplatedParent}, Converter={dx:BooleanToVisibilityConverter}}">
+                            <pdfViewer:PdfAttachmentsViewerControl x:Name="attachmentsViewer" Settings="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualAttachmentsViewerSettings, RelativeSource={RelativeSource Self}}" Style="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualAttachmentsViewerSettings.AttachmentsViewerStyle, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </dxdo:LayoutPanel>
+                        <dxdo:LayoutPanel ShowCaption="False" ShowBorder="False">
+                            <pdfViewer:PdfPresenterControl>
+                                <dxb:BarManager.DXContextMenu>
+                                    <dxb:PopupMenu>
+                                        <pdfViewer:SelectToolBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.SelectTool}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.SelectToolCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <pdfViewer:HandToolBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.HandTool}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.HandToolCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <pdfViewer:MarqueeZoomBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.MarqueeZoom}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.MarqueeZoomCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <dxb:BarItemLinkSeparator />
+                                        <pdfViewer:CopyBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Copy}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.CopyCommand, RelativeSource={RelativeSource TemplatedParent}}" IsVisible="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).HasSelection, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <dxb:BarItemLinkSeparator />
+                                        <dxdv:PreviousViewBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.PreviousView}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PreviousViewCommand, RelativeSource={RelativeSource TemplatedParent}}" IsVisible="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).UndoRedoManager.CanUndo, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <dxdv:NextViewBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.NextView}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.NextViewCommand, RelativeSource={RelativeSource TemplatedParent}}" IsVisible="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).UndoRedoManager.CanRedo, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <dxb:BarItemLinkSeparator />
+                                        <dxdv:ClockwiseRotateBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.ClockwiseRotate}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ClockwiseRotateCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <dxb:BarItemLinkSeparator />
+                                        <pdfViewer:PrintDocumentBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.PrintContext}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PrintDocumentCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <pdfViewer:FindTextBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.FindContext}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ShowFindTextCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{StaticResource TrueBoolean}" />
+                                        <dxb:BarItemLinkSeparator />
+                                        <pdfViewer:SelectAllBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.SelectAll}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.SelectAllCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <dxb:BarItemLinkSeparator />
+                                        <pdfViewer:PropertiesBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Properties}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ShowPropertiesCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </dxb:PopupMenu>
+                                </dxb:BarManager.DXContextMenu>
+                            </pdfViewer:PdfPresenterControl>
+                        </dxdo:LayoutPanel>
+                    </dxdo:LayoutGroup>
+                </dxdo:DockLayoutManager>
+                <pdfViewer:StartScreenControl Grid.Row="1" RecentFiles="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).RecentFiles, RelativeSource={RelativeSource Self}}" NumberOfRecentFiles="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).NumberOfRecentFiles, RelativeSource={RelativeSource Self}}" ShowOpenFileButton="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ShowOpenFileOnStartScreen, RelativeSource={RelativeSource Self}}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).PropertyProvider.IsStartScreenVisible, RelativeSource={RelativeSource Self}, Converter={StaticResource booleanToVisibilityConverter}}" />
+                <TextBlock Grid.Row="1" Text="{pdfViewer:PdfViewerControlLocalizedString MessageDocumentHasNoPages}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).Document.Pages, RelativeSource={RelativeSource Self}, FallbackValue=Collapsed, Converter={StaticResource DocumentHasPagesVisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=BarsTemplate}">
+        <Grid>
+            <dxmvvm:Interaction.Behaviors>
+                <pdfViewer:PdfViewerSplashScreenService />
+            </dxmvvm:Interaction.Behaviors>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <dxb:ToolBarControl pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Bar}" Grid.Row="0" GlyphSize="Small" AllowCustomizationMenu="False" AllowQuickCustomization="False">
+                <dxmvvm:Interaction.Behaviors>
+                    <dxb:ControllerBehavior Actions="{Binding Path=(dxdv:DocumentViewerControl.ActualViewer).ActualCommandProvider.Actions, RelativeSource={RelativeSource TemplatedParent}}" ExecutionMode="OnEvent">
+                        <dxb:ControllerBehavior.Triggers>
+                            <dxb:ActionTrigger EventName="Loaded" ExecuteOnce="True" />
+                        </dxb:ControllerBehavior.Triggers>
+                    </dxb:ControllerBehavior>
+                </dxmvvm:Interaction.Behaviors>
+                <dxb:ToolBarControl.Items>
+                    <pdfViewer:OpenDocumentFromWebBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.OpenFromWeb}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.OpenDocumentFromWebCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <pdfViewer:SaveAsBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.SaveAs}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.SaveAsCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <dxdv:CloseDocumentBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Close}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.CloseDocumentCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <pdfViewer:PrintDocumentBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Print}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PrintDocumentCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <dxb:BarItemLinkSeparator />
+                    <pdfViewer:ImportBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Import}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ImportFormDataCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <pdfViewer:ExportBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Export}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ExportFormDataCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <dxb:BarItemLinkSeparator />
+                    <pdfViewer:FindTextBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Find}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ShowFindTextCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{StaticResource TrueBoolean}" />
+                    <dxdv:PreviousPageBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.PreviousPage}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PreviousPageCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <dxdv:NextPageBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.NextPage}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.NextPageCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <dxdv:PaginationBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Pagination}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PaginationCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <pdfViewer:PageLayoutBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.PageLayout}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PageLayoutCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{StaticResource TrueBoolean}" />
+                    <dxb:BarItemLinkSeparator />
+                    <dxdv:ZoomInBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.ZoomIn}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ZoomInCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <dxdv:ZoomOutBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.ZoomOut}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ZoomOutCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <dxdv:ZoomBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Zoom}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ZoomCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                </dxb:ToolBarControl.Items>
+            </dxb:ToolBarControl>
+            <dxdo:DockLayoutManager Grid.Row="1" AutoHideExpandMode="MouseDown" AutoHideMode="Inline">
+                <dxdo:LayoutGroup x:Name="Root" Margin="0">
+                    <dxdo:LayoutPanel x:Name="autoHidePanel" Style="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfOutlinesViewerPanelStyle}}" AutoHideExpandState="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualDocumentMapSettings.OutlinesViewerState, Converter={StaticResource autoHideExpandStateConverter},  RelativeSource={RelativeSource Self}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).HasOutlines, RelativeSource={RelativeSource TemplatedParent}, Converter={dx:BooleanToVisibilityConverter}}">
+                        <pdfViewer:PdfOutlinesViewerControl x:Name="outlinesViewer" Settings="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualDocumentMapSettings, RelativeSource={RelativeSource Self}}" Style="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualDocumentMapSettings.OutlinesViewerStyle, RelativeSource={RelativeSource TemplatedParent}}">
+                        </pdfViewer:PdfOutlinesViewerControl>
+                    </dxdo:LayoutPanel>
+                    <dxdo:LayoutPanel ShowCaption="False" ShowBorder="False">
+                        <pdfViewer:PdfPresenterControl>
+                            <dxb:BarManager.DXContextMenu>
+                                <dxb:PopupMenu>
+                                    <pdfViewer:SelectToolBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.SelectTool}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.SelectToolCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <pdfViewer:HandToolBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.HandTool}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.HandToolCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <pdfViewer:MarqueeZoomBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.MarqueeZoom}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.MarqueeZoomCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <dxb:BarItemLinkSeparator />
+                                    <pdfViewer:CopyBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Copy}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.CopyCommand, RelativeSource={RelativeSource TemplatedParent}}" IsVisible="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).HasSelection, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <dxb:BarItemLinkSeparator />
+                                    <dxdv:PreviousViewBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.PreviousView}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PreviousViewCommand, RelativeSource={RelativeSource TemplatedParent}}" IsVisible="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).UndoRedoManager.CanUndo, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <dxdv:NextViewBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.NextView}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.NextViewCommand, RelativeSource={RelativeSource TemplatedParent}}" IsVisible="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).UndoRedoManager.CanRedo, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <dxb:BarItemLinkSeparator />
+                                    <dxdv:ClockwiseRotateBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.ClockwiseRotate}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ClockwiseRotateCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <dxb:BarItemLinkSeparator />
+                                    <pdfViewer:PrintDocumentBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.PrintContext}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.PrintDocumentCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <pdfViewer:FindTextBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.FindContext}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ShowFindTextCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{StaticResource TrueBoolean}" />
+                                    <dxb:BarItemLinkSeparator />
+                                    <pdfViewer:SelectAllBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.SelectAll}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.SelectAllCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <dxb:BarItemLinkSeparator />
+                                    <pdfViewer:PropertiesBarItem pdfViewer:PdfViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.Properties}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.ShowPropertiesCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </dxb:PopupMenu>
+                            </dxb:BarManager.DXContextMenu>
+                        </pdfViewer:PdfPresenterControl>
+                    </dxdo:LayoutPanel>
+                </dxdo:LayoutGroup>
+            </dxdo:DockLayoutManager>
+            <pdfViewer:StartScreenControl Grid.Row="1" RecentFiles="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).RecentFiles, RelativeSource={RelativeSource Self}}" NumberOfRecentFiles="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).NumberOfRecentFiles, RelativeSource={RelativeSource Self}}" ShowOpenFileButton="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ShowOpenFileOnStartScreen, RelativeSource={RelativeSource Self}}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).PropertyProvider.IsStartScreenVisible, RelativeSource={RelativeSource Self}, Converter={StaticResource booleanToVisibilityConverter}}" />
+            <TextBlock Grid.Row="1" Text="{pdfViewer:PdfViewerControlLocalizedString MessageDocumentHasNoPages}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).Document.Pages, RelativeSource={RelativeSource Self}, FallbackValue=Collapsed, Converter={StaticResource DocumentHasPagesVisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PresenterTemplate}">
+        <Grid>
+            <dxmvvm:Interaction.Behaviors>
+                <pdfViewer:PdfViewerSplashScreenService />
+            </dxmvvm:Interaction.Behaviors>
+            <pdfViewer:PdfPresenterControl />
+            <pdfViewer:StartScreenControl RecentFiles="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).RecentFiles, RelativeSource={RelativeSource Self}}" NumberOfRecentFiles="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).NumberOfRecentFiles, RelativeSource={RelativeSource Self}}" ShowOpenFileButton="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ShowOpenFileOnStartScreen, RelativeSource={RelativeSource Self}}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).PropertyProvider.IsStartScreenVisible, RelativeSource={RelativeSource Self}, Converter={StaticResource booleanToVisibilityConverter}}" />
+            <TextBlock Text="{pdfViewer:PdfViewerControlLocalizedString MessageDocumentHasNoPages}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).Document.Pages, RelativeSource={RelativeSource Self}, FallbackValue=Collapsed, Converter={StaticResource DocumentHasPagesVisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfFlyoutControlPaginationTemplate}">
+        <Grid Margin="10,0,10,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).CurrentPageNumber, RelativeSource={RelativeSource TemplatedParent}}" />
+                <TextBlock Text=" / " />
+                <TextBlock Text="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).PageCount, RelativeSource={RelativeSource TemplatedParent}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+    <ControlTemplate TargetType="{x:Type pdfViewer:PdfPresenterControl}" x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfPresenterControlTemplate}">
+        <Border Focusable="False" Background="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfPresenterControlBackgroundBrush}}" BorderBrush="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfPresenterControlBorderBrush}}" Margin="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfPresenterControlMargin}}" BorderThickness="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfPresenterControlBorderThickness}}">
+            <Grid>
+                <dxe:NativeImage x:Name="PART_NativeImage" />
+                <pdfViewer:PdfPagesSelector Style="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfPagesSelectorStyle}}" IsSearchControlVisible="{Binding Path=IsSearchControlVisible, RelativeSource={RelativeSource TemplatedParent}}" SearchParameter="{Binding Path=SearchParameter, RelativeSource={RelativeSource TemplatedParent}}" x:Name="PART_ItemsControl" Background="Transparent" VirtualizingStackPanel.VirtualizationMode="Recycling">
+                    <pdfViewer:PdfPagesSelector.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <dxdv:DocumentViewerPanel />
+                        </ItemsPanelTemplate>
+                    </pdfViewer:PdfPagesSelector.ItemsPanel>
+                </pdfViewer:PdfPagesSelector>
+                <pdfViewer:SelectionCanvas SelectionRectangle="{Binding Path=SelectionRectangle, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).CursorMode, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource cursorModeToSelectionVisibilityConverter}}" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate TargetType="{x:Type pdfViewer:PdfViewerControl}" x:Key="{themes:PdfViewerThemeKey ResourceKey=Template}">
+        <ContentControl Grid.RowSpan="3" Focusable="False" Grid.ColumnSpan="3" Content="{Binding Path=ActualCommandProvider, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{Binding Path=ActualBarsTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+    </ControlTemplate>
+    <ControlTemplate TargetType="{x:Type pdfViewer:DXScrollViewer}" x:Key="ScrollViewerTemplate">
+        <Grid x:Name="Grid" Background="{TemplateBinding Background}" Margin="{TemplateBinding Margin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ScrollContentPresenter Margin="{TemplateBinding Padding}" x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False">
+                <Grid.RowSpan>
+                    <Binding Path="(dx:ScrollBarExtensions.ScrollBarMode)" RelativeSource="{RelativeSource TemplatedParent}">
+                        <Binding.Converter>
+                            <dx:EnumToObjectConverter DefaultValue="1">
+                                <dx:EnumToObjectConverter.Values>
+                                    <dx:EnumObjectProvider x:Key="TouchOverlap" Value="2" />
+                                </dx:EnumToObjectConverter.Values>
+                            </dx:EnumToObjectConverter>
+                        </Binding.Converter>
+                    </Binding>
+                </Grid.RowSpan>
+                <Grid.ColumnSpan>
+                    <Binding Path="(dx:ScrollBarExtensions.ScrollBarMode)" RelativeSource="{RelativeSource TemplatedParent}">
+                        <Binding.Converter>
+                            <dx:EnumToObjectConverter DefaultValue="1">
+                                <dx:EnumToObjectConverter.Values>
+                                    <dx:EnumObjectProvider x:Key="TouchOverlap" Value="2" />
+                                </dx:EnumToObjectConverter.Values>
+                            </dx:EnumToObjectConverter>
+                        </Binding.Converter>
+                    </Binding>
+                </Grid.ColumnSpan>
+            </ScrollContentPresenter>
+            <ScrollBar Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Cursor="Arrow" x:Name="PART_VerticalScrollBar" Grid.Column="1" Grid.Row="0" ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Value="{Binding Path=VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" AutomationProperties.AutomationId="VerticalScrollBar">
+                <Grid.RowSpan>
+                    <MultiBinding>
+                        <MultiBinding.Bindings>
+                            <Binding Path="(dx:ScrollBarExtensions.ScrollBarMode)" RelativeSource="{RelativeSource Self}" />
+                            <Binding Path="(dx:ScrollBarExtensions.ScrollViewerOrientation)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding.Bindings>
+                        <MultiBinding.Converter>
+                            <dx:VerticalScrollBarRowSpanConverter />
+                        </MultiBinding.Converter>
+                    </MultiBinding>
+                </Grid.RowSpan>
+            </ScrollBar>
+            <ScrollBar Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Cursor="Arrow" x:Name="PART_HorizontalScrollBar" Grid.Column="0" Grid.Row="1" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Value="{Binding Path=HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" AutomationProperties.AutomationId="HorizontalScrollBar">
+                <Grid.ColumnSpan>
+                    <MultiBinding>
+                        <MultiBinding.Bindings>
+                            <Binding Path="(dx:ScrollBarExtensions.ScrollBarMode)" RelativeSource="{RelativeSource Self}" />
+                            <Binding Path="(dx:ScrollBarExtensions.ScrollViewerOrientation)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding.Bindings>
+                        <MultiBinding.Converter>
+                            <dx:HorizontalScrollBarRowSpanConverter />
+                        </MultiBinding.Converter>
+                    </MultiBinding>
+                </Grid.ColumnSpan>
+            </ScrollBar>
+            <Border x:Name="Corner" Grid.Row="1" Grid.Column="1" Style="{DynamicResource {dxt:ScrollBarThemeKey ResourceKey=ScrollingCornerStyle}}">
+                <Border.Visibility>
+                    <Binding Path="(dx:ScrollBarExtensions.ScrollBarMode)" RelativeSource="{RelativeSource TemplatedParent}">
+                        <Binding.Converter>
+                            <dx:EnumToObjectConverter DefaultValue="Visible">
+                                <dx:EnumToObjectConverter.Values>
+                                    <dx:EnumObjectProvider x:Key="TouchOverlap" Value="Collapsed" />
+                                </dx:EnumToObjectConverter.Values>
+                            </dx:EnumToObjectConverter>
+                        </Binding.Converter>
+                    </Binding>
+                </Border.Visibility>
+            </Border>
+            <dxe:FlyoutControl x:Name="PART_FlyoutControl" PlacementTarget="{Binding ElementName=PART_VerticalScrollBar}" VerticalAlignment="Center" AllowMoveAnimation="False" ContentTemplate="{DynamicResource ResourceKey={themes:PdfViewerThemeKey ResourceKey=PdfFlyoutControlPaginationTemplate}}" IsOpen="False">
+                <dxe:FlyoutControl.Settings>
+                    <dxe:FlyoutSettings Placement="Left" ShowIndicator="True" />
+                </dxe:FlyoutControl.Settings>
+            </dxe:FlyoutControl>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate TargetType="{x:Type pdfViewer:PdfPagesSelector}" x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfPageSelectorTemplate}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="{Binding Path=VerticalScrollBarWidth, ElementName=PART_ScrollViewer}" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <pdfViewer:PdfPresenterDecorator Focusable="True" x:Name="PART_Decorator" FocusVisualStyle="{x:Null}" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                <pdfViewer:DXScrollViewer x:Name="PART_ScrollViewer" CanMouseScroll="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).CursorMode, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource cursorModeToCanMouseScrollConverter}}" Focusable="false" Padding="{TemplateBinding Padding}" Template="{StaticResource ScrollViewerTemplate}" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" CanContentScroll="True">
+                    <dxmvvm:Interaction.Behaviors>
+                        <pdfViewer:CursorAttachedBehavior CursorMode="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).CursorMode, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <dx:ScrollViewerTouchBehavior Orientation="Vertical" />
+                    </dxmvvm:Interaction.Behaviors>
+                    <ItemsPresenter x:Name="PART_ItemsPresenter" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                </pdfViewer:DXScrollViewer>
+            </pdfViewer:PdfPresenterDecorator>
+            <dx:DXExpander IsExpanded="{Binding Path=IsSearchControlVisible, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Opacity="{Binding Path=AnimationProgress, RelativeSource={RelativeSource Self}}">
+                <dxdv:SearchControlContainer IsSearchControlVisible="{Binding Path=IsSearchControlVisible, RelativeSource={RelativeSource TemplatedParent}}" SearchParameter="{Binding Path=SearchParameter, RelativeSource={RelativeSource TemplatedParent}}">
+                </dxdv:SearchControlContainer>
+            </dx:DXExpander>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate TargetType="{x:Type pdfViewer:SelectionCanvas}" x:Key="{themes:PdfViewerThemeKey ResourceKey=SelectionCanvasTemplate}">
+        <Canvas x:Name="PART_SelectionCanvas" ClipToBounds="True">
+            <ContentControl Canvas.Left="{Binding Path=(SelectionRectangle).X, RelativeSource={RelativeSource TemplatedParent}}" Canvas.Top="{Binding Path=(SelectionRectangle).Y, RelativeSource={RelativeSource TemplatedParent}}" Width="{Binding Path=(SelectionRectangle).Width, RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(SelectionRectangle).Height, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=SelectionCanvasContentTemplate}}" Content="{Binding Path=SelectionRectangle, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" />
+        </Canvas>
+    </ControlTemplate>
+    <ControlTemplate TargetType="{x:Type pdfViewer:StartScreenControl}" x:Key="{themes:PdfViewerThemeKey ResourceKey=StartScreenControlTemplate}">
+        <Grid>
+            <Border Background="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfPresenterControlBackgroundBrush}}">
+                <StackPanel Orientation="Vertical" Margin="75,50,75,50">
+                    <TextBlock Text="{pdfViewer:PdfViewerControlLocalizedString RecentDocumentsCaption}" FontSize="16" Margin="0,0,0,25">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=StartScreenCaptionForegroundColor}}" />
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <ItemsControl Margin="0,0,0,20" Focusable="False" ItemsSource="{Binding Path=ActualRecentFiles, RelativeSource={RelativeSource TemplatedParent}}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Template="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=StartScreenDocumentLinkTemplate}}" Margin="0,0,0,3" Cursor="Hand" Focusable="False" Content="{Binding Path=Name}" CommandParameter="{Binding Path=DocumentSource}" Command="{Binding Path=Command}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Button Template="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=StartScreenOpenDocumentTemplate}}" Cursor="Hand" Focusable="False" Content="{pdfViewer:PdfViewerControlLocalizedString OpenDocumentCaption}" Visibility="{Binding Path=ShowOpenFileButton, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource booleanToVisibilityConverter}}" Command="{Binding Path=(pdfViewer:PdfViewerControl.ActualViewer).ActualCommandProvider.OpenDocumentCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate TargetType="{x:Type Button}" x:Key="{themes:PdfViewerThemeKey ResourceKey=StartScreenDocumentLinkTemplate}">
+        <Border Background="Transparent">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Margin="0,0,7,0">
+                    <Image.Source>
+                        <BitmapImage UriSource="{pdfViewer:PdfResourceExtension /Images/RecentDocument_16x16.png}" />
+                    </Image.Source>
+                </Image>
+                <ContentPresenter Grid.Column="1" HorizontalAlignment="Left">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=StartScreenDocumentLinkForegroundColor}}" />
+                    </TextBlock.Foreground>
+                </ContentPresenter>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate TargetType="{x:Type Button}" x:Key="{themes:PdfViewerThemeKey ResourceKey=StartScreenOpenDocumentTemplate}">
+        <Border Background="Transparent">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Margin="0,0,7,0">
+                    <Image.Source>
+                        <BitmapImage UriSource="{pdfViewer:PdfResourceExtension /Images/Open_16x16.png}" />
+                    </Image.Source>
+                </Image>
+                <ContentPresenter Grid.Column="1" HorizontalAlignment="Left">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=StartScreenOpenDocumentForegroundColor}}" />
+                    </TextBlock.Foreground>
+                </ContentPresenter>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfBarContainerControlTemplate}" TargetType="{x:Type dxb:BarContainerControl}">
+        <ItemsPresenter x:Name="PART_ItemsPresenter" Margin="{TemplateBinding Padding}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfBarControlTemplate}" TargetType="{x:Type dxb:BarControl}">
+        <ContentControl Template="{DynamicResource {themes:PdfViewerThemeKeyExtension ResourceKey=PdfBarTemplate}}" Focusable="False" IsTabStop="False">
+            <ItemsPresenter x:Name="PART_ItemsPresenter" />
+        </ContentControl>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=LoadingProgressControlTemplate}" TargetType="{x:Type pdfViewer:LoadingProgressControl}">
+        <Border Background="White" BorderThickness="1" BorderBrush="Black">
+            <StackPanel Orientation="Vertical" Margin="12">
+                <TextBlock Text="{Binding Path=Message, RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=LoadingDocumentLinkForegroundColor}}" />
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <dxe:ProgressBarEdit Height="20" Maximum="{Binding Path=TotalProgress, RelativeSource={RelativeSource TemplatedParent}}" Value="{Binding Path=Progress, RelativeSource={RelativeSource TemplatedParent}}" Margin="0,12,0,0">
+                    <dxe:ProgressBarEdit.StyleSettings>
+                        <dxe:ProgressBarMarqueeStyleSettings />
+                    </dxe:ProgressBarEdit.StyleSettings>
+                </dxe:ProgressBarEdit>
+            </StackPanel>
+        </Border>
+    </ControlTemplate>
+    <dxedp:DataPagerPageCountToTitleConverter x:Key="DataPagerPageCountToTitleConverter" />
+    <dxedp:DataPagerPageIndexToPageNumberConverter x:Key="DataPagerPageIndexToPageNumberConverter" />
+    <dx:BoolToObjectConverter x:Key="IsAutoNumericButtonCountToButtonContainerTemplateConverter" TrueValue="{DynamicResource {dxet:DataPagerThemeKey ResourceKey=AutoNumericButtonCountButtonContainerTemplate}}" FalseValue="{DynamicResource {dxet:DataPagerThemeKey ResourceKey=FixedNumericButtonCountButtonContainerTemplate}}" />
+    <dxedp:DataPagerCurrentPageEditMaxValueConverter x:Key="DataPagerCurrentPageEditMaxValueConverter" />
+    <dxedp:DataPagerCurrentPageEditMinValueConverter x:Key="DataPagerCurrentPageEditMinValueConverter" />
+    <dxedp:DataPagerPageExtract x:Key="DataPagerPageExtract" />
+    <dx:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <pdfViewer:DataPagerPageNumberConverter x:Key="dataPagerPageNumberConverter" />
+    <pdfViewer:PrintRangeToVisiblityConverter x:Key="PrintRangeToVisiblityConverter" />
+    <dxe:EditorLocalizer x:Key="localizer" />
+    <ControlTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PrintDialogDataPagerTemplate}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Tag="1" Grid.Column="0" Margin="0,0,16,0" Orientation="Horizontal" Visibility="{Binding ShowTotalPageCount, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolToVisibilityConverter}}">
+                <TextBlock Text="{Binding Source={StaticResource localizer}, Converter={StaticResource DataPagerPageExtract}}" VerticalAlignment="Center" />
+                <dxe:SpinEdit AllowRoundOutOfRangeValue="True" EditValue="{Binding CurrentPageParams, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource DataPagerPageIndexToPageNumberConverter}, Mode=TwoWay}" IsFloatValue="False" Margin="4,0,4,0" MaxValue="{Binding Path=PageCount, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource DataPagerCurrentPageEditMaxValueConverter}}" MinValue="{Binding Path=PageCount, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource DataPagerCurrentPageEditMinValueConverter}}" ShowEditorButtons="False" ValidateOnTextInput="False" />
+                <TextBlock Text="{Binding PageCount, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource DataPagerPageCountToTitleConverter}}" VerticalAlignment="Center" />
+                <TextBlock Visibility="{Binding Path=PdfViewModel.PrintRange, Converter={StaticResource PrintRangeToVisiblityConverter}}" Text="{Binding Path=PdfViewModel.CurrentPreviewPageNumber, Converter={StaticResource dataPagerPageNumberConverter}}" VerticalAlignment="Center" />
+            </StackPanel>
+            <ContentControl HorizontalAlignment="Right" VerticalAlignment="Center" Template="{DynamicResource {dxet:DataPagerThemeKey ResourceKey=ButtonAreaBorderTemplate}}" Grid.Column="1">
+                <dxedp:DataPagerButtonContainer x:Name="PART_ButtonContainer" Template="{Binding Path=IsAutoNumericButtonCount, Converter={StaticResource IsAutoNumericButtonCountToButtonContainerTemplateConverter}, RelativeSource={RelativeSource TemplatedParent}}" dxedp:DataPager.DataPager="{Binding Path=(dxedp:DataPager.DataPager), RelativeSource={RelativeSource TemplatedParent}}" />
+            </ContentControl>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=StickyNotesEditDisplayTemplate}">
+        <Border Background="Red" Width="10" Height="10" x:Name="PART_Editor" />
+    </ControlTemplate>
+    <pdfViewer:PdfViewerStringIdConverter x:Key="PdfViewerStringIdConverter" />
+    <internal:ChangeTypeConverter x:Key="changeTypeConverter" TargetType="{x:Type system:Int32}" SourceType="{x:Type system:Int16}" />
+    <internal:ChangeTypeConverter x:Key="pdfPrintScaleModeConverter" TargetType="{x:Type system:Int32}" SourceType="{x:Type pdf:PdfPrintScaleMode}" />
+    <internal:ChangeTypeConverter x:Key="pdfPrintPageOrientationConverter" TargetType="{x:Type system:Int32}" SourceType="{x:Type pdf:PdfPrintPageOrientation}" />
+    <internal:PrintRangeConverter x:Key="printRangeConverter" />
+    <internal:PrintRangeToRangeEditEnabledConverter x:Key="printRangeToRangeEditEnabledConverter" />
+    <internal:ScaleModeToScaleEditEnabledConverter x:Key="scaleModeToScaleEditEnabledConverter" />
+    <internal:IEnumerableToPagedCollectionConverter x:Key="IEnumerableToPagedCollectionConverter" />
+    <internal:PrinterTypeToImageConverter x:Key="printerTypeToImageConverter" />
+    <internal:SizeChangedEventArgsConverter x:Key="sizeChangedEventArgsConverter" />
+    <internal:PdfPrintPageOrientationConverter x:Key="pdfPrintPageOrientationEnumConverter" />
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfPrintEditorTemplate}">
+        <Grid>
+            <dxmvvm:Interaction.Behaviors>
+                <internal:PdfPrintEditorAttachedBehavior HasValidationError="{Binding Path=(dxe:ValidationService.HasValidationError), RelativeSource={RelativeSource TemplatedParent}}" />
+            </dxmvvm:Interaction.Behaviors>
+            <dxlc:DockLayoutControl x:Name="PART_DockLayoutControl" AllowItemSizing="True" Margin="5">
+                <dxlc:LayoutGroup x:Name="PART_DockPreviewPart" Orientation="Vertical" dxlc:DockLayoutControl.Dock="Left" Margin="5" Width="427">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <dxe:ImageEdit x:Name="PART_ImagePreview" ShowMenu="False" Grid.Row="0" Margin="0,0,0,10" EditValue="{Binding Path=PdfViewModel.PreviewImageBytes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Width="427" Height="518" />
+                        <internal:PrintDialogDataPager HorizontalAlignment="Center" IsTotalItemCountFixed="True" Source="{Binding Path=PdfViewModel.PageNumbers, Converter={StaticResource IEnumerableToPagedCollectionConverter}}" PageSize="1" Grid.Row="1" DisplayMode="FirstLastPreviousNext" ShowTotalPageCount="True" PageIndex="{Binding Path=PdfViewModel.PagePreviewIndex, Mode=TwoWay}" />
+                    </Grid>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup x:Name="PART_DockClientPart" ItemLabelsAlignment="Local" MinWidth="425" Margin="5" Orientation="Vertical" dxlc:DockLayoutControl.Dock="Client" dxlc:DockLayoutControl.AllowHorizontalSizing="True">
+                    <dxlc:LayoutItem Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPrinterName}" AddColonToLabel="True">
+                        <dxlc:LayoutGroup Orientation="Horizontal">
+                            <dxlc:LayoutItem VerticalContentAlignment="Center" VerticalAlignment="Center">
+                                <dxe:ComboBoxEdit Margin="5,0,0,0" ItemsSource="{Binding Path=PdfViewModel.PrinterItems}" ApplyItemTemplateToSelectedItem="True" IsTextEditable="False" SelectedIndex="{Binding Path=PdfViewModel.PrinterIndex}">
+                                    <dxe:ComboBoxEdit.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <dxe:ImageEdit ShowBorder="False" Source="{Binding Path=PrinterType, Converter={StaticResource printerTypeToImageConverter}}" />
+                                                <TextBlock VerticalAlignment="Center" Margin="2,2,4,2" Text="{Binding Path=DisplayName}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </dxe:ComboBoxEdit.ItemTemplate>
+                                </dxe:ComboBoxEdit>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem VerticalContentAlignment="Center" Width="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PrintDialogRightColumnWidth}}" VerticalAlignment="Center">
+                                <Button Command="{Binding Path=PreferencesCommand}" Content="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPrinterPreferences}" />
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogStatus}" AddColonToLabel="True">
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Path=PdfViewModel.PrinterStatus}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogLocation}" AddColonToLabel="True">
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Path=PdfViewModel.PrinterLocation}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogComment}" AddColonToLabel="True">
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Path=PdfViewModel.PrinterComment}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogDocumentsInQueue}" AddColonToLabel="True">
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Path=PdfViewModel.PrinterDocumentsInQueue}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Margin="0,10,0,0" Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPrintingDpi}" AddColonToLabel="True">
+                        <Grid Margin="5,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PrintDialogRightColumnGridLength}}" />
+                            </Grid.ColumnDefinitions>
+                            <dxe:SpinEdit Grid.Column="0" Margin="0,0,4,0" EditValue="{Binding Path=PdfViewModel.PrintingDpi, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource changeTypeConverter}, Mode=TwoWay}" Increment="100" MinValue="100" MaxValue="{Binding Path=PdfViewModel.MaxDpi}" IsFloatValue="False" AllowRoundOutOfRangeValue="True" ValidateOnTextInput="False" />
+                        </Grid>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogNumberOfCopies}" AddColonToLabel="True">
+                        <dxlc:LayoutGroup Margin="5,0,0,0" Orientation="Horizontal" View="Group">
+                            <dxlc:LayoutItem>
+                                <dxe:SpinEdit EditValue="{Binding Path=PdfViewModel.Copies, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource changeTypeConverter}, Mode=TwoWay}" MinValue="1" MaxValue="32767" IsFloatValue="False" AllowRoundOutOfRangeValue="True" ValidateOnTextInput="False" />
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem VerticalAlignment="Center" Width="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PrintDialogRightColumnWidth}}">
+                                <dxe:CheckEdit EditValue="{Binding Path=PdfViewModel.Collate, Mode=TwoWay}" VerticalAlignment="Center" IsEnabled="{Binding Path=PdfViewModel.AllowCollate}" Content="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogCollate}" />
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Margin="0,10,0,0" Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageRange}" AddColonToLabel="True">
+                        <dxe:ListBoxEdit Margin="5,0,0,0" Background="{x:Null}" HorizontalContentAlignment="Stretch" ShowBorder="False" SelectedIndex="{Binding Path=PdfViewModel.PrintRange, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource printRangeConverter}}">
+                            <dxe:ListBoxEdit.StyleSettings>
+                                <dxe:RadioListBoxEditStyleSettings />
+                            </dxe:ListBoxEdit.StyleSettings>
+                            <dxe:ListBoxEditItem>
+                                <TextBlock Text="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageRangeAll}" />
+                            </dxe:ListBoxEditItem>
+                            <dxe:ListBoxEditItem>
+                                <TextBlock Text="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageRangeCurrent}" />
+                            </dxe:ListBoxEditItem>
+                            <dxe:ListBoxEditItem>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageRangePages}" VerticalAlignment="Center" />
+                                    <dxe:TextEdit Grid.Column="1" Margin="10,0,0,0" Tag="{Binding Path=(DataContext).PdfViewModel.PageRangeText, ValidatesOnDataErrors=True}" VerticalAlignment="Center" Mask="(\d+(-\d+)?)(,(\d+(-\d+)?))*" MaskType="RegEx" MaskShowPlaceHolders="False" ValidateOnTextInput="True" IsEnabled="{Binding Path=(DataContext).PdfViewModel.AllowSomePages}" EditValue="{Binding Path=(DataContext).PdfViewModel.PageRangeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Grid.Column="2" Margin="5,0,0,0" Width="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PrintDialogRightColumnWidth}}" Text="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageRangePagesExample}" IsEnabled="False" VerticalAlignment="Center" />
+                                </Grid>
+                            </dxe:ListBoxEditItem>
+                        </dxe:ListBoxEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Margin="0,10,0,0" Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageSizing}" AddColonToLabel="True">
+                        <dxe:ListBoxEdit Margin="5,0,0,0" Background="{x:Null}" ShowBorder="False" SelectedIndex="{Binding Path=PdfViewModel.ScaleMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource pdfPrintScaleModeConverter}}">
+                            <dxe:ListBoxEdit.StyleSettings>
+                                <dxe:RadioListBoxEditStyleSettings />
+                            </dxe:ListBoxEdit.StyleSettings>
+                            <dxe:ListBoxEditItem>
+                                <TextBlock Text="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageSizingFit}" />
+                            </dxe:ListBoxEditItem>
+                            <dxe:ListBoxEditItem>
+                                <TextBlock Text="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageSizingActualSize}" />
+                            </dxe:ListBoxEditItem>
+                            <dxe:ListBoxEditItem>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPageSizingCustomScale}" VerticalAlignment="Center" />
+                                    <dxe:SpinEdit Margin="10,0,0,0" VerticalAlignment="Center" ValidateOnTextInput="False" AllowRoundOutOfRangeValue="True" Mask="P" MinValue="0" MaxValue="500" MaskShowPlaceHolders="False" MaskUseAsDisplayFormat="True" IsEnabled="{Binding Path=(DataContext).PdfViewModel.ScaleMode, Converter={StaticResource scaleModeToScaleEditEnabledConverter}}" EditValue="{Binding Path=(DataContext).PdfViewModel.Scale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource changeTypeConverter}}" />
+                                </StackPanel>
+                            </dxe:ListBoxEditItem>
+                        </dxe:ListBoxEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Margin="0,10,0,0" Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogOrientation}" AddColonToLabel="True">
+                        <dxe:ListBoxEdit Margin="5,0,0,0" Background="{x:Null}" ShowBorder="False" SelectedIndex="{Binding Path=PdfViewModel.PageOrientation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource pdfPrintPageOrientationConverter}}" ItemsSource="{dxe:EnumItemsSource EnumType={x:Type pdf:PdfPrintPageOrientation}, NameConverter={StaticResource pdfPrintPageOrientationEnumConverter}}">
+                            <dxe:ListBoxEdit.StyleSettings>
+                                <dxe:RadioListBoxEditStyleSettings />
+                            </dxe:ListBoxEdit.StyleSettings>
+                        </dxe:ListBoxEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Margin="0,10,0,0" Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPaperSource}" AddColonToLabel="True">
+                        <Grid Margin="5,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PrintDialogRightColumnGridLength}}" />
+                            </Grid.ColumnDefinitions>
+                            <dxe:ComboBoxEdit Grid.Column="0" Margin="0,0,4,0" ItemsSource="{Binding Path=PdfViewModel.PaperSources}" IsTextEditable="False" SelectedIndex="{Binding Path=PdfViewModel.PaperSourceIndex}" />
+                        </Grid>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogFilePath}" AddColonToLabel="True">
+                        <dxlc:LayoutGroup Margin="5,0,0,0">
+                            <dxlc:LayoutItem>
+                                <dxe:ButtonEdit x:Name="PART_PrintFileSelectButton" Tag="{Binding Path=PdfViewModel.PrintFileName, ValidatesOnDataErrors=True}" AllowDefaultButton="False" AllowNullInput="False" EditValue="{Binding Path=PdfViewModel.PrintFileName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsEnabled="{Binding Path=PdfViewModel.PrintToFile}">
+                                    <dxe:ButtonEdit.Buttons>
+                                        <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding Path=FileSelectCommand}" />
+                                    </dxe:ButtonEdit.Buttons>
+                                </dxe:ButtonEdit>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Width="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PrintDialogRightColumnWidth}}" VerticalAlignment="Center">
+                                <dxe:CheckEdit EditValue="{Binding Path=PdfViewModel.PrintToFile, Mode=TwoWay}" VerticalAlignment="Center" Content="{Binding Source={x:Null}, Converter={StaticResource PdfViewerStringIdConverter}, ConverterParameter=PrintDialogPrintToFile}" />
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+            </dxlc:DockLayoutControl>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=StickyNotesEditToolTipTemplate}">
+        <StackPanel>
+            <TextBlock Text="{Binding Path=Title}" FontWeight="Bold" />
+            <Separator Margin="0,10,0,0" />
+            <TextBlock Text="{Binding Path=EditValue}" />
+        </StackPanel>
+    </DataTemplate>
+    <dxmvvm:BooleanToObjectConverter x:Key="boolToWrapConverter">
+        <dxmvvm:BooleanToObjectConverter.TrueValue>
+            <TextWrapping>WrapWithOverflow</TextWrapping>
+        </dxmvvm:BooleanToObjectConverter.TrueValue>
+        <dxmvvm:BooleanToObjectConverter.FalseValue>
+            <TextWrapping>NoWrap</TextWrapping>
+        </dxmvvm:BooleanToObjectConverter.FalseValue>
+    </dxmvvm:BooleanToObjectConverter>
+    <pdfViewer:PdfOutlinesViewerNodeSelector x:Key="imagesSelector" />
+    <pdfViewer:PdfColorToColorConverter x:Key="pdfColorConverter" />
+    <pdfViewer:PdfItalicToItalicConverter x:Key="pdfItalicConverter" />
+    <pdfViewer:PdfBoldToBoldConverter x:Key="pdfBoldConverter" />
+    <ControlTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfOutlinesViewerControlTemplate}" TargetType="{x:Type pdfViewer:PdfOutlinesViewerControl}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border BorderThickness="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfOutlinesViewerControlToolBarBorderThickness}}" BorderBrush="{DynamicResource {themes:PdfViewerThemeKey ResourceKey=PdfOutlinesViewerControlToolBarBorderBrush}}">
+                <dxb:ToolBarControl ShowDragWidget="False" AllowQuickCustomization="False">
+                    <dxdv:ShowOptionsBarItem dxdv:DocumentViewerControl.BarItemName="{x:Static dxdv:DefaultBarManagerItemNames.DocumentMapShowOptions}">
+                        <dxdv:ShowOptionsBarItem.Glyph>
+                            <BitmapImage UriSource="{pdfViewer:PdfResource /Images/Outlines/Menu_16x16.png}" />
+                        </dxdv:ShowOptionsBarItem.Glyph>
+                        <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerExpandCurrentCaption}" dxdv:DocumentViewerControl.BarItemName="{x:Static dxdv:DefaultBarManagerItemNames.DocumentMapExpandCurrentNode}" Command="{x:Static dxdv:DocumentMapCommands.ExpandCurrentNodeCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TreeView}" IsVisible="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}}" />
+                        <dxb:BarItemSeparator />
+                        <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerExpandTopLevelCaption}" dxdv:DocumentViewerControl.BarItemName="{x:Static dxdv:DefaultBarManagerItemNames.DocumentMapExpandTopLevelNode}" Command="{x:Static dxdv:DocumentMapCommands.ExpandTopLevelNodesCommand}" CommandTarget="{Binding ElementName=PART_TreeView}" IsVisible="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}}" />
+                        <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerCollapseTopLevelCaption}" dxdv:DocumentViewerControl.BarItemName="{x:Static dxdv:DefaultBarManagerItemNames.DocumentMapCollapseTopLevelNode}" Command="{x:Static dxdv:DocumentMapCommands.CollapseTopLevelNodesCommand}" CommandTarget="{Binding ElementName=PART_TreeView}" IsVisible="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}}" />
+                        <dxb:BarItemSeparator />
+                        <dxb:BarCheckItem dxdv:DocumentViewerControl.BarItemName="{x:Static dxdv:DefaultBarManagerItemNames.DocumentMapHideAfterUseNode}" IsChecked="{Binding Path=HideAfterUse, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerHideAfterUseCaption}">
+                        </dxb:BarCheckItem>
+                        <dxb:BarItemSeparator />
+                        <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerGoToCaption}" dxdv:DocumentViewerControl.BarItemName="{x:Static dxdv:DefaultBarManagerItemNames.DocumentMapGoToBookmark}" Command="{x:Static dxdv:DocumentMapCommands.GoToNodeCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TreeView}">
+                        </dxb:BarButtonItem>
+                        <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerPrintCaption}" Command="{x:Static pdfViewer:PdfOutlinesViewerCommands.PrintCommand}" CommandParameter="{Binding Path=SelectedItems, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TreeView}">
+                        </dxb:BarButtonItem>
+                        <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerPrintSectionCaption}" Command="{x:Static pdfViewer:PdfOutlinesViewerCommands.PrintSectionCommand}" CommandParameter="{Binding Path=SelectedItems, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TreeView}">
+                        </dxb:BarButtonItem>
+                        <dxb:BarItemSeparator />
+                        <dxb:BarCheckItem IsChecked="{Binding Path=WrapLongLines, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerWrapLongItemsCaption}">
+                        </dxb:BarCheckItem>
+                    </dxdv:ShowOptionsBarItem>
+                    <dxb:BarButtonItem Alignment="Far" BarItemDisplayMode="ContentAndGlyph" Hint="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerExpandCurrentCaption}" dxdv:DocumentViewerControl.BarItemName="{x:Static dxdv:DefaultBarManagerItemNames.DocumentMapExpandCurrentNodeButton}" Command="{x:Static dxdv:DocumentMapCommands.ExpandCurrentNodeCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TreeView}">
+                        <dxb:BarButtonItem.Glyph>
+                            <BitmapImage UriSource="{pdfViewer:PdfResource /Images/Outlines/Expand_bookmark_16x16.png}" />
+                        </dxb:BarButtonItem.Glyph>
+                    </dxb:BarButtonItem>
+                </dxb:ToolBarControl>
+            </Border>
+            <dxg:GridControl Grid.Row="1" SelectionMode="Row" x:Name="PART_GridControl" ItemsSource="{TemplateBinding ActualSource}" ShowBorder="False">
+                <dxmvvm:Interaction.Behaviors>
+                    <dxmvvm:KeyToCommand EventName="PreviewKeyDown" Command="{x:Static dxdv:DocumentMapCommands.GoToNodeCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" MarkRoutedEventsAsHandled="True" KeyGesture="Enter" />
+                    <dxmvvm:KeyToCommand EventName="PreviewKeyDown" Command="{x:Static dxdv:DocumentMapCommands.GoToNodeCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" MarkRoutedEventsAsHandled="True" KeyGesture="Space" />
+                </dxmvvm:Interaction.Behaviors>
+                <dxg:GridControl.View>
+                    <dxg:TreeListView x:Name="PART_TreeView" Style="{TemplateBinding TreeViewStyle}">
+                        <dxg:TreeListView.RowCellMenuCustomizations>
+                            <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerGoToCaption}" Command="{x:Static dxdv:DocumentMapCommands.GoToNodeCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_GridControl}">
+                            </dxb:BarButtonItem>
+                            <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerPrintCaption}" Command="{x:Static pdfViewer:PdfOutlinesViewerCommands.PrintCommand}" CommandParameter="{Binding Path=SelectedItems, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TreeView}">
+                            </dxb:BarButtonItem>
+                            <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerPrintSectionCaption}" Command="{x:Static pdfViewer:PdfOutlinesViewerCommands.PrintSectionCommand}" CommandParameter="{Binding Path=SelectedItems, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TreeView}">
+                            </dxb:BarButtonItem>
+                            <dxb:BarItemSeparator />
+                            <dxb:BarCheckItem IsChecked="{Binding Path=WrapLongLines, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Content="{pdfViewer:PdfViewerControlLocalizedString OutlinesViewerWrapLongItemsCaption}">
+                            </dxb:BarCheckItem>
+                        </dxg:TreeListView.RowCellMenuCustomizations>
+                        <dxmvvm:Interaction.Behaviors>
+                            <dxmvvm:EventToCommand Command="{x:Static dxdv:DocumentMapCommands.GoToNodeCommand}" EventName="MouseLeftButtonUp">
+                                <dxmvvm:EventToCommand.EventArgsConverter>
+                                    <dxdv:MouseEventArgsToDataRowConverter ChangedButton="Left" />
+                                </dxmvvm:EventToCommand.EventArgsConverter>
+                            </dxmvvm:EventToCommand>
+                        </dxmvvm:Interaction.Behaviors>
+                    </dxg:TreeListView>
+                </dxg:GridControl.View>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="Title">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings TextWrapping="{Binding Path=WrapLongLines, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToWrapConverter}}" />
+                        </dxg:GridColumn.EditSettings>
+                        <dxg:GridColumn.CellTemplate>
+                            <DataTemplate>
+                                <dxe:InplaceBaseEdit x:Name="PART_Editor" FontStyle="{Binding Path=RowData.Row.Italic, Converter={StaticResource pdfItalicConverter}, RelativeSource={RelativeSource TemplatedParent}}" FontWeight="{Binding Path=RowData.Row.Bold, Converter={StaticResource pdfBoldConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                                </dxe:InplaceBaseEdit>
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding Path=RowData.Row.UseForeColor}" Value="true">
+                                        <Setter TargetName="PART_Editor" Property="Foreground" Value="{Binding Path=RowData.Row.ForeColor, Converter={StaticResource pdfColorConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </dxg:GridColumn.CellTemplate>
+                    </dxg:GridColumn>
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:PdfViewerThemeKey ResourceKey=PdfAttachmentsViewerControlTemplate}" TargetType="{x:Type pdfViewer:PdfAttachmentsViewerControl}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <dxb:ToolBarControl ShowDragWidget="False">
+                <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString AttachmentsViewerOpenCaption}" Hint="{pdfViewer:PdfViewerControlLocalizedString AttachmentsViewerOpenDescription}" dxdv:DocumentViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.AttachmentsViewerOpen}" Command="{x:Static pdfViewer:PdfAttachmentsViewerCommands.OpenAttachmentCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TableView}">
+                    <dxb:BarButtonItem.Glyph>
+                        <BitmapImage UriSource="{pdfViewer:PdfResource /Images/Preview_16x16.png}" />
+                    </dxb:BarButtonItem.Glyph>
+                </dxb:BarButtonItem>
+                <dxb:BarButtonItem Content="{pdfViewer:PdfViewerControlLocalizedString AttachmentsViewerSaveCaption}" Hint="{pdfViewer:PdfViewerControlLocalizedString AttachmentsViewerSaveDescription}" dxdv:DocumentViewerControl.BarItemName="{x:Static pdfViewer:DefaultPdfBarManagerItemNames.AttachmentsViewerSave}" Command="{x:Static pdfViewer:PdfAttachmentsViewerCommands.SaveAttachmentCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" CommandTarget="{Binding ElementName=PART_TableView}">
+                    <dxb:BarButtonItem.Glyph>
+                        <BitmapImage UriSource="{dxdv:DocumentViewerResource /Images/Save_16x16.png}" />
+                    </dxb:BarButtonItem.Glyph>
+                </dxb:BarButtonItem>
+            </dxb:ToolBarControl>
+            <dxg:GridControl Grid.Row="1" SelectionMode="Row" x:Name="PART_GridControl" ItemsSource="{TemplateBinding ActualSource}" ShowBorder="False">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="Name" />
+                    <dxg:GridColumn FieldName="Description" />
+                    <dxg:GridColumn FieldName="Modified" />
+                    <dxg:GridColumn FieldName="Size" />
+                </dxg:GridControl.Columns>
+                <dxmvvm:Interaction.Behaviors>
+                    <dxmvvm:KeyToCommand EventName="PreviewKeyDown" Command="{x:Static pdfViewer:PdfAttachmentsViewerCommands.OpenAttachmentCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" MarkRoutedEventsAsHandled="True" KeyGesture="Enter" />
+                    <dxmvvm:KeyToCommand EventName="PreviewKeyDown" Command="{x:Static pdfViewer:PdfAttachmentsViewerCommands.OpenAttachmentCommand}" CommandParameter="{Binding Path=CurrentItem, ElementName=PART_GridControl}" MarkRoutedEventsAsHandled="True" KeyGesture="Space" />
+                </dxmvvm:Interaction.Behaviors>
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="PART_TableView" NavigationStyle="Row" AllowEditing="False" AllowGrouping="False" ShowGroupPanel="False">
+                        <dxmvvm:Interaction.Behaviors>
+                            <dxmvvm:EventToCommand Command="{x:Static pdfViewer:PdfAttachmentsViewerCommands.OpenAttachmentCommand}" EventName="MouseDoubleClick">
+                                <dxmvvm:EventToCommand.EventArgsConverter>
+                                    <dxdv:MouseEventArgsToDataRowConverter ChangedButton="Left" />
+                                </dxmvvm:EventToCommand.EventArgsConverter>
+                            </dxmvvm:EventToCommand>
+                        </dxmvvm:Interaction.Behaviors>
+                        <dxg:TableView.RowStyle>
+                            <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=http://schemas.devexpress.com/winfx/2008/xaml/grid.RowControl}" TargetType="dxg:RowControl">
+                                <Setter Property="ToolTipService.ToolTip">
+                                    <Setter.Value>
+                                        <ContentControl Content="{Binding Path=Row.Hint}" ContentTemplate="{DynamicResource DetailCoreTemplate}" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </dxg:TableView.RowStyle>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

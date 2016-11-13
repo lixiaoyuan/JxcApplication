@@ -1,0 +1,92 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:selector="clr-namespace:JxcApplication.Selector"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+             xmlns:cor="clr-namespace:ApplicationDb.Cor;assembly=ApplicationDb.Cor"
+             xmlns:viewModels="clr-namespace:JxcApplication.ViewModels"
+             xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
+             x:Class="JxcApplication.Views.UserManager"
+             d:DesignWidth="606.4"
+             d:DesignHeight="351.2">
+
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
+                                    CustomNotificationPosition="BottomRight"
+                                    CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
+
+        <dxmvvm:EventToCommand EventName="InitNewRow" SourceName="TableViewUser"
+                               Command="{Binding InitNewRowCommand}" PassEventArgsToCommand="True" />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxb:BarManager>
+            <dxb:BarManager.Items>
+                <dxb:BarButtonItem x:Name="UM_BT_Refresh" KeyGesture="Ctrl+F5" Content="刷新"
+                                   LargeGlyph="{dx:DXImage Image=Refresh2_32x32.png}"
+                                   Command="{Binding InitDataCommand}" />
+
+                <dxb:BarButtonItem x:Name="UM_BT_Add" KeyGesture="Ctrl+F1" Content="新增"
+                                   LargeGlyph="{dx:DXImageGrayscale Image=Add_32x32.png}"
+                                   Command="{Binding AddCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+
+                <dxb:BarButtonItem x:Name="UM_BT_Edit" KeyGesture="Ctrl+F2" Content="编辑"
+                                   LargeGlyph="{dx:DXImageOffice2013 Image=EditTask_32x32.png}"
+                                   Command="{Binding EditCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+
+                <dxb:BarButtonItem x:Name="UM_BT_Delete" KeyGesture="Ctrl+F3" Content="删除"
+                                   LargeGlyph="{dx:DXImage Image=ResetModelDifferences_32x32.png}"
+                                   Command="{Binding DelCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+
+                <dxb:BarButtonItem x:Name="UM_BT_Save" KeyGesture="Ctrl+S" Content="保存"
+                                   LargeGlyph="{dx:DXImage Image=SaveAll_32x32.png}"
+                                   Glyph="{dx:DXImage Image=SaveAll_16x16.png}"
+                                   Command="{Binding SaveCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+
+                <dxb:BarButtonItem x:Name="UM_BT_ResetPassword" Content="重置密码"
+                                   LargeGlyph="pack://application:,,,/DevExpress.Images.v15.2;component/DevAV/Actions/ViewReset_32x32.png"
+                                   Command="{Binding ReSetPasswordCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser,Path=SelectedItem}" />
+
+                <dxb:BarButtonItem x:Name="UM_BT_UserRole" Content="分配角色"
+                                   LargeGlyph="{dx:DXImage Image=Role_32x32.png}"
+                                   Command="{Binding SetRoleCommand}"
+                                   CommandParameter="{Binding ElementName=GridControlUser}" />
+            </dxb:BarManager.Items>
+            <DockPanel>
+                <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2010"
+                                   CategoriesSource="{Binding RibbonNodes}">
+                    <dxr:RibbonControl.CategoryTemplateSelector>
+                        <selector:CategoryTemplateSelector
+                            CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
+                            DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
+                    </dxr:RibbonControl.CategoryTemplateSelector>
+                </dxr:RibbonControl>
+
+                <dxg:GridControl Name="GridControlUser" Grid.Row="1" ItemsSource="{Binding SystemUsers}">
+                    <dxg:GridControl.View>
+                        <dxg:TableView Name="TableViewUser" AllowEditing="True" NewItemRowPosition="Bottom" />
+                    </dxg:GridControl.View>
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Code" Header="用户编码" />
+                        <dxg:GridColumn FieldName="Name" Header="用户名" />
+                        <dxg:GridColumn FieldName="Spell" Header="拼音码" />
+                        <dxg:GridColumn FieldName="Gender" Header="性别(男)" />
+                        <dxg:GridColumn FieldName="Birthday" Header="生日" />
+                        <dxg:GridColumn FieldName="Tel" Header="电话" />
+                        <dxg:GridColumn FieldName="Email" Header="电子邮件" />
+                        <dxg:GridColumn FieldName="Enable" Header="是否有效" />
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </DockPanel>
+        </dxb:BarManager>
+    </Grid>
+</UserControl>

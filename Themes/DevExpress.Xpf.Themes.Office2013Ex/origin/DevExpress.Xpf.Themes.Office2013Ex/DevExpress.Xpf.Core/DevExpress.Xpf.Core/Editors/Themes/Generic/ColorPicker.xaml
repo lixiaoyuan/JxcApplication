@@ -1,0 +1,204 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxtEx="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxei="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    <dxei:ColorConverter x:Key="ColorConverter" />
+    <dxei:ColorPickerColorModeTemplateSelector x:Key="ColorModeTemplateSelector" />
+    <dx:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <dxei:ShowDefaultColorToGridLengthConverter x:Key="ShowDefaultColorToColumnWidthConverter" />
+    <dx:EmbeddedResourceImageConverter x:Key="EmbeddedResourceImageConverter" />
+    <dxei:DecimalToIntConverter x:Key="DecimalToIntConverter" />
+    <dxei:HColorToZColorConverter x:Key="HColorToZColorConverter" />
+    <DataTemplate x:Key="{dxet:ColorPickerThemeKey ResourceKey=RGBDataTemplate}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Text="R:" Margin="0,4,0,0" />
+            <dxe:SpinEdit Grid.Row="0" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="255" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=R, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="G:" Margin="0,4,0,0" Grid.Row="1" />
+            <dxe:SpinEdit Grid.Row="1" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="255" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=G, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="B:" Margin="0,4,0,0" Grid.Row="2" />
+            <dxe:SpinEdit Grid.Row="2" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="255" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=B, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="A:" Margin="0,4,0,0" Grid.Row="3" />
+            <dxe:SpinEdit Grid.Row="3" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="255" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="{dxet:ColorPickerThemeKey ResourceKey=CMYKDataTemplate}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Text="C:" Margin="0,4,0,0" />
+            <dxe:SpinEdit Grid.Row="0" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="100" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=C, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="M:" Margin="0,4,0,0" Grid.Row="1" />
+            <dxe:SpinEdit Grid.Row="1" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="100" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=M, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="Y:" Margin="0,4,0,0" Grid.Row="2" />
+            <dxe:SpinEdit Grid.Row="2" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="100" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="K:" Margin="0,4,0,0" Grid.Row="3" />
+            <dxe:SpinEdit Grid.Row="3" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="255" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=K, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="A:" Margin="0,4,0,0" Grid.Row="4" />
+            <dxe:SpinEdit Grid.Row="4" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="255" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="{dxet:ColorPickerThemeKey ResourceKey=HLSDataTemplate}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Text="H:" Margin="0,4,0,0" />
+            <dxe:SpinEdit Grid.Row="0" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="360" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=H, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="L:" Margin="0,4,0,0" Grid.Row="1" />
+            <dxe:SpinEdit Grid.Row="1" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="100" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=L, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="S:" Margin="0,4,0,0" Grid.Row="2" />
+            <dxe:SpinEdit Grid.Row="2" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="100" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=S, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="A:" Margin="0,4,0,0" Grid.Row="3" />
+            <dxe:SpinEdit Grid.Row="3" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="255" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="{dxet:ColorPickerThemeKey ResourceKey=HSBDataTemplate}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Text="H:" Margin="0,4,0,0" />
+            <dxe:SpinEdit Grid.Row="0" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="360" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=H, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="S:" Margin="0,4,0,0" Grid.Row="1" />
+            <dxe:SpinEdit Grid.Row="1" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="100" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=S, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="B:" Margin="0,4,0,0" Grid.Row="2" />
+            <dxe:SpinEdit Grid.Row="2" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="100" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=B, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+            <TextBlock VerticalAlignment="Center" Text="A:" Margin="0,4,0,0" Grid.Row="3" />
+            <dxe:SpinEdit Grid.Row="3" Grid.Column="1" Margin="0,4,0,0" EditMode="{Binding Path=EditMode}" AllowDefaultButton="False" AllowNullInput="True" IsFloatValue="False" MinValue="0" MaxValue="255" AllowRoundOutOfRangeValue="True" HorizontalAlignment="Stretch" EditValue="{Binding Path=A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToIntConverter}}" />
+        </Grid>
+    </DataTemplate>
+    <ControlTemplate x:Key="{dxet:ColorPickerThemeKey ResourceKey=Template}" TargetType="{x:Type dxei:ColorPicker}">
+        <Grid Margin="{Binding Path=Padding, RelativeSource={RelativeSource TemplatedParent}}" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="#7F3C3C3C" BorderThickness="1">
+                <Grid>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                                <GradientStop Color="{Binding Path=HSBColor.H, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HColorToZColorConverter}}" Offset="1" />
+                                <GradientStop Color="#FF595959" Offset="0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Transparent" Offset="0" />
+                                <GradientStop Color="Black" Offset="1" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Canvas x:Name="PART_ColorArea" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" dx:FrameworkElementHelper.IsClipped="True">
+                        <Canvas Width="22" Height="22" Canvas.Left="{Binding Path=ActualXYThumbXOffset, RelativeSource={RelativeSource TemplatedParent}}" Canvas.Top="{Binding Path=ActualXYThumbYOffset, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Rectangle Fill="Transparent" Width="22" Height="22" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FFFFFFFF" Data="M0,9 L8,9" Width="9" Height="1" Canvas.Left="0" Canvas.Top="9" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FF000000" Data="M0,10 L8,10" Width="9" Height="1" Canvas.Left="0" Canvas.Top="10" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FFFFFFFF" Data="M0,11 L8,11" Width="9" Height="1" Canvas.Left="0" Canvas.Top="11" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FFFFFFFF" Data="M0,9 L8,9" Width="9" Height="1" Canvas.Left="12" Canvas.Top="9" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FF000000" Data="M0,10 L8,10" Width="9" Height="1" Canvas.Left="12" Canvas.Top="10" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FFFFFFFF" Data="M0,11 L8,11" Width="9" Height="1" Canvas.Left="12" Canvas.Top="11" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FFFFFFFF" Data="M9,0 L9,8" Width="1" Height="9" Canvas.Left="9" Canvas.Top="0" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FF000000" Data="M10,0 L10,8" Width="1" Height="9" Canvas.Left="10" Canvas.Top="0" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FFFFFFFF" Data="M11,0 L11,8" Width="1" Height="9" Canvas.Left="11" Canvas.Top="0" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FFFFFFFF" Data="M9,0 L9,8" Width="1" Height="9" Canvas.Left="9" Canvas.Top="12" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FF000000" Data="M10,0 L10,8" Width="1" Height="9" Canvas.Left="10" Canvas.Top="12" />
+                            <Path Stretch="Fill" Fill="#FF000000" Stroke="#FFFFFFFF" Data="M11,0 L11,8" Width="1" Height="9" Canvas.Left="11" Canvas.Top="12" />
+                        </Canvas>
+                    </Canvas>
+                </Grid>
+            </Border>
+
+            <Border BorderBrush="#7F3C3C3C" BorderThickness="1" Grid.Row="1" Margin="0,3,0,0" Height="22">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding Path=ShowDefaultColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ShowDefaultColorToColumnWidthConverter}}" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <dxei:TransparentBrushRectangle HorizontalAlignment="Stretch" dx:FocusHelper2.Focusable="False" Grid.ColumnSpan="2" BlockWidth="4" BlockHeight="4" VerticalAlignment="Stretch" />
+                    <Button Command="{Binding Path=SetDefaultColorCommand, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding Path=ShowDefaultColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolToVisibilityConverter}}" x:Name="PART_DefaultColorButton" BorderThickness="0">
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFE20000" />
+                        </Button.Background>
+                    </Button>
+                    <Rectangle HorizontalAlignment="Stretch" x:Name="PART_ColorRect" IsHitTestVisible="False" Grid.Column="1" VerticalAlignment="Stretch">
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="{Binding Path=Color, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Grid>
+            </Border>
+            <Border BorderBrush="#7F3C3C3C" BorderThickness="1" x:Name="Y" Margin="4,0,0,0" VerticalAlignment="Stretch" Grid.Column="1">
+                <Grid Width="22">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="3" />
+                    </Grid.RowDefinitions>
+                    <Rectangle x:Name="PART_ZColorAreaRect" StrokeThickness="0" Grid.RowSpan="2">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush x:Name="zColor" EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop x:Name="zColor1" Color="#FFFF0000" Offset="0" />
+                                <GradientStop x:Name="zColor2" Color="#FFFFFF00" Offset="0.166666" />
+                                <GradientStop x:Name="zColor3" Color="#FF00FF00" Offset="0.333333" />
+                                <GradientStop x:Name="zColor4" Color="#FF00FFFF" Offset="0.5" />
+                                <GradientStop x:Name="zColor5" Color="#FF0000FF" Offset="0.666666" />
+                                <GradientStop x:Name="zColor6" Color="#FFFF00FF" Offset="0.833333" />
+                                <GradientStop x:Name="zColor7" Color="#FFFF0000" Offset="1" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Canvas x:Name="PART_ZColorArea" Background="Transparent" Grid.RowSpan="2" dx:FrameworkElementHelper.IsClipped="True">
+                        <Path x:Name="PART_ZThumbLeft" Data="M0,0 L5,5 0,10 z" Fill="#FF000000" Width="5" Height="10" Canvas.Top="{Binding Path=ActualZThumbOffset, RelativeSource={RelativeSource TemplatedParent}}" IsHitTestVisible="False" />
+                        <Path x:Name="PART_ZThumbRight" Data="M 5,0 L0,5 5,10 z" Fill="#FF000000" Width="5" Height="10" Canvas.Left="17" Canvas.Top="{Binding Path=ActualZThumbOffset, RelativeSource={RelativeSource TemplatedParent}}" IsHitTestVisible="False" />
+                    </Canvas>
+                </Grid>
+            </Border>
+            <!--BEGIN WPF-->
+            <Button Margin="4,4,0,1" Template="{DynamicResource ResourceKey={dxet:ColorPickerThemeKey ResourceKey=PipetButtonTemplate}}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Command="{Binding Path=EnablePippetModeCommand, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Stretch" Focusable="False" />
+            <!--END WPF-->
+            <StackPanel Grid.Column="2" Visibility="{Binding Path=ActualShowEditors, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolToVisibilityConverter}}" Orientation="Vertical" Margin="5,0,0,0" Width="85">
+                <dxe:ComboBoxEdit ItemsSource="{dxei:ColorModeList}" EditValue="{Binding Path=ColorMode, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" IsTextEditable="False" x:Name="PART_ColorModeComboBoxEdit" ValueMember="Value" DisplayMember="Text" />
+                <dxei:ColorPickerDataContentPresenter x:Name="PART_EditorsContentPresenter" Content="{Binding Path=ColorViewModel, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" ContentTemplateSelector="{StaticResource ColorModeTemplateSelector}" />
+            </StackPanel>
+            <dxe:TextEdit Grid.Column="2" Visibility="{Binding Path=ActualShowEditors, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolToVisibilityConverter}}" VerticalAlignment="Bottom" Grid.Row="1" x:Name="PART_ResultColor" Width="85" ShowError="False" Margin="5,5,0,0" EditValue="{Binding Path=Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ValidateOnTextInput="False" />
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

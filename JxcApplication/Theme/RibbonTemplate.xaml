@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+                    xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
+                    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+                    xmlns:control="clr-namespace:JxcApplication.Control">
+
+    <!--#region Group-->
+    <DataTemplate x:Key="GroupTemplate">
+        <ContentControl>
+            <control:RibbonPageGroup Caption="{Binding Path=Caption}" ItemLinksSource="{Binding Path=Children}"/>
+        </ContentControl>
+    </DataTemplate>
+    <!--#endregion-->
+    
+    <!--#region Page-->
+    <DataTemplate x:Key="PageHeadTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding Path=Image}" Width="24" Height="24"></Image>
+            <ContentPresenter Grid.Column="1" Content="{Binding Path=Caption}" VerticalAlignment="Center" Margin="5,0,0,0"></ContentPresenter>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="PageTemplate">
+        <ContentControl>
+            <dxr:RibbonPage CaptionTemplate="{StaticResource PageHeadTemplate}" Caption="{Binding Path=.}"
+                           GroupsSource="{Binding Path=Children}" GroupTemplate="{StaticResource GroupTemplate}" />
+        </ContentControl>
+    </DataTemplate>
+<!--#endregion-->
+    
+    <!--#region PageCategory-->
+    <DataTemplate x:Key="RibbonDefaultPageCategoryTemplate">
+        <ContentControl>
+            <dxr:RibbonDefaultPageCategory Caption="{Binding Path=Caption}" Color="{Binding Color}"
+                                           PageTemplate="{StaticResource PageTemplate}"
+                                           PagesSource="{Binding Path=Children}" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RibbonPageCategoryTemplate">
+        <ContentControl>
+            <dxr:RibbonPageCategory Caption="{Binding Path=Caption}" Color="{Binding Color}"
+                                    PageTemplate="{StaticResource PageTemplate}" PagesSource="{Binding Path=Children}" />
+        </ContentControl>
+    </DataTemplate>
+    <!--#endregion-->
+
+
+</ResourceDictionary>

@@ -1,0 +1,43 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxei="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    <Thickness x:Key="{dxet:TokenEditorThemeKey ResourceKey=TokenEditorMargin}">1</Thickness>
+
+    <ControlTemplate x:Key="{dxet:TokenEditorThemeKey ResourceKey=Template}" TargetType="{x:Type dxei:TokenEditor}">
+        <Grid Background="Transparent">
+            <ScrollViewer IsTabStop="False" x:Name="PART_ScrollViewer" CanContentScroll="True">
+                <dxei:TokenEditorPanel x:Name="PART_Presenter" EnableTokenWrapping="{TemplateBinding EnableTokenWrapping}" ShowTokenButtons="{TemplateBinding ShowTokenButtons}" TokenButtons="{TemplateBinding TokenButtons}" />
+            </ScrollViewer>
+        </Grid>
+    </ControlTemplate>
+    <DataTemplate x:Key="{dxet:TokenEditorThemeKey ResourceKey=DeleteButtonTemplate}">
+        <Button Visibility="{Binding Visibility}" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" Style="{DynamicResource {dxet:TokenEditorThemeKey ResourceKey=DeleteButtonStyle}}" />
+    </DataTemplate>
+    <Style x:Key="{dxet:TokenEditorThemeKey ResourceKey=ActiveEditorStyle}" TargetType="{x:Type dxe:ButtonEdit}">
+        <Setter Property="AllowDefaultButton" Value="False" />
+        <Setter Property="ValidateOnEnterKeyPressed" Value="True" />
+        <Setter Property="ValidateOnTextInput" Value="True" />
+        <Setter Property="EditValuePostMode" Value="Immediate" />
+        <Setter Property="TextTrimming" Value="None" />
+    </Style>
+    <ControlTemplate x:Key="{dxet:TokenEditorThemeKey ResourceKey=EmptyTokenContainerTemplate}" TargetType="{x:Type ContentControl}">
+        <Grid>
+            <TextBlock VerticalAlignment="Center" Text="{Binding Path=(dxei:TokenEditorPresenter.OwnerPresenter).NewTokenText, RelativeSource={RelativeSource Self}}" Foreground="#BF7F7F7F" x:Name="text" Margin="1" />
+            <TextBlock VerticalAlignment="Center" Text="{Binding Path=(dxei:TokenEditorPresenter.OwnerPresenter).NullText, RelativeSource={RelativeSource Self}}" x:Name="nulltext" Margin="2,1" Opacity="0" Foreground="{Binding Path=(dxei:TokenEditorPresenter.OwnerPresenter).NullTextForeground, RelativeSource={RelativeSource Self}}" />
+            <ContentPresenter />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(dxei:TokenEditorPresenter.OwnerPresenter).IsEditorActivated, RelativeSource={RelativeSource Self}}" Value="True">
+                <Setter Property="Opacity" TargetName="text" Value="0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(dxei:TokenEditorPresenter.OwnerPresenter).HasNullText, RelativeSource={RelativeSource Self}}" Value="True">
+                <Setter Property="Opacity" TargetName="text" Value="0" />
+                <Setter Property="Opacity" TargetName="nulltext" Value="1" />
+            </DataTrigger>
+             <DataTrigger Binding="{Binding Path=(dxei:TokenEditorPresenter.OwnerPresenter).IsTokenEditorReadOnly, RelativeSource={RelativeSource Self}}" Value="True">
+                <Setter Property="Opacity" TargetName="text" Value="0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(dxei:TokenEditorPresenter.OwnerPresenter).IsTextEditable, RelativeSource={RelativeSource Self}}" Value="False">
+                <Setter Property="Opacity" TargetName="text" Value="0" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

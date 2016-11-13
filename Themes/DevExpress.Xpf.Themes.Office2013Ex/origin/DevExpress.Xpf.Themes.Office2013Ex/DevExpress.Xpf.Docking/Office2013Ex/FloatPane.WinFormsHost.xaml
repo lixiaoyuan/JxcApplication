@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ve="http://schemas.devexpress.com/winfx/2008/xaml/docking/visualelements" xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/docking/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <Thickness x:Key="{dxt:FloatPaneElementsThemeKey ResourceKey=BorderMargin}">0</Thickness>
+    <Thickness x:Key="{dxt:FloatPaneElementsThemeKey ResourceKey=FormBorderMargin}">0</Thickness>
+    <Thickness x:Key="{dxt:FloatPaneElementsThemeKey ResourceKey=SingleBorderMargin}">0</Thickness>
+    <ControlTemplate x:Key="{dxt:FloatPaneElementsThemeKey ResourceKey=SingleBorderTemplate}" TargetType="ve:FormBorderControl">
+        <Grid>
+            <Border x:Name="PART_Content" Margin="{TemplateBinding ActualContentMargin}" Background="{DynamicResource {dxt:BrushElementsThemeKey ResourceKey=PanelBackground}}">
+                <ve:LayoutItemsControl ve:DockPane.HitTestType="Content" Orientation="{Binding Path=Orientation}" ItemsSource="{Binding Path=ItemsInternal}" />
+            </Border>
+            <ve:ResizeBoundsControl x:Name="PART_ResizeBorders" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="SizeStates">
+                    <VisualState x:Name="EmptySizeState" />
+                    <VisualState x:Name="Maximized">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="PART_ResizeBorders">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxt:FloatPaneElementsThemeKey ResourceKey=EmptyBorderTemplate}" TargetType="ve:FormBorderControl">
+        <Grid>
+            <Border x:Name="PART_Content" Margin="{Binding ActualContentMargin, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                <ve:LayoutItemsControl ve:DockPane.HitTestType="Content" Orientation="{Binding Path=Orientation}" Margin="{Binding Path=ActualMargin}" ItemsSource="{Binding Path=ItemsInternal}" />
+            </Border>
+            <ve:ResizeBoundsControl x:Name="PART_ResizeBorders" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="SizeStates">
+                    <VisualState x:Name="EmptySizeState" />
+                    <VisualState x:Name="Maximized">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="PART_ResizeBorders">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxt:FloatPaneElementsThemeKey ResourceKey=FormBorderTemplate}" TargetType="ve:FormBorderControl">
+        <Grid>
+            <ve:FormBorderContentControl Padding="{TemplateBinding ActualBorderMargin}">
+                <ve:LayoutItemsControl ve:DockPane.HitTestType="Content" Orientation="{Binding Path=Orientation}" Margin="{Binding Path=ActualMargin}" ItemsSource="{Binding Path=ItemsInternal}" />
+            </ve:FormBorderContentControl>
+            <ve:ResizeBoundsControl x:Name="PART_ResizeBorders" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="SizeStates">
+                    <VisualState x:Name="EmptySizeState" />
+                    <VisualState x:Name="Maximized">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="PART_ResizeBorders">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

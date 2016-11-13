@@ -1,0 +1,306 @@
+﻿<UserControl x:Class="JxcApplication.Views.ExpensesIn"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:ViewModels="clr-namespace:JxcApplication.ViewModels"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:selector="clr-namespace:JxcApplication.Selector"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:control="clr-namespace:JxcApplication.Control"
+             mc:Ignorable="d"
+             d:DesignHeight="311.529" d:DesignWidth="834.029">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
+                                    CustomNotificationPosition="BottomRight"
+                                    CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
+        <dxmvvm:EventToCommand SourceName="GridControl" EventName="CustomColumnDisplayText"
+                               Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True" />
+    </dxmvvm:Interaction.Behaviors>
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem x:Name="EI_BI_New" KeyGesture="Ctrl+N" Content="新订单"
+                               Command="{Binding NewProductOrderCommand}"
+                               LargeGlyph="{dx:DXImage Image=BOFileAttachment_32x32.png}"
+                               Glyph="{dx:DXImage Image=BOFileAttachment_16x16.png}" />
+
+            <dxb:BarButtonItem x:Name="EI_BT_DeleteRow" KeyGesture="Delete" Content="删除行"
+                               LargeGlyph="{dx:DXImageOffice2013 Image=Delete_32x32.png}"
+                               Command="{Binding DeleteSelectRowCommand}"
+                               CommandParameter="{Binding ElementName=GridControl}" />
+
+            <dxb:BarButtonItem x:Name="EI_BI_Save" KeyGesture="Ctrl+S" Content="保存"
+                               LargeGlyph="{dx:DXImageOffice2013 Image=SaveAll_32x32.png}"
+                               Command="{Binding SaveProductCommand}"
+                               CommandParameter="{Binding ElementName=GridControl}" />
+
+            <dxb:BarSubItem x:Name="EI_SI_Print" Content="打印"
+                            LargeGlyph="{dx:DXImage Image=Print_32x32.png}"
+                            Glyph="{dx:DXImage Image=PrintDialog_16x16.png}">
+                <dxb:BarButtonItem KeyGesture="Ctrl+P" Content="打印"
+                                   LargeGlyph="{dx:DXImage Image=Print_32x32.png}"
+                                   Glyph="{dx:DXImage Image=Print_16x16.png}"
+                                   Command="{Binding PrintCommand}" />
+                <dxb:BarButtonItem KeyGesture="Ctrl+Shift+P" Content="预览"
+                                   LargeGlyph="{dx:DXImage Image=PrintDialog_32x32.png}"
+                                   Glyph="{dx:DXImage Image=PrintDialog_16x16.png}"
+                                   Command="{Binding PrintPreviewCommand}" />
+            </dxb:BarSubItem>
+
+            <dxb:BarButtonItem x:Name="EI_BI_AddCostType" KeyGesture="Ctrl+R" Content="添加费用类别"
+                               Command="{Binding AddCostTypeCommand}"
+                               LargeGlyph="{dx:DXImage Image=BOFileAttachment_32x32.png}"
+                               Glyph="{dx:DXImage Image=BOFileAttachment_16x16.png}" />
+
+
+        </dxb:BarManager.Items>
+        <DockPanel>
+            <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2010"
+                               CategoriesSource="{Binding RibbonNodes}">
+                <dxr:RibbonControl.CategoryTemplateSelector>
+                    <selector:CategoryTemplateSelector CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
+                                                       DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
+                </dxr:RibbonControl.CategoryTemplateSelector>
+            </dxr:RibbonControl>
+            <Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" CornerRadius="7" Background="LightSteelBlue">
+
+                        <dxlc:LayoutControl Width="auto" Background="LightSteelBlue" Orientation="Horizontal">
+                            <dxlc:LayoutGroup Orientation="Vertical">
+                                <dxlc:LayoutGroup>
+                                    <dxlc:LayoutItem Label="收款账户:" HorizontalAlignment="Left">
+                                        <dxg:LookUpEdit Width="150" PopupWidth="300"
+                                                        ItemsSource="{Binding AccountsLookUp}"
+                                                        PopupContentTemplate="{StaticResource ControlTemplateLookUpAccount}"
+                                                        ValueMember="Id"
+                                                        DisplayMember="Name"
+                                                        EditValue="{Binding Expenses.PaymentAccountId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                        AutoPopulateColumns="False"
+                                                        IncrementalFiltering="True"
+                                                        ImmediatePopup="True">
+                                            <dxg:LookUpEdit.StyleSettings>
+                                                <dxg:SearchLookUpEditStyleSettings />
+                                            </dxg:LookUpEdit.StyleSettings>
+                                        </dxg:LookUpEdit>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="客户:" HorizontalAlignment="Left">
+                                        <dxg:LookUpEdit x:Name="CustomerLookUpEdit" Width="150" PopupWidth="400"
+                                                        PopupHeight="450" ItemsSource="{Binding CustomersLookUp}"
+                                                        PopupContentTemplate="{StaticResource ControlTemplateLookUpCustomer}"
+                                                        ValueMember="Id"
+                                                        DisplayMember="Name"
+                                                        EditValue="{Binding Expenses.CustomerId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                        AutoPopulateColumns="False"
+                                                        IncrementalFiltering="True"
+                                                        ImmediatePopup="True">
+                                            <dxg:LookUpEdit.StyleSettings>
+                                                <dxg:SearchLookUpEditStyleSettings />
+                                            </dxg:LookUpEdit.StyleSettings>
+                                        </dxg:LookUpEdit>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="联系人:" HorizontalAlignment="Left">
+                                        <dxg:LookUpEdit x:Name="AcontactsLookUpEdit" Width="150" PopupWidth="300"
+                                                        ItemsSource="{Binding AcontactsLookUp}"
+                                                        PopupContentTemplate="{StaticResource ControlTemplateLookUpAcontact}"
+                                                        ValueMember="Id"
+                                                        DisplayMember="Name"
+                                                        EditValue="{Binding Expenses.Acontact,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                        AutoPopulateColumns="False"
+                                                        IncrementalFiltering="True"
+                                                        ImmediatePopup="True">
+                                            <dxg:LookUpEdit.StyleSettings>
+                                                <dxg:SearchLookUpEditStyleSettings />
+                                            </dxg:LookUpEdit.StyleSettings>
+                                        </dxg:LookUpEdit>
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup>
+                                    <dxlc:LayoutItem Label="票号:" HorizontalAlignment="Left">
+                                        <dxe:TextEdit Width="150"
+                                                      EditValue="{Binding Expenses.Bill,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="序号:" HorizontalAlignment="Left" Foreground="#FF104EA9">
+                                        <dxe:TextEdit Width="150" IsReadOnly="True" NullText="保存后显示"
+                                                      EditValue="{Binding Expenses.Order,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup>
+                                    <dxlc:LayoutItem Label="经办人:" HorizontalAlignment="Left">
+                                        <dxg:LookUpEdit Width="150" PopupWidth="300"
+                                                        ItemsSource="{Binding SystemUserLookUp}"
+                                                        PopupContentTemplate="{StaticResource ControlTemplateLookUpSystemUsers}"
+                                                        ValueMember="Id"
+                                                        DisplayMember="Name"
+                                                        EditValue="{Binding Expenses.Attn,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                        AutoPopulateColumns="False"
+                                                        IncrementalFiltering="True"
+                                                        ImmediatePopup="True">
+                                            <dxg:LookUpEdit.StyleSettings>
+                                                <dxg:SearchLookUpEditStyleSettings />
+                                            </dxg:LookUpEdit.StyleSettings>
+                                        </dxg:LookUpEdit>
+                                    </dxlc:LayoutItem>
+
+                                </dxlc:LayoutGroup>
+                            </dxlc:LayoutGroup>
+                            <dxlc:LayoutGroup Orientation="Vertical">
+                                <dxlc:LayoutItem>
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <Grid Margin="0,0,10,0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Content="日期" FontSize="10"
+                                                   HorizontalContentAlignment="Center"
+                                                   Background="DodgerBlue" />
+                                            <dxe:DateEdit Grid.Row="1"
+                                                          DateTime="{Binding Expenses.CreteDate,Mode=TwoWay}"
+                                                          IsReadOnly="True" />
+                                        </Grid>
+                                        <Grid Margin="0,0,10,0"
+                                              Visibility="{Binding IsHistory,Converter={StaticResource ToVisibilityConverter}}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Content="单号" FontSize="10"
+                                                   HorizontalContentAlignment="Center"
+                                                   Background="DodgerBlue" />
+                                            <dxe:TextEdit Grid.Row="1" Text="{Binding Expenses.Code,Mode=TwoWay}"
+                                                          IsReadOnly="True" />
+
+                                        </Grid>
+                                    </StackPanel>
+
+                                </dxlc:LayoutItem>
+                            </dxlc:LayoutGroup>
+                        </dxlc:LayoutControl>
+                    </Border>
+                    <dxg:GridControl x:Name="GridControl" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                     ItemsSource="{Binding ExpensesDetail}">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="TableView" NewItemRowPosition="Bottom" ShowSearchPanelMode="Never"
+                                           ShowGroupPanel="False" />
+                        </dxg:GridControl.View>
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="CostTypeId" Header="费用类别" MinWidth="200"
+                                            ShowValidationAttributeErrors="False" Focusable="True">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxg:LookUpEditSettings PopupWidth="350" ItemsSource="{Binding CostTypeLookUp}"
+                                                            DisplayMember="Name"
+                                                            ValueMember="Id"
+                                                            PopupContentTemplate="{StaticResource ControlTemplateLookUpCostType}"
+                                                            AutoPopulateColumns="False"
+                                                            ImmediatePopup="True" IncrementalFiltering="True">
+                                        <dxg:LookUpEditSettings.StyleSettings>
+                                            <dxg:SearchLookUpEditStyleSettings />
+                                        </dxg:LookUpEditSettings.StyleSettings>
+                                    </dxg:LookUpEditSettings>
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="Mark" Header="备注" Width="300" AllowEditing="True" />
+                            <dxg:GridColumn FieldName="Cost" Header="金额" AllowEditing="True">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+
+                        </dxg:GridControl.Columns>
+                    </dxg:GridControl>
+
+                </Grid>
+
+                <!--#region历史订单-->
+                <control:OrderInBrowser x:Name="OrderUi" Background="Bisque" Grid.Column="0" Grid.Row="0"
+                                        HorizontalAlignment="Left" Width="0" Height="0" VerticalAlignment="Bottom"
+                                        Visibility="Hidden" dxmvvm:ViewModelExtensions.ParentViewModel="{Binding}">
+                    <control:OrderInBrowser.Triggers>
+                        <EventTrigger SourceName="OrderUi" RoutedEvent="control:OrderInBrowser.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation To="0" Duration="0:0:0.050"
+                                                     Storyboard.Target="{Binding ElementName=OrderUi}"
+                                                     Storyboard.TargetProperty="Width" />
+                                    <DoubleAnimation To="0" Duration="0:0:0.050"
+                                                     Storyboard.Target="{Binding ElementName=OrderUi}"
+                                                     Storyboard.TargetProperty="Height" />
+                                    <ObjectAnimationUsingKeyFrames BeginTime="0:0:0.050"
+                                                                   Storyboard.Target="{Binding ElementName=OrderUi}"
+                                                                   Storyboard.TargetProperty="Visibility">
+                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.Target="{Binding ElementName=TouchUi}"
+                                                                   Storyboard.TargetProperty="Background">
+                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.020">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <SolidColorBrush Color="DodgerBlue" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </control:OrderInBrowser.Triggers>
+                </control:OrderInBrowser>
+
+                <Border x:Name="TouchUi" Background="DodgerBlue" Width="60" Height="30" HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom" CornerRadius="10">
+                    <Border.Triggers>
+                        <EventTrigger SourceName="TouchUi" RoutedEvent="Border.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation To="300" Duration="0:0:0.050" Storyboard.TargetName="OrderUi"
+                                                         Storyboard.TargetProperty="Width" />
+                                        <DoubleAnimation To="400" Duration="0:0:0.050" Storyboard.TargetName="OrderUi"
+                                                         Storyboard.TargetProperty="Height" />
+                                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0.050"
+                                                                       Storyboard.TargetName="OrderUi"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.020"
+                                                                        Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TouchUi"
+                                                                       Storyboard.TargetProperty="Background">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.020">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="DeepSkyBlue" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Border.Triggers>
+                    <TextBlock Text="历史订单" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" />
+                </Border>
+                <!--#endregion-->
+            </Grid>
+        </DockPanel>
+    </dxb:BarManager>
+</UserControl>

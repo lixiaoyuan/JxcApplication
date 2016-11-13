@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="JxcApplication.Views.CopyMeWorkApprovalOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:JxcApplication.Views"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:core="clr-namespace:JxcApplication.Core"
+             xmlns:model="clr-namespace:ApplicationDb.Cor.Model;assembly=ApplicationDb.Cor"
+             xmlns:inherit="clr-namespace:JxcApplication.ViewModels.Inherit"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:viewModels="clr-namespace:JxcApplication.ViewModels"
+             xmlns:convert="clr-namespace:JxcApplication.Convert"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:selector="clr-namespace:JxcApplication.Selector"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             mc:Ignorable="d"
+             d:DesignHeight="396.585" d:DesignWidth="678.293" Name="root">
+    <UserControl.Resources>
+        <convert:ToParameterTypeInstanceConvert x:Key="DataRowConvertViewModel" />
+    </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:DispatcherService />
+        <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
+                                    CustomNotificationPosition="BottomRight"
+                                    CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
+        <dxmvvm:EventToCommand EventName="Loaded"
+                               SourceName="root"
+                               Command="{Binding LoadedCommand}" />
+        <dxmvvm:EventToCommand EventName="SelectedItemChanged"
+                               SourceName="GridControl"
+                               Command="{Binding SelectedItemChangedCommand}"
+                               PassEventArgsToCommand="True" />
+        <dxmvvm:EventToCommand EventName="EditValueChanged"
+                               SourceName="CheckEditShowRead"
+                               Command="{Binding EditValueChangedCommand}"
+                               PassEventArgsToCommand="True" />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxb:BarManager>
+            <dxb:BarManager.Items>
+                <dxb:BarButtonItem Name="CMWAO_BT_Read"
+                                   Content="已阅"
+                                   LargeGlyph="../Images/Tile/eye_32px.png"
+                                   Command="{Binding ReadCommand}"
+                                   CommandParameter="{Binding ElementName=GridControl,Path=SelectedItem}" />
+            </dxb:BarManager.Items>
+            <DockPanel>
+                <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2010"
+                                   CategoriesSource="{Binding RibbonNodes}" AsyncMergingEnabled="True">
+                    <dxr:RibbonControl.CategoryTemplateSelector>
+                        <selector:CategoryTemplateSelector
+                            CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
+                            DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
+                    </dxr:RibbonControl.CategoryTemplateSelector>
+                </dxr:RibbonControl>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,10" CornerRadius="7"
+                            Background="LightSteelBlue">
+                        <dxlc:LayoutControl Orientation="Horizontal">
+                            <dxlc:LayoutGroup Orientation="Vertical">
+                                <dxlc:LayoutGroup>
+                                    <dxlc:LayoutItem Label="发起日期:" HorizontalAlignment="Left">
+                                        <dxe:DateEdit Width="120" EditValue="{Binding StartDate, Mode=TwoWay}" />
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="至:" HorizontalAlignment="Left">
+                                        <dxe:DateEdit Width="120" EditValue="{Binding EndDate, Mode=TwoWay}" />
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="已阅的:" HorizontalAlignment="Left">
+                                        <dxe:CheckEdit Name="CheckEditShowRead" Width="120" EditValue="{Binding IsShowRead,Mode=OneWayToSource}" />
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                            </dxlc:LayoutGroup>
+                        </dxlc:LayoutControl>
+                    </Border>
+                    <dxg:GridControl Name="GridControl" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding WorkApprovalOrders}"
+                                     ShowLoadingPanel="{Binding ShowLoadingPanel}">
+                        <dxg:GridControl.View>
+                            <dxg:TableView AllowEditing="False" />
+                        </dxg:GridControl.View>
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="WorkApprovalId" Header="审批类型">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:ComboBoxEditSettings ItemsSource="{Binding ApprovalLookUp}" ValueMember="Id"
+                                                              DisplayMember="Name" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="UserName" Header="申请人" />
+                            <dxg:GridColumn FieldName="StartingTime" Header="开始时间" MinWidth="150">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:DateEditSettings Mask="F" MaskUseAsDisplayFormat="True" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="StopTime" Header="停止时间" MinWidth="150">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:DateEditSettings Mask="F" MaskUseAsDisplayFormat="True" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="OrderStatusType" Header="状态" MinWidth="150">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:ComboBoxEditSettings ValueMember="Id" DisplayMember="Description"
+                                                              ItemsSource="{core:EnumItemsSource EnumType=model:WorkApprovalOrderStatus}" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="OrderResultType" Header="审批结果" MinWidth="150">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:ComboBoxEditSettings ValueMember="Id" DisplayMember="Description"
+                                                              ItemsSource="{core:EnumItemsSource EnumType=model:WorkApprovalOrderResult}" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                        </dxg:GridControl.Columns>
+                    </dxg:GridControl>
+                    <ContentPresenter Grid.Row="1" Grid.Column="1"
+                                      Content="{Binding ElementName=GridControl,Path=SelectedItem,Converter={StaticResource DataRowConvertViewModel},ConverterParameter={x:Type inherit:WorkApprovalOrderViewDataContext}}">
+                        <ContentPresenter.ContentTemplateSelector>
+                            <core:FieldTemplateSelector FieldKeyName="TemplateName"
+                                                        Templates="{StaticResource WorkApprovalOrderShowTemplatesDictionary}" />
+                        </ContentPresenter.ContentTemplateSelector>
+                    </ContentPresenter>
+                </Grid>
+            </DockPanel>
+        </dxb:BarManager>
+    </Grid>
+</UserControl>

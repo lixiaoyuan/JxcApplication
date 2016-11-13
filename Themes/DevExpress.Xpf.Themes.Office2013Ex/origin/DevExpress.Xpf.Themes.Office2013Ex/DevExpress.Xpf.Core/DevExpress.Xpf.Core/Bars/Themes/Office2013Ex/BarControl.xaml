@@ -1,0 +1,239 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxbt="http://schemas.devexpress.com/winfx/2008/xaml/bars/themekeys" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <sys:Double x:Key="{dxbt:BarControlThemeKey ResourceKey=ClientPanelMinHeight}">23</sys:Double> 
+    <Thickness x:Key="{dxbt:BarControlThemeKey ResourceKey=ClientPanelPadding}">1,1,0,0</Thickness>
+    <SolidColorBrush x:Key="QuickCustomizationButtonBackgroundBrushHover" Color="#00000000" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="QuickCustomizationButtonBackgroundBrushPressed" Color="#00000000" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="QuickCustomizationButtonBackgroundBrushChecked" Color="#00000000" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="QuickCustomizationButtonBackgroundBrushInMainMenuHover" Color="#00000000" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="QuickCustomizationButtonBackgroundBrushInMainMenuPressed" Color="#00000000" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="QuickCustomizationButtonBackgroundBrushInMainMenuChecked" Color="#00000000" cs:Name="SolidColorBrush_0006" />
+    <SolidColorBrush x:Key="QuickCustomizationButtonArrowHover" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0007" />
+    <SolidColorBrush x:Key="QuickCustomizationButtonArrowPressed" Color="#FFB9B9B9" cs:Name="SolidColorBrush_0008" />
+    <SolidColorBrush x:Key="QuickCustomizationButtonArrowChecked" Color="#FFB9B9B9" cs:Name="SolidColorBrush_0009" />
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=DragWidgetTemplate}" TargetType="{x:Type dxb:DragWidget}">
+        <Grid x:Name="grid" Background="#00000000" MinWidth="0" cs:Name="Grid_0001">
+            <Path Stretch="Fill" Fill="#FFACACAC" Data="F1 M 465,344L 465,344L 466,344L 466,345L 465,345L 465,345L 464,345L 464,344L 465,344 Z M 465,352L 465,352L 466,352L 466,353L 465,353L 465,353L 464,353L 464,352L 465,352 Z M 465,340L 465,340L 466,340L 466,341L 465,341L 465,341L 464,341L 464,340L 465,340 Z M 465,348L 465,348L 466,348L 466,349L 465,349L 465,349L 464,349L 464,348L 465,348 Z M 465,342L 465,342L 466,342L 466,343L 465,343L 465,343L 464,343L 464,342L 465,342 Z M 465,350L 465,350L 466,350L 466,351L 465,351L 465,351L 464,351L 464,350L 465,350 Z M 465,338L 465,338L 466,338L 466,339L 465,339L 465,339L 464,339L 464,338L 465,338 Z M 465,346L 465,346L 466,346L 466,347L 465,347L 465,347L 464,347L 464,346L 465,346 Z " Width="2" Height="15" Margin="2" cs:Name="Path_0301" SnapsToDevicePixels="True" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinWidth" TargetName="grid" Value="44" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=QuickCustomizationButtonTemplate}" TargetType="{x:Type dxb:BarQuickCustomizationButton}">
+        <Grid x:Name="Root" Background="#00000000" MinWidth="0" Margin="0,1,0,1" cs:Name="Grid_0002">
+            <Grid x:Name="Glyph" Margin="4" VerticalAlignment="Bottom" SnapsToDevicePixels="True">
+                <Path x:Name="Path" Stretch="Fill" Fill="#FF666666" Data="F1 M 0,6L 6,0L 6,6L 0,6 Z " Width="6" Height="6" cs:Name="Path_0002" />
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" Duration="0" To="#FFCDE6F7" cs:Name="ColorAnimation_0001" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF2A8DD4" cs:Name="ColorAnimation_0002" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" Duration="0" To="#FF92C0E0" cs:Name="ColorAnimation_0003" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0004" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)" Duration="0" To="#FF92C0E0" cs:Name="ColorAnimation_0005" />
+                            <ColorAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0" To="#FF0072C6" cs:Name="ColorAnimation_0006" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="Opacity" Duration="0" To="0" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="OrientationStates">
+                    <VisualState x:Name="Horizontal" />
+                    <VisualState x:Name="Vertical">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Margin" dxcn:ValueSetter.Thickness="2,3,2,0" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="VerticalAlignment" dxcn:ValueSetter.VerticalAlignment="Top" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="RenderTransform">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <RotateTransform CenterX="3.5" CenterY="3.5" Angle="180" />
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="Glyph" Value="8" />
+                <Setter Property="MinWidth" TargetName="Root" Value="44" />
+                <Setter Property="MinHeight" TargetName="Root" Value="44" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=StatusBarContentTemplate}" TargetType="{x:Type ContentControl}">
+        <Border Background="#FF0072C6" cs:Name="Border_0001">
+            <ContentPresenter Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=MainMenuContentTemplate}" TargetType="{x:Type ContentControl}">
+        <ContentPresenter />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=QuickCustomizationButtonInMainMenuTemplate}" TargetType="{x:Type dxb:BarQuickCustomizationButton}">
+        <Grid>
+            <Path x:Name="Path" Stretch="Fill" Fill="#FFB9B9B9" Data="F1 M 477,229L 477,238L 468,238L 468,237L 476,237L 476,229L 477,229 Z M 475,232L 475,235L 475,236L 474,236L 474,236L 471,236L 471,235L 473,235L 470,232L 470,231L 471,231L 474,234L 474,232L 475,232 Z " Height="9" Width="9" Margin="3" cs:Name="Path_0003" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FFFFFFFF" cs:Name="EasingColorKeyFrame_0001" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FFB9B9B9" cs:Name="EasingColorKeyFrame_0002" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FFB9B9B9" cs:Name="EasingColorKeyFrame_0003" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Path" Storyboard.TargetProperty="Opacity" Duration="0" To="0.35" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="OrientationStates">
+                    <VisualState x:Name="Horizontal" />
+                    <VisualState x:Name="Vertical">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Path" Storyboard.TargetProperty="Margin" dxcn:ValueSetter.Thickness="2,3,2,0" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Path" Storyboard.TargetProperty="VerticalAlignment" dxcn:ValueSetter.VerticalAlignment="Top" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Path" Storyboard.TargetProperty="RenderTransform">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <RotateTransform CenterX="3.5" CenterY="3.5" Angle="180" />
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=ThumbTemplate}" TargetType="{x:Type Thumb}">
+        <Border Background="#FF0072C6" Padding="5,0,0,0" cs:Name="Border_0018">
+            <Grid Margin="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" SnapsToDevicePixels="True" cs:Name="Grid_0401">
+                <Path Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 671,130L 673,130L 673,132L 671,132L 671,130 Z M 674,130L 676,130L 676,132L 674,132L 674,130 Z M 677,130L 679,130L 679,132L 677,132L 677,130 Z M 677,127L 679,127L 679,129L 677,129L 677,127 Z M 677,124L 679,124L 679,126L 677,126L 677,124 Z M 674,127L 676,127L 676,129L 674,129L 674,127 Z " Width="8" Height="8" cs:Name="Path_0001" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=BarContentTemplate}" TargetType="{x:Type ContentControl}">
+        <ContentPresenter Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=DropIndicatorTemplate}" TargetType="{x:Type ContentControl}">
+        <!--First element MUST have a name "PART_Content"-->
+        <Grid x:Name="PART_Content" SnapsToDevicePixels="True">
+            <Grid.RenderTransform>
+                <TranslateTransform X="-3" Y="0" />
+            </Grid.RenderTransform>
+            <Border Background="#FF000000" BorderBrush="#FFFFFFFF" BorderThickness="1" Width="9" Height="3" VerticalAlignment="Top" cs:Name="Border_0013" />
+            <Border Background="#FF000000" BorderBrush="#FFFFFFFF" BorderThickness="1" Width="9" Height="3" VerticalAlignment="Bottom" cs:Name="Border_0015" />
+            <dx:PixelSnapper HorizontalAlignment="Center" Margin="0,2,0,2">
+                <Border Background="#FF000000" BorderBrush="#FFFFFFFF" BorderThickness="1,0,1,0" Width="3" cs:Name="Border_0017" />
+            </dx:PixelSnapper>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="Orientation">
+                    <VisualState x:Name="Horizontal">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Content" Storyboard.TargetProperty="RenderTransform">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <TransformGroup x:Name="HorizontalTransform">
+                                            <TranslateTransform Y="0" X="-3" />
+                                        </TransformGroup>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Vertical">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Content" Storyboard.TargetProperty="RenderTransform">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <TransformGroup x:Name="VerticalTransform">
+                                            <RotateTransform Angle="-90" CenterX="0.5" CenterY="0.5" />
+                                            <TranslateTransform Y="3" X="0" />
+                                        </TransformGroup>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+    <Style x:Key="{dxbt:BarControlThemeKey ResourceKey=BarContentStyle}" TargetType="{x:Type ContentControl}">
+        <Setter Property="Foreground" Value="#FF000000" cs:Name="Setter_0001" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontSize" Value="12" />        
+    </Style>
+    <Style x:Key="{dxbt:BarControlThemeKey ResourceKey=MenuContentStyle}" TargetType="{x:Type ContentControl}">
+        <Setter Property="Foreground" Value="#FF000000" cs:Name="Setter_0002" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontSize" Value="12" />
+        <!--ONLY SL
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        ONLY SL--> 
+    </Style>
+    <Style x:Key="{dxbt:BarControlThemeKey ResourceKey=MainMenuContentStyle}" TargetType="{x:Type ContentControl}">
+        <Setter Property="Foreground" Value="#FF000000" cs:Name="Setter_0003" />
+    </Style>
+    <Style x:Key="{dxbt:BarControlThemeKey ResourceKey=StatusBarContentStyle}" TargetType="{x:Type ContentControl}">
+        <Setter Property="Foreground" Value="#FF000000" cs:Name="Setter_0004" />
+    </Style>
+    <Style x:Key="{dxbt:BarControlThemeKey ResourceKey=BarStyle}" TargetType="{x:Type ContentControl}"></Style>
+    <Style x:Key="{dxbt:BarControlThemeKey ResourceKey=FloatingBarStyle}" TargetType="{x:Type ContentControl}"></Style>
+    <Style x:Key="{dxbt:BarControlThemeKey ResourceKey=MainMenuStyle}" TargetType="{x:Type ContentControl}"></Style>
+    <Style x:Key="{dxbt:BarControlThemeKey ResourceKey=StatusBarStyle}" TargetType="{x:Type ContentControl}"></Style>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=BarTemplate}" TargetType="{x:Type ContentControl}">
+        <Border Background="#FFFFFFFF" cs:Name="Border_0009">
+            <ContentPresenter />
+        </Border> 
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=MainMenuTemplate}" TargetType="{x:Type ContentControl}">
+        <Border Background="#FFFFFFFF" cs:Name="Border_0010">
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxbt:BarControlThemeKey ResourceKey=StatusBarTemplate}" TargetType="{x:Type ContentControl}">
+        <Border Background="#FF0072C6" BorderBrush="Transparent" BorderThickness="0,1,0,0" cs:Name="Border_0011"> 
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+</ResourceDictionary>

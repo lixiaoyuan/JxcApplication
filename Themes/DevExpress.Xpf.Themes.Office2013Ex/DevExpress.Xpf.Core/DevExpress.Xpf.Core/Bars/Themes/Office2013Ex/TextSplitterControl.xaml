@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxbt="http://schemas.devexpress.com/winfx/2008/xaml/bars/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <!--BEGIN WPF-->
+    <ControlTemplate x:Key="{dxbt:TextSplitterControlThemeKey ResourceKey=Template}" TargetType="{x:Type dxb:TextSplitterControl}">
+        <Border Background="#FFFFFFFF" cs:Name="Border_0001" />
+    </ControlTemplate>
+    <!--END WPF-->
+</ResourceDictionary>

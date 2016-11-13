@@ -1,0 +1,53 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler" xmlns:dxscht="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/themekeys" xmlns:dxschd="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/internal" xmlns:dxschdui="http://schemas.devexpress.com/winfx/2008/xaml/scheduler" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys">
+
+    
+    
+    <dxschd:ColorToBrushConverter x:Key="colorToBrushConverter" />
+
+
+    
+
+    <DataTemplate x:Key="{dxscht:SchedulerUIControlThemeKey ResourceKey=SchedulerResourceItemTemplate}">
+        <StackPanel Orientation="Horizontal">
+            <dxschd:SquareBorder Background="Gray" Padding="1" CornerRadius="1" Style="{DynamicResource {dxscht:SchedulerUIControlThemeKey ResourceKey=ColorMarkerStyle}}">
+                <dx:DXBorder Background="{Binding Path=Color, Converter={StaticResource colorToBrushConverter}}" />
+            </dxschd:SquareBorder>
+            <TextBlock x:Name="PART_Editor" Text="{Binding Caption}" Style="{DynamicResource {dxscht:SchedulerUIControlThemeKey ResourceKey=ItemTextBlockStyle}}">
+            </TextBlock>
+        </StackPanel>
+    </DataTemplate>
+
+    <ControlTemplate x:Key="{dxscht:SchedulerUIControlThemeKey ResourceKey=SchedulerResourceNonEditableTemplate}">
+        <dx:DXBorder Margin="{Binding Path=(dxe:BaseEdit.OwnerEdit).Padding, RelativeSource={RelativeSource TemplatedParent}}">
+            <StackPanel Orientation="Horizontal">
+                <dxschd:SquareBorder Background="Gray" Padding="1" CornerRadius="1" Style="{DynamicResource {dxscht:SchedulerUIControlThemeKey ResourceKey=ColorMarkerStyle}}">
+                    <dx:DXBorder Background="{Binding Path=(dxe:BaseEdit.OwnerEdit).SelectedItem.Color, Converter={StaticResource colorToBrushConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+                </dxschd:SquareBorder>
+                <TextBlock x:Name="PART_Editor" Style="{DynamicResource {dxscht:SchedulerUIControlThemeKey ResourceKey=ItemTextBlockStyle}}">
+            
+            <TextBlock.FocusVisualStyle>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Rectangle Stroke="#FF000000" StrokeDashArray="1 2" StrokeThickness="1" SnapsToDevicePixels="True" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBlock.FocusVisualStyle>
+            
+                </TextBlock>
+            </StackPanel>
+        </dx:DXBorder>
+    </ControlTemplate>
+    
+    
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Scheduler.UI.AppointmentResourceEdit}" TargetType="{x:Type dxschdui:AppointmentResourceEdit}" BasedOn="{StaticResource {dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Editors.ComboBoxEdit}}">
+    
+    
+        <Setter Property="ItemTemplate" Value="{DynamicResource {dxscht:SchedulerUIControlThemeKey ResourceKey=SchedulerResourceItemTemplate}}" />
+        <Setter Property="EditNonEditableTemplate" Value="{DynamicResource {dxscht:SchedulerUIControlThemeKey ResourceKey=SchedulerResourceNonEditableTemplate}}" />
+    </Style>
+
+</ResourceDictionary>

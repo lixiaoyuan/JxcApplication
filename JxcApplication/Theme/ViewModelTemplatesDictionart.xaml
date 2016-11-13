@@ -1,0 +1,123 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:views="clr-namespace:JxcApplication.Views"
+                    xmlns:native="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
+                    xmlns:relation="clr-namespace:JxcApplication.Views.Relation"
+                    xmlns:sell="clr-namespace:JxcApplication.Views.Sell"
+                    xmlns:storage="clr-namespace:JxcApplication.Views.Storage">
+    <!--视图模型字典-->
+    <native:TemplatesDictionary x:Key="ViewModelTemplatesDictionary">
+        <!--relation-->
+        <DataTemplate x:Key="AcontactViewModel">
+            <relation:AcontactView></relation:AcontactView>
+        </DataTemplate>
+        <DataTemplate x:Key="CustomerViewModel">
+            <relation:CustomerView></relation:CustomerView>
+        </DataTemplate>
+        <DataTemplate x:Key="SuppliersViewModel">
+            <relation:SuppliersView></relation:SuppliersView>
+        </DataTemplate>
+        <!--sell-->
+        <DataTemplate x:Key="ChargeViewModel">
+            <sell:ChargeView></sell:ChargeView>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductReturnViewModel">
+            <sell:ProductReturnView></sell:ProductReturnView>
+        </DataTemplate>
+        <DataTemplate x:Key="SalesBillingViewModel">
+            <sell:SalesBillingView></sell:SalesBillingView>
+        </DataTemplate>
+        <!--storage-->
+        <DataTemplate x:Key="FixedInStorageViewModel">
+            <storage:FixedInStorageView></storage:FixedInStorageView>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductInStorageViewModel">
+            <storage:ProductInStorage></storage:ProductInStorage>
+        </DataTemplate>
+        <DataTemplate x:Key="RawInStorageViewModel">
+            <storage:RawInStorageView></storage:RawInStorageView>
+        </DataTemplate>
+        <DataTemplate x:Key="RawOutStorageViewModel">
+            <storage:RawOutStorageView></storage:RawOutStorageView>
+        </DataTemplate>
+        <DataTemplate x:Key="StockAlarmViewModel">
+            <storage:StockAlarm></storage:StockAlarm>
+        </DataTemplate>
+        <!--views-->
+        <DataTemplate x:Key="ExpensesInViewModel">
+            <views:ExpensesIn></views:ExpensesIn>
+        </DataTemplate>
+        <DataTemplate x:Key="ExpensesViewModel">
+            <views:Expenses></views:Expenses>
+        </DataTemplate>
+        <DataTemplate x:Key="LastStoreQueViewModel">
+            <views:LastStoreQue></views:LastStoreQue>
+        </DataTemplate>
+        <DataTemplate x:Key="OrganizationStructureViewModel">
+            <views:OrganizationStructure></views:OrganizationStructure>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductViewModel">
+            <views:ProductManager></views:ProductManager>
+        </DataTemplate>
+        <DataTemplate x:Key="ReportAccountTransactionRecordViewModel">
+            <views:ReportAccountTransactionRecord></views:ReportAccountTransactionRecord>
+        </DataTemplate>
+        <DataTemplate x:Key="ReportExpensesViewModel">
+            <views:ReportExpenses></views:ReportExpenses>
+        </DataTemplate>
+        <DataTemplate x:Key="ReportNoPaymentViewModel">
+            <views:ReportNoPayment></views:ReportNoPayment>
+        </DataTemplate>
+        <DataTemplate x:Key="ReportPaymentedViewModel">
+            <views:ReportPaymented/>
+        </DataTemplate>
+        <DataTemplate x:Key="ReportHasReceivableViewModel">
+            <views:ReportHasReceivable/>
+        </DataTemplate>
+        <DataTemplate x:Key="ReportSalesDetailsViewModel">
+            <views:ReportSalesDetails></views:ReportSalesDetails>
+        </DataTemplate>
+        <DataTemplate x:Key="RepotProductInStoreViewModel">
+            <views:RepotProductInStore></views:RepotProductInStore>
+        </DataTemplate>
+        <DataTemplate x:Key="RepotProductOutStoreViewModel">
+            <views:RepotProductOutStore></views:RepotProductOutStore>
+        </DataTemplate>
+        <DataTemplate x:Key="ReportAccountInfoViewModel">
+            <views:RepotAccountInfo></views:RepotAccountInfo>
+        </DataTemplate>
+        <DataTemplate x:Key="RoleManagerViewModel">
+            <views:RoleManager></views:RoleManager>
+        </DataTemplate>
+        <DataTemplate x:Key="RoleMenuManagerViewModel">
+            <views:RoleMenuManager></views:RoleMenuManager>
+        </DataTemplate>
+        <DataTemplate x:Key="UserManagerViewModel">
+            <views:UserManager></views:UserManager>
+        </DataTemplate>
+        <DataTemplate x:Key="WageViewModel">
+            <views:Wage></views:Wage>
+        </DataTemplate>
+        <DataTemplate x:Key="RibbonNodeMaintainViewModel">
+            <views:RibbonNodeMaintain/>
+        </DataTemplate>
+        <DataTemplate x:Key="WorkApprovalMaintainViewModel">
+            <views:WorkApprovalMaintain/>
+        </DataTemplate>
+        <DataTemplate x:Key="NewWorkApprovalOrderViewModel">
+            <views:NewWorkApprovalOrder/>
+        </DataTemplate>
+        <DataTemplate x:Key="WaitWorkApprovalOrderViewModel">
+            <views:WaitWorkApprovalOrder/>
+        </DataTemplate>
+        <DataTemplate x:Key="MeWorkApprovalOrderViewModel">
+            <views:MeWorkApprovalOrder/>
+        </DataTemplate>
+        <DataTemplate x:Key="MeNewWorkApprovalOrderViewModel">
+            <views:MeNewWorkApprovalOrder/>
+        </DataTemplate>
+        <DataTemplate x:Key="CopyMeWorkApprovalOrderViewModel">
+            <views:CopyMeWorkApprovalOrder/>
+        </DataTemplate>
+    </native:TemplatesDictionary>
+</ResourceDictionary>

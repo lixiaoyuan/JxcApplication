@@ -1,0 +1,106 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib" xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" xmlns:dxwuii="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/internal" xmlns:dxwuit="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+    <Thickness x:Key="FlipViewButtonBorderThemeThickness" />
+    <SolidColorBrush x:Key="ItemBackgroundDefault" Color="#3F333333" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="ItemBackgroundHover" Color="#4F333333" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="ItemBackgroundPressed" Color="#7F333333" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="pathFillDefault" Color="#CFFFFFFF" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="pathFillHover" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="pathFillPressed" Color="#CFFFFFFF" cs:Name="SolidColorBrush_0006" />
+    <ControlTemplate x:Key="{dxwuit:WindowsUIElementsThemeKey ResourceKey=FadingButtonTemplate}" TargetType="dxwuii:FadingButton">
+        <Grid x:Name="Root" Opacity="0">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="State">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ItemBackgroundHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathLeft">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathRight">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathUp">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathDown">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillHover}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="State">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ItemBackgroundPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathLeft">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathRight">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathUp">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathDown">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource pathFillPressed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="Rotations">
+                    <VisualState x:Name="Left">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PathLeft" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Right">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PathRight" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Up">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PathUp" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Down">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PathDown" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="Transitions">
+                    <VisualState x:Name="Transparent" cs:Name="VisualState_0001">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Root" Duration="0:0:0.4" To="0" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Root">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.4">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Opaque">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Root" Duration="0:0:0.4" To="1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Visibility" dxcn:ValueSetter.Visibility="Visible" />                            
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <dx:DXBorder x:Name="State" Background="{StaticResource ItemBackgroundDefault}" CornerRadius="64" Width="40" Height="40">
+                <Grid Margin="1">
+                    <Path x:Name="PathRight" Stretch="Fill" Fill="{StaticResource pathFillDefault}" Width="38" Height="38" Opacity="0" Data="F1 M 349,770C 341.82,770 336,775.82 336,783C 336,790.18 341.82,796 349,796C 356.179,796 362,790.18 362,783C 362,775.82 356.179,770 349,770 Z M 349,772C 355.075,772 360,776.925 360,783C 360,789.075 355.075,794 349,794C 342.925,794 338,789.075 338,783C 338,776.925 342.925,772 349,772 Z M 358,783L 350,775L 347,775L 354,782L 341,782L 341,784L 354,784L 347,791L 350,791L 358,783 Z" />
+                    <Path x:Name="PathLeft" Stretch="Fill" Fill="{StaticResource pathFillDefault}" Width="38" Height="38" Opacity="0" Data="F1 M 322,770C 329.18,770 335,775.82 335,783C 335,790.18 329.18,796 322,796C 314.82,796 309,790.18 309,783C 309,775.82 314.82,770 322,770 Z M 322,772C 315.925,772 311,776.925 311,783C 311,789.075 315.925,794 322,794C 328.075,794 333,789.075 333,783C 333,776.925 328.075,772 322,772 Z M 313,783L 321,775L 324,775L 317,782L 330,782L 330,784L 317,784L 324,791L 321,791L 313,783 Z" />
+                    <Path x:Name="PathUp" Stretch="Fill" Fill="{StaticResource pathFillDefault}" Width="38" Height="38" Opacity="0" Data="F1 M 348,759C 348,766.18 342.18,772 335,772C 327.82,772 322,766.18 322,759C 322,751.82 327.82,746 335,746C 342.18,746 348,751.82 348,759 Z M 346,759C 346,752.925 341.075,748 335,748C 328.925,748 324,752.925 324,759C 324,765.075 328.925,770 335,770C 341.075,770 346,765.075 346,759 Z M 335,750L 343,758L 343,761L 336,754L 336,767L 334,767L 334,754L 327,761L 327,758L 335,750 Z" />
+                    <Path x:Name="PathDown" Stretch="Fill" Fill="{StaticResource pathFillDefault}" Width="38" Height="38" Opacity="0" Data="F1 M 348,807C 348,799.82 342.18,794 335,794C 327.821,794 322,799.82 322,807C 322,814.18 327.821,820 335,820C 342.18,820 348,814.18 348,807 Z M 346,807C 346,813.075 341.075,818 335,818C 328.925,818 324,813.075 324,807C 324,800.925 328.925,796 335,796C 341.075,796 346,800.925 346,807 Z M 335,816L 343,808L 343,805L 336,812L 336,799L 334,799L 334,812L 327,805L 327,808L 335,816 Z" />
+                </Grid>
+            </dx:DXBorder>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

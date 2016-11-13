@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxret="http://schemas.devexpress.com/winfx/2008/xaml/richedit/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <SolidColorBrush x:Key="{dxret:RichEditControlThemeKey ResourceKey=RichEditForegroundBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="{dxret:RichEditControlThemeKey ResourceKey=RichEditBackgroundBrush}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0002" />
+    <ControlTemplate x:Key="{dxret:RichEditControlThemeKey ResourceKey=BackgroundControlTemplate}" TargetType="{x:Type ContentControl}">
+        <Border>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0106">
+                    <GradientStop Color="#FFFFFFFF" Offset="0" cs:Name="Border_0001" />
+                    <GradientStop Color="#FFF0F0F0" Offset="1" cs:Name="GradientStop_0001" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" UseLayoutRounding="True" SnapsToDevicePixels="True" />
+        </Border>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxret:RichEditControlThemeKey ResourceKey=BorderControlTemplate}" TargetType="{x:Type ContentControl}">
+        <Border BorderBrush="#FFDDDDDD" BorderThickness="1" SnapsToDevicePixels="True" cs:Name="Border_0002">
+            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" UseLayoutRounding="True" />
+        </Border>
+    </ControlTemplate>
+</ResourceDictionary>

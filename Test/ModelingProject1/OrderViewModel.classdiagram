@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="7497ce2a-7704-4ab3-9eea-d1299d9f3676" name="OrderViewModel" linkedPackageId="7dba4796-2bc6-476a-aa22-9541a2fe76a3" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="28bc226c-68d1-4db4-a287-3edcc3fd3ac2">
+      <profileInstance Id="aa68fd72-f378-431f-a723-73ac520e52a9" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="89e593f9-65f8-46e9-8454-3a5abd9dbec3">
+      <profileInstance Id="b77b6c63-abc9-4efd-b47a-939db8ba5393" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6a84d321-b9d7-4278-8ce9-743fc9a44278" name="OrderViewModel" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6b2e7868-d203-4ae7-bc99-4ed03cd9dd16" />
+        <generalsInternal>
+          <generalization Id="b1abf5f6-def3-4f27-87f5-fa805b567a27" isSubstitutable="false">
+            <classMoniker Id="c05091aa-ccb1-47db-bb26-19d50196b746" LastKnownName="ViewModelBaseCor" />
+            <elementDefinition Id="436eabb4-5e45-43d0-861e-9ddafa795eb1" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="c05091aa-ccb1-47db-bb26-19d50196b746" name="ViewModelBaseCor" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="7da0f1d4-47f9-4bed-a78c-ba917594bf83" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7152cc08-c3de-45e3-aba8-50c4386804b2" name="HistoryOrder&lt;T,TDetail,TOrderType&gt;" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cf30efb7-b949-40ae-8506-a93f06d2723e" />
+        <ownedOperationsInternal>
+          <operation Id="6c9a92c6-85b2-466c-ac49-6808ad218a9e" name="InitHistoryList" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="03f94628-5a14-4503-b91e-9ac9926cf25d" />
+          </operation>
+          <operation Id="dbc2a428-8d30-4b7a-937e-7debfc4cde6e" name="LoadHistory" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ab57c525-a332-46dc-97de-ae2ef99d8c9b" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="28812c28-060b-432c-88c1-7eee92a1e9c0" name="Guid id" direction="In" isUnique="false">
+                  <elementDefinition Id="c5b853b1-899a-4b86-9077-b3cb01389e10" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="7dba4796-2bc6-476a-aa22-9541a2fe76a3" name="ModelingProject1">
+    <elementDefinition Id="4759e949-4571-4c24-a7d1-89c801abc9f4" />
+  </package>
+</logicalClassDesignerModel>

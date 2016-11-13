@@ -1,0 +1,224 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/docking/themekeys" xmlns:ve="http://schemas.devexpress.com/winfx/2008/xaml/docking/visualelements" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+    
+    <Thickness x:Key="TabItem.SelectedState.Hold.Item.Padding">1</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Hold.Item.Margin">0</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Top.Root.Margin">0,-2,0,0</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Top.Item.Padding">1,1,1,0</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Top.Item.Margin">0,0,0,-1</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Bottom.Root.Margin">0,0,0,-2</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Bottom.Item.Padding">1,0,1,1</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Bottom.Item.Margin">0,-1,0,0</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Left.Root.Margin">-2,0,0,0</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Left.Item.Padding">1,1,0,1</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Left.Item.Margin">0,0,-1,0</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Right.Root.Margin">0,0,-2,0</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Right.Item.Padding">0,1,1,1</Thickness>
+    <Thickness x:Key="TabItem.SelectedState.Right.Item.Margin">-1,0,0,0</Thickness>
+    
+    <SolidColorBrush x:Key="TabItem.Foreground" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="TabItem.BorderBrush" Color="#FFACACAC" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="TabItem.HoverState.BorderBrush" Color="#FF7EB4EA" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="TabItem.SelectedState.BorderBrush" Color="#FFACACAC" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="TabItem.SelectedState.Background" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="TabItem.FocusedState" Color="#FF0072C6" cs:Name="SolidColorBrush_0007" />
+    <LinearGradientBrush x:Key="TabItem.Background.Top" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0075">
+        <GradientStop Color="#FFF0F0F0" Offset="0" cs:Name="GradientStop_0001" />
+        <GradientStop Color="#FFE5E5E5" Offset="1" cs:Name="GradientStop_0002" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItem.Background.Hover.Top" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0076">
+        <GradientStop Color="#FFECF4FC" Offset="0" cs:Name="GradientStop_0003" />
+        <GradientStop Color="#FFDCECFC" Offset="1" cs:Name="GradientStop_0004" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItem.Background.Bottom" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0077">
+        <GradientStop Color="#FFF0F0F0" Offset="0" cs:Name="GradientStop_0005" />
+        <GradientStop Color="#FFE5E5E5" Offset="1" cs:Name="GradientStop_0006" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItem.Background.Hover.Bottom" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0078">
+        <GradientStop Color="#FFECF4FC" Offset="0" cs:Name="GradientStop_0007" />
+        <GradientStop Color="#FFDCECFC" Offset="1" cs:Name="GradientStop_0008" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItem.Background.Left" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0079">
+        <GradientStop Color="#FFF0F0F0" Offset="0" cs:Name="GradientStop_0009" />
+        <GradientStop Color="#FFE5E5E5" Offset="1" cs:Name="GradientStop_0010" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItem.Background.Hover.Left" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0080">
+        <GradientStop Color="#FFECF4FC" Offset="0" cs:Name="GradientStop_0011" />
+        <GradientStop Color="#FFDCECFC" Offset="1" cs:Name="GradientStop_0012" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItem.Background.Right" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0081">
+        <GradientStop Color="#FFF0F0F0" Offset="0" cs:Name="GradientStop_0013" />
+        <GradientStop Color="#FFE5E5E5" Offset="1" cs:Name="GradientStop_0014" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItem.Background.Hover.Right" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_0082">
+        <GradientStop Color="#FFECF4FC" Offset="0" cs:Name="GradientStop_0015" />
+        <GradientStop Color="#FFDCECFC" Offset="1" cs:Name="GradientStop_0016" />
+    </LinearGradientBrush>
+    
+    <ControlTemplate x:Key="{dxt:TabbedLayoutGroupPaneElementsThemeKey ResourceKey=PageHeader}" TargetType="{x:Type ve:TabbedLayoutGroupItem}">
+        <Grid x:Name="Grid" Margin="0,0,-1,0" Visibility="{Binding Visibility}" ve:DockPane.HitTestType="Header">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TabItemTopHover" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <DoubleAnimation Storyboard.TargetName="TabItemBottomHover" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <DoubleAnimation Storyboard.TargetName="TabItemLeftHover" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <DoubleAnimation Storyboard.TargetName="TabItemRightHover" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Normal" />
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="SelectionStates">
+                    <VisualState x:Name="EmptySelectionState" />
+                    <VisualState x:Name="Selected">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TabItemTopSelected" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <DoubleAnimation Storyboard.TargetName="TabItemBottomSelected" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <DoubleAnimation Storyboard.TargetName="TabItemLeftSelected" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <DoubleAnimation Storyboard.TargetName="TabItemRightSelected" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Unselected">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="PART_CaptionControlPresenter">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <SolidColorBrush Color="#FF3C3C3C" cs:Name="SolidColorBrush_0006" />
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="LocationStates">
+                    <VisualState x:Name="Top">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TabTop" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Bottom">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TabBottom" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid" Storyboard.TargetProperty="(FrameworkElement.Margin)" dxcn:ValueSetter.Thickness="0,0,-1,0" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Padding" Storyboard.TargetName="PART_CaptionControlPresenter">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Thickness>10,3,10,4</Thickness>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Left">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TabLeft" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid" Storyboard.TargetProperty="(FrameworkElement.Margin)" dxcn:ValueSetter.Thickness="0,0,0,-1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Padding" Storyboard.TargetName="PART_CaptionControlPresenter">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Thickness>10,3,10,3</Thickness>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Right">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TabRight" Storyboard.TargetProperty="Opacity" Duration="0" To="1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid" Storyboard.TargetProperty="(FrameworkElement.Margin)" dxcn:ValueSetter.Thickness="0,0,0,-1" />
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Padding" Storyboard.TargetName="PART_CaptionControlPresenter">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Thickness>10,3,10,3</Thickness>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <ve:TabHeaderContainer TopMargin="0" BottomMargin="0" LeftMargin="0" RightMargin="0" TopSelectedMargin="0,-2,0,-1" BottomSelectedMargin="0,-1,0,-2" LeftSelectedMargin="-2,0,-1,0" RightSelectedMargin="-1,0,-2,0" CaptionLocation="{Binding CaptionLocation, RelativeSource={RelativeSource TemplatedParent}}" IsSelected="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid>
+                    <Grid x:Name="TabTop">
+                        <dx:DXBorder x:Name="TabItemTop" Background="{StaticResource TabItem.Background.Top}" BorderBrush="{StaticResource TabItem.BorderBrush}" BorderThickness="1,1,1,0" />
+                        <dx:DXBorder x:Name="TabItemTopHover" Background="{StaticResource TabItem.Background.Hover.Top}" BorderBrush="{StaticResource TabItem.BorderBrush}" BorderThickness="1,1,1,0" Opacity="0" />
+                        <dx:DXBorder x:Name="TabItemTopSelected" Background="{StaticResource TabItem.SelectedState.Background}" BorderBrush="{StaticResource TabItem.SelectedState.BorderBrush}" BorderThickness="1,1,1,0" Opacity="0" />
+                    </Grid>
+                    <Grid x:Name="TabBottom" Opacity="0">
+                        <dx:DXBorder x:Name="TabItemBottom" Background="{StaticResource TabItem.Background.Bottom}" BorderBrush="{StaticResource TabItem.BorderBrush}" BorderThickness="1,0,1,1" />
+                        <dx:DXBorder x:Name="TabItemBottomHover" Background="{StaticResource TabItem.Background.Hover.Bottom}" BorderBrush="{StaticResource TabItem.BorderBrush}" BorderThickness="1,0,1,1" Opacity="0" />
+                        <dx:DXBorder x:Name="TabItemBottomSelected" Background="{StaticResource TabItem.SelectedState.Background}" BorderBrush="{StaticResource TabItem.SelectedState.BorderBrush}" BorderThickness="1,0,1,1" Opacity="0" />
+                    </Grid>
+                    <Grid x:Name="TabLeft" Opacity="0">
+                        <dx:DXBorder x:Name="TabItemLeft" Background="{StaticResource TabItem.Background.Left}" BorderBrush="{StaticResource TabItem.BorderBrush}" BorderThickness="1,1,0,1" />
+                        <dx:DXBorder x:Name="TabItemLeftHover" Background="{StaticResource TabItem.Background.Hover.Left}" BorderBrush="{StaticResource TabItem.BorderBrush}" BorderThickness="1,1,0,1" Opacity="0" />
+                        <dx:DXBorder x:Name="TabItemLeftSelected" Background="{StaticResource TabItem.SelectedState.Background}" BorderBrush="{StaticResource TabItem.SelectedState.BorderBrush}" BorderThickness="1,1,0,1" Opacity="0" />
+                    </Grid>
+                    <Grid x:Name="TabRight" Opacity="0">
+                        <dx:DXBorder x:Name="TabItemRight" Background="{StaticResource TabItem.Background.Right}" BorderBrush="{StaticResource TabItem.BorderBrush}" BorderThickness="0,1,1,1" />
+                        <dx:DXBorder x:Name="TabItemRightHover" Background="{StaticResource TabItem.Background.Hover.Right}" BorderBrush="{StaticResource TabItem.BorderBrush}" BorderThickness="0,1,1,1" Opacity="0" />
+                        <dx:DXBorder x:Name="TabItemRightSelected" Background="{StaticResource TabItem.SelectedState.Background}" BorderBrush="{StaticResource TabItem.SelectedState.BorderBrush}" BorderThickness="0,1,1,1" Opacity="0" />
+                    </Grid>
+                </Grid>
+            </ve:TabHeaderContainer>
+            <ve:TabHeaderTransformPanel CaptionLocation="{Binding CaptionLocation, RelativeSource={RelativeSource TemplatedParent}}" CaptionOrientation="{Binding CaptionOrientation, RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid x:Name="Content">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ve:TemplatedTabCaptionControl x:Name="PART_CaptionControlPresenter" Foreground="#FF3C3C3C" Padding="10,4,10,2" LayoutItem="{Binding}" cs:Name="TemplatedTabCaptionControl_0001" />
+                    <ve:BaseControlBoxControl x:Name="PART_ControlBox" Margin="-8,4,10,2" ButtonWidth="16" ButtonHeight="16" LayoutItem="{Binding}" Grid.Column="1" />
+                    <dx:DXBorder x:Name="PART_TouchPlaceHolder" Visibility="Collapsed" MinHeight="44" />
+                </Grid>
+            </ve:TabHeaderTransformPanel>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="ButtonWidth" TargetName="PART_ControlBox" Value="44" />
+                <Setter Property="ButtonHeight" TargetName="PART_ControlBox" Value="44" />
+                <Setter Property="Padding" TargetName="PART_CaptionControlPresenter" Value="12" />
+                <Setter Property="Margin" TargetName="PART_ControlBox" Value="-12,12,12,12" />
+                <Setter Property="Visibility" TargetName="PART_TouchPlaceHolder" Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxt:TabbedLayoutGroupPaneElementsThemeKey ResourceKey=Template}" TargetType="{x:Type ve:TabbedLayoutGroupPane}">
+        <ve:DockingSplitLayoutPanel ve:DockPane.HitTestType="Bounds" TopContent1Margin="0,2,0,0" LeftContent1Margin="2,0,0,0" BottomContent1Margin="0,0,0,2" RightContent1Margin="0,0,2,0" DataContext="{Binding LayoutItem}">
+            <ve:DockingSplitLayoutPanel.Content1Location>
+                <Binding Path="CaptionLocation">
+                    <Binding.Converter>
+                        <ve:GroupCaptionLocationToDockConverter />
+                    </Binding.Converter>
+                </Binding>
+            </ve:DockingSplitLayoutPanel.Content1Location>
+            <ve:DockingSplitLayoutPanel.Content1>
+                <ve:DockingSplitLayoutPanel x:Name="PART_Header" Panel.ZIndex="1" MaximizeContent1="True">
+                    <ve:DockingSplitLayoutPanel.Content1Location>
+                        <Binding Path="CaptionLocation">
+                            <Binding.Converter>
+                                <ve:TabHeaderCaptionLocationToDockConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </ve:DockingSplitLayoutPanel.Content1Location>
+                    <ve:DockingSplitLayoutPanel.Content1>
+                        <ItemsPresenter x:Name="PART_HeadersPanelPresenter" />
+                    </ve:DockingSplitLayoutPanel.Content1>
+                    <ve:DockingSplitLayoutPanel.Content2>
+                        <ve:TabHeaderControlBoxControl x:Name="PART_ControlBox" ve:DockPane.HitTestType="ControlBox" LayoutItem="{Binding}" ButtonHeight="16" ButtonWidth="16" ScrollPrevButtonTemplate="{DynamicResource {dxt:DocumentPaneElementsThemeKey ResourceKey=ScrollPrevButton}}" ScrollNextButtonTemplate="{DynamicResource {dxt:DocumentPaneElementsThemeKey ResourceKey=ScrollNextButton}}" ve:TabHeaderControlBoxControl.Location="{Binding CaptionLocation}" />
+                    </ve:DockingSplitLayoutPanel.Content2>
+                </ve:DockingSplitLayoutPanel>
+            </ve:DockingSplitLayoutPanel.Content1>
+            <ve:DockingSplitLayoutPanel.Content2>
+                <dx:DXBorder x:Name="PART_SelectedPage" Background="#FFFFFFFF" BorderBrush="#FFACACAC" BorderThickness="1" Padding="11" cs:Name="Border_0002">
+                    <ve:LayoutTabFastRenderPanel x:Name="PART_FastRenderPanel" ve:DockPane.HitTestType="Content" Margin="{TemplateBinding Padding}" />
+                </dx:DXBorder>
+            </ve:DockingSplitLayoutPanel.Content2>
+        </ve:DockingSplitLayoutPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Padding" TargetName="PART_SelectedPage" Value="12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

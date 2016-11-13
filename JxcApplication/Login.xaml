@@ -1,0 +1,129 @@
+﻿<Window xmlns:dxca="http://schemas.devexpress.com/winfx/2008/xaml/carousel" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxga="http://schemas.devexpress.com/winfx/2008/xaml/gauges"
+    xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler"
+    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxSplashScreen="clr-namespace:JxcApplication.DXSplashScreen"
+    x:Class="JxcApplication.Login"
+    mc:Ignorable="d"
+    Title="登录" d:DesignWidth="536.8" d:DesignHeight="315.2" Width="500" Height="300"
+    WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True"
+    Background="Transparent" Icon="Images/Icons/icon.png" Loaded="Login_OnLoaded">
+    <!--<dxmvvm:Interaction.Behaviors>
+        <dx:DXSplashScreenService Name="DxSplashScreenService" SplashScreenType="dxSplashScreen:ProgressWindow"  SplashScreenStartupLocation="CenterOwner"/>
+    </dxmvvm:Interaction.Behaviors>-->
+    <Border Background="White" CornerRadius="10" BorderBrush="CadetBlue" BorderThickness="1,0,1,1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="0.4*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Source="Images/login-log.jpg" Stretch="Uniform"  RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="120" Height="80" Margin="15,10,0,0" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-37.875"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="40" CornerRadius="10,10,0,0"
+                    VerticalAlignment="Top" Background="DodgerBlue" MouseMove="Title_OnMouseMove">
+                <Grid>
+                    <TextBlock Text="  系统登录" FontSize="20" Margin="0,0,50,0" VerticalAlignment="Center"
+                               Foreground="White" IsHitTestVisible="False" />
+                    <Label x:Name="LabelClose" Width="40" Height="40" Foreground="White" HorizontalAlignment="Right"
+                           HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" IsHitTestVisible="True"
+                           FontSize="18" Content="X" Background="DodgerBlue" MouseLeftButtonUp="Close_OnClick">
+                        <Label.Triggers>
+                            <EventTrigger SourceName="LabelClose" RoutedEvent="Label.MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
+                                                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <SolidColorBrush>
+                                                                Red
+                                                            </SolidColorBrush>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger SourceName="LabelClose" RoutedEvent="Label.MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
+                                                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <SolidColorBrush>
+                                                                DodgerBlue
+                                                            </SolidColorBrush>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Label.Triggers>
+                        <Label.Clip>
+                            <GeometryGroup FillRule="Nonzero">
+                                <RectangleGeometry Rect="0,0,40,40" RadiusX="10" RadiusY="10"></RectangleGeometry>
+                                <RectangleGeometry Rect="0,0,20,40"></RectangleGeometry>
+                                <RectangleGeometry Rect="0,10,40,30"></RectangleGeometry>
+                            </GeometryGroup>
+                        </Label.Clip>
+                    </Label>
+                </Grid>
+            </Border>
+            <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,40,0,0" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" FontSize="40" Text="BIGEWEIER" />
+
+            <Grid Grid.Row="1" Grid.Column="1">
+                <StackPanel Margin="40,0,40,0">
+                    <dxe:TextEdit x:Name="TextEditUserCode" Height="35" Width="300" NullText="用户名" />
+                    <dxe:PasswordBoxEdit x:Name="TextEditPassword" Height="35" Width="300" Margin="0,10,0,10" NullText="密码" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Name="ButtonLog" Content="登录" Width="170" Height="40" HorizontalAlignment="Center" IsDefault="True" Click="Login_OnClick" />
+                            <Label Content="修改密码" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20,0,-50,0" Cursor="Hand" MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp"></Label>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"   CornerRadius="0,0,10,10" Margin="0,5,0,0" VerticalAlignment="Bottom" Height="5" Visibility="Collapsed">
+                <Border.Background>
+                    <LinearGradientBrush >
+                        <GradientStop Color="Red" Offset="0.43"/>
+                        <GradientStop Color="White" Offset="0.433"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+            </Border>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,664 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:themes="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet/themekeys" xmlns:dxsps="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet" xmlns:dxspsi="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet/internal" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Spreadsheet/Generic/DefaultStyles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <dx:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <dx:BoolToVisibilityInverseConverter x:Key="BoolToVisibilityInverseConverter" />
+    <dx:ColorOverlayConverter x:Key="ColorOverlayConveter" />
+    <!-- General Resources -->
+    <Color x:Key="{themes:SpreadsheetThemeKey ResourceKey=GridLinesColor}" cs:Name="Color_0001">#FFD3D3D3</Color>
+    <Color x:Key="GlyphColor" cs:Name="Color_0002">#FF666666</Color>
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=SpreadsheetForegroundBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0043" />
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=SpreadsheetBackgroundBrush}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=VisualFeedbackLineBrush}" Color="#FF666666" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=FrozenSeparatorBrush}" Color="#FF9B9B9B" cs:Name="SolidColorBrush_0052" />
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=WorksheetBorderBrush}" Color="{StaticResource {themes:SpreadsheetThemeKey ResourceKey=GridLinesColor}}" />
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=AutoFilterBackgroundBrush}" Color="#E5FFFFFF" cs:Name="SolidColorBrush_0059" />
+    <SolidColorBrush x:Key="Spreadsheet.BorderBrush" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="Selection.BorderBrush" Color="#FF92C0E0" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="Selection.Background" Color="#7F92C0E0" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="TabPanel.BorderBrush" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0006" />
+    <SolidColorBrush x:Key="TabPanel.Background" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0007" />
+    <SolidColorBrush x:Key="GridLine" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0008" />
+    <SolidColorBrush x:Key="ResizeThumb.Background" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0009" />
+    <SolidColorBrush x:Key="ResizeThumb.GlyphBrush" Color="#FFACACAC" cs:Name="SolidColorBrush_0010" />
+    <SolidColorBrush x:Key="ResizeThumb.GlyphBrush.IsMouseOver" Color="#FF666666" cs:Name="SolidColorBrush_0011" />
+    <SolidColorBrush x:Key="ScrollBar.Corner.BorderBrush" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0044" />
+    <SolidColorBrush x:Key="ScrollBar.Corner.Background" Color="#FFF0F0F0" cs:Name="SolidColorBrush_0012" />
+    <SolidColorBrush x:Key="GlyphBrush" Color="#FF666666" cs:Name="SolidColorBrush_0013" />
+    <!--Grouping-->
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=GroupControlBackgroundBrush}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0056" />
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=GroupLineBrush}" Color="#7F808080" cs:Name="SolidColorBrush_0057" />
+    <SolidColorBrush x:Key="{themes:SpreadsheetThemeKey ResourceKey=GroupDotBrush}" Color="#7F000000" cs:Name="SolidColorBrush_0058" />
+    <sys:Double x:Key="{themes:SpreadsheetThemeKey ResourceKey=GroupLineThickness}">1</sys:Double>
+    <sys:Double x:Key="{themes:SpreadsheetThemeKey ResourceKey=GroupDotThickness}">2</sys:Double>
+    <!-- Header -->
+    <SolidColorBrush x:Key="Header.BorderBrush" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0014" />
+    <SolidColorBrush x:Key="Header.Background" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0015" />
+    <SolidColorBrush x:Key="Header.BorderBrush.IsMouseOver" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0016" />
+    <SolidColorBrush x:Key="Header.Background.IsMouseOver" Color="#FFF0F0F0" cs:Name="SolidColorBrush_0017" />
+    <SolidColorBrush x:Key="Header.BorderBrush.IsSelected" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0018" />
+    <SolidColorBrush x:Key="Header.Background.IsSelected" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0019" />
+    <!-- TabSelectorItem -->
+    <SolidColorBrush x:Key="TabSelectorItem.UnselectedState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0020" />
+    <SolidColorBrush x:Key="TabSelectorItem.UnselectedState.Border2" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0021" />
+    <SolidColorBrush x:Key="TabSelectorItem.SelectedState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0023" />
+    <SolidColorBrush x:Key="TabSelectorItem.SelectedState.Border2" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0024" />
+    <SolidColorBrush x:Key="TabSelectorItem.MouseHoverState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0026" />
+    <SolidColorBrush x:Key="TabSelectorItem.MouseHoverState.Border2" Color="#FFF0F0F0" cs:Name="SolidColorBrush_0027" />
+    <SolidColorBrush x:Key="Color.TabSelectorItem.UnselectedState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0053" />
+    <SolidColorBrush x:Key="Color.TabSelectorItem.UnselectedState.Border2" Color="{Binding Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorOverlayConveter}, ConverterParameter=#FFF6F6F6}" />
+    <SolidColorBrush x:Key="Color.TabSelectorItem.SelectedState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0054" />
+    <LinearGradientBrush x:Key="Color.TabSelectorItem.SelectedState.Border2" EndPoint="0.5,1" StartPoint="0.5,0" cs:Name="LinearGradientBrush_1524">
+        <GradientStop Color="{Binding Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorOverlayConveter}, ConverterParameter=#FFFFFFFF}" Offset="0" />
+        <GradientStop Color="{Binding Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorOverlayConveter}, ConverterParameter=#FFFFFFFF}" Offset="0.5" />
+        <GradientStop Color="{Binding Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorOverlayConveter}, ConverterParameter=#FFF6F6F6}" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="Color.TabSelectorItem.MouseHoverState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0055" />
+    <SolidColorBrush x:Key="Color.TabSelectorItem.MouseHoverState.Border2" Color="{Binding Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorOverlayConveter}, ConverterParameter=#FFF0F0F0}" />
+    <!-- NavButton -->
+    <SolidColorBrush x:Key="NavButton.Background" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0029" />
+    <SolidColorBrush x:Key="NavButton.HoverState.Border1" Color="#FFCDE6F7" cs:Name="SolidColorBrush_0030" />
+    <SolidColorBrush x:Key="NavButton.HoverState.Border2" Color="#FFCDE6F7" cs:Name="SolidColorBrush_0031" />
+    <SolidColorBrush x:Key="NavButton.PressedState.Border1" Color="#FF92C0E0" cs:Name="SolidColorBrush_0032" />
+    <SolidColorBrush x:Key="NavButton.PressedState.Border2" Color="#FF92C0E0" cs:Name="SolidColorBrush_0033" />
+    <!-- AddButton -->
+    <SolidColorBrush x:Key="AddButton.DefaultState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0034" />
+    <SolidColorBrush x:Key="AddButton.DefaultState.Border2" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0035" />
+    <SolidColorBrush x:Key="AddButton.HoverState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0037" />
+    <SolidColorBrush x:Key="AddButton.HoverState.Border2" Color="#FFF0F0F0" cs:Name="SolidColorBrush_0038" />
+    <SolidColorBrush x:Key="AddButton.PressedState.Border1" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0040" />
+    <SolidColorBrush x:Key="AddButton.PressedState.Border2" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0041" />
+    <!-- FormulaBarItem Hover/Pressed -->
+    <SolidColorBrush x:Key="FormulaBarItem.HoverState" Color="#FFCDE6F7" cs:Name="SolidColorBrush_0045" />
+    <SolidColorBrush x:Key="FormulaBarItem.PressedState" Color="#FF92C0E0" cs:Name="SolidColorBrush_0046" />
+    <SolidColorBrush x:Key="FormulaBarItem.Editor.BorderBrush" Color="#FFACACAC" cs:Name="SolidColorBrush_0047" />
+    <!-- FormulaBar Collapse/Expand Button -->
+    <SolidColorBrush x:Key="ExpandButton.DefaultState.Border" Color="#FFACACAC" cs:Name="SolidColorBrush_0048" />
+    <SolidColorBrush x:Key="ExpandButton.DefaultState.Background" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0049" />
+    <SolidColorBrush x:Key="ExpandButton.HoverState" Color="#FFCDE6F7" cs:Name="SolidColorBrush_0050" />
+    <SolidColorBrush x:Key="ExpandButton.PressedState" Color="#FF92C0E0" cs:Name="SolidColorBrush_0051" />
+    <!--FormulaBarContol-->
+    <sys:Double x:Key="{themes:SpreadsheetThemeKey ResourceKey=FormulaBarControlMinHeight}">46</sys:Double>
+    <Style x:Key="SpreadsheetNameBoxControlStyle" TargetType="{x:Type dxspsi:SpreadsheetNameBoxControl}">
+        <Setter Property="Margin" Value="5,10,0,10" />
+        <Setter Property="MinHeight" Value="26" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="EditValuePostMode" Value="Immediate" />
+        <Setter Property="ValidateOnTextInput" Value="True" />
+        <Setter Property="IsReadOnly" Value="False" />
+    </Style>
+    <Style x:Key="FormulaBarEditorStyle" TargetType="{x:Type dxspsi:FormulaBarEditor}">
+        <Style.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinHeight" Value="44" />
+                <Setter Property="Padding" Value="12" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Padding" Value="2,2,0,0" />
+        <Setter Property="Background" Value="Transparent" cs:Name="Setter_0027" />
+        <Setter Property="MinHeight" Value="24" />
+    </Style>
+    <Style x:Key="FormulaBarEditorBorderStyle" TargetType="{x:Type Border}">
+        <Style.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinHeight" Value="44" />
+                <Setter Property="Margin" Value="12" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="BorderBrush" Value="{StaticResource FormulaBarItem.Editor.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="MinHeight" Value="26" />
+        <Setter Property="Margin" Value="3,10,5,10" />
+        <Setter Property="Background" Value="#FFFFFFFF" cs:Name="Setter_0028" />
+    </Style>
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=FormulaBarControlTemplate}" TargetType="{x:Type dxsps:SpreadsheetFormulaBarControl}">
+        <Border x:Name="Border1" MinHeight="32">
+            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="{TemplateBinding MinHeight}" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="PART_HorizontalContainer">
+                    <Grid x:Name="PART_FormulaBarEditorContainer" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" MinWidth="100" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{TemplateBinding MinHeight}" MinHeight="{TemplateBinding MinHeight}" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <dxspsi:SpreadsheetNameBoxControl x:Name="PART_Combobox" SpreadsheetControl="{Binding SpreadsheetControl, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource SpreadsheetNameBoxControlStyle}" />
+                        <Thumb x:Name="PART_VerticalThumb" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=FormulaBarVerticalThumbStyle}}" Grid.Column="1" />
+                        <Border x:Name="Border2" Background="#FFFFFFFF" BorderBrush="{StaticResource FormulaBarItem.Editor.BorderBrush}" BorderThickness="1" VerticalAlignment="Top" MinHeight="26" Margin="0,10,0,10" Grid.Column="2" cs:Name="Border_0004">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="PART_CancelButton" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=FormulaBarCancelButtonStyle}}" />
+                                <Button x:Name="PART_OkButton" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=FormulaBarOkButtonStyle}}" Grid.Column="1" />
+                                <Button x:Name="PART_FunctionButton" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=FormulaBarFunctionButtonStyle}}" Grid.Column="2" />
+                            </Grid>
+                        </Border>
+                        <Border Style="{StaticResource FormulaBarEditorBorderStyle}" Grid.Column="3" Grid.RowSpan="2" cs:Name="Border_0001">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <dxspsi:FormulaBarEditor x:Name="PART_Editor" Style="{StaticResource FormulaBarEditorStyle}" cs:Name="FormulaBarEditor_0001" />
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" MinHeight="24" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <ToggleButton x:Name="PART_ExpandButton" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=FormulaBarExpandButtonStyle}}" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                    <ScrollBar Minimum="0" Maximum="{Binding ScrollViewer.ScrollableHeight, ElementName=PART_Editor}" ViewportSize="{Binding ScrollViewer.ViewportHeight, ElementName=PART_Editor}" Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibilityConverter},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" Grid.Row="1" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+                <Thumb x:Name="PART_HorizontalThumb" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=FormulaBarHorizontalThumbStyle}}" VerticalAlignment="Bottom" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinHeight" TargetName="Border1" Value="80" />
+                <Setter Property="MinHeight" TargetName="Border2" Value="44" />
+                <Setter Property="Margin" TargetName="Border2" Value="12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=FormulaBarExpandButtonStyle}" TargetType="{x:Type ToggleButton}">
+        <Style.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Height" Value="44" />
+                <Setter Property="Width" Value="44" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Width" Value="17" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="Root" Background="#FFFFFFFF" SnapsToDevicePixels="True" cs:Name="Border_0003">
+                        <Grid>
+                            <Path x:Name="GlyphCollapsed" Stretch="Fill" Fill="#FF666666" Data="F1 M 8,7.00002L 8,4.00006L 12,4.57764e-005L 16,4.00005L 16,7.00005L 12,3.00005L 8,7.00002 Z " Width="7" Height="6" cs:Name="Path_0006" />  
+                            <Path x:Name="GlyphExpanded" Stretch="Fill" Fill="#FF666666" Data="F1 M 0,1.52588e-005L 1.22465e-016,2.99998L 4,7L 8,3L 8,1.52588e-005L 4,4.00002L 0,1.52588e-005 Z " Width="7" Height="6" Opacity="0" cs:Name="Path_0007" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="GlyphCollapsed" Property="Fill" Value="#FF0072C6" cs:Name="Setter_0023" />
+                            <Setter TargetName="GlyphExpanded" Property="Fill" Value="#FF0072C6" cs:Name="Setter_0024" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="GlyphCollapsed" Property="Fill" Value="#FF0072C6" cs:Name="Setter_0025" />
+                            <Setter TargetName="GlyphExpanded" Property="Fill" Value="#FF0072C6" cs:Name="Setter_0026" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Opacity" TargetName="GlyphExpanded" Value="1" />
+                            <Setter Property="Opacity" TargetName="GlyphCollapsed" Value="0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=FormulaBarCancelButtonStyle}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Grid1" Background="Transparent" MinWidth="24" MinHeight="24" cs:Name="Grid_0003">
+                        <Grid Margin="4">
+                            <Image x:Name="image1" dxb:ImageColorizer.Color="{StaticResource GlyphColor}" Source="/DevExpress.Xpf.Spreadsheet.v15.2;component/Images/FormulaBarCancel_16x16.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" dxb:ImageColorizer.IsEnabled="True" Visibility="{TemplateBinding IsEnabled, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                            <Image x:Name="image2" dxb:ImageColorizer.Color="{StaticResource GlyphColor}" Source="/DevExpress.Xpf.Spreadsheet.v15.2;component/Images/FormulaBarCancel_16x16.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" dxb:ImageColorizer.IsEnabled="True" Visibility="{TemplateBinding IsEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="image1" Property="dxb:ImageColorizer.Color" Value="#FFD13434" cs:Name="Setter_0010" />
+                            <Setter TargetName="image2" Property="dxb:ImageColorizer.Color" Value="#FFD13434" cs:Name="Setter_0011" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="image1" Property="dxb:ImageColorizer.Color" Value="#FFD13434" cs:Name="Setter_0012" />
+                            <Setter TargetName="image2" Property="dxb:ImageColorizer.Color" Value="#FFD13434" cs:Name="Setter_0013" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.35" />
+                        </Trigger>
+                        <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                            <Setter Property="MinWidth" TargetName="Grid1" Value="42" />
+                            <Setter Property="MinHeight" TargetName="Grid1" Value="42" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=FormulaBarOkButtonStyle}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Grid1" Background="Transparent" MinWidth="24" MinHeight="24" cs:Name="Grid_0004">
+                        <Grid Margin="4">
+                            <Image x:Name="image1" dxb:ImageColorizer.Color="{StaticResource GlyphColor}" Source="/DevExpress.Xpf.Spreadsheet.v15.2;component/Images/FormulaBarOk_16x16.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" dxb:ImageColorizer.IsEnabled="True" Visibility="{TemplateBinding IsEnabled, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                            <Image x:Name="image2" dxb:ImageColorizer.Color="{StaticResource GlyphColor}" Source="/DevExpress.Xpf.Spreadsheet.v15.2;component/Images/FormulaBarOk_16x16.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" dxb:ImageColorizer.IsEnabled="True" Visibility="{TemplateBinding IsEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="image1" Property="dxb:ImageColorizer.Color" Value="#FF3883B7" cs:Name="Setter_0014" />
+                            <Setter TargetName="image2" Property="dxb:ImageColorizer.Color" Value="#FF3883B7" cs:Name="Setter_0015" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="image1" Property="dxb:ImageColorizer.Color" Value="#FF3883B7" cs:Name="Setter_0016" />
+                            <Setter TargetName="image2" Property="dxb:ImageColorizer.Color" Value="#FF3883B7" cs:Name="Setter_0017" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.35" />
+                        </Trigger>
+                        <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                            <Setter Property="MinWidth" TargetName="Grid1" Value="42" />
+                            <Setter Property="MinHeight" TargetName="Grid1" Value="42" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=FormulaBarFunctionButtonStyle}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Grid1" Background="Transparent" MinWidth="24" MinHeight="24" cs:Name="Grid_0005">
+                        <Grid Margin="4">
+                            <Image x:Name="image1" dxb:ImageColorizer.Color="{StaticResource GlyphColor}" Source="/DevExpress.Xpf.Spreadsheet.v15.2;component/Images/FormulaBarInsertFunction_16x16.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" dxb:ImageColorizer.IsEnabled="True" Visibility="{TemplateBinding IsEnabled, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                            <Image x:Name="image2" dxb:ImageColorizer.Color="{StaticResource GlyphColor}" Source="/DevExpress.Xpf.Spreadsheet.v15.2;component/Images/FormulaBarInsertFunction_16x16.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" dxb:ImageColorizer.IsEnabled="True" Visibility="{TemplateBinding IsEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="image1" Property="dxb:ImageColorizer.Color" Value="#FF439467" cs:Name="Setter_0018" />
+                            <Setter TargetName="image2" Property="dxb:ImageColorizer.Color" Value="#FF439467" cs:Name="Setter_0019" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="image1" Property="dxb:ImageColorizer.Color" Value="#FF439467" cs:Name="Setter_0020" />
+                            <Setter TargetName="image2" Property="dxb:ImageColorizer.Color" Value="#FF439467" cs:Name="Setter_0021" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.35" />
+                        </Trigger>
+                        <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                            <Setter Property="MinWidth" TargetName="Grid1" Value="42" />
+                            <Setter Property="MinHeight" TargetName="Grid1" Value="42" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=FormulaBarHorizontalThumbStyle}" TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid Background="Transparent" Height="3" cs:Name="Grid_0002" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=FormulaBarVerticalThumbStyle}" TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Background="Transparent" Padding="14,0,14,0" cs:Name="Border_0002">
+                        <Path Stretch="Fill" Fill="#FFB3B3B3" Data="F1 M 0,0L 2,0L 2,2L 0,2L 0,0 Z M 0,4L 2,4L 2,6L 0,6L 0,4 Z M 0,8L 2,8L 2,10L 0,10L 0,8 Z " Width="2" Height="10" cs:Name="Path_0008" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type dxspsi:FormulaBarEditor}">
+        <Setter Property="Background" Value="#FFFFFFFF" cs:Name="Setter_0022" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type dxspsi:FormulaBarEditor}">
+                    <Grid x:Name="RootElement" Background="{TemplateBinding Background}" Margin="{TemplateBinding Margin}">
+                        <Grid>
+                            <Border x:Name="focus" Opacity="0" BorderThickness="0" />
+                            <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                                <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Center" Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" IsTabStop="False" />
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Grouping-->
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=GroupButtonTemplate}" TargetType="{x:Type dxspsi:GroupItem}">
+        <Grid Margin="-1,-1,0,0">
+            <Grid Height="13" Width="13">
+                <Grid x:Name="ExpandButton" Opacity="0.5" Visibility="Hidden">
+                    <Rectangle x:Name="Rectange1" Margin="1" Fill="#FFFFFFFF" cs:Name="Rectangle_0001" />
+                    <Path x:Name="Path1" Stretch="Fill" Fill="#FF808080" Data="F1 M 145,63L 154,63L 154,72L 145,72L 145,63 Z M 146,64.0001L 146,71.0001L 153,71.0001L 153,64.0001L 146,64.0001 Z M 147,67.0001L 152,67.0001L 152,68.0001L 147,68.0001L 147,67.0001 Z " cs:Name="Path_0009" />
+                </Grid>
+                <Grid x:Name="CollapseButton" Opacity="0.5" Visibility="Hidden">
+                    <Rectangle x:Name="Rectange2" Margin="1" Fill="#FFFFFFFF" cs:Name="Rectangle_0002" />
+                    <Path x:Name="Path2" Stretch="Fill" Fill="#FF808080" Data="F1 M 135,67L 137,67L 137,65L 138,65L 138,67L 140,67L 140,68L 138,68L 138,70L 137,70L 137,68L 135,68L 135,67 Z M 133,63.0001L 142,63.0001L 142,72.0001L 133,72.0001L 133,63.0001 Z M 134,64.0001L 134,71.0001L 141,71.0001L 141,64.0001L 134,64.0001 Z " cs:Name="Path_0010" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsExpanded" Value="True">
+                <Setter TargetName="ExpandButton" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsCollapsed" Value="True">
+                <Setter TargetName="CollapseButton" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsHovered" Value="True">
+                <Setter TargetName="ExpandButton" Property="Opacity" Value="1" />
+                <Setter TargetName="CollapseButton" Property="Opacity" Value="1" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="ExpandButton" Property="Opacity" Value="1" />
+                <Setter TargetName="CollapseButton" Property="Opacity" Value="1" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=GroupHeaderTemplate}" TargetType="{x:Type dxspsi:GroupItem}">
+        <Grid>
+            <Border x:Name="DefaultState" Background="{StaticResource Header.Background}" BorderBrush="{StaticResource Header.BorderBrush}" BorderThickness="1" />
+            <Border x:Name="HoverState" Background="{StaticResource Header.Background.IsMouseOver}" BorderBrush="{StaticResource Header.BorderBrush.IsMouseOver}" BorderThickness="1" />
+            <Border x:Name="PressedState" Background="{StaticResource Header.Background.IsSelected}" BorderBrush="{StaticResource Header.BorderBrush.IsSelected}" BorderThickness="1" />
+            <TextBlock Text="{TemplateBinding Text}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHovered" Value="True">
+                <Setter TargetName="HoverState" Property="Opacity" Value="1" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PressedState" Property="Opacity" Value="1" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--Comments-->
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=CommentTemplate}" TargetType="{x:Type dxspsi:CommentItem}">
+        <Border Background="{TemplateBinding Background}" BorderBrush="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=CommentLineBrush}}" BorderThickness="1">
+            <TextBox x:Name="PART_CommentBox" BorderThickness="0" AcceptsReturn="True" dx:ThemeManager.ThemeName="None" Focusable="{TemplateBinding Focusable}" Background="{TemplateBinding Background}" IsReadOnly="{TemplateBinding IsReadOnly}" Cursor="{TemplateBinding Cursor}" Text="{TemplateBinding Text}" FontFamily="{Binding TextSettings.FontFamily, RelativeSource={RelativeSource TemplatedParent}}" FontSize="{Binding TextSettings.FontSize, RelativeSource={RelativeSource TemplatedParent}}" FontStyle="{Binding TextSettings.FontStyle, RelativeSource={RelativeSource TemplatedParent}}" FontWeight="{Binding TextSettings.FontWeight, RelativeSource={RelativeSource TemplatedParent}}" Foreground="{Binding TextSettings.Foreground, RelativeSource={RelativeSource TemplatedParent}}" TextWrapping="{Binding TextSettings.TextWrapping, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Border>
+    </ControlTemplate>
+    <!--HeaderControl-->
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=HeadersControlTemplate}" TargetType="{x:Type dxspsi:WorksheetHeadersControl}">
+        <Border>
+            <dxspsi:HeadersPanel LayoutInfo="{Binding Path=(dxspsi:SpreadsheetViewControl.ActiveSpreadsheetView).LayoutInfo, RelativeSource={RelativeSource Self}}" Orientation="{TemplateBinding Orientation}" />
+        </Border>
+    </ControlTemplate>
+    <!-- Header Item -->
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=HorizontalHeaderItem}" TargetType="{x:Type dxspsi:HeaderItem}">
+        <Border x:Name="Root" Background="{StaticResource Header.Background}" BorderBrush="{StaticResource Header.BorderBrush}" BorderThickness="1,0,0,1" Margin="-1,0,0,-1">
+            <TextBlock Text="{TemplateBinding Text}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource Header.BorderBrush.IsMouseOver}" />
+                <Setter TargetName="Root" Property="Background" Value="{StaticResource Header.Background.IsMouseOver}" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource Header.BorderBrush.IsSelected}" />
+                <Setter TargetName="Root" Property="Background" Value="{StaticResource Header.Background.IsSelected}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=VerticalHeaderItem}" TargetType="{x:Type dxspsi:HeaderItem}">
+        <Border x:Name="Root" Background="{StaticResource Header.Background}" BorderBrush="{StaticResource Header.BorderBrush}" BorderThickness="0,1,1,0" Margin="0,-1,-1,0">
+            <TextBlock Text="{TemplateBinding Text}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource Header.BorderBrush.IsSelected}" />
+                <Setter TargetName="Root" Property="Background" Value="{StaticResource Header.Background.IsSelected}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--TabSelector-->
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=TabSelectorItemTemplate}" TargetType="{x:Type dxspsi:TabSelectorItem}">
+        <Grid x:Name="PART_Root"> 
+            <Grid x:Name="Grid1" Margin="0,1,-1,-2">  
+                <Border x:Name="UnselectedState" Background="{StaticResource TabSelectorItem.UnselectedState.Border2}" BorderBrush="{StaticResource TabSelectorItem.UnselectedState.Border1}" BorderThickness="1,0,1,1" Padding="0,0,1,0" Visibility="{TemplateBinding IsSelected, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                <Border x:Name="HoverState" Background="{StaticResource TabSelectorItem.MouseHoverState.Border2}" BorderBrush="{StaticResource TabSelectorItem.MouseHoverState.Border1}" BorderThickness="1,0,1,1" Padding="0,0,1,0" Opacity="0" />
+                <Border x:Name="SelectedState" Background="{StaticResource TabSelectorItem.SelectedState.Border2}" BorderBrush="{StaticResource TabSelectorItem.SelectedState.Border1}" BorderThickness="1,0,1,1" Padding="0,0,1,0" Margin="0,-1,0,0" Visibility="{TemplateBinding IsSelected, Converter={StaticResource BoolToVisibilityConverter}}" />
+            </Grid>
+            <TextBlock x:Name="TextBlock1" Margin="12,0,12,0" Text="{TemplateBinding Text}" TextAlignment="Center" VerticalAlignment="Center" Focusable="False" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="HoverState" Property="Opacity" Value="1" />
+            </Trigger>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="TextBlock1" Value="13" />
+                <Setter Property="Margin" TargetName="Grid1" Value="0,1,0,-1" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=TabSelectorColoredItemTemplate}" TargetType="{x:Type dxspsi:TabSelectorItem}">
+        <Grid x:Name="PART_Root">
+            <Grid x:Name="Grid1" Margin="0,1,-1,-2">
+                <Border x:Name="UnselectedState" Background="{StaticResource Color.TabSelectorItem.UnselectedState.Border2}" BorderBrush="{StaticResource Color.TabSelectorItem.UnselectedState.Border1}" BorderThickness="1,0,1,1" Padding="0,0,1,0" Visibility="{TemplateBinding IsSelected, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                <Border x:Name="HoverState" Background="{StaticResource Color.TabSelectorItem.MouseHoverState.Border2}" BorderBrush="{StaticResource Color.TabSelectorItem.MouseHoverState.Border1}" BorderThickness="1,0,1,1" Padding="0,0,1,0" Opacity="0" />
+                <Border x:Name="SelectedState" Background="{StaticResource Color.TabSelectorItem.SelectedState.Border2}" BorderBrush="{StaticResource Color.TabSelectorItem.SelectedState.Border1}" BorderThickness="1,0,1,1" Padding="0,0,1,0" Margin="0,-1,0,0" Visibility="{TemplateBinding IsSelected, Converter={StaticResource BoolToVisibilityConverter}}" />                
+            </Grid>
+            <TextBlock x:Name="TextBlock1" Margin="12,0,12,0" Text="{TemplateBinding Text}" TextAlignment="Center" VerticalAlignment="Center" Focusable="False" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="HoverState" Property="Opacity" Value="1" />
+            </Trigger>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="TextBlock1" Value="13" />
+                <Setter Property="Margin" TargetName="Grid1" Value="0,1,0,-1" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=TabSelectorTemplate}" TargetType="{x:Type dxspsi:SpreadsheetTabSelector}">
+        <Border x:Name="Border1" MinHeight="12">
+            <Grid x:Name="PART_RootContainer">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Background="{StaticResource TabPanel.BorderBrush}" Padding="0,0,0,0">
+                    <Grid x:Name="PART_NavButtonContainer">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="PART_FirstButton" Focusable="False" Grid.Column="0" Width="20" Command="{Binding FirstTabCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=BaseButtonStyle}}">
+                            <Grid>
+                                <Path Stretch="Fill" Fill="#3FFFFFFF" Data="F1 M 1351,926L 1347,922L 1347,926L 1346,926L 1346,918L 1347,918L 1347,922L 1351,918L 1351,922L 1355,918L 1355,926L 1351,922L 1351,926 Z" Width="9" Height="8" Margin="0,1,0,-1" cs:Name="Path_0001" />
+                                <Path Stretch="Fill" Fill="{StaticResource GlyphBrush}" Data="F1 M 1351,926L 1347,922L 1347,926L 1346,926L 1346,918L 1347,918L 1347,922L 1351,918L 1351,922L 1355,918L 1355,926L 1351,922L 1351,926 Z" Width="9" Height="8" />
+                            </Grid>
+                        </Button>
+                        <Button x:Name="PART_PrevButton" Focusable="False" Grid.Column="1" Width="20" Command="{Binding PrevTabCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=BaseButtonStyle}}">
+                            <Grid>
+                                <Path Stretch="Fill" Fill="#3FFFFFFF" Data="F1 M 1314,926L 1310,922L 1314,918L 1314,926 Z" Width="4" Height="8" Margin="0,1,0,-1" cs:Name="Path_0002" />
+                                <Path Stretch="Fill" Fill="{StaticResource GlyphBrush}" Data="F1 M 1314,926L 1310,922L 1314,918L 1314,926 Z" Width="4" Height="8" />
+                            </Grid>
+                        </Button>
+                        <Button x:Name="PART_NextButton" Focusable="False" Grid.Column="2" Width="20" Command="{Binding NextTabCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=BaseButtonStyle}}">
+                            <Grid>
+                                <Path Stretch="Fill" Fill="#3FFFFFFF" Data="F1 M 1423,918L 1427,922L 1423,926L 1423,918 Z " Width="4" Height="8" Margin="0,1,0,-1" cs:Name="Path_0003" />
+                                <Path Stretch="Fill" Fill="{StaticResource GlyphBrush}" Data="F1 M 1423,918L 1427,922L 1423,926L 1423,918 Z " Width="4" Height="8" />
+                            </Grid>
+                        </Button>
+                        <Button x:Name="PART_LastButton" Focusable="False" Grid.Column="3" Width="20" Command="{Binding LastTabCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=BaseButtonStyle}}">
+                            <Grid>
+                                <Path Stretch="Fill" Fill="#3FFFFFFF" Data="F1 M 1386,918L 1390,922L 1390,918L 1391,918L 1391,926L 1390,926L 1390,922L 1386,926L 1386,922L 1382,926L 1382,918L 1386,922L 1386,918 Z " Width="9" Height="8" Margin="0,1,0,-1" cs:Name="Path_0004" />
+                                <Path Stretch="Fill" Fill="{StaticResource GlyphBrush}" Data="F1 M 1386,918L 1390,922L 1390,918L 1391,918L 1391,926L 1390,926L 1390,922L 1386,926L 1386,922L 1382,926L 1382,918L 1386,922L 1386,918 Z " Width="9" Height="8" />
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </Border>
+                <dxspsi:TabSelectorPanel Grid.Column="1" Grid.ColumnSpan="2" AddButtonTemplate="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=AddButtonDataTemplate}}" TabSelectorItemDefaultTemplate="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=TabSelectorItemTemplate}}" TabSelectorItemColoredTemplate="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=TabSelectorColoredItemTemplate}}" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="MinHeight" TargetName="Border1" Value="43" />
+                <Setter Property="Width" TargetName="PART_FirstButton" Value="44" />
+                <Setter Property="Width" TargetName="PART_PrevButton" Value="44" />
+                <Setter Property="Width" TargetName="PART_NextButton" Value="44" />
+                <Setter Property="Width" TargetName="PART_LastButton" Value="44" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=BaseButtonStyle}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Root" Margin="0,1,0,0">
+                        <Border x:Name="DefaultState" Background="{StaticResource NavButton.Background}" />
+                        <Border x:Name="HoverState" Background="{StaticResource NavButton.HoverState.Border2}" BorderBrush="{StaticResource NavButton.HoverState.Border1}" BorderThickness="1,0,1,0" Opacity="0" />
+                        <Border x:Name="PressedState" Background="{StaticResource NavButton.PressedState.Border2}" BorderBrush="{StaticResource NavButton.PressedState.Border1}" BorderThickness="1,0,1,0" Opacity="0" />
+                        <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="HoverState" Property="Opacity" Value="1" />
+                            <Setter TargetName="PressedState" Property="Opacity" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="HoverState" Property="Opacity" Value="0" />
+                            <Setter TargetName="PressedState" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Content" Property="Opacity" Value="0.35" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=AddButtonStyle}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Root" MinHeight="17">
+                        <Border x:Name="DefaultState" Background="{StaticResource AddButton.DefaultState.Border2}" BorderBrush="{StaticResource AddButton.DefaultState.Border1}" BorderThickness="0,1,1,0" Padding="0,1,1,0" />
+                        <Border x:Name="HoverState" Background="{StaticResource AddButton.DefaultState.Border2}" BorderBrush="{StaticResource AddButton.DefaultState.Border1}" BorderThickness="0,1,1,0" Padding="0,1,1,0" Opacity="0" />
+                        <Border x:Name="PressedState" Background="{StaticResource AddButton.DefaultState.Border2}" BorderBrush="{StaticResource AddButton.DefaultState.Border1}" BorderThickness="0,1,1,0" Padding="0,1,1,0" Opacity="0" />
+                        <Grid Margin="0,1,0,0">
+                            <Path Stretch="Fill" Fill="#3FFFFFFF" Data="F1 M 119,100L 122,100L 122,97L 124,97L 124,100L 127,100L 127,102L 124,102L 124,105L 122,105L 122,102L 119,102L 119,100 Z " Width="8" Height="8" Margin="0,1,0,-1" cs:Name="Path_0005" />
+                            <Path Stretch="Fill" Fill="{StaticResource GlyphBrush}" Data="F1 M 119,100L 122,100L 122,97L 124,97L 124,100L 127,100L 127,102L 124,102L 124,105L 122,105L 122,102L 119,102L 119,100 Z " Width="8" Height="8" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="DefaultState" Property="Opacity" Value="0" />
+                            <Setter TargetName="HoverState" Property="Opacity" Value="1" />
+                            <Setter TargetName="PressedState" Property="Opacity" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="DefaultState" Property="Opacity" Value="0" />
+                            <Setter TargetName="HoverState" Property="Opacity" Value="0" />
+                            <Setter TargetName="PressedState" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Root" Property="Opacity" Value="0.5" />
+                        </Trigger>
+                        <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                            <Setter Property="MinHeight" TargetName="Root" Value="43" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <DataTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=AddButtonDataTemplate}">
+        <Button x:Name="Button1" Focusable="False" Content="+" Width="32" Command="{Binding}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=AddButtonStyle}}" />
+        <DataTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Width" TargetName="Button1" Value="44" />
+            </Trigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+    <!--Spreadsheet-->
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=TabSelectorPanelStyle}" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{StaticResource TabPanel.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource TabPanel.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=BottomRightCornerStyle}" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{StaticResource ScrollBar.Corner.Background}" />
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=WorksheetSelectionControlStyle}" TargetType="{x:Type dxspsi:WorksheetSelectionControl}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="SelectionBorderBrush" Value="{StaticResource Selection.BorderBrush}" />
+        <Setter Property="SelectionBrush" Value="{StaticResource Selection.Background}" />
+        <Setter Property="AutoFilterBackgroundBrush" Value="{DynamicResource {themes:SpreadsheetThemeKey ResourceKey=AutoFilterBackgroundBrush}}" />
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=TopLeftCornerStyle}" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{StaticResource Header.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Header.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="Margin" Value="0,0,-1,-1" />
+    </Style>
+    <Style x:Key="{themes:SpreadsheetThemeKey ResourceKey=ResizeThumbStyle}" TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid x:Name="Root" Background="Transparent" cs:Name="Grid_0001">
+                        <Border Background="{StaticResource ResizeThumb.Background}" BorderBrush="{StaticResource TabPanel.BorderBrush}" BorderThickness="0,1,1,0" />
+                        <Grid Width="9" Height="15" Cursor="SizeWE">
+                            <Path x:Name="Path" Stretch="Fill" Fill="{StaticResource ResizeThumb.GlyphBrush}" Data="F1 M 0,0L 1,0L 1,12L 0,12L 0,0 Z M 2,9.53674e-007L 3,9.53674e-007L 3,12L 2,12L 2,9.53674e-007 Z " Width="3" Height="12" Margin="3,0,3,0" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Path" Property="Fill" Value="{StaticResource ResizeThumb.GlyphBrush.IsMouseOver}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Root" Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=Template}" TargetType="{x:Type dxsps:SpreadsheetControl}">
+        <Border x:Name="rootBorder" BorderThickness="1" BorderBrush="{StaticResource Spreadsheet.BorderBrush}" Background="{TemplateBinding Background}" Opacity="{TemplateBinding Opacity}">
+            <dxspsi:SpreadsheetViewControl Focusable="False" IsTabStop="False" ShowTabSelector="{TemplateBinding ShowTabSelector}" />
+        </Border>
+    </ControlTemplate>
+    <Style TargetType="{x:Type dxspsi:XpfCellInplaceEditor}" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Setter Property="Background" Value="#FFFF0000" cs:Name="Setter_0001" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type dxspsi:XpfCellInplaceEditor}">
+                    <Grid x:Name="RootElement" Background="{TemplateBinding Background}" Margin="{TemplateBinding Margin}">
+                        <Grid>
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <ScrollViewer x:Name="PART_ContentHost" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Center" IsTabStop="False" />
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,56 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxei="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys" xmlns:dxep="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Office2013Ex/Brushes.xaml" />
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/PopupListBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <dx:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <ControlTemplate x:Key="{dxet:EditorListBoxThemeKey ResourceKey=ItemTemplate}" TargetType="{x:Type dxe:ListBoxEditItem}">
+        <Grid x:Name="Root">
+            <Rectangle x:Name="FocusVisual" StrokeThickness="1" Stroke="#FF3C3C3C" StrokeDashArray="1 2" Opacity="0" cs:Name="Rectangle_0001" />
+            <dx:DXBorder x:Name="InactiveSelectedState" Background="#FFDDDDDD" Opacity="0" cs:Name="Border_0001" />
+            <dx:DXBorder x:Name="SelectedState" Background="#FF92C0E0" Opacity="0" cs:Name="Border_0002" />
+            <dx:DXBorder x:Name="HoverState" Background="#FFCDE6F7" Opacity="0" Visibility="{Binding Path=(dxe:BaseEdit.OwnerEdit).AllowItemHighlighting, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}" cs:Name="Border_0003" />
+            <dx:DXBorder x:Name="FocusedState" Background="#7F82B0D0" Opacity="0" cs:Name="Border_0004" />
+            <DockPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" LastChildFill="True">
+                <dxei:ImagePresenter Padding="{StaticResource {dxet:ComboBoxEditThemeKey ResourceKey=SelectedItemImagePadding}}" DockPanel.Dock="Left" />
+                <dx:ContentContainer x:Name="content" Margin="{StaticResource {dxet:ComboBoxEditThemeKey ResourceKey=SelectedItemContentPadding}}">
+                    <ContentPresenter x:Name="contentPresenter" Width="Auto" Height="Auto" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                </dx:ContentContainer>
+            </DockPanel>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="SelectedState" Property="Opacity" Value="0" />
+                <Setter TargetName="HoverState" Property="Opacity" Value="0" />
+                <Setter TargetName="FocusVisual" Property="Opacity" Value="1" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="SelectedState" Property="Opacity" Value="0" />
+                <Setter TargetName="HoverState" Property="Opacity" Value="1" />
+                <Setter TargetName="FocusVisual" Property="Opacity" Value="0" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter TargetName="SelectedState" Property="Opacity" Value="1" />
+                <Setter TargetName="HoverState" Property="Opacity" Value="0" />
+                <Setter TargetName="FocusVisual" Property="Opacity" Value="0" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="IsFocused" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="SelectedState" Property="Opacity" Value="0.6" />
+                <Setter TargetName="HoverState" Property="Opacity" Value="0" />
+                <Setter TargetName="FocusVisual" Property="Opacity" Value="0" />
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="content" Property="Opacity" Value="0.35" />
+            </Trigger>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+            	<Setter Property="Margin" TargetName="content" Value="12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

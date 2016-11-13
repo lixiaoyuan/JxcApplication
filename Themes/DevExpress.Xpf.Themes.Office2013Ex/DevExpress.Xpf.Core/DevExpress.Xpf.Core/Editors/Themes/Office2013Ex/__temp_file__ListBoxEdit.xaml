@@ -1,0 +1,16 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxeh="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxei="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxep="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="/DevExpress.Xpf.Themes.Office2013Ex.v15.2;component/DevExpress.Xpf.Core/DevExpress.Xpf.Core/Editors/Themes/Generic/ListBoxEdit.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    
+    <ControlTemplate x:Key="{dxet:ListBoxEditThemeKey ResourceKey=EmptyBorderTemplate}" TargetType="{x:Type ContentControl}">
+        <ContentPresenter />
+    </ControlTemplate>
+    <ControlTemplate x:Key="{dxet:ListBoxEditThemeKey ResourceKey=BorderTemplate}" TargetType="{x:Type ContentControl}">
+        <dx:DXBorder Background="#FFFFFFFF" BorderBrush="#FFACACAC" BorderThickness="0.75" cs:Name="Border_0002">
+            <ContentPresenter />
+        </dx:DXBorder> 
+    </ControlTemplate>
+</ResourceDictionary>

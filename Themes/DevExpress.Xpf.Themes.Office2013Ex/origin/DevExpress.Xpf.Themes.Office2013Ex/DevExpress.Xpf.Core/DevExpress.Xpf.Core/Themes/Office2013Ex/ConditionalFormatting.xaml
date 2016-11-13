@@ -1,0 +1,49 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxcinternal="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <SolidColorBrush x:Key="{dxt:FormatThemeKey ResourceKey=FormatRedTextBrush}" cs:Name="SolidColorBrush_0002">#FF9C0006</SolidColorBrush>
+    <SolidColorBrush x:Key="{dxt:FormatThemeKey ResourceKey=FormatRedFillBrush}" cs:Name="SolidColorBrush_0003">#FFFFC7CE</SolidColorBrush>
+    <SolidColorBrush x:Key="{dxt:FormatThemeKey ResourceKey=FormatYellowTextBrush}" cs:Name="SolidColorBrush_0004">#FF9C6500</SolidColorBrush>
+    <SolidColorBrush x:Key="{dxt:FormatThemeKey ResourceKey=FormatYellowFillBrush}" cs:Name="SolidColorBrush_0005">#FFFFEB9C</SolidColorBrush>
+    <SolidColorBrush x:Key="{dxt:FormatThemeKey ResourceKey=FormatGreenTextBrush}" cs:Name="SolidColorBrush_0006">#FF006100</SolidColorBrush>
+    <SolidColorBrush x:Key="{dxt:FormatThemeKey ResourceKey=FormatGreenFillBrush}" cs:Name="SolidColorBrush_0007">#FFC6EFCE</SolidColorBrush>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=ColorScaleRed}" cs:Name="Color_0001">#FFF8696B</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=ColorScaleYellow}" cs:Name="Color_0002">#FFFFEB84</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=ColorScaleGreen}" cs:Name="Color_0003">#FF63BE7B</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=ColorScaleBlue}" cs:Name="Color_0004">#FF5A8AC6</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=ColorScaleWhite}" cs:Name="Color_0005">#FFFFFFFF</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=DataBarNegativeColor}" cs:Name="Color_0006">#FFFF555A</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=DataBarBlueColor}" cs:Name="Color_0007">#FF638EC6</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=DataBarGreenColor}" cs:Name="Color_0008">#FF63C384</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=DataBarRedColor}" cs:Name="Color_0009">#FFFF555A</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=DataBarOrangeColor}" cs:Name="Color_0010">#FFFFB628</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=DataBarLightBlueColor}" cs:Name="Color_0011">#FF008AEF</Color>
+    <Color x:Key="{dxt:FormatThemeKey ResourceKey=DataBarPurpleColor}" cs:Name="Color_0012">#FFD6007B</Color>
+    <LinearGradientBrush x:Key="{dxt:FormatThemeKey ResourceKey=DataBarNegativeBrush_Gradient}" StartPoint="0,0" EndPoint="1,0" cs:Name="LinearGradientBrush_1528">
+        <GradientStop Color="#FFFFD8D8" Offset="0" cs:Name="GradientStop_0001" />
+        <GradientStop Color="{StaticResource {dxt:FormatThemeKey ResourceKey=DataBarNegativeColor}}" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="{dxt:FormatThemeKey ResourceKey=DataBarBlueBrush_Gradient}" StartPoint="0,0" EndPoint="1,0" cs:Name="LinearGradientBrush_1529">
+        <GradientStop Color="{StaticResource {dxt:FormatThemeKey ResourceKey=DataBarBlueColor}}" Offset="0" />
+        <GradientStop Color="#FFE6EDF5" Offset="1" cs:Name="GradientStop_0002" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="{dxt:FormatThemeKey ResourceKey=DataBarGreenBrush_Gradient}" StartPoint="0,0" EndPoint="1,0" cs:Name="LinearGradientBrush_1530">
+        <GradientStop Color="{StaticResource {dxt:FormatThemeKey ResourceKey=DataBarGreenColor}}" Offset="0" />
+        <GradientStop Color="#FFE6F5EB" Offset="1" cs:Name="GradientStop_0003" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="{dxt:FormatThemeKey ResourceKey=DataBarRedBrush_Gradient}" StartPoint="0,0" EndPoint="1,0" cs:Name="LinearGradientBrush_1531">
+        <GradientStop Color="{StaticResource {dxt:FormatThemeKey ResourceKey=DataBarRedColor}}" Offset="0" />
+        <GradientStop Color="#FFFFE4E5" Offset="1" cs:Name="GradientStop_0004" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="{dxt:FormatThemeKey ResourceKey=DataBarOrangeBrush_Gradient}" StartPoint="0,0" EndPoint="1,0" cs:Name="LinearGradientBrush_1532">
+        <GradientStop Color="{StaticResource {dxt:FormatThemeKey ResourceKey=DataBarOrangeColor}}" Offset="0" />
+        <GradientStop Color="#FFFFF3DD" Offset="1" cs:Name="GradientStop_0005" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="{dxt:FormatThemeKey ResourceKey=DataBarLightBlueBrush_Gradient}" StartPoint="0,0" EndPoint="1,0" cs:Name="LinearGradientBrush_1533">
+        <GradientStop Color="{StaticResource {dxt:FormatThemeKey ResourceKey=DataBarLightBlueColor}}" Offset="0" />
+        <GradientStop Color="#FFD7ECFB" Offset="1" cs:Name="GradientStop_0006" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="{dxt:FormatThemeKey ResourceKey=DataBarPurpleBrush_Gradient}" StartPoint="0,0" EndPoint="1,0" cs:Name="LinearGradientBrush_1534">
+        <GradientStop Color="{StaticResource {dxt:FormatThemeKey ResourceKey=DataBarPurpleColor}}" Offset="0" />
+        <GradientStop Color="#FFF7D7EA" Offset="1" cs:Name="GradientStop_0007" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="{dxt:FormatThemeKey ResourceKey=DataBarZeroLineColor}" Color="#FF000000" cs:Name="SolidColorBrush_0001" />
+</ResourceDictionary>

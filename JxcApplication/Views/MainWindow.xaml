@@ -1,0 +1,204 @@
+﻿<dxr:DXRibbonWindow
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:viewModels="clr-namespace:JxcApplication.ViewModels"
+    xmlns:selector="clr-namespace:JxcApplication.Selector"
+    xmlns:native="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
+    mc:Ignorable="d"
+    x:Class="JxcApplication.MainWindow"
+    Title="比格维尔食品有限公司-资源管理系统"
+    Icon="../Images/Icons/icon.png"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    FontFamily="新宋体"
+    x:Name="WindowRoot" 
+    BorderEffect="Default"
+    DataContext="{dxmvvm:ViewModelSource viewModels:MainWindowViewModel}"
+    d:DesignWidth="975.4" d:DesignHeight="653.6" >
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Content="成品入库" x:Name="MW_PIS" Command="{Binding ProductInStorageCommand}"
+                               LargeGlyph="../Images/Tile/Weatherline_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="消耗品入库" x:Name="MW_RIS" Command="{Binding RawInStorageCommand}"
+                               LargeGlyph="../Images/Tile/iCleaner_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="消耗品领用" x:Name="MW_ROS" Command="{Binding RawOutStorageCommand}"
+                               LargeGlyph="../Images/Tile/Mint_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="固定资产入库" x:Name="MW_FIS" Command="{Binding FixedInStorageCommand}"
+                               LargeGlyph="../Images/Tile/LinkedIN_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="库存报警" x:Name="MW_SA" Command="{Binding StockAlarmCommand}"
+                               LargeGlyph="../Images/Tile/GoodMorning_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="销售开单" x:Name="MW_SB" Command="{Binding SalesBillingCommand}"
+                               LargeGlyph="../Images/Tile/iAliens_rocket_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="销售收款" x:Name="MW_C" Command="{Binding ChargeCommand}"
+                               LargeGlyph="../Images/Tile/Clear_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="销售退货" x:Name="MW_PR" Command="{Binding ProductReturnCommand}"
+                               LargeGlyph="../Images/Tile/Darksky_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="费用支出" x:Name="MW_E" Command="{Binding ExpensesCommand}"
+                               LargeGlyph="../Images/Tile/Dropbox_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="费用收入" x:Name="MW_EI" Command="{Binding ExpensesInCommand}"
+                               LargeGlyph="../Images/Tile/Chase_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="工资管理" x:Name="WM_WAG" Command="{Binding WageCommand}"
+                               LargeGlyph="../Images/Tile/TD_Bank_32px.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="账户交易明细" x:Name="MW_RATR" Command="{Binding ReportAccountTransactionRecordCommand}"
+                               LargeGlyph="../Images/Tile/Plex_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="账户基本信息" x:Name="MW_RAI" Command="{Binding ReportAccountInfoCommand}"
+                               LargeGlyph="../Images/Tile/Contacts_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+            
+            <dxb:BarButtonItem Content="剩余库存查询" x:Name="MW_LSQ" Command="{Binding LastStoreQueCommand}"
+                               LargeGlyph="../Images/Tile/com_vine_iphone_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="出库明细报表" x:Name="MW_RPOS" Command="{Binding RepotProductOutStoreCommand}"
+                               LargeGlyph="../Images/Tile/Livejournal_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="销售明细报表" x:Name="MW_RSD" Command="{Binding ReportSalesDetailsCommand}"
+                               LargeGlyph="../Images/Tile/weathereyeiphone_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="入库明细报表" x:Name="MW_PRI" Command="{Binding RepotProductInStoreCommand}"
+                               LargeGlyph="../Images/Tile/VSCO_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="费用收支报表" x:Name="MW_RE" Command="{Binding ReportExpensesCommand}"
+                               LargeGlyph="../Images/Tile/WWDC_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="未付款开单报表" x:Name="MW_RNP" Command="{Binding ReportNoPaymentCommand}"
+                               LargeGlyph="../Images/Tile/Outlook_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+            <dxb:BarButtonItem Content="已付款开单报表" x:Name="MW_RP" Command="{Binding ReportPaymentedCommand}"
+                               LargeGlyph="../Images/Tile/Outlook_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+            <dxb:BarButtonItem Content="收款报表" x:Name="MW_RHR" Command="{Binding ReportHasReceivableCommand}"
+                               LargeGlyph="../Images/Tile/money_bag.png"
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+            
+            <dxb:BarButtonItem Content="供应商" x:Name="MW_SV" Command="{Binding SuppliersCommand}"
+                               LargeGlyph="../Images/Tile/myverizon_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="客户" x:Name="MW_CV" Command="{Binding CustomerCommand}"
+                               LargeGlyph="../Images/Tile/Gindr_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="产品资料管理" x:Name="MW_PM" Command="{Binding ProductCommand}"
+                               LargeGlyph="../Images/Tile/Flux_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="用户管理" x:Name="MW_UM" Command="{Binding UserManagerCommand}"
+                               LargeGlyph="../Images/Tile/Plex_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="权限管理" x:Name="MW_RMM" Command="{Binding RoleMenuManagerCommand}"
+                               LargeGlyph="../Images/Tile/FitBit_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="Ribbon菜单管理" x:Name="MW_RNM" 
+                               LargeGlyph="../Images/Tile/Winterboard_32.png" 
+                               Command="{Binding RibbonNodeMaintainCommand}"
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="角色管理" x:Name="MW_RM" Command="{Binding RoleManagerCommand}"
+                               LargeGlyph="../Images/Tile/flickr_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="部门管理" x:Name="MW_OS" Command="{Binding OrganizationStructureCommand}"
+                               LargeGlyph="../Images/Tile/Flipboard_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+            <dxb:BarButtonItem Content="审批流程管理" x:Name="MW_WAM" Command="{Binding WorkApprovalMaintainCommand}"
+                               LargeGlyph="../Images/Tile/transfer.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+
+            <dxb:BarButtonItem Content="发起审批" x:Name="WM_NEWWA" LargeGlyph="../Images/Tile/lALOD8EH6szIzMg_200_200.png"
+                               Command="{Binding NewWorkApprovalOrderCommand}"
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+            <dxb:BarButtonItem Content="待我审批" x:Name="WM_WAITWA" LargeGlyph="../Images/Tile/lALOD8EH6szIzMg_Wait_200_200.png"
+                               Command="{Binding WaitWorkApprovalOrderCommand}"
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+            <dxb:BarButtonItem Content="我已审批的" x:Name="WM_MEWA" LargeGlyph="../Images/Tile/lALOD8EH6szIzMg_MeApproval_200_200.png"
+                               Command="{Binding MeWorkApprovalOrderCommand}"
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+            <dxb:BarButtonItem Content="我发起的" x:Name="WM_MENEWWA" LargeGlyph="../Images/Tile/lALOD8EH6szIzMg_MeNew_200_200.png"
+                               Command="{Binding MeNewWorkApprovalOrderCommand}"
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+            <dxb:BarButtonItem Content="抄送我的" x:Name="WM_COPYMEWA" LargeGlyph="../Images/Tile/lALOD8EH6szIzMg_CopyMe_200_200.png"
+                               Command="{Binding CopyMeWorkApprovalOrderCommand}"
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+        </dxb:BarManager.Items>
+        <dxb:BarManager.Bars>
+            <dxb:Bar IsStatusBar="True">
+                <dxb:Bar.DockInfo>
+                    <dxb:BarDockInfo ContainerType="Bottom" />
+                </dxb:Bar.DockInfo>
+                <dxb:BarStaticItem Content="{Binding BarStaticItemTxt}" />
+            </dxb:Bar>
+        </dxb:BarManager.Bars>
+        <DockPanel>
+            <dxr:RibbonControl Name="RibbonControl12" DockPanel.Dock="Top" RibbonStyle="Office2010" AllowCustomization="False"
+                               AllowAddingToToolbar="False" AsyncMergingEnabled="True" CategoriesSource="{Binding Path=RibbonNodes}" 
+                               ToolbarShowMode="Hide" ShowApplicationButton="False">
+                <dxr:RibbonControl.ApplicationMenu>
+                    <dxr:BackstageViewControl />
+                </dxr:RibbonControl.ApplicationMenu>
+                <dxr:RibbonControl.CategoryTemplateSelector>
+                    <selector:CategoryTemplateSelector CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
+                                                       DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
+                </dxr:RibbonControl.CategoryTemplateSelector>
+            </dxr:RibbonControl>
+            <dx:DXTabControl AllowMerging="True" TabContentCacheMode="CacheAllTabs"
+                             ItemsSource="{Binding Path=TabItems}">
+                <dx:DXTabControl.ItemTemplateSelector>
+                    <native:TypeTemplateSelector FindDescendants="True"
+                                                 Templates="{StaticResource ViewModelTemplatesDictionary}" />
+                </dx:DXTabControl.ItemTemplateSelector>
+                <dx:DXTabControl.View>
+                    <dx:TabControlStretchView HideButtonShowMode="InActiveTab" />
+                </dx:DXTabControl.View>
+                <dx:DXTabControl.ItemHeaderTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <TextBlock Text="{Binding Path=Caption ,Mode=OneWay}"></TextBlock>
+                        </Border>
+                    </DataTemplate>
+                </dx:DXTabControl.ItemHeaderTemplate>
+                <dx:DXTabControl.ItemContainerStyle>
+                    <Style TargetType="dx:DXTabItem">
+                        <Setter Property="IsSelected" Value="{Binding Selected}"></Setter>
+                    </Style>
+                </dx:DXTabControl.ItemContainerStyle>
+            </dx:DXTabControl>
+        </DockPanel>
+    </dxb:BarManager>
+</dxr:DXRibbonWindow>

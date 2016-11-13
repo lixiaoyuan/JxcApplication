@@ -1,0 +1,92 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <!--GridView-->
+    <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverterInverted" Invert="True" />
+    <sys:Boolean x:Key="{dxgt:TableViewThemeKey ResourceKey=UseGroupShadowIndent}">false</sys:Boolean>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=LeftDataAreaIndent}">0</sys:Double>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=RightDataAreaIndent}">0</sys:Double>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=LeftGroupAreaIndent}">28</sys:Double>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=RightGroupAreaIndent}">0</sys:Double>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=FixedLineWidth}">3</sys:Double>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=IndicatorWidth}">16</sys:Double>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=ExpandDetailButtonWidth}">16</sys:Double>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=ExpandDetailButtonWidthTouch}">40</sys:Double>
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=DetailMargin}">16,0,0,0</Thickness>
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=Margin}">0</Thickness>
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=HorizontalScrollbarMargin}">0</Thickness>
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=RowPresenterGridMargin}">0</Thickness>
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=IndicatorMargin}">0</Thickness>
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=SearchPanelWithoutGroupedPanelMargin}">10,12</Thickness>
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=SearchPanelWithGroupedPanelMargin}">10,12,10,4</Thickness>
+    <Color x:Key="GridDataRowDelimiterColor" cs:Name="Color_0001">#FFD6D6D6</Color>
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=SearchPanelBorderBottomBrush}" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0001" />
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=SearchPanelBackground}" Color="#00000000" cs:Name="SolidColorBrush_0002" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=CellMergeNoneBrush}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0029" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=CellBorderNoneBrush}" Color="#00000000" cs:Name="SolidColorBrush_0003" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=CellBorderFocusedBrush}" Color="#FFF3F3F3" cs:Name="SolidColorBrush_0004" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=CellTextFocusedBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0005" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=CellBorderFocusedBorderBrush}" Color="{StaticResource GridDataRowDelimiterColor}" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=TotalSummaryBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0006" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=TotalSummaryBorderBrush}" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0007" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=FixedSummaryFillBrush}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0008" />
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=TotalSummaryPanelMargin}">13,6,14,6</Thickness>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=SearchPanelWidth}">260</sys:Double>
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=GroupPanelSeparatorBrush}" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0009" />
+    <!--Rows-->
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=EvenRowBackgroundBrush}" Color="#FFF7F7F7" cs:Name="SolidColorBrush_0031" />
+    <sys:Double x:Key="{dxgt:GridRowThemeKey ResourceKey=RowMinHeight}">20</sys:Double>
+    <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <SolidColorBrush x:Key="GroupGridRowBorderBrush" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0010" />
+    <SolidColorBrush x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupGridRowHeaderTextBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0011" />
+    <SolidColorBrush x:Key="DataRowTextBrush" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0012" />
+    <SolidColorBrush x:Key="GroupRowFocusedBrush" Color="#00000000" cs:Name="SolidColorBrush_0013" />
+    <SolidColorBrush x:Key="UnfocusedRowBrush" Color="#FFDDDDDD" cs:Name="SolidColorBrush_0014" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=GridDataRowDelimiterBrush}" Color="{StaticResource GridDataRowDelimiterColor}" cs:Name="SolidColorBrush_0015" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=RowBreakBrush}" Color="{StaticResource GridDataRowDelimiterColor}" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=BorderNoneBrush}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0016" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=BorderSelectedBrush}" Color="#FFCDE6F7" cs:Name="SolidColorBrush_0017" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=BorderFocusedBrush}" Color="#FFB1D6F0" cs:Name="SolidColorBrush_0018" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=TextUnfocusedBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0019" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=TextFocusedBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0020" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=TextRowSelectedBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0021" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=ValidationErrorBrush}" Color="#FFFFD9D9" cs:Name="SolidColorBrush_0030" />
+    <Thickness x:Key="{dxgt:GridRowThemeKey ResourceKey=RowOffsetThickness}">0</Thickness>
+    <Thickness x:Key="{dxgt:GridRowThemeKey ResourceKey=RowBreakThickness}">0,0,0,2</Thickness>
+    <!--TreeListView-->
+    <sys:Double x:Key="{dxgt:TreeListViewThemeKey ResourceKey=RowIndent}">20</sys:Double>
+    <sys:Double x:Key="{dxgt:TreeListViewThemeKey ResourceKey=RowIndentTouch}">32</sys:Double>
+    <dxg:TreeListLineStyle x:Key="{dxgt:TreeListViewThemeKey ResourceKey=DefaultTreeLineStyle}">None</dxg:TreeListLineStyle>
+    <SolidColorBrush x:Key="{dxgt:TreeListViewThemeKey ResourceKey=RowMarginBackgroundBrush}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0022" />
+    <SolidColorBrush x:Key="{dxgt:GridColumnHeaderThemeKey ResourceKey=FilterPopupForegroundBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0023" />
+    <SolidColorBrush x:Key="RowIndicatorBackground" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0024" />
+    <SolidColorBrush x:Key="RowIndicatorBorderBrush" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0025" />
+    <SolidColorBrush x:Key="{dxgt:RowIndicatorThemeKey ResourceKey=ForegroundBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0026" />
+    <!--GridControl-->
+    <SolidColorBrush x:Key="{dxgt:GridControlThemeKey ResourceKey=Foreground}" Color="#FF000000" cs:Name="SolidColorBrush_0028" />
+    <sys:Double x:Key="{dxgt:CardViewThemeKey ResourceKey=ContainerIndent}">0</sys:Double>
+    <SolidColorBrush x:Key="{dxgt:CardViewThemeKey ResourceKey=Background}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0032" />
+    <sys:Boolean x:Key="{dxgt:CardViewThemeKey ResourceKey=ClipCellEditor}">False</sys:Boolean>
+    <sys:Double x:Key="{dxgt:TableViewThemeKey ResourceKey=DataNavigatorTextSize}">11</sys:Double>
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=DataNavigatorTextBrush}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0043" />
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=DataNavigatorBackground}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0044" />
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=DataNavigatorFocusedBackground}" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0045" />
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=DataNavigatorDisableBackground}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0046" />
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=DataNavigatorBorderThickness}" Bottom="0" Left="0" Right="0" Top="0" />
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=DataNavigatorBackgroundText}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0033" />
+    <Thickness x:Key="{dxgt:TableViewThemeKey ResourceKey=DataNavigatorBorderMarginText}">0,0,0,0</Thickness>
+    <SolidColorBrush x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowBackground}" Color="#FFFFFFFF" cs:Name="SolidColorBrush_0035" />
+    <SolidColorBrush x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowBackgroundSelected}" Color="#FFCDE6F7" cs:Name="SolidColorBrush_0036" />
+    <SolidColorBrush x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowBackgroundFocused}" Color="#FFCDE6F7" cs:Name="SolidColorBrush_0037" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=BorderBrush}" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0038" />
+    <Thickness x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowBottomLineThickness}">0,0,0,1</Thickness>
+    <FontWeight x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowFontWeight}">Bold</FontWeight>
+    <SolidColorBrush x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowForeground}" Color="#E8333333" cs:Name="SolidColorBrush_0039" />
+    <SolidColorBrush x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowFocusForeground}" Color="#E8333333" cs:Name="SolidColorBrush_0040" />
+    <Thickness x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowContentMargin}">0,0,0,0</Thickness>
+    <SolidColorBrush x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupColumnSummaryFocusedBorderBrush}" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0041" />
+    <Thickness x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowDefaultSummaryMargin}">0,0,4,0</Thickness>
+    <sys:Double x:Key="{dxgt:GroupRowThemeKey ResourceKey= GroupRowFocusOffset}">0</sys:Double>
+    <sys:Double x:Key="{dxgt:CardViewThemeKey ResourceKey=LeftGroupAreaIndent}">28</sys:Double>
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=SelectionRectangleBackground}" Color="{StaticResource GridDataRowDelimiterColor}" Opacity="0.7" />
+    <SolidColorBrush x:Key="{dxgt:GridRowThemeKey ResourceKey=SelectionRectangleBorderBrush}" Color="#FFD6D6D6" cs:Name="SolidColorBrush_0047" />
+    <SolidColorBrush x:Key="{dxgt:TableViewThemeKey ResourceKey=EditFormForeground}" Color="#FF3C3C3C" cs:Name="SolidColorBrush_0042" />
+</ResourceDictionary>

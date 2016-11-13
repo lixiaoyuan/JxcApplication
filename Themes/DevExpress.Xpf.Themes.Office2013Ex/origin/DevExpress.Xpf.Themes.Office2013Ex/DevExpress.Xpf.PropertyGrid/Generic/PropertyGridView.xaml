@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxprg="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid" xmlns:dxprgt="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid/themekeys" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+
+    <ControlTemplate x:Key="{dxprgt:PropertyGridViewThemeKey ResourceKey=ControlTemplate}" TargetType="{x:Type dxprg:PropertyGridView}">
+        <Grid>
+            <ScrollViewer x:Name="PART_ScrollViewer" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" CanContentScroll="True">
+                <!--BEGIN WPF-->
+                <mvvm:Interaction.Behaviors>
+                    <dx:ScrollViewerTouchBehavior Orientation="Vertical" />
+                </mvvm:Interaction.Behaviors>
+                <!--END WPF-->
+                <ItemsPresenter x:Name="PART_ItemsPresenter" />
+            </ScrollViewer>
+        </Grid>
+    </ControlTemplate>
+    
+    <ItemsPanelTemplate x:Key="{dxprgt:PropertyGridViewThemeKey ResourceKey=ItemsPanelTemplate}">
+        <dxprg:PGVirtualizingStackPanel CanHorizontallyScroll="False" CanVerticallyScroll="True" IsStandardPanel="True" />
+    </ItemsPanelTemplate>
+    
+</ResourceDictionary>

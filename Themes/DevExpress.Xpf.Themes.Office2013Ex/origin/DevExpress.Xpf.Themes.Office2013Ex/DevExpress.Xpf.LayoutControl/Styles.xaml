@@ -1,0 +1,274 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:core="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:lc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri" mc:Ignorable="cs">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="LayerSeparator.Style" TargetType="lc:LayerSeparator">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Thickness" Value="2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="lc:LayerSeparator">
+                    <core:Container Background="Transparent" cs:Name="Container_0002">
+                        <core:Container.Resources>
+                            <SolidColorBrush x:Key="SeparatorBrush" x:Name="SeparatorBrush" Color="{StaticResource LayerSeparator.NormalColor}" />
+                        </core:Container.Resources>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="SeparatorBrush" Storyboard.TargetProperty="Color" Duration="0" To="{StaticResource LayerSeparator.MouseOverColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="Grid1">
+                            <core:Container x:Name="HorizontalRootElement" Cursor="SizeNS">
+                                <Grid>
+                                    <Rectangle Fill="#00000000" Margin="0,-2" cs:Name="Rectangle_0001" />
+                                    <Rectangle Fill="{StaticResource SeparatorBrush}" Height="{TemplateBinding Thickness}" />
+                                </Grid>
+                            </core:Container>
+                            <core:Container x:Name="VerticalRootElement" Cursor="SizeWE">
+                                <Grid>
+                                    <Rectangle Fill="#00000000" Margin="-2,0" cs:Name="Rectangle_0002" />
+                                    <Rectangle Fill="{StaticResource SeparatorBrush}" Width="{TemplateBinding Thickness}" />
+                                </Grid>
+                            </core:Container>
+                        </Grid>
+                    </core:Container>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="core:ThemeManager.IsTouchEnabled" Value="True">
+                            <Setter Property="Margin" TargetName="Grid1" Value="12" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ElementSizer.Style" TargetType="lc:ElementSizer">
+        <Setter Property="Background" Value="#00000000" cs:Name="Setter_0001" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="lc:ElementSizer">
+                    <core:Container Background="{TemplateBinding Background}" UseLayoutRounding="True">
+                        <core:Container.Resources>
+                            <SolidColorBrush x:Key="GlyphBrush" x:Name="GlyphBrush" Color="{StaticResource ElementSizer.GlyphNormalColor}" />
+                            <SolidColorBrush x:Key="GlyphBackgroundBrush" Color="{StaticResource ElementSizer.GlyphBackgroundColor}" />
+                        </core:Container.Resources>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="GlyphBrush" Storyboard.TargetProperty="Color" Duration="0" To="{StaticResource ElementSizer.GlyphMouseOverColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="Grid1">
+                            <core:Container x:Name="HorizontalRootElement" Cursor="SizeNS">
+                                <Path Stretch="Fill" Fill="{StaticResource GlyphBackgroundBrush}" Data="F1 M 479.501,336.5L 479.501,336.5L 479.501,337.5L 478.501,337.5L 478.501,336.5L 478.501,336.5L 478.501,335.5L 479.501,335.5L 479.501,336.5 Z M 471.5,336.5L 471.5,336.5L 471.5,337.5L 470.5,337.5L 470.5,336.5L 470.5,336.5L 470.5,335.5L 471.5,335.5L 471.5,336.5 Z M 483.5,336.5L 483.5,336.5L 483.5,337.5L 482.5,337.5L 482.5,336.5L 482.5,336.5L 482.5,335.5L 483.5,335.5L 483.5,336.5 Z M 475.5,336.5L 475.5,336.5L 475.5,337.5L 474.5,337.5L 474.5,336.5L 474.5,336.5L 474.5,335.5L 475.5,335.5L 475.5,336.5 Z M 481.5,336.5L 481.5,336.5L 481.5,337.5L 480.5,337.5L 480.5,336.5L 480.5,336.5L 480.5,335.5L 481.5,335.5L 481.5,336.5 Z M 473.5,336.5L 473.5,336.5L 473.5,337.5L 472.5,337.5L 472.5,336.5L 472.5,336.5L 472.5,335.5L 473.5,335.5L 473.5,336.5 Z M 485.5,336.5L 485.5,336.5L 485.5,337.5L 484.5,337.5L 484.5,336.5L 484.5,336.5L 484.5,335.5L 485.5,335.5L 485.5,336.5 Z M 477.501,336.5L 477.5,336.5L 477.501,337.5L 476.501,337.5L 476.5,336.5L 476.501,336.5L 476.5,335.5L 477.5,335.5L 477.501,336.5 Z " Width="15" Height="2" />
+                            </core:Container>
+                            <core:Container x:Name="VerticalRootElement" Cursor="SizeWE">
+                                <Path Stretch="Fill" Fill="{StaticResource GlyphBackgroundBrush}" Data="F1 M 465,344L 465,344L 466,344L 466,345L 465,345L 465,345L 464,345L 464,344L 465,344 Z M 465,352L 465,352L 466,352L 466,353L 465,353L 465,353L 464,353L 464,352L 465,352 Z M 465,340L 465,340L 466,340L 466,341L 465,341L 465,341L 464,341L 464,340L 465,340 Z M 465,348L 465,348L 466,348L 466,349L 465,349L 465,349L 464,349L 464,348L 465,348 Z M 465,342L 465,342L 466,342L 466,343L 465,343L 465,343L 464,343L 464,342L 465,342 Z M 465,350L 465,350L 466,350L 466,351L 465,351L 465,351L 464,351L 464,350L 465,350 Z M 465,338L 465,338L 466,338L 466,339L 465,339L 465,339L 464,339L 464,338L 465,338 Z M 465,346L 465,346L 466,346L 466,347L 465,347L 465,347L 464,347L 464,346L 465,346 Z " Width="2" Height="15" />
+                            </core:Container>
+                        </Grid>
+                    </core:Container>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="core:ThemeManager.IsTouchEnabled" Value="True">
+                            <Setter Property="Margin" TargetName="Grid1" Value="12" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="GroupBoxButton.Style" TargetType="lc:GroupBoxButton">
+        <Style.Triggers>
+            <Trigger Property="core:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Height" Value="44" />
+                <Setter Property="Width" Value="44" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="lc:GroupBoxButton">
+                    <core:Container Background="#00000000" cs:Name="Container_0001">
+                        <core:Container.Resources>
+                            <SolidColorBrush x:Key="ElementBrush1" x:Name="ElementBrush1" Color="{StaticResource GroupBoxButton.NormalColor}" />
+                            <SolidColorBrush x:Key="ElementBrush2" x:Name="ElementBrush2" Color="{StaticResource GroupBoxButton.NormalColor}" />
+                        </core:Container.Resources>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ElementBrush1" Storyboard.TargetProperty="Color" To="{StaticResource GroupBoxButton.MouseOverColor}" Duration="0" />
+                                        <ColorAnimation Storyboard.TargetName="ElementBrush2" Storyboard.TargetProperty="Color" To="{StaticResource GroupBoxButton.MouseOverColor}" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ElementBrush1" Storyboard.TargetProperty="Color" To="{StaticResource GroupBoxButton.PressedColor}" Duration="0" />
+                                        <ColorAnimation Storyboard.TargetName="ElementBrush2" Storyboard.TargetProperty="Color" To="{StaticResource GroupBoxButton.PressedColor}" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="UnminimizeElement" Margin="0,1,0,0" Width="15" Height="15">
+                            <Path Stretch="Fill" Fill="{StaticResource ElementBrush1}" Data="F1 M 5,5L 0,9.53674e-007L 10,9.53674e-007L 5,5 Z " Width="9" Height="5" />
+                        </Grid>
+                        <Grid x:Name="MinimizeElement" Margin="0,0,0,1" Width="15" Height="15">
+                            <Path Stretch="Fill" Fill="{StaticResource ElementBrush1}" Data="F1 M 5,0L 0,5L 10,5L 5,0 Z " Width="9" Height="5" />
+                        </Grid>
+                        <Grid x:Name="UnmaximizeElement" Height="15" Width="15" Margin="1,0,0,1">
+                            <Path Stretch="Fill" Fill="{StaticResource ElementBrush2}" Data="F1 M 0,8L 7,8L 7,15L 0,8 Z M 15,7L 8,7L 8,2.86102e-006L 15,7 Z " Width="13" Height="13" />
+                        </Grid>
+                        <Grid x:Name="MaximizeElement" Height="15" Width="15">
+                            <Path Stretch="Fill" Fill="{StaticResource ElementBrush2}" Data="F1 M 0,10L 4.89859e-016,2L 8,10L 0,10 Z M 2,9.53674e-007L 10,9.53674e-007L 10,8L 2,9.53674e-007 Z " Width="8" Height="8" />
+                        </Grid>
+                    </core:Container>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="groupBoxNormalTemplate" TargetType="lc:GroupBox">
+        <core:Container>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="LayoutStates">
+                    <VisualState x:Name="NormalLayout" />
+                    <VisualState x:Name="MinimizedLayout">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitleStretcher" Storyboard.TargetProperty="Visibility" Duration="0">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Visible</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SeparatorElement" Storyboard.TargetProperty="Visibility" Duration="0">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Visibility" Duration="0">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MaximizedLayout" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" core:BorderExtensions.ClipChild="True">
+                <lc:LayoutControl Orientation="Vertical" Padding="0" ItemSpace="0" ScrollBars="None" core:DXSerializer.Enabled="False">
+                    <lc:LayoutGroup Background="{TemplateBinding TitleBackground}" Padding="2" ItemSpace="0" Visibility="{TemplateBinding TitleVisibility}">
+                        <Rectangle x:Name="TitleStretcher" Width="0" Visibility="Collapsed" />
+                        <core:DXContentPresenter x:Name="DXContentPresenter1" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" Foreground="{StaticResource Text.Foreground}" Margin="9,0" VerticalAlignment="Center" />
+                        <lc:GroupBoxButton x:Name="MinimizeElement" Margin="2,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="{TemplateBinding MinimizeElementVisibility}" />
+                        <lc:GroupBoxButton x:Name="MaximizeElement" Margin="2,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="{TemplateBinding MaximizeElementVisibility}" />
+                    </lc:LayoutGroup>
+                    <Rectangle x:Name="SeparatorElement" Height="1" Fill="{TemplateBinding SeparatorBrush}" Visibility="{TemplateBinding TitleVisibility}" />
+                    <core:DXContentPresenter x:Name="ContentElement" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding CurrentContentTemplate}" Margin="{TemplateBinding Padding}" />
+                </lc:LayoutControl>
+            </Border>
+        </core:Container>
+        <ControlTemplate.Triggers>
+            <Trigger Property="core:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="DXContentPresenter1" Value="12" />
+                <Setter Property="Margin" TargetName="ContentElement" Value="12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="groupBoxLightTemplate" TargetType="lc:GroupBox">
+        <core:Container>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="LayoutStates">
+                    <VisualState x:Name="NormalLayout" />
+                    <VisualState x:Name="MinimizedLayout">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitleStretcher" Storyboard.TargetProperty="Visibility" Duration="0">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Visible</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Visibility" Duration="0">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="MaximizedLayout" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" core:BorderExtensions.ClipChild="True">
+                <lc:LayoutControl Orientation="Vertical" Padding="0" ItemSpace="0" ScrollBars="None" core:DXSerializer.Enabled="False">
+                    <lc:LayoutGroup Background="{TemplateBinding TitleBackground}" Padding="9,2,2,2" ItemSpace="0" Visibility="{TemplateBinding TitleVisibility}">
+                        <lc:GroupBoxButton x:Name="MinimizeElement" Margin="2,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{TemplateBinding MinimizeElementVisibility}" />
+                        <Rectangle x:Name="TitleStretcher" Width="0" Visibility="Collapsed" />
+                        <core:DXContentPresenter x:Name="DXContentPresenter1" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" Foreground="{StaticResource Text.Foreground}" Margin="2,0" VerticalAlignment="Center" />
+                        <lc:GroupBoxButton x:Name="MaximizeElement" Margin="2,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="{TemplateBinding MaximizeElementVisibility}" />
+                    </lc:LayoutGroup>
+                    <core:DXContentPresenter x:Name="ContentElement" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding CurrentContentTemplate}" Margin="{TemplateBinding Padding}" />
+                </lc:LayoutControl>
+            </Border>
+        </core:Container>
+        <ControlTemplate.Triggers>
+            <Trigger Property="core:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="DXContentPresenter1" Value="12" />
+                <Setter Property="Margin" TargetName="ContentElement" Value="12" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="GroupBox.Style" TargetType="lc:GroupBox">
+        <Setter Property="Foreground" Value="{StaticResource Text.Foreground}" />
+        <Setter Property="Background" Value="{StaticResource GroupBox.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource GroupBox.BorderBrush}" />
+        <Setter Property="TitleBackground" Value="{StaticResource GroupBox.TitleBackground}" />
+        <Setter Property="SeparatorBrush" Value="{StaticResource GroupBox.SeparatorBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="MinimizationDirection" Value="Vertical" />
+        <Setter Property="Padding" Value="11" />
+        <Setter Property="ShadowOffset" Value="3" />
+        <Setter Property="NormalTemplate" Value="{StaticResource groupBoxNormalTemplate}" />
+        <Setter Property="LightTemplate" Value="{StaticResource groupBoxLightTemplate}" />
+    </Style>
+    <Style x:Key="GroupSeparator.Style" TargetType="lc:GroupSeparator">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="lc:GroupSeparator">
+                    <core:Container>
+                        <Grid Opacity="0.9">
+                            <Border x:Name="HorizontalRootElement" Background="{StaticResource GroupSeparator.Brush}" Height="1" Margin="0,3,0,3" />
+                            <Border x:Name="VerticalRootElement" Background="{StaticResource GroupSeparator.Brush}" Width="1" Margin="3,0,3,0" />
+                        </Grid>
+                    </core:Container>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="core:ThemeManager.IsTouchEnabled" Value="True">
+                            <Setter Property="Margin" TargetName="HorizontalRootElement" Value="0,8" />
+                            <Setter Property="Margin" TargetName="VerticalRootElement" Value="8,0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

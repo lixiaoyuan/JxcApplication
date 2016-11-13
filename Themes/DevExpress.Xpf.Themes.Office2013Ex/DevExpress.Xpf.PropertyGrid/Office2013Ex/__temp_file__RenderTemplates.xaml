@@ -1,0 +1,88 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxprg="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid" xmlns:dxprgt="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid/themekeys" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri">
+    <dxn:RenderTemplate x:Key="{dxprgt:VSViewRenderTemplateThemeKey ResourceKey=RowCommandButton}">
+        <dxn:RenderPanel Name="Root" Width="10" Height="10" Margin="5,0,6,0">
+            <dxn:RenderBorder Name="dxn:RenderBorder1" Background="#FFF0F0F0" BorderBrush="#FF515151" BorderThickness="1" cs:Name="RenderBorder_0002" />
+            <dxn:RenderBorder Name="dxn:RenderBorder2" Background="#FF515151" Opacity="0" cs:Name="RenderBorder_0003" />
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter TargetName="dxn:RenderBorder1" Property="Background" Value="#FF666666" cs:Name="RenderSetter_0001" />
+                    <dxn:RenderSetter TargetName="dxn:RenderBorder2" Property="Background" Value="#FF666666" cs:Name="RenderSetter_0002" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderTrigger DependencyProperty="{x:Static dx:ThemeManager.IsTouchEnabledProperty}" Value="True">
+                <dxn:RenderSetter Property="Width" TargetName="Root" Value="20" />
+                <dxn:RenderSetter Property="Height" TargetName="Root" Value="20" />
+                <dxn:RenderSetter Property="Margin" TargetName="Root" Value="12" />
+            </dxn:RenderTrigger>
+            <dxn:RenderTrigger DependencyProperty="{x:Static dxprg:RowControl.ShouldHighlightValueProperty}" Value="True">
+                <dxn:RenderSetter TargetName="dxn:RenderBorder2" Property="Opacity" Value="1" />
+            </dxn:RenderTrigger>
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+    <dxn:RenderTemplate x:Key="{dxprgt:VSViewRenderTemplateThemeKey ResourceKey=RowCollectionButton}">
+        <dxn:RenderPanel>
+            <dxn:RenderPanel Name="PART_Add" Opacity="0.5">
+                <dxn:RenderPath Name="Path1" Stretch="Fill" Fill="#FF515151" Data="F1 M 6,0C 9.31371,0 12,2.68629 12,6C 12,9.31371 9.31371,12 6,12C 2.68629,12 -6.35783e-007,9.31371 -6.35783e-007,6C -6.35783e-007,2.68629 2.68629,0 6,0 Z M 2,5L 2,7L 5,7L 5,10L 7,10L 7,7L 10,7L 10,5L 7,5L 7,2L 5,2L 5,5L 2,5 Z " Width="12" Height="12" cs:Name="RenderPath_0001" />
+            </dxn:RenderPanel>
+            <dxn:RenderPanel Name="PART_Remove" Opacity="0.5" Visibility="Collapsed">
+                <dxn:RenderPath Name="Path" Stretch="Fill" Fill="#FFCC0000" Data="F1 M 1.75736,1.75736C 4.1005,-0.585785 7.89949,-0.585785 10.2426,1.75736C 12.5858,4.10051 12.5858,7.8995 10.2426,10.2426C 7.89949,12.5858 4.1005,12.5858 1.75736,10.2426C -0.585787,7.8995 -0.585787,4.10051 1.75736,1.75736 Z M 2.46447,8.12132L 3.87868,9.53553L 6,7.41421L 8.12132,9.53553L 9.53553,8.12132L 7.41421,6L 9.53553,3.87868L 8.12132,2.46447L 6,4.58579L 3.87868,2.46447L 2.46447,3.87868L 4.58579,6L 2.46447,8.12132 Z " Width="12" Height="12" cs:Name="RenderPath_0002" />
+            </dxn:RenderPanel>
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter TargetName="PART_Add" Property="Opacity" Value="1" />
+                    <dxn:RenderSetter TargetName="PART_Remove" Property="Opacity" Value="0.75" />
+                    <dxn:RenderSetter TargetName="Path" Property="Fill" Value="#FF990000" cs:Name="RenderSetter_0003" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="ButtonKind">
+                <dxn:RenderStateTrigger Name="Add" />
+                <dxn:RenderStateTrigger Name="Remove">
+                    <dxn:RenderSetter TargetName="PART_Remove" Property="Visibility" Value="Visible" />
+                    <dxn:RenderSetter TargetName="PART_Add" Property="Visibility" Value="Collapsed" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderTrigger DependencyProperty="{x:Static dx:ThemeManager.IsTouchEnabledProperty}">
+                <dxn:RenderSetter Property="Width" TargetName="Path1" Value="24" />
+                <dxn:RenderSetter Property="Height" TargetName="Path1" Value="24" />
+                <dxn:RenderSetter Property="Width" TargetName="Path" Value="24" />
+                <dxn:RenderSetter Property="Height" TargetName="Path" Value="24" />
+            </dxn:RenderTrigger>
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+    <dxn:RenderTemplate x:Key="{dxprgt:VSViewRenderTemplateThemeKey ResourceKey=Expander}">
+        <dxn:RenderPanel Name="Panel1" MinWidth="16" MinHeight="16">
+            <dxn:RenderPath Name="GlyphCollapsed" Stretch="Fill" Fill="#FF666666" Data="F1 M 1.27157e-006,1.90735e-006L 1.27157e-006,8L 4,4L 1.27157e-006,1.90735e-006" Width="4" Height="8" cs:Name="RenderPath_0003" />
+            <dxn:RenderPath Name="GlyphExpanded" Stretch="Fill" Fill="#FF666666" Data="F1 M 0,6L 6,0L 6,6L 0,6 Z " Width="6" Height="6" Opacity="0" cs:Name="RenderPath_0004" />
+        </dxn:RenderPanel>
+        <dxn:RenderTemplate.Triggers>
+            <dxn:RenderStateGroup Name="CommonStates">
+                <dxn:RenderStateTrigger Name="Normal" />
+                <dxn:RenderStateTrigger Name="MouseOver">
+                    <dxn:RenderSetter Property="Fill" TargetName="GlyphExpanded" Value="#FF0072C6" cs:Name="RenderSetter_0004" />
+                    <dxn:RenderSetter Property="Fill" TargetName="GlyphCollapsed" Value="#FF0072C6" cs:Name="RenderSetter_0005" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Pressed">
+                    <dxn:RenderSetter Property="Fill" TargetName="GlyphExpanded" Value="#FF0072C6" cs:Name="RenderSetter_0006" />
+                    <dxn:RenderSetter Property="Fill" TargetName="GlyphCollapsed" Value="#FF0072C6" cs:Name="RenderSetter_0007" />
+                </dxn:RenderStateTrigger>
+            </dxn:RenderStateGroup>
+            <dxn:RenderStateGroup Name="CheckedStates">
+                <dxn:RenderStateTrigger Name="Checked">
+                    <dxn:RenderSetter Property="Opacity" TargetName="GlyphExpanded" Value="1" />
+                    <dxn:RenderSetter Property="Opacity" TargetName="GlyphCollapsed" Value="0" />
+                </dxn:RenderStateTrigger>
+                <dxn:RenderStateTrigger Name="Unchecked" />
+            </dxn:RenderStateGroup>
+            <dxn:RenderTrigger DependencyProperty="{x:Static dx:ThemeManager.IsTouchEnabledProperty}">
+                <dxn:RenderSetter Property="MinWidth" TargetName="Panel1" Value="44" />
+                <dxn:RenderSetter Property="MinHeight" TargetName="Panel1" Value="44" />
+            </dxn:RenderTrigger>
+        </dxn:RenderTemplate.Triggers>
+    </dxn:RenderTemplate>
+</ResourceDictionary>

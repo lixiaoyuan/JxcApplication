@@ -1,0 +1,70 @@
+<ResourceDictionary mc:Ignorable="cs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cs="colorscheme_ignorable_uri">
+    <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverterInverted" Invert="True" />
+    <SolidColorBrush x:Key="PressedExpandButtonBrush" Color="#FF0072C6" cs:Name="SolidColorBrush_0001" />
+    <ControlTemplate x:Key="{dxgt:GroupRowThemeKey ResourceKey=ExpandButtonTemplate}" TargetType="{x:Type dx:ToggleStateButton}">
+        <Grid x:Name="Grid1" Background="Transparent" Width="10" Height="10" Margin="0" SnapsToDevicePixels="True" cs:Name="Grid_0001">
+            <Path x:Name="GlyphCollapsed" Stretch="Fill" Fill="#FF666666" Data="F1 M 1.27157e-006,1.90735e-006L 1.27157e-006,8L 4,4L 1.27157e-006,1.90735e-006" Width="4" Height="8" SnapsToDevicePixels="True" cs:Name="Path_0001" />
+            <Path x:Name="GlyphExpanded" Visibility="Collapsed" Stretch="Fill" Fill="#FF666666" Data="F1 M 0,6L 6,0L 6,6L 0,6 Z " Width="6" Height="6" SnapsToDevicePixels="True" cs:Name="Path_0002" />             
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+            	<Setter Property="Width" TargetName="Grid1" Value="28" />
+            	<Setter Property="Height" TargetName="Grid1" Value="28" />
+            	<Setter Property="Margin" TargetName="Grid1" Value="-8,-8,-8,-9" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Visibility" Value="Visible" TargetName="GlyphExpanded" />
+                <Setter Property="Visibility" Value="Collapsed" TargetName="GlyphCollapsed" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Fill" Value="{StaticResource PressedExpandButtonBrush}" TargetName="GlyphExpanded" />
+                <Setter Property="Fill" Value="{StaticResource PressedExpandButtonBrush}" TargetName="GlyphCollapsed" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Fill" Value="{StaticResource PressedExpandButtonBrush}" TargetName="GlyphExpanded" />
+                <Setter Property="Fill" Value="{StaticResource PressedExpandButtonBrush}" TargetName="GlyphCollapsed" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Grid.BackgroundBorderControl}" TargetType="{x:Type dxg:BackgroundBorderControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type dxg:BackgroundBorderControl}">
+                    <dx:DXBorder Background="#FFFFFFFF" BorderBrush="#FFFFFFFF" BorderThickness="0,0,0,1" Margin="0,0,1,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" cs:Name="Border_0001" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="{dxgt:GroupRowThemeKey ResourceKey=ExpandDetailButtonTemplate}" TargetType="{x:Type dx:ToggleStateButton}">
+        <Grid Background="Transparent" dx:FrameworkElementHelper.IsVisible="{Binding Path=(dxg:GridDetailExpandButtonContainer.IsDetailButtonVisible), RelativeSource={RelativeSource TemplatedParent}}" cs:Name="Grid_0002">
+            <dx:DXBorder Background="Transparent" BorderBrush="#FFFFFFFF" BorderThickness="0,0,0,1" Margin="0,0,1,0" Visibility="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" cs:Name="Border_0003" />
+            <Grid x:Name="grid" Height="9" Width="9">
+                <Rectangle Fill="#00000000" Margin="1" cs:Name="Rectangle_0001" />
+                <Path Stretch="Fill" Fill="#9C000000" Data="F1 M 0,0L 9,0L 9,9L 0,9L 0,0 Z M 1,1L 1,8L 8,8L 8,1L 1,1 Z M 2,4L 7,4L 7,5L 2,5L 2,4 Z " Visibility="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" cs:Name="Path_0003" />
+                <Path Stretch="Fill" Fill="#9C000000" Data="F1 M 0,0L 9,0L 9,9L 0,9L 0,0 Z M 1,1L 1,8L 8,8L 8,1L 1,1 Z M 2,4L 4,4L 4,2L 5,2L 5,4L 7,4L 7,5L 5,5L 5,7L 4,7L 4,5L 2,5L 2,4 Z " Visibility="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverterInverted}}" cs:Name="Path_0004" />
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dx:ThemeManager.IsTouchEnabled" Value="True">
+                <Setter Property="Margin" TargetName="grid" Value="6" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="{dxgt:GroupRowThemeKey ResourceKey=ExpandButtonStyle}" TargetType="{x:Type dx:ToggleStateButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Width" Value="13" />
+        <Setter Property="Height" Value="13" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template" Value="{DynamicResource {dxgt:GroupRowThemeKey ResourceKey=ExpandButtonTemplate}}" />
+    </Style>
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Grid.GridToggleStateButton}" TargetType="{x:Type dxg:GridToggleStateButton}">
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template" Value="{DynamicResource {dxgt:GroupRowThemeKey ResourceKey=ExpandDetailButtonTemplate}}" />
+    </Style>
+</ResourceDictionary>

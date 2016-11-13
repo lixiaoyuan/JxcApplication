@@ -1,0 +1,46 @@
+﻿<Window
+ x:Class="JxcApplication.DXSplashScreen.SplashScreenWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" x:Name="splashWindow"
+    WindowStyle="None" ResizeMode="NoResize" Width="800" Height="600"
+    AllowsTransparency="True" Background="Transparent" ShowInTaskbar="False" Topmost="True"
+    >
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Unloaded">
+            <BeginStoryboard>
+                <Storyboard x:Name="board">
+                    <DoubleAnimation Storyboard.TargetName="splashWindow" Storyboard.TargetProperty="Opacity" From="1.0" To="0" Duration="0:0:1.5" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="Splash" Width="450" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,100,0,0">
+            <Grid x:Name="Back">
+                <Grid.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="-90" BlurRadius="10" Opacity="0.25"/>
+                </Grid.Effect>
+                <Border Background="Black" CornerRadius="3" Opacity="0.15"/>
+                <Border CornerRadius="2" Margin="1" Background="White"/>
+            </Grid>
+            <Grid x:Name="Content_Area" Margin="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="Image" Source="Image.png" Stretch="None"/>
+                <TextBlock x:Name="Info" TextWrapping="Wrap" Text="Loading..." Grid.Row="1" Margin="12,12,12,0" Foreground="#FF2D2D2D"/>
+                <ProgressBar x:Name="progressBar" Height="12" Grid.Row="2" Margin="12" />
+                <DockPanel x:Name="Footer" Grid.Row="3" Margin="12,20,12,4">
+                    <TextBlock x:Name="Footer_Text" TextWrapping="Wrap" Text="{Binding ElementName=splashWindow, Path=Copyright}" Width="150" Opacity="0.5" Foreground="#FF2D2D2D" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Image x:Name="Logotype" DockPanel.Dock="Right" Source="Logo.png" Stretch="None" HorizontalAlignment="Right"  />
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

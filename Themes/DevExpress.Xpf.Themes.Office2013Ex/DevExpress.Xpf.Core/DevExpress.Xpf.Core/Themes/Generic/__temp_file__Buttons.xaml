@@ -1,0 +1,292 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxtEx="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys" xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxdst="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys">
+
+    <ResourceDictionary.MergedDictionaries>
+        <dxdst:ResourceDictionaryEx Source="{dx:DynamicThemeResource Buttons.xaml, ResourcePath=Themes, ResourcePathInTheme='DevExpress.Xpf.Core/DevExpress.Xpf.Core/Themes', TypeInTargetAssembly={x:Type dxcn:RenderTemplate}}" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Visibility x:Key="Visible">Visible</Visibility>
+    <Visibility x:Key="Collapsed">Collapsed</Visibility>
+
+
+
+    <dxcn:RenderTemplate x:Key="{dxt:DropDownButtonThemeKey ResourceKey=RenderDropDownButtonTemplate}">
+        <dxcn:RenderPanel Name="GlyphContentAndArrow">
+            <dxcn:RenderButtonBorder Name="GlyphContentAndArrowBorder" RenderTemplate="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=BorderTemplate}}" Visibility="Visible" />
+            <dxcn:RenderPanel LayoutProvider="{dxcn:DockPanelLayoutProvider LastChildFill=True}">
+                <dxcn:RenderPanel Name="PART_Arrow">
+                    <dxcn:RenderButtonBorder Name="ArrowBorder" RenderTemplate="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=BorderTemplate}}" Visibility="Collapsed" />
+                    <dxcn:RenderImage Name="ArrowGlyph" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" />
+                    <dxcn:RenderControl Name="DefaultArrowGlyph" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTemplateSelector="{dxcn:RenderDropDownArrowTemplateSelector}" Visibility="Collapsed" />              
+                </dxcn:RenderPanel>
+                <dxcn:RenderPanel Name="PART_GlyphAndContent">
+                    <dxcn:RenderButtonBorder Name="GlyphAndContentBorder" RenderTemplate="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=BorderTemplate}}" Visibility="Collapsed" />
+                    <dxcn:RenderPanel Name="RenderPanel">
+                        <dxcn:RenderPanel LayoutProvider="{dxcn:DockPanelLayoutProvider LastChildFill=True}">
+                            <dxcn:RenderImage Name="Image" Dock="Left" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <dxcn:RenderBorder Name="BorderOffset" Dock="Left" Height="{x:Null}" />
+                            <dxcn:RenderContentPresenter Name="ContentPresenter" />
+                        </dxcn:RenderPanel>
+                    </dxcn:RenderPanel>
+                </dxcn:RenderPanel>
+            </dxcn:RenderPanel>
+        </dxcn:RenderPanel>
+        <dxcn:RenderTemplate.Triggers>
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphProperty}" TargetName="Image" TargetProperty="Source" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowGlyphProperty}" TargetName="ArrowGlyph" TargetProperty="Source" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphToContentOffsetProperty}" TargetName="BorderOffset" TargetProperty="Width" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphToContentOffsetProperty}" TargetName="BorderOffset" TargetProperty="Height" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" TargetName="Image" TargetProperty="Dock" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" TargetName="PART_Arrow" TargetProperty="Dock" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ContentProperty}" TargetName="ContentPresenter" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ContentTemplateProperty}" TargetName="ContentPresenter" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.VerticalContentAlignmentProperty}" TargetProperty="VerticalAlignment" TargetName="RenderPanel" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.HorizontalContentAlignmentProperty}" TargetProperty="HorizontalAlignment" TargetName="RenderPanel" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.PaddingProperty}" TargetProperty="Margin" TargetName="RenderPanel" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.PaddingProperty}" TargetProperty="Margin" TargetName="ArrowGlyph" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.PaddingProperty}" TargetProperty="Margin" TargetName="DefaultArrowGlyph" />
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowGlyphProperty}" Value="{x:Null}">
+                <dxcn:RenderSetter TargetName="ArrowGlyph" Property="Visibility" Value="Collapsed" />
+                <dxcn:RenderSetter TargetName="DefaultArrowGlyph" Property="Visibility" Value="Visible" />
+            </dxcn:RenderTrigger>
+            
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsMouseOverProperty}" Value="True">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=MouseOverForeground}}" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=ArrowMouseOverForeground}}" />
+            </dxcn:RenderTrigger>
+
+            <dxcn:MultiRenderTrigger>
+                <dxcn:MultiRenderTrigger.Conditions>
+                    <dxcn:RenderConditionGroup Operator="Or">
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsPressedProperty}" Value="False" />
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsMouseOverProperty}" Value="False" />
+                    </dxcn:RenderConditionGroup>
+                </dxcn:MultiRenderTrigger.Conditions>
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=Foreground}}" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=ArrowForeground}}" />
+            </dxcn:MultiRenderTrigger>
+            
+            <dxcn:MultiRenderTrigger>
+                <dxcn:MultiRenderTrigger.Conditions>
+                    <dxcn:RenderConditionGroup Operator="Or">
+                        <dxcn:RenderConditionGroup Operator="And">
+                            <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsPopupOpenProperty}" Value="True" />
+                        </dxcn:RenderConditionGroup>
+                        <dxcn:RenderConditionGroup Operator="And">
+                            <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsPressedProperty}" Value="True" />
+                            <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsMouseOverArrowProperty}" Value="False" />
+                        </dxcn:RenderConditionGroup>
+                    </dxcn:RenderConditionGroup>
+                </dxcn:MultiRenderTrigger.Conditions>
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=PressedForeground}}" />
+            </dxcn:MultiRenderTrigger>
+
+
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" Value="Left">
+                <dxcn:RenderSetter TargetName="Image" Property="Dock" Value="Left" />
+                <dxcn:RenderSetter TargetName="BorderOffset" Property="Dock" Value="Left" />
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Dock" Value="Right" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" Value="Right">
+                <dxcn:RenderSetter TargetName="Image" Property="Dock" Value="Right" />
+                <dxcn:RenderSetter TargetName="BorderOffset" Property="Dock" Value="Right" />
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Dock" Value="Left" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" Value="Top">
+                <dxcn:RenderSetter TargetName="Image" Property="Dock" Value="Top" />
+                <dxcn:RenderSetter TargetName="BorderOffset" Property="Dock" Value="Top" />
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Dock" Value="Bottom" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" Value="Bottom">
+                <dxcn:RenderSetter TargetName="Image" Property="Dock" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="BorderOffset" Property="Dock" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Dock" Value="Top" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" Value="Left">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Dock" Value="Right" />
+                <dxcn:RenderSetter TargetName="GlyphAndContentBorder" Property="Placement" Value="Right" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Dock" Value="Left" />                
+                <dxcn:RenderSetter TargetName="ArrowBorder" Property="Placement" Value="Left" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" Value="Right">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Dock" Value="Left" />
+                <dxcn:RenderSetter TargetName="GlyphAndContentBorder" Property="Placement" Value="Left" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Dock" Value="Right" />
+                <dxcn:RenderSetter TargetName="ArrowBorder" Property="Placement" Value="Right" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" Value="Top">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Dock" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="GlyphAndContentBorder" Property="Placement" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Dock" Value="Top" />
+                <dxcn:RenderSetter TargetName="ArrowBorder" Property="Placement" Value="Top" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" Value="Bottom">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Dock" Value="Top" />
+                <dxcn:RenderSetter TargetName="GlyphAndContentBorder" Property="Placement" Value="Top" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Dock" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="ArrowBorder" Property="Placement" Value="Bottom" />
+            </dxcn:RenderTrigger>
+        </dxcn:RenderTemplate.Triggers>
+    </dxcn:RenderTemplate>
+
+    
+    <dxcn:RenderTemplate x:Key="{dxt:DropDownButtonThemeKey ResourceKey=RenderSplitButtonTemplate}">
+        <dxcn:RenderPanel Name="GlyphContentAndArrow">
+            <dxcn:RenderButtonBorder Name="GlyphContentAndArrowBorder" RenderTemplate="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=BorderTemplate}}" Visibility="Collapsed" />
+            <dxcn:RenderPanel LayoutProvider="{dxcn:DockPanelLayoutProvider LastChildFill=True}">
+                <dxcn:RenderPanel Name="PART_Arrow">
+                    <dxcn:RenderButtonBorder Name="ArrowBorder" RenderTemplate="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=BorderTemplate}}" />
+                    <dxcn:RenderImage Name="ArrowGlyph" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" />
+                    <dxcn:RenderControl Name="DefaultArrowGlyph" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTemplateSelector="{dxcn:RenderDropDownArrowTemplateSelector}" Visibility="Collapsed" />
+                </dxcn:RenderPanel>
+                <dxcn:RenderPanel Name="PART_GlyphAndContent">
+                    <dxcn:RenderButtonBorder Name="GlyphAndContentBorder" RenderTemplate="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=BorderTemplate}}" />
+                    <dxcn:RenderPanel Name="RenderPanel">
+                        <dxcn:RenderPanel LayoutProvider="{dxcn:DockPanelLayoutProvider LastChildFill=True}">
+                            <dxcn:RenderImage Name="Image" Dock="Left" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <dxcn:RenderBorder Name="BorderOffset" Dock="Left" Height="{x:Null}" />
+                            <dxcn:RenderContentPresenter Name="ContentPresenter" />
+                        </dxcn:RenderPanel>
+                    </dxcn:RenderPanel>
+                </dxcn:RenderPanel>
+            </dxcn:RenderPanel>
+        </dxcn:RenderPanel>
+        <dxcn:RenderTemplate.Triggers>
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphProperty}" TargetName="Image" TargetProperty="Source" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowGlyphProperty}" TargetName="ArrowGlyph" TargetProperty="Source" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphToContentOffsetProperty}" TargetName="BorderOffset" TargetProperty="Width" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphToContentOffsetProperty}" TargetName="BorderOffset" TargetProperty="Height" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" TargetName="Image" TargetProperty="Dock" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" TargetName="PART_Arrow" TargetProperty="Dock" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ContentProperty}" TargetName="ContentPresenter" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ContentTemplateProperty}" TargetName="ContentPresenter" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.VerticalContentAlignmentProperty}" TargetProperty="VerticalAlignment" TargetName="RenderPanel" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.HorizontalContentAlignmentProperty}" TargetProperty="HorizontalAlignment" TargetName="RenderPanel" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.VerticalContentAlignmentProperty}" TargetProperty="VerticalAlignment" TargetName="ContentPresenter" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.HorizontalContentAlignmentProperty}" TargetProperty="HorizontalAlignment" TargetName="ContentPresenter" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.PaddingProperty}" TargetProperty="Margin" TargetName="RenderPanel" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.PaddingProperty}" TargetProperty="Margin" TargetName="ArrowGlyph" />
+            <dxcn:RenderBinding ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.PaddingProperty}" TargetProperty="Margin" TargetName="DefaultArrowGlyph" />
+           
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowGlyphProperty}" Value="{x:Null}">
+                <dxcn:RenderSetter TargetName="ArrowGlyph" Property="Visibility" Value="Collapsed" />
+                <dxcn:RenderSetter TargetName="DefaultArrowGlyph" Property="Visibility" Value="Visible" />
+            </dxcn:RenderTrigger>
+            
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsMouseOverProperty}" Value="True">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=MouseOverForeground}}" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=ArrowMouseOverForeground}}" />
+            </dxcn:RenderTrigger>
+            
+
+            
+            <dxcn:MultiRenderTrigger>
+                <dxcn:MultiRenderTrigger.Conditions>
+                    <dxcn:RenderConditionGroup Operator="Or">
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsPressedProperty}" Value="False" />
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsMouseOverProperty}" Value="False" />
+                    </dxcn:RenderConditionGroup>
+                </dxcn:MultiRenderTrigger.Conditions>
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=Foreground}}" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=ArrowForeground}}" />
+            </dxcn:MultiRenderTrigger>
+
+            <dxcn:MultiRenderTrigger>
+                <dxcn:MultiRenderTrigger.Conditions>
+                    <dxcn:RenderConditionGroup Operator="And">
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsPressedProperty}" Value="True" />
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsMouseOverProperty}" Value="False" />
+                    </dxcn:RenderConditionGroup>
+                </dxcn:MultiRenderTrigger.Conditions>
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=PressedForeground}}" />
+            </dxcn:MultiRenderTrigger>
+
+            <dxcn:MultiRenderTrigger>
+                <dxcn:MultiRenderTrigger.Conditions>
+                    <dxcn:RenderConditionGroup Operator="And">
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsPressedProperty}" Value="True" />
+                        <dxcn:RenderCondition ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsMouseOverArrowProperty}" Value="False" />
+                    </dxcn:RenderConditionGroup>
+                </dxcn:MultiRenderTrigger.Conditions>
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=PressedForeground}}" />
+            </dxcn:MultiRenderTrigger>
+
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.IsCheckedProperty}" Value="True">
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Foreground" Value="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=PressedForeground}}" />
+            </dxcn:RenderTrigger>
+            
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" Value="Left">
+                <dxcn:RenderSetter TargetName="Image" Property="Dock" Value="Left" />
+                <dxcn:RenderSetter TargetName="BorderOffset" Property="Dock" Value="Left" />
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Dock" Value="Right" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" Value="Right">
+                <dxcn:RenderSetter TargetName="Image" Property="Dock" Value="Right" />
+                <dxcn:RenderSetter TargetName="BorderOffset" Property="Dock" Value="Right" />
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Dock" Value="Left" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" Value="Top">
+                <dxcn:RenderSetter TargetName="Image" Property="Dock" Value="Top" />
+                <dxcn:RenderSetter TargetName="BorderOffset" Property="Dock" Value="Top" />
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Dock" Value="Bottom" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.GlyphAlignmentProperty}" Value="Bottom">
+                <dxcn:RenderSetter TargetName="Image" Property="Dock" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="BorderOffset" Property="Dock" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="ContentPresenter" Property="Dock" Value="Top" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" Value="Left">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Dock" Value="Right" />
+                <dxcn:RenderSetter TargetName="GlyphAndContentBorder" Property="Placement" Value="Right" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Dock" Value="Left" />
+                <dxcn:RenderSetter TargetName="ArrowBorder" Property="Placement" Value="Left" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" Value="Right">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Dock" Value="Left" />
+                <dxcn:RenderSetter TargetName="GlyphAndContentBorder" Property="Placement" Value="Left" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Dock" Value="Right" />
+                <dxcn:RenderSetter TargetName="ArrowBorder" Property="Placement" Value="Right" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" Value="Top">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Dock" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="GlyphAndContentBorder" Property="Placement" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Dock" Value="Top" />
+                <dxcn:RenderSetter TargetName="ArrowBorder" Property="Placement" Value="Top" />
+            </dxcn:RenderTrigger>
+            <dxcn:RenderTrigger ValueSource="TemplatedParent" DependencyProperty="{x:Static dx:DropDownButtonBase.ArrowAlignmentProperty}" Value="Bottom">
+                <dxcn:RenderSetter TargetName="PART_GlyphAndContent" Property="Dock" Value="Top" />
+                <dxcn:RenderSetter TargetName="GlyphAndContentBorder" Property="Placement" Value="Top" />
+                <dxcn:RenderSetter TargetName="PART_Arrow" Property="Dock" Value="Bottom" />
+                <dxcn:RenderSetter TargetName="ArrowBorder" Property="Placement" Value="Bottom" />
+            </dxcn:RenderTrigger>
+        </dxcn:RenderTemplate.Triggers>
+    </dxcn:RenderTemplate>
+
+
+    <ControlTemplate x:Key="{dxt:DropDownButtonThemeKey ResourceKey=DropDownButtonTemplate}">
+        <dxcn:ButtonChrome x:Name="PART_Owner" RenderTemplate="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=RenderDropDownButtonTemplate}}" />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{dxt:DropDownButtonThemeKey ResourceKey=SplitButtonTemplate}">
+        <dxcn:ButtonChrome x:Name="PART_Owner" RenderTemplate="{StaticResource ResourceKey={dxt:DropDownButtonThemeKey ResourceKey=RenderSplitButtonTemplate}}" />
+    </ControlTemplate>
+    
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Core.DropDownButton}" TargetType="{x:Type dx:DropDownButton}">
+        <Setter Property="Padding" Value="10,3,10,3" />
+        <Setter Property="GlyphToContentOffset" Value="5" />
+        <Setter Property="GlyphAlignment" Value="Left" />
+        <Setter Property="ArrowAlignment" Value="Right" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template" Value="{StaticResource {dxt:DropDownButtonThemeKey ResourceKey=DropDownButtonTemplate}}" />
+    </Style>
+
+    <Style x:Key="{dxdst:DefaultStyleThemeKey FullName=DevExpress.Xpf.Core.SplitButton}" TargetType="{x:Type dx:SplitButton}">
+        <Setter Property="Padding" Value="10,3,10,3" />
+        <Setter Property="GlyphToContentOffset" Value="5" />      
+        <Setter Property="GlyphAlignment" Value="Left" />
+        <Setter Property="ArrowAlignment" Value="Right" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template" Value="{StaticResource {dxt:DropDownButtonThemeKey ResourceKey=SplitButtonTemplate}}" />
+    </Style>
+</ResourceDictionary>
