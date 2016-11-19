@@ -194,6 +194,7 @@
     </Compile>
     <Compile Include="Convert\CheckBoxValueConverter.cs" />
     <Compile Include="Convert\ColorToStringConvert.cs" />
+    <Compile Include="Convert\DecimalLessThanZeroConvert.cs" />
     <Compile Include="Convert\EnumConvert.cs" />
     <Compile Include="Convert\NumberToVisibilityConverter.cs" />
     <Compile Include="Convert\ShortDecimalConverter.cs" />

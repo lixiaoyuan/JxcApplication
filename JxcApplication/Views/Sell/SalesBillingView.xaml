@@ -15,7 +15,10 @@
              xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
              xmlns:selector="clr-namespace:JxcApplication.Selector"
              xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
-             mc:Ignorable="d"
+             xmlns:core="clr-namespace:JxcApplication.Core"
+             xmlns:models="clr-namespace:BusinessDb.Cor.Models;assembly=BusinessDb.Cor"
+             xmlns:convert="clr-namespace:JxcApplication.Convert"
+             mc:Ignorable="d"  
              d:DesignHeight="422.466" d:DesignWidth="1007.022">
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
@@ -35,6 +38,7 @@
                                Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True" />
     </dxmvvm:Interaction.Behaviors>
     <UserControl.Resources>
+        <convert:DecimalLessThanZeroConvert x:Key="DecimalLessThanZeroConvert1"></convert:DecimalLessThanZeroConvert>
     </UserControl.Resources>
 
     <dxb:BarManager>
@@ -146,8 +150,14 @@
                                                       EditValue="{Binding OutStorage.PaymentDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
                                     </dxlc:LayoutItem>
                                     <dxlc:LayoutItem Label="结款方式:" HorizontalAlignment="Left">
-                                        <dxe:DateEdit Width="100" IsTextEditable="False"
-                                                      EditValue="{Binding OutStorage.PaymentDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                        <dxe:ComboBoxEdit Width="100" IsTextEditable="False" 
+                                                          ValueMember="Value" DisplayMember="Description" ItemsSource="{core:EnumItemsSource2 EnumType=models:PaymentType}"
+                                                          EditValue="{Binding OutStorage.PaymoneyType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          NullValue="0">
+                                            <dxe:ComboBoxEdit.StyleSettings>
+                                                <dxe:ComboBoxStyleSettings />
+                                            </dxe:ComboBoxEdit.StyleSettings>
+                                        </dxe:ComboBoxEdit>
                                     </dxlc:LayoutItem>
                                 </dxlc:LayoutGroup>
 
@@ -218,7 +228,17 @@
                                     </dxlc:LayoutItem>
                                     <dxlc:LayoutItem Label="=剩余信誉度:" HorizontalAlignment="Left" Foreground="#FF104EA9" IsEnabled="{Binding RemainingCredibilityIsEnable,Mode=OneWay}">
                                         <dxe:TextEdit IsReadOnly="True" Width="100"
-                                                      EditValue="{Binding RemainingCredibility,Mode=OneWay}" DisplayFormatString="c2" />
+                                                      EditValue="{Binding RemainingCredibility,Mode=OneWay}" DisplayFormatString="c2" >
+                                            <dxe:TextEdit.Style>
+                                                <Style TargetType="dxe:TextEdit">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RemainingCredibility,Mode=OneWay,Converter={ StaticResource DecimalLessThanZeroConvert1}}" Value="True" >
+                                                            <Setter Property="Foreground"  Value="Red"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </dxe:TextEdit.Style>
+                                        </dxe:TextEdit>
                                     </dxlc:LayoutItem>
                                 </dxlc:LayoutGroup>
                             </dxlc:LayoutGroup>

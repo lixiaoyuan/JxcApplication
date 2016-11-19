@@ -120,37 +120,74 @@ namespace JxcApplication.ViewModels.Sell
         /// </summary>
         private void InitCustomerInfo(Guid id)
         {
-            
-            decimal balance,credibility;
-            string giveAddress,giveArea, acontackTel, customAcontactName, customAcontactTel;
-            Guid acontackId, responsibleSalesman;
-            acontackId = Guid.Empty;
-            responsibleSalesman = Guid.Empty;
-            balance= credibility = 0;
-            giveAddress = acontackTel = giveArea = customAcontactName = customAcontactTel = "";
-            CustomerManager.GetCustomerInfo(id, ref balance, ref credibility, ref giveAddress,ref giveArea, ref acontackTel, ref acontackId,ref customAcontactName,ref customAcontactTel,ref responsibleSalesman);
+            var customer = CustomerManager.Find(id);
+            if (customer == null)
+            {
+                return;
+            }
             AllOrderUnCharge = CustomerManager.GetCustomerAllOrderPrice(id);
-            Balance = balance;
-            Credibility = credibility;
-            OutStorage.GiveAddress = giveAddress;
-            OutStorage.AcontackTel = acontackTel;
-            OutStorage.BusinessUser = responsibleSalesman;
-            if (!string.IsNullOrWhiteSpace(customAcontactName) && string.IsNullOrWhiteSpace(OutStorage.AcontackName))
+            if (customer.Balance != null)
+                Balance = customer.Balance.Value;
+            else
+                Balance = 0;
+            if (customer.Credibility != null)
+                Credibility = customer.Credibility.Value;
+            else
+                Credibility = 0;
+
+            OutStorage.GiveAddress = customer.Address;
+            OutStorage.AcontackTel = customer.Tel;
+            if (customer.ResponsibleSalesman.HasValue)
             {
-                OutStorage.AcontackName = customAcontactName;
+                OutStorage.BusinessUser = customer.ResponsibleSalesman.Value;
             }
-            if (!string.IsNullOrWhiteSpace(customAcontactTel) && string.IsNullOrWhiteSpace(customAcontactTel))
+            if (!string.IsNullOrWhiteSpace(customer.AcontactName) )
             {
-                OutStorage.AcontackTel = customAcontactTel;
+                OutStorage.AcontackName = customer.AcontactName;
             }
-            OutStorage.GiveArea = giveArea;
-            //计算剩余信誉度
+            if (!string.IsNullOrWhiteSpace(customer.AcontactTel) )
+            {
+                OutStorage.AcontackTel = customer.AcontactTel;
+            }
+            OutStorage.PaymoneyType = (int)customer.PaymentType;
+            OutStorage.GiveArea = customer.Area;
             RemainingCredibility = (Credibility + Balance) - AllOrderUnCharge;
             BalanceIsEnable = true;
             CredibilityIsEnable = true;
             AllOrderUnChargeIsEnable = true;
             RemainingCredibilityIsEnable = true;
             RaisePropertiesChanged("OutStorage", "Balance", "BalanceIsEnable", "Credibility", "CredibilityIsEnable", "AllOrderUnCharge", "AllOrderUnChargeIsEnable", "RemainingCredibility", "RemainingCredibilityIsEnable");
+
+            //decimal balance,credibility;
+            //string giveAddress,giveArea, acontackTel, customAcontactName, customAcontactTel;
+            //Guid acontackId, responsibleSalesman;
+            //acontackId = Guid.Empty;
+            //responsibleSalesman = Guid.Empty;
+            //balance= credibility = 0;
+            //giveAddress = acontackTel = giveArea = customAcontactName = customAcontactTel = "";
+            // CustomerManager.GetCustomerInfo(id, ref balance, ref credibility, ref giveAddress,ref giveArea, ref acontackTel, ref acontackId,ref customAcontactName,ref customAcontactTel,ref responsibleSalesman);
+            //AllOrderUnCharge = CustomerManager.GetCustomerAllOrderPrice(id);
+            //Balance = balance;
+            //Credibility = credibility;
+            //OutStorage.GiveAddress = giveAddress;
+            //OutStorage.AcontackTel = acontackTel;
+            //OutStorage.BusinessUser = responsibleSalesman;
+            //if (!string.IsNullOrWhiteSpace(customAcontactName) && string.IsNullOrWhiteSpace(OutStorage.AcontackName))
+            //{
+            //    OutStorage.AcontackName = customAcontactName;
+            //}
+            //if (!string.IsNullOrWhiteSpace(customAcontactTel) && string.IsNullOrWhiteSpace(customAcontactTel))
+            //{
+            //    OutStorage.AcontackTel = customAcontactTel;
+            //}
+            //OutStorage.GiveArea = giveArea;
+            //计算剩余信誉度
+            //RemainingCredibility = (Credibility + Balance) - AllOrderUnCharge;
+            //BalanceIsEnable = true;
+            //CredibilityIsEnable = true;
+            //AllOrderUnChargeIsEnable = true;
+            //RemainingCredibilityIsEnable = true;
+            //RaisePropertiesChanged("OutStorage", "Balance", "BalanceIsEnable", "Credibility", "CredibilityIsEnable", "AllOrderUnCharge", "AllOrderUnChargeIsEnable", "RemainingCredibility", "RemainingCredibilityIsEnable");
         }
 
         /// <summary>

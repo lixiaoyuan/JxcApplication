@@ -230,6 +230,10 @@
     <Compile Include="Migrations\201611101248267_addcustomerPaymentType.Designer.cs">
       <DependentUpon>201611101248267_addcustomerPaymentType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611150141375_productOutStorageAddPayType.cs" />
+    <Compile Include="Migrations\201611150141375_productOutStorageAddPayType.Designer.cs">
+      <DependentUpon>201611150141375_productOutStorageAddPayType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoriesOrder.cs" />
     <Compile Include="Models\CategoriesOutOrder.cs" />
@@ -345,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611101248267_addcustomerPaymentType.resx">
       <DependentUpon>201611101248267_addcustomerPaymentType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611150141375_productOutStorageAddPayType.resx">
+      <DependentUpon>201611150141375_productOutStorageAddPayType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -22,14 +22,23 @@ namespace BusinessDb.Cor.Business
             return new CustomerManager();
         }
 
-        public void GetCustomerInfo(Guid id, ref decimal balance, ref decimal credibility, ref string giveAddress,
+        public static Customer Find(Guid id)
+        {
+            using (ApplicationDbContext db=new ApplicationDbContext())
+            {
+                return db.Customer.Find(id);
+            }
+        }
+        [Obsolete]
+        public Customer GetCustomerInfo(Guid id, ref decimal balance, ref decimal credibility, ref string giveAddress,
             ref string giveArea, ref string acontackTel, ref Guid acontackId, ref string customAcontactName,
             ref string customAcontactTel, ref Guid responsibleSalesman)
         {
             var firstOrDefault = _entities.Customer.AsNoTracking().First(a => a.Id == id);
             if (firstOrDefault != null)
             {
-                if (firstOrDefault.Balance != null) balance = firstOrDefault.Balance.Value;
+                if (firstOrDefault.Balance != null)
+                    balance = firstOrDefault.Balance.Value;
                 else
                     balance = 0;
                 if (firstOrDefault.Credibility != null) credibility = firstOrDefault.Credibility.Value;
@@ -45,7 +54,9 @@ namespace BusinessDb.Cor.Business
                     customAcontactTel = firstOrDefault.AcontactTel;
                 if (firstOrDefault.ResponsibleSalesman.HasValue)
                     responsibleSalesman = firstOrDefault.ResponsibleSalesman.Value;
+                return firstOrDefault;
             }
+            return null;
         }
 
         public static ObservableCollection<Customer> QueryLookUp()
@@ -108,10 +119,10 @@ namespace BusinessDb.Cor.Business
             _entities.Customer.RemoveRange(supplierses);
         }
 
-        public Customer Find(Guid id)
-        {
-            return _entities.Customer.Find(id);
-        }
+        //public Customer Find(Guid id)
+        //{
+        //    return _entities.Customer.Find(id);
+        //}
 
         public string GetMaxCode()
         {
