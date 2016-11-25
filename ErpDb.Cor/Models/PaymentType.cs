@@ -6,6 +6,9 @@ using System.Text;
 
 namespace BusinessDb.Cor.Models
 {
+    /// <summary>
+    /// 付款方式
+    /// </summary>
     public enum PaymentType
     {
         [Display(Description = "现金")]
