@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace JxcApplication.Core.WorkApprovalData
 {
@@ -16,52 +11,74 @@ namespace JxcApplication.Core.WorkApprovalData
         private string _outAddress;
         private DateTime? _startDate;
         private DateTime? _endDate;
-        private string _outDayTimes;
+        private string _addCustomerQuan;
         private string _reason;
-
 
         public string OutAddress
         {
-            get { return _outAddress; }
+            get
+            {
+                return this._outAddress;
+            }
             set
             {
-                _outAddress = value;
+                this._outAddress = value;
             }
         }
 
+        public bool IsTickets { get; set; }
+
+        public string Route { get; set; }
+
         public DateTime? StartDate
         {
-            get { return _startDate; }
+            get
+            {
+                return this._startDate;
+            }
             set
             {
-                _startDate = value; 
+                this._startDate = value;
             }
         }
 
         public DateTime? EndDate
         {
-            get { return _endDate; }
+            get
+            {
+                return this._endDate;
+            }
             set
             {
-                _endDate = value; 
+                this._endDate = value;
             }
         }
 
-        public string OutDayTimes
+        public string AddCustomerQuan
         {
-            get { return _outDayTimes; }
+            get
+            {
+                return this._addCustomerQuan;
+            }
             set
             {
-                _outDayTimes = value;
+                this._addCustomerQuan = value;
             }
         }
+
+        public string DealersToAddRetailersQuan { get; set; }
+
+        public string OldCsutomerServiceDetail { get; set; }
 
         public string Reason
         {
-            get { return _reason; }
+            get
+            {
+                return this._reason;
+            }
             set
             {
-                _reason = value; 
+                this._reason = value;
             }
         }
     }

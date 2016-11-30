@@ -30,17 +30,16 @@ namespace JxcApplication
         private void DXWindow1_Loaded(object sender, RoutedEventArgs e)
         {
             List<TestData> datas=new  List<TestData>();
-            datas.Add(new TestData() {own = 111});
-            datas.Add(new TestData() {own2 = 32});
-            datas.Add(new TestData() {sum = 43});
-            //GridControldata.ItemsSource = datas;
+            datas.Add(new TestData() { Name = "收件箱"});
+            datas.Add(new TestData() { Name = "发件箱"});
+            datas.Add(new TestData() { Name = "回收站"});
+            datas.Add(new TestData() { Name = "草稿箱"});
+            ListBoxEditBox.ItemsSource = datas;
         }
     }
 
     public class TestData
     {
-        public int own { get; set; }
-        public int own2 { get; set; }
-        public int sum { get; set; }
+        public string Name { get; set; }
     }
 }

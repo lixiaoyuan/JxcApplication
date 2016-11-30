@@ -41,6 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +51,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Images\Icons\icon2.ico</ApplicationIcon>
@@ -213,7 +215,9 @@
     <Compile Include="Core\SortCodeGenerate.cs" />
     <Compile Include="Core\WorkApprovalData\BusinessTripData.cs" />
     <Compile Include="Core\WorkApprovalData\ForleaveData.cs" />
+    <Compile Include="Core\WorkApprovalData\MealsReimburseData.cs" />
     <Compile Include="Core\WorkApprovalData\ReimburseData.cs" />
+    <Compile Include="Core\WorkApprovalData\StayReimburseData.cs" />
     <Compile Include="DXWindow1.xaml.cs">
       <DependentUpon>DXWindow1.xaml</DependentUpon>
     </Compile>

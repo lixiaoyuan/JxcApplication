@@ -37,9 +37,9 @@ namespace JxcApplication
             DevExpress.Xpf.Core.ApplicationThemeHelper.UpdateApplicationThemeName();
             try
             {
-                //DXWindow1 window=new DXWindow1();
-                //window.ShowDialog();
-                //return;
+                DXWindow1 window = new DXWindow1();
+                window.ShowDialog();
+                return;
 
                 CultureInfo cultureInfo = new CultureInfo("zh-CN");
 
