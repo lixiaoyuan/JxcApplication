@@ -34,7 +34,8 @@ namespace JxcApplication
             datas.Add(new TestData() { Name = "发件箱"});
             datas.Add(new TestData() { Name = "回收站"});
             datas.Add(new TestData() { Name = "草稿箱"});
-            ListBoxEditBox.ItemsSource = datas;
+            //ListBoxEditBox.ItemsSource = datas;
+            //ListBoxEditBox2.ItemsSource = datas;
         }
     }
 

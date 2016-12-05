@@ -8,6 +8,7 @@ using DevExpress.Mvvm.POCO;
 using DevExpress.Xpf.Bars;
 using DevExpress.Xpf.Core;
 using JxcApplication.ViewModels.Inherit;
+using JxcApplication.ViewModels.Mail;
 using JxcApplication.ViewModels.Relation;
 using JxcApplication.ViewModels.Sell;
 using JxcApplication.ViewModels.Storage;
@@ -205,6 +206,11 @@ namespace JxcApplication.ViewModels
         public void WorkApprovalMaintain(BarItem clickItem)
         {
             CreateTabItem(ViewModelSource.Create(() => new WorkApprovalMaintainViewModel(GetBarItemId(clickItem),clickItem.Content.ToString())));
+        }
+
+        public void Mail(BarItem clickItem)
+        {
+            CreateTabItem(ViewModelSource.Create(() => new MailMainViewModel(GetBarItemId(clickItem),clickItem.Content.ToString())));
         }
     }
 }

@@ -33,6 +33,8 @@ namespace ApplicationDb.Cor
         public virtual DbSet<WorkApprovalOrderUser> WorkApprovalOrderUser { get; set; }
         public virtual DbSet<WorkApprovalOrderCopyUser> WorkApprovalOrderCopyUser { get; set; }
         public virtual DbSet<ForleaveType> ForleaveType { get; set; }
+        public virtual DbSet<FileCabinets> FileCabinetses { get; set; }
+        public virtual DbSet<MailOrder> MailOrders { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.AddFromAssembly(this.GetType().Assembly);

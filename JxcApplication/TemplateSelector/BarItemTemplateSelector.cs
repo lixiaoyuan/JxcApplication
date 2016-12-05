@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace JxcApplication.TemplateSelector
 {
-    public class BarItemTemplateSelector:DataTemplateSelector
+    public class BarItemTemplateSelector : DataTemplateSelector
     {
         public DataTemplate ItemTemplate { get; set; }
         public DataTemplate SubItemTemplate { get; set; }

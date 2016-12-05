@@ -12,30 +12,53 @@
              xmlns:dxsps="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet"
              xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:mail="clr-namespace:JxcApplication.Views.Mail"
              Title="DXWindow1" Height="476.4" Width="753.8">
-    <dxb:BarManager x:Name="barManager1" ToolbarGlyphSize="Small">
+    <!--<dxb:BarManager x:Name="barManager1" ToolbarGlyphSize="Small">
         <DockPanel>
             <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top" />
             <Border Margin="10">
                 <Border.Resources>
 
                 </Border.Resources>
-                <dxe:ListBoxEdit x:Name="ListBoxEditBox">
-                    <dxe:ListBoxEdit.StyleSettings>
-                        <dxe:RadioListBoxEditStyleSettings></dxe:RadioListBoxEditStyleSettings>
-                    </dxe:ListBoxEdit.StyleSettings>
-                    <dxe:ListBoxEdit.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                        </DataTemplate> 
-                    </dxe:ListBoxEdit.ItemTemplate>
-                    <dxe:ListBoxEdit.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </dxe:ListBoxEdit.ItemsPanel>
-                </dxe:ListBoxEdit>
+                <dxlc:LayoutControl>
+                    <dxe:ListBoxEdit x:Name="ListBoxEditBox">
+                        <dxe:ListBoxEdit.StyleSettings>
+                            <dxe:RadioListBoxEditStyleSettings></dxe:RadioListBoxEditStyleSettings>
+                        </dxe:ListBoxEdit.StyleSettings>
+                        <dxe:ListBoxEdit.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </DataTemplate>
+                        </dxe:ListBoxEdit.ItemTemplate>
+                        <dxe:ListBoxEdit.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </dxe:ListBoxEdit.ItemsPanel>
+                    </dxe:ListBoxEdit>
+                    <dxe:ListBoxEdit x:Name="ListBoxEditBox2" dxlc:LayoutControl.AllowHorizontalSizing="True">
+                        <dxe:ListBoxEdit.StyleSettings>
+                            <dxe:RadioListBoxEditStyleSettings></dxe:RadioListBoxEditStyleSettings>
+                        </dxe:ListBoxEdit.StyleSettings>
+                        <dxe:ListBoxEdit.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </DataTemplate>
+                        </dxe:ListBoxEdit.ItemTemplate>
+                        <dxe:ListBoxEdit.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </dxe:ListBoxEdit.ItemsPanel>
+                    </dxe:ListBoxEdit>
+
+                </dxlc:LayoutControl>
             </Border>
         </DockPanel>
-    </dxb:BarManager>
+    </dxb:BarManager>-->
+
+    <mail:MailMainView>
+        
+    </mail:MailMainView>
 </dx:DXWindow>
