@@ -143,27 +143,7 @@ namespace JxcApplication.ViewModels.Sell
 
             var chargeCler = Details.FirstOrDefault(a => a.OrderType == "QL");
             var sumPice = Details.Where(a => a.OrderType != "QL").Sum(a => a.ThisPrice);
-            if (sumPice == null || sumPice.Value == 0)
-            {
-                DispatcherService.BeginInvoke(() =>
-                {
-                    Details.Clear();
-                    RaisePropertyChanged("Details");
-                });
-                return;
-            }
-            if ((sumPice.Value - (int)sumPice.Value) == 0)
-            {
-                if ( chargeCler != null)
-                {
-                    DispatcherService.BeginInvoke(() =>
-                    {
-                        Details.Remove(chargeCler);
-                        RaisePropertyChanged("Details");
-                    });
-                }
-                return;
-            }
+            
             //清零
             decimal clearMoney;
             if (sumPice < 0)
@@ -174,8 +154,10 @@ namespace JxcApplication.ViewModels.Sell
             {//收钱，少收零
                 clearMoney = - (sumPice.Value - (int)sumPice.Value);
             }
-
-            if (chargeCler == null)
+            if (clearMoney == 0)
+            {
+                return;
+            }if (chargeCler == null)
             {
 
                 if (isCollChange == false)
