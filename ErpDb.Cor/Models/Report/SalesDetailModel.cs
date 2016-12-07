@@ -31,8 +31,8 @@ namespace BusinessDb.Cor.Models.Report
     {
         [Display(Name = "客户")]
         public string Customer { get; set; }
-        [Display(Name = "付款类型")]
-        public string CustomerPayType { get; set; }
+        [Display(Name = "客户类型")]
+        public string CustomerType { get; set; }
         [Display(Name = "业务员")]
         public string BusinessUser { get; set; }
         [Display(Name = "订单类型")]

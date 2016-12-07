@@ -17,6 +17,8 @@ namespace BusinessDb.Cor.Models.Report
         public string OrderType { get; set; }
         [Display(Name = "客户")]
         public string Customer { get; set; }
+        [Display(Name = "客户类型")]
+        public string CustomerType { get; set; }
         [Display(Name = "总金额")]
         [DataType(DataType.Currency)]
         public decimal? SumPrice { get; set; }
