@@ -57,7 +57,6 @@ namespace JxcApplication.Core.Mail
             t.FormUser = mailOrder.FormUser;
             t.FormUserName = mailOrder.FormUserName;
             t.ReplyMailId = mailOrder.ReplyMailId;
-            t.EditPreviewType = mailOrder.EditPreviewType;
             return t;
         }
         public static MailOrder ConvertMailOrder(MailOrder mailOrder)
@@ -82,7 +81,6 @@ namespace JxcApplication.Core.Mail
             t.FormUser = mailOrder.FormUser;
             t.FormUserName = mailOrder.FormUserName;
             t.ReplyMailId = mailOrder.ReplyMailId;
-            t.EditPreviewType = mailOrder.EditPreviewType;
             return t;
         }
     }

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Data;
+using ApplicationDb.Cor;
 using ApplicationDb.Cor.EntityModels;
 using ApplicationDb.Cor.Model;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm.Native;
 using DevExpress.Mvvm.POCO;
 using DevExpress.Xpf.Spreadsheet;
 using DevExpress.XtraRichEdit;
-using JxcApplication.Core;
 using JxcApplication.Core.Mail;
 using JxcApplication.ViewModels.Inherit;
 using Utilities;
@@ -27,63 +27,28 @@ namespace JxcApplication.ViewModels.Mail
         WeekPlan,
         MonthPlan
     }
-    public interface IMailEditPreview
-    {
-        MailEditPreviewType PreviewType { get; set; }
-        bool ReadOnly { get; set; }
-        void SetMail(MailOrder mail = null);
-        void BuildEditPreview();
-        void FreedEditPreview();
-        void ControlLoaded(object control);
-    }
 
     [POCOViewModel]
-    public class MailPreview : IMailEditPreview
+    public class MailPreview : IMailPreview
     {
         private MailOrder _currentMailOrder;
         private IMailDataProvide _mailDataProvide;
-        public static MailPreview Create(IMailDataProvide dataProvide)
+
+ 
+
+        public void Loaded(RichEditControl control)
         {
-            if (dataProvide == null)
-            {
+                PutDataPreview(control);
+        }
+
+        public static MailPreview Create(MailOrder mailOrder, IMailDataProvide dataProvide)
+        {
+            if ((dataProvide == null) || (mailOrder == null))
                 throw new ArgumentNullException();
-            }
             var tem = ViewModelSource.Create(() => new MailPreview());
             tem._mailDataProvide = dataProvide;
+            tem._currentMailOrder = mailOrder;
             return tem;
-        }
-
-        public virtual MailEditPreviewType PreviewType { get; set; }
-        public virtual bool ReadOnly { get; set; }
-
-        public void SetMail(MailOrder mail)
-        {
-            _currentMailOrder = mail;
-            //throw new NotImplementedException();
-        }
-
-        public void BuildEditPreview()
-        {
-            PreviewType = _currentMailOrder.EditPreviewType;
-            //throw new NotImplementedException();
-        }
-
-        public void FreedEditPreview()
-        {
-            PreviewType = MailEditPreviewType.Null;
-            //throw new NotImplementedException();
-        }
-
-        public void ControlLoaded(object control)
-        {
-            if ((control as RichEditControl) != null)
-            {
-                PutDataPreview(control as RichEditControl);
-            }
-            else if ((control as SpreadsheetControl) != null)
-            {
-                PutDataPreview(control as SpreadsheetControl);
-            }
         }
 
         private void PutDataPreview(RichEditControl control)
@@ -92,20 +57,177 @@ namespace JxcApplication.ViewModels.Mail
             control.Document.LoadDocument(@"C:\Users\XIAO\Desktop\c++笔记z.doc", DocumentFormat.Doc);
             control.EndInit();
         }
+    }
 
-        private void PutDataPreview(SpreadsheetControl control)
+    //[POCOViewModel]
+    public class MailNewEdit :BindableBase, IMailPreview
+    {
+        private IMailDataProvide _dataProvide;
+        private MailOrder _mailOrder;
+        private NewMailType _newMailType;
+        private bool _isReply;
+
+
+        //public virtual ObservableCollection<SystemUser> Users { get; set; }
+        public virtual ICollectionView Users { get;  set; }
+        public virtual  List<SystemUser> SelectUsers { get;set; }
+
+        public  MailOrder NewMail { get; set; }
+
+
+        public DelegateCommand SendMessageCommand { get; set; }
+        public DelegateCommand<RichEditControl> LoadedCommand { get; set; }
+        public DelegateCommand EmailToUsersEditChangedCommand { get; set; }
+        public DelegateCommand buttonCommand { get; set; }
+        public void Loaded(RichEditControl control)
+        {
+            PutDataPreview(control);
+            FillPrepareDataAsync();
+        }
+
+        private void SendMessage()
+        {
+        }
+
+        private bool CanSendMessage()
+        {
+            bool i = SelectUsers != null;
+            if (i)
+            {
+                i = SelectUsers.Count > 0;
+
+            }
+            i = NewMail != null;
+            if (i)
+            {
+                i = !string.IsNullOrWhiteSpace(NewMail.Subject);
+
+            }
+            return SelectUsers != null && SelectUsers.Count > 0 && NewMail != null &&
+                   !string.IsNullOrWhiteSpace(NewMail.Subject);
+        }
+
+        private void EmailToUsersEditChanged()
+        {
+            SendMessageCommand.RaiseCanExecuteChanged();
+        }
+
+        private void button()
+        {
+            MessageBox.Show(SelectUsers.Count.ToString());
+        }
+        private void PutDataPreview(RichEditControl control)
         {
             control.BeginInit();
-            control.Document.LoadDocument(@"C:\Users\XIAO\Desktop\工资表格式.xlsx", DevExpress.Spreadsheet.DocumentFormat.Xlsx);
+            control.Document.LoadDocument(@"C:\Users\XIAO\Desktop\c++笔记z.doc", DocumentFormat.Doc);
             control.EndInit();
         }
+        /// <summary>
+        /// 填充准备数据
+        /// </summary>
+        private async void FillPrepareDataAsync()
+        {
+            var result = (await _dataProvide.GetMailUserList()).ToObservableCollection();
+            Users = new CollectionViewSource() { Source = result }.View;
+            //填充选择用户
+            if (SelectUsers == null)
+            {
+                if (_isReply)
+                {
+                    if (_mailOrder.FormUser.HasValue && _mailOrder.FormUser.Value != Guid.Empty)
+                    {
+                        var findFormUser = result.First(a => a.Id == _mailOrder.FormUser.Value);
+                        if (findFormUser != null)
+                        {
+                            SelectUsers = new List<SystemUser>(new[] { findFormUser });
+                        }
+                    }
+                }
+                if (SelectUsers == null)
+                {
+                    SelectUsers = new List<SystemUser>();
+                }
+            }
+            //创建mailorder
+            NewMail = CreateNewMailOrder();
+            RaisePropertiesChanged("Users", "SelectUsers", "NewMail");
+        }
+
+        #region Static
+
+        public static MailNewEdit Create(IMailDataProvide dataProvide, NewMailType newMailType)
+        {
+            //var returnTem = ViewModelSource.Create(() => new MailNewEdit(dataProvide, newMailType));
+            //return returnTem;
+            return new MailNewEdit(dataProvide,newMailType);
+        }
+
+        public static MailNewEdit Create(IMailDataProvide dataProvide, MailOrder mailOrder)
+        {
+            //var returnTem = ViewModelSource.Create(() => new MailNewEdit(dataProvide, mailOrder));
+            //return returnTem;
+            return new MailNewEdit(dataProvide,mailOrder);
+        }
+
+        #endregion
+
+        #region 构造函数
+
+        public MailNewEdit(IMailDataProvide dataProvide, MailOrder mailOrder)
+        {
+            _dataProvide = dataProvide;
+            _mailOrder = mailOrder;
+            _newMailType = NewMailType.Mail;
+            _isReply = true;
+            InitCommand();
+        }
+
+        public MailNewEdit(IMailDataProvide dataProvide, NewMailType newMailType)
+        {
+            _dataProvide = dataProvide;
+            _mailOrder = CreateNewMailOrder();
+            _newMailType = newMailType;
+            InitCommand();
+        }
+
+        private void InitCommand()
+        {
+            SendMessageCommand = new DelegateCommand(SendMessage, CanSendMessage);
+            LoadedCommand = new DelegateCommand<RichEditControl>(Loaded);
+            EmailToUsersEditChangedCommand=new DelegateCommand(EmailToUsersEditChanged);
+            buttonCommand=new DelegateCommand(button);
+        }
+
+        #endregion
+
+        private MailOrder CreateNewMailOrder()
+        {
+            var returnTem= new MailOrder();
+            returnTem.Id = Guid.NewGuid();
+            returnTem.FormUser = App.GlobalApp.LoginUser.Id;
+            returnTem.FormUserName = App.GlobalApp.LoginUser.Name;
+            if (_isReply)
+            {
+                returnTem.IsReply = true;
+                returnTem.ReplyMailId = _mailOrder.Id;
+                returnTem.Subject = "回复 - " + _mailOrder.Subject;
+            }
+            return returnTem;
+        }
+
     }
 
     [POCOViewModel]
-    public class MailMainViewModel: ViewModelTabItem
+    public class MailMainViewModel : ViewModelTabItem
     {
         private IMailDataProvide _mailDataProvide;
-        public virtual ObservableCollection<MailListShowType> MailListShowTypes { get; set; }//Description = "收件箱"
+
+        public MailMainViewModel(Guid menuId, string caption) : base(menuId, caption)
+        {
+        }
+
+        public virtual bool ShowLoadingMailList { get; set; }
+        public virtual ObservableCollection<MailListShowType> MailListShowTypes { get; set; } //Description = "收件箱"
         public virtual MailListShowType CurrentShowStype { get; set; }
 
         public virtual ObservableCollection<MailOrder> Mails { get; set; }
@@ -114,13 +236,10 @@ namespace JxcApplication.ViewModels.Mail
         public virtual DelegateCommand ChangeUnreadStatusCommand { get; set; }
         public virtual DelegateCommand DeleteCommand { get; set; }
         public virtual DelegateCommand<NewMailType> CreateNewMailCommand { get; set; }
+        public virtual DelegateCommand ReplyCommand { get; set; }
 
-        public virtual IMailEditPreview EditPreview { get; set; }
-
-        public MailMainViewModel(Guid menuId, string caption) : base(menuId, caption)
-        {
-
-        }
+        public virtual IMailPreview MailPreview { get; set; }
+        public virtual IMailPreview MailNewEdit { get; set; }
 
         protected override void OnInitializeInRuntime()
         {
@@ -133,6 +252,26 @@ namespace JxcApplication.ViewModels.Mail
             CurrentShowStype = MailListShowTypes[0];
         }
 
+        private void InitializeCommand()
+        {
+            ChangeUnreadStatusCommand = new DelegateCommand(ChangeUnreadStatus, CanChangeUnreadStatus);
+            DeleteCommand = new DelegateCommand(Delete, CanDelete);
+            CreateNewMailCommand = new DelegateCommand<NewMailType>(CreateNewMail);
+            ReplyCommand = new DelegateCommand(Reply, CanReply);
+        }
+
+        private void CreateNewMailCore(NewMailType newMailType)
+        {
+            MailNewEdit = JxcApplication.ViewModels.Mail.MailNewEdit.Create(_mailDataProvide, newMailType);
+            GetService<IWindowService>().Show(this);
+        }
+
+        private void CreateNewMailCore(MailOrder replyMail)
+        {
+            MailNewEdit = JxcApplication.ViewModels.Mail.MailNewEdit.Create(_mailDataProvide, replyMail);
+            GetService<IWindowService>().Show(this);
+        }
+
         #region POCO
 
         public void OnCurrentShowStypeChanged()
@@ -143,17 +282,10 @@ namespace JxcApplication.ViewModels.Mail
         public void OnCurrentMailChanged()
         {
             UpdateToRead(CurrentMail);
-            EditPreview = MailPreview.Create(_mailDataProvide);
             if (CurrentMail == null)
-            {
-                EditPreview.FreedEditPreview();
-            }
+                MailPreview = null;
             else
-            {
-                EditPreview.SetMail(CurrentMail);
-                EditPreview.BuildEditPreview();
-            }
-            //RaisePropertyChanged("EditPreview");
+                MailPreview = Mail.MailPreview.Create(CurrentMail, _mailDataProvide);
         }
 
         #endregion
@@ -163,111 +295,116 @@ namespace JxcApplication.ViewModels.Mail
         private async void UpdateSource()
         {
             if (CurrentShowStype == null)
-            {
                 return;
-            }
-            var result = (await _mailDataProvide.GetItemAsync(CurrentShowStype))?.Select(Common.ConvertMailOrderModel).ToObservableCollection();
+            ShowLoadingMailList = true;
+            var result =
+                (await _mailDataProvide.GetItemAsync(CurrentShowStype))?.Select(Common.ConvertMailOrderModel)
+                    .ToObservableCollection();
+            ShowLoadingMailList = false;
             if (Mails != result)
-            {
                 Mails = result;
-            }
+            GC.Collect();
         }
+
         private async void UpdateToRead(MailOrder mail, bool unread = false)
         {
             if (mail == null)
-            {
                 return;
-            }
             mail.IsUnread = unread;
             await _mailDataProvide.UpdateItemAsync(Common.ConvertMailOrder(mail));
         }
+
         private async void UpdateToDelete(MailOrder mail, bool dele = true)
         {
             if (mail == null)
-            {
                 return;
-            }
             mail.IsDelete = dele;
             var result = await _mailDataProvide.UpdateItemAsync(Common.ConvertMailOrder(mail));
             if (result && dele)
             {
                 Mails.Remove(CurrentMail);
                 if (Mails.Count > 0)
-                {
                     CurrentMail = Mails[0];
-                }
                 else
-                {
                     CurrentMail = null;
-                }
                 RaisePropertiesChanged("Mails", "CurrentMail");
             }
         }
+
         private async void UpdateToRemove(MailOrder mail)
         {
             if (mail == null)
-            {
                 return;
-            }
             var result = await _mailDataProvide.ReomverItemAsync(Common.ConvertMailOrder(mail));
             if (result)
             {
                 Mails.Remove(CurrentMail);
                 if (Mails.Count > 0)
-                {
                     CurrentMail = Mails[0];
-                }
                 else
-                {
                     CurrentMail = null;
-                }
                 RaisePropertiesChanged("Mails", "CurrentMail");
             }
         }
-        
 
         #endregion
 
         #region Command method
 
+        /// <summary>
+        ///     修改未读状态
+        /// </summary>
         private void ChangeUnreadStatus()
         {
             UpdateToRead(CurrentMail, !CurrentMail.IsUnread);
             RaisePropertiesChanged("CurrentMail");
         }
+
         private bool CanChangeUnreadStatus()
         {
-            return CurrentMail != null && CurrentShowStype.Type == MailListType.InBox;
+            return (CurrentMail != null) && (CurrentShowStype.Type == MailListType.InBox);
         }
 
+        /// <summary>
+        ///     删除邮件
+        /// </summary>
         private void Delete()
         {
             if (CurrentShowStype.Type == MailListType.DelBox)
-            {//粉碎回收站邮件
                 UpdateToRemove(CurrentMail);
-            }
             else
-            {//标记删除邮件
                 UpdateToDelete(CurrentMail);
-            }
             RaisePropertiesChanged("CurrentMail");
         }
+
         private bool CanDelete()
         {
-            return CurrentMail != null && (CurrentShowStype.Type == MailListType.InBox || CurrentShowStype.Type == MailListType.DelBox);
+            return (CurrentMail != null) &&
+                   ((CurrentShowStype.Type == MailListType.InBox) || (CurrentShowStype.Type == MailListType.DelBox));
         }
 
+        /// <summary>
+        ///     创建新邮件
+        /// </summary>
+        /// <param name="newMail"></param>
         private void CreateNewMail(NewMailType newMail)
         {
-            //this.GetService<>()
+            CreateNewMailCore(newMail);
         }
-        #endregion
 
-        private void InitializeCommand()
+        /// <summary>
+        ///     回复
+        /// </summary>
+        private void Reply()
         {
-            ChangeUnreadStatusCommand = new DelegateCommand(ChangeUnreadStatus, CanChangeUnreadStatus);
-            DeleteCommand = new DelegateCommand(Delete, CanDelete);
-            CreateNewMailCommand = new DelegateCommand<NewMailType>(CreateNewMail);
+            CreateNewMailCore(CurrentMail);
         }
+
+        private bool CanReply()
+        {
+            return (CurrentMail != null) && (CurrentShowStype.Type == MailListType.InBox);
+        }
+
+        #endregion
     }
 }

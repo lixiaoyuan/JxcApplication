@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationDb.Cor;
 using ApplicationDb.Cor.Business;
 using ApplicationDb.Cor.EntityModels;
 
@@ -51,6 +52,11 @@ namespace JxcApplication.Core.Mail
         public Task<byte[]> GetItemConentAsync(MailOrder mailOrder)
         {
             throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<SystemUser>> GetMailUserList()
+        {
+            return Task<IEnumerable<SystemUser>>.Factory.StartNew(SystemAccountManager.QueryLookUp);
         }
     }
 }

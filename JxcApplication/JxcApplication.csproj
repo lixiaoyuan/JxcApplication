@@ -267,7 +267,7 @@
     </Compile>
     <Compile Include="Selector\CategoryTemplateSelector.cs" />
     <Compile Include="TemplateSelector\BarItemTemplateSelector.cs" />
-    <Compile Include="TemplateSelector\MailEditPreviewTemplateSelector.cs" />
+    <Compile Include="TemplateSelector\NotNullTemplateSelector.cs" />
     <Compile Include="TestViewModel.cs" />
     <Compile Include="ViewModels\CopyMeWorkApprovalOrderViewModel.cs" />
     <Compile Include="ViewModels\CustomNotificationViewModel.cs" />
@@ -276,6 +276,7 @@
     <Compile Include="ViewModels\Inherit\ViewModelTabItem.cs" />
     <Compile Include="ViewModels\Inherit\WorkApprovalOrderViewDataContext.cs" />
     <Compile Include="ViewModels\LastStoreQueViewModel.cs" />
+    <Compile Include="ViewModels\Mail\IMailPreview.cs" />
     <Compile Include="ViewModels\Mail\MailMainViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MeNewWorkApprovalOrderViewModel.cs" />
@@ -308,14 +309,14 @@
     <Compile Include="Views\ExpensesIn.xaml.cs">
       <DependentUpon>ExpensesIn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Mail\EditMailView.xaml.cs">
-      <DependentUpon>EditMailView.xaml</DependentUpon>
+    <Compile Include="Views\Mail\MailPreviewView.xaml.cs">
+      <DependentUpon>MailPreviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Mail\MailMainView.xaml.cs">
       <DependentUpon>MailMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Mail\NewMailContent.xaml.cs">
-      <DependentUpon>NewMailContent.xaml</DependentUpon>
+    <Compile Include="Views\Mail\MailNewEditView.xaml.cs">
+      <DependentUpon>MailNewEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MeNewWorkApprovalOrder.xaml.cs">
       <DependentUpon>MeNewWorkApprovalOrder.xaml</DependentUpon>
@@ -565,7 +566,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Mail\EditMailView.xaml">
+    <Page Include="Views\Mail\MailPreviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -573,7 +574,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Mail\NewMailContent.xaml">
+    <Page Include="Views\Mail\MailNewEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

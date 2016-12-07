@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationDb.Cor;
 using ApplicationDb.Cor.EntityModels;
 
 namespace JxcApplication.Core.Mail
@@ -16,5 +17,6 @@ namespace JxcApplication.Core.Mail
         Task<bool> CreateItemAsync(MailOrder mailOrder);
         Task<bool> CreateItemAsync(MailOrder mailOrder, byte[] content);
         Task<byte[]> GetItemConentAsync(MailOrder mailOrder);
+        Task<IEnumerable<SystemUser>> GetMailUserList();
     }
 }

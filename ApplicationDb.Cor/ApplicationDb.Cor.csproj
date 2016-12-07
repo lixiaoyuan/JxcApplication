@@ -221,13 +221,12 @@
     <Compile Include="Migrations\201609251204158_addForleaveType.Designer.cs">
       <DependentUpon>201609251204158_addForleaveType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612031159194_AddFileMailOrder.cs" />
-    <Compile Include="Migrations\201612031159194_AddFileMailOrder.Designer.cs">
-      <DependentUpon>201612031159194_AddFileMailOrder.cs</DependentUpon>
+    <Compile Include="Migrations\201612060336372_AddFileMailOrder.cs" />
+    <Compile Include="Migrations\201612060336372_AddFileMailOrder.Designer.cs">
+      <DependentUpon>201612060336372_AddFileMailOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\FileFormatType.cs" />
-    <Compile Include="Model\MailEditPreviewType.cs" />
     <Compile Include="Model\NavigationMenuGroup.cs" />
     <Compile Include="Model\RibbonNodeCollection.cs" />
     <Compile Include="Model\RibbonNodeModel.cs" />
@@ -318,8 +317,8 @@
     <EmbeddedResource Include="Migrations\201609251204158_addForleaveType.resx">
       <DependentUpon>201609251204158_addForleaveType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612031159194_AddFileMailOrder.resx">
-      <DependentUpon>201612031159194_AddFileMailOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612060336372_AddFileMailOrder.resx">
+      <DependentUpon>201612060336372_AddFileMailOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

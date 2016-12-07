@@ -39,7 +39,6 @@ namespace ApplicationDb.Cor.Migrations
                         CreateDateTime = c.DateTime(nullable: false),
                         Subject = c.String(maxLength: 100, unicode: false),
                         ConetntFileId = c.Guid(),
-                        EditPreviewType = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

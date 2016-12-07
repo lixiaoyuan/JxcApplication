@@ -17,9 +17,9 @@ namespace JxcApplication.Views.Mail
     /// <summary>
     /// EditMailView.xaml 的交互逻辑
     /// </summary>
-    public partial class EditMailView : UserControl
+    public partial class MailPreviewView : UserControl
     {
-        public EditMailView()
+        public MailPreviewView()
         {
             InitializeComponent();
         }

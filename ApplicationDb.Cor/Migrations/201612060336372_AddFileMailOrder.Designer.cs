@@ -13,7 +13,7 @@ namespace ApplicationDb.Cor.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201612031159194_AddFileMailOrder"; }
+            get { return "201612060336372_AddFileMailOrder"; }
         }
         
         string IMigrationMetadata.Source

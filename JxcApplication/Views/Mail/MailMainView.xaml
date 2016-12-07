@@ -23,15 +23,19 @@
         </Style>
         <dx:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
         <dx:BoolToVisibilityInverseConverter x:Key="boolToVisibilityInverseConverter" />
+        <Style x:Key="MessWindowStyle" TargetType="dxr:DXRibbonWindow">
+            <Setter Property="Icon" Value="../../Images/Icons/icon.png"></Setter>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+        </Style>
     </UserControl.Resources>
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:WindowService WindowType="{x:Type dxr:DXRibbonWindow}"
-                              Title="消息"
+                              Title="  邮件  "
                               WindowStartupLocation="CenterScreen"
-                              WindowShowMode="Dialog">
+                              WindowShowMode="Dialog"  WindowStyle="{StaticResource MessWindowStyle}">
             <dxmvvm:WindowService.ViewTemplate>
                 <DataTemplate>
-                    <local:NewMailContent/>
+                    <local:MailNewEditView DataContext="{Binding MailNewEdit}"/>
                 </DataTemplate>
             </dxmvvm:WindowService.ViewTemplate>
         </dxmvvm:WindowService>
@@ -104,6 +108,7 @@
                         </dxe:ListBoxEdit.ItemsPanel>
                     </dxe:ListBoxEdit>
                     <dxg:GridControl Grid.Row="1" MinWidth="150" MinHeight="150" AutoExpandAllGroups="True"
+                                     ShowLoadingPanel="{Binding ShowLoadingMailList,Mode=OneWay}"
                                      ItemsSource="{Binding Mails}"
                                      SelectedItem="{Binding CurrentMail,Mode=TwoWay}">
                         <dxg:GridControl.View>
@@ -183,7 +188,7 @@
                                 </StackPanel>
                             </StackPanel>
                         </Border>
-                        <local:EditMailView Grid.Row="1" Margin="5,10"/>
+                        <local:MailPreviewView Grid.Row="1" Margin="5,10" />
                     </Grid>
                 </Grid>
             </Grid>

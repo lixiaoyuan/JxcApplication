@@ -16,8 +16,10 @@ namespace ApplicationDb.Cor.Helper
 #if DEBUG
                 return "data source=.;initial catalog=ApplicationDb;user id=sa;password=123456;MultipleActiveResultSets=True;App=EntityFramework";
 #endif
+#pragma warning disable 162
                 DESCryp desCryp = new DESCryp();
                 return desCryp.Decrypt(ConfigurationManager.ConnectionStrings["ApplicationDbContext"].ConnectionString, "1qaz!QAZ");
+#pragma warning restore 162
             }
         }
 

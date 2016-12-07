@@ -23,7 +23,6 @@ namespace ApplicationDb.Cor.EntityModels
         public virtual DateTime CreateDateTime { get; set; }
         public virtual string Subject { get; set; }
         public virtual Guid? ConetntFileId { get; set; }
-        public virtual MailEditPreviewType EditPreviewType { get; set; }
 
     }
 }
