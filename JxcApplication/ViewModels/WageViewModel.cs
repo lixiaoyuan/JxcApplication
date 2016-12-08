@@ -363,15 +363,16 @@ namespace JxcApplication.ViewModels
             {
                 row.PreTaxSum -= row.X3;
             }
-            if (row.PreTaxSum>3500)
-            {
-                row.C17 = (row.PreTaxSum - 3500) * 0.03m;
-            }
-            else
-            {
-                row.C17 = null;
-            }
-            if (row.C17.HasValue&&row.PreTaxSum.HasValue)
+            //放弃计算税
+            //if (row.PreTaxSum>3500)
+            //{
+            //    row.C17 = (row.PreTaxSum - 3500) * 0.03m;
+            //}
+            //else
+            //{
+            //    row.C17 = null;
+            //}
+            if (row.C17.HasValue && row.PreTaxSum.HasValue)
             {
                 row.AfterTaxSum = row.PreTaxSum - row.C17;
             }

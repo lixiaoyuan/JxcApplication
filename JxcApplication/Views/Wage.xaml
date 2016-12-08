@@ -244,17 +244,17 @@
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="PreTaxSum" Header="税前工资" AllowEditing="False" Fixed="Right">
+                        <dxg:GridColumn FieldName="PreTaxSum" Header="税前工资" AllowEditing="False" Fixed="Right" Visible="False">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="C17" Header="个人所得税">
+                        <dxg:GridColumn FieldName="C17" Header="个人所得税" Visible="False">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="AfterTaxSum" Header="税后工资" AllowEditing="False" Fixed="Right">
+                        <dxg:GridColumn FieldName="AfterTaxSum" Header="实发工资" AllowEditing="False" Fixed="Right">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
