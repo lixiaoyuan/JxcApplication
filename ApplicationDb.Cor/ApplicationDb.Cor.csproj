@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="ApplicationDbContextFunction.cs" />
+    <Compile Include="Business\FileCabinetsManager.cs" />
     <Compile Include="Business\ForleaveTypeManager.cs" />
     <Compile Include="Business\MailManager.cs" />
     <Compile Include="Business\OrganizationStructureManager.cs" />

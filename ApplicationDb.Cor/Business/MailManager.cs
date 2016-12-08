@@ -43,5 +43,10 @@ namespace ApplicationDb.Cor.Business
                 return db.SaveChanges() > 0;
             }
         }
+
+        public static byte[] GetNewMailContent(Guid fileId)
+        {
+            return FileCabinetsManager.GetFile(fileId)?.Data;
+        }
     }
 }

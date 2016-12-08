@@ -6,7 +6,60 @@
     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dxre="http://schemas.devexpress.com/winfx/2008/xaml/richedit"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
     x:Class="JxcApplication.DXWindow1"
     Title="DXWindow1" Height="476.4" Width="753.8">
-   
+    <dx:DXWindow.Resources>
+
+        <ControlTemplate x:Key="popupContentTemplate">
+            <dxg:GridControl x:Name="PART_GridControl" AutoExpandAllGroups="True">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="JobTitle" />
+                    <dxg:GridColumn FieldName="FirstName" />
+                    <dxg:GridColumn FieldName="LastName" />
+                    <dxg:GridColumn FieldName="BirthDate" />
+                    <dxg:GridColumn FieldName="ImageData" Width="60" FixedWidth="True">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:ImageEditSettings ShowMenu="True" />
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView
+                        Name="View"
+                        ShowGroupedColumns="True"
+                        AutoWidth="True"
+                        AllowPerPixelScrolling="True"
+                        ScrollAnimationDuration="0"
+                        ShowAutoFilterRow="True"
+                        ShowTotalSummary="True"
+                        IsSynchronizedWithCurrentItem="False">
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </ControlTemplate>
+    </dx:DXWindow.Resources>
+   <Grid>
+
+        <dxg:LookUpEdit Margin="16,12,16,16"
+                                    ItemsSource="{Binding Path=Source.CollectionView}"
+                                    EditValue="{Binding SelectedEmployees, Mode=OneWay}"
+                                    AutoPopulateColumns="False"
+                                    PopupContentTemplate="{StaticResource popupContentTemplate}"
+                                    PopupHeight="500"
+                                    PopupWidth="750"
+                                    PopupMinHeight="100"
+                                    ValidateOnTextInput="True"
+                                    ValidateOnEnterKeyPressed="True"
+                                    PopupMinWidth="100"
+                                    IsPopupAutoWidth="False"
+                                    DisplayMember="LastName"
+                                    AutoComplete="True"
+                                    IncrementalFiltering="True"
+                                    ImmediatePopup="True">
+            <dxg:LookUpEdit.StyleSettings>
+                <dxg:TokenLookUpEditStyleSettings/>
+            </dxg:LookUpEdit.StyleSettings>
+        </dxg:LookUpEdit>
+    </Grid>
 </dx:DXWindow>

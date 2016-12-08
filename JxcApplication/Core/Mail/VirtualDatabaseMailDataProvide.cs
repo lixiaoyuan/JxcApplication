@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ApplicationDb.Cor;
 using ApplicationDb.Cor.Business;
 using ApplicationDb.Cor.EntityModels;
+using JxcApplication.ViewModels.Mail;
 
 namespace JxcApplication.Core.Mail
 {
@@ -51,7 +52,19 @@ namespace JxcApplication.Core.Mail
 
         public Task<byte[]> GetItemConentAsync(MailOrder mailOrder)
         {
-            throw new NotImplementedException();
+            return Task<byte[]>.Factory.StartNew(() =>
+            {
+                if (mailOrder.ConetntFileId == null || mailOrder.ConetntFileId == Guid.Empty)
+                {
+                    return null;
+                }
+                return FileCabinetsManager.GetFile(mailOrder.ConetntFileId.Value).Data;
+            });
+        }
+
+        public Task<byte[]> GetNewMailConentAsync(NewMailType newMailType)
+        {
+            return Task<byte[]>.Factory.StartNew(() => MailManager.GetNewMailContent(Guid.Empty));
         }
 
         public Task<IEnumerable<SystemUser>> GetMailUserList()

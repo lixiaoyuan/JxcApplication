@@ -24,23 +24,19 @@ namespace JxcApplication
         public DXWindow1()
         {
             InitializeComponent();
-            this.Loaded += DXWindow1_Loaded;
-        }
-
-        private void DXWindow1_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<TestData> datas=new  List<TestData>();
-            datas.Add(new TestData() { Name = "收件箱"});
-            datas.Add(new TestData() { Name = "发件箱"});
-            datas.Add(new TestData() { Name = "回收站"});
-            datas.Add(new TestData() { Name = "草稿箱"});
-            //ListBoxEditBox.ItemsSource = datas;
-            //ListBoxEditBox2.ItemsSource = datas;
+            this.DataContext= new TestDataContent();
         }
     }
 
-    public class TestData
+    public class TestDataContent
     {
         public string Name { get; set; }
+
+        //private 
+    }
+
+    public class Data
+    {
+        public string LastName { get; set; }
     }
 }

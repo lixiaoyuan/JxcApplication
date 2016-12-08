@@ -24,7 +24,7 @@
         </DataTemplate>
     </UserControl.Resources>
     <Grid>
-        <ContentPresenter Content="{Binding MailPreview}">
+        <ContentPresenter Content="{Binding MailPreview,Mode=OneWay}">
             <ContentPresenter.ContentTemplateSelector>
                 <ts:NotNullTemplateSelector DataTemplate="{StaticResource DocDataTemplate}"/>
             </ContentPresenter.ContentTemplateSelector>

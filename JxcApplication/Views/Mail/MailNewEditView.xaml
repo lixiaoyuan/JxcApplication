@@ -394,6 +394,7 @@
                                     ItemsSource="{Binding Users}"
                                     EditValue="{Binding SelectUsers,Mode=OneWay}"
                                     PopupContentTemplate="{StaticResource popupContentTemplate}"
+                                    IsReadOnly="{Binding SelectUserReadOnly}"
                                     DisplayMember="Name"
                                     AutoPopulateColumns="False"
                                     ValidateOnTextInput="True"
@@ -407,10 +408,9 @@
                             <dxg:TokenLookUpEditStyleSettings/>
                         </dxg:LookUpEdit.StyleSettings>
                         <dxmvvm:Interaction.Behaviors>
-                            <dxmvvm:EventToCommand EventName="EditValueChanged" SourceName="emailToUsersEdit" Command="{Binding EmailToUsersEditChangedCommand}"/>
+                            <dxmvvm:EventToCommand EventName="EditValueChanged" SourceName="emailToUsersEdit" Command="{Binding EmailToUsersEditChangedCommand}" PassEventArgsToCommand="True"/>
                         </dxmvvm:Interaction.Behaviors>
                     </dxg:LookUpEdit>
-                    <Button Grid.Row="0" Grid.Column="1" Command="{Binding buttonCommand}" HorizontalAlignment="Right" Width="120">按钮</Button>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="主题:" Margin="12,12,4,4"
                                HorizontalAlignment="Right" />
                     <dxe:TextEdit Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,12,12,4"
