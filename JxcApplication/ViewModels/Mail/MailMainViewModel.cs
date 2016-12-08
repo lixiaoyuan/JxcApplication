@@ -34,38 +34,7 @@ namespace JxcApplication.ViewModels.Mail
         WeekPlan,
         MonthPlan
     }
-
-    [POCOViewModel]
-    public class MailPreview : IMailPreview
-    {
-        private MailOrder _currentMailOrder;
-        private IMailDataProvide _mailDataProvide;
-
- 
-
-        public void Loaded(RichEditControl control)
-        {
-                PutDataPreview(control);
-        }
-
-        public static MailPreview Create(MailOrder mailOrder, IMailDataProvide dataProvide)
-        {
-            if ((dataProvide == null) || (mailOrder == null))
-                throw new ArgumentNullException();
-            var tem = ViewModelSource.Create(() => new MailPreview());
-            tem._mailDataProvide = dataProvide;
-            tem._currentMailOrder = mailOrder;
-            return tem;
-        }
-
-        private async void PutDataPreview(RichEditControl control)
-        {
-            control.BeginInit();
-            MemoryStream ms = new MemoryStream(await _mailDataProvide.GetItemConentAsync(_currentMailOrder));
-            control.Document.LoadDocument(ms, DocumentFormat.Doc);
-            control.EndInit();
-        }
-    }
+     
 
     //[POCOViewModel]
     public class MailNewEdit :BindableBase, IMailPreview
@@ -114,22 +83,13 @@ namespace JxcApplication.ViewModels.Mail
         private async void PutDataPreview(RichEditControl control)
         {
             control.BeginInit();
-            //if (_isReply)
-            //{
-            //    MemoryStream ms = new MemoryStream(await _dataProvide.GetItemConentAsync(_mailOrder));
-            //    control.Document.LoadDocument(ms, DocumentFormat.Doc);
-            //}
-            //else
-            //{
-            //    Guid fileGuid = Guid.Empty;
-            //    if (_newMailType != NewMailType.Mail)
-            //    {
-
-            //    }
-            //}
-           
-            control.Document.LoadDocument(@"D:\外接系统\厦门比格维尔\文档\月计划模板.docx", DocumentFormat.Doc);
+            MemoryStream ms = _isReply ? new MemoryStream(await _dataProvide.GetItemConentAsync(_mailOrder)) : new MemoryStream(await _dataProvide.GetNewMailConentAsync(_newMailType));
+            if ( ms.Length > 0)
+            {
+                control.Document.LoadDocument(ms, DocumentFormat.Doc);
+            }
             control.EndInit();
+            GC.Collect();
         }
         /// <summary>
         /// 填充准备数据
@@ -229,7 +189,7 @@ namespace JxcApplication.ViewModels.Mail
     public class MailMainViewModel : ViewModelTabItem
     {
         private IMailDataProvide _mailDataProvide;
-
+        private RichEditControl _richEditControl;
         public MailMainViewModel(Guid menuId, string caption) : base(menuId, caption)
         {
         }
@@ -241,12 +201,12 @@ namespace JxcApplication.ViewModels.Mail
         public virtual ObservableCollection<MailOrder> Mails { get; set; }
         public virtual MailOrder CurrentMail { get; set; }
 
+        public DelegateCommand<RichEditControl> RichEditControlLoadedCommand { get; set; }
         public virtual DelegateCommand ChangeUnreadStatusCommand { get; set; }
         public virtual DelegateCommand DeleteCommand { get; set; }
         public virtual DelegateCommand<NewMailType> CreateNewMailCommand { get; set; }
         public virtual DelegateCommand ReplyCommand { get; set; }
 
-        public virtual IMailPreview MailPreview { get; set; }
         public virtual IMailPreview MailNewEdit { get; set; }
 
         protected override void OnInitializeInRuntime()
@@ -259,13 +219,16 @@ namespace JxcApplication.ViewModels.Mail
             MailListShowTypes = MailListShowType.GetItems();
             CurrentShowStype = MailListShowTypes[0];
         }
-
+        /// <summary>
+        /// 初始化绑定命令
+        /// </summary>
         private void InitializeCommand()
         {
             ChangeUnreadStatusCommand = new DelegateCommand(ChangeUnreadStatus, CanChangeUnreadStatus);
             DeleteCommand = new DelegateCommand(Delete, CanDelete);
             CreateNewMailCommand = new DelegateCommand<NewMailType>(CreateNewMail);
             ReplyCommand = new DelegateCommand(Reply, CanReply);
+            RichEditControlLoadedCommand = new DelegateCommand<RichEditControl>(RichEditControlLoaded);
         }
 
         private void CreateNewMailCore(NewMailType newMailType)
@@ -280,6 +243,22 @@ namespace JxcApplication.ViewModels.Mail
             GetService<IWindowService>().Show(this);
         }
 
+        /// <summary>
+        /// 推入预览数据
+        /// </summary>
+        private async void PutDataPreview()
+        {
+            if (_richEditControl == null)
+            {
+                return;
+            }
+            _richEditControl.BeginInit();
+            MemoryStream ms = new MemoryStream(await _mailDataProvide.GetItemConentAsync(CurrentMail));
+            _richEditControl.Document.LoadDocument(ms, DocumentFormat.Doc);
+            _richEditControl.EndInit();
+            GC.Collect();
+        }
+
         #region POCO
 
         public void OnCurrentShowStypeChanged()
@@ -290,11 +269,7 @@ namespace JxcApplication.ViewModels.Mail
         public void OnCurrentMailChanged()
         {
             UpdateToRead(CurrentMail);
-            if (CurrentMail == null)
-                MailPreview = null;
-            else
-                MailPreview = Mail.MailPreview.Create(CurrentMail, _mailDataProvide);
-            RaisePropertyChanged("MailPreview");
+            PutDataPreview();
         }
 
         #endregion
@@ -359,6 +334,11 @@ namespace JxcApplication.ViewModels.Mail
         #endregion
 
         #region Command method
+
+        private void RichEditControlLoaded(RichEditControl control)
+        {
+            _richEditControl = control;
+        }
 
         /// <summary>
         ///     修改未读状态

@@ -188,7 +188,15 @@
                                 </StackPanel>
                             </StackPanel>
                         </Border>
-                        <local:MailPreviewView Grid.Row="1" Margin="5,10" />
+                        <dx:LoadingDecorator Grid.Row="1" Margin="5,10">
+                            <dxre:RichEditControl x:Name="RichEditControlDoc" ActiveViewType="Draft"  ReadOnly="True" ShowBorder="False" >
+                                <dxmvvm:Interaction.Behaviors>
+                                    <dxmvvm:EventToCommand EventName="Loaded" SourceName="RichEditControlDoc"
+                                                       Command="{Binding RichEditControlLoadedCommand}"
+                                                       CommandParameter="{Binding ElementName=RichEditControlDoc}" />
+                                </dxmvvm:Interaction.Behaviors>
+                            </dxre:RichEditControl>
+                        </dx:LoadingDecorator>
                     </Grid>
                 </Grid>
             </Grid>
