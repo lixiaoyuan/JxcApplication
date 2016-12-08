@@ -229,22 +229,22 @@
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="X1" Header="请假扣款">
+                        <dxg:GridColumn FieldName="X1" Header="请假扣款" HeaderStyle="{StaticResource GridColumnHeaderConstant}">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="X2" Header="罚款">
+                        <dxg:GridColumn FieldName="X2" Header="罚款" HeaderStyle="{StaticResource GridColumnHeaderConstant}">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="X3" Header="业绩未达标扣款">
+                        <dxg:GridColumn FieldName="X3" Header="业绩未达标扣款" HeaderStyle="{StaticResource GridColumnHeaderConstant}">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="PreTaxSum" Header="税前工资" AllowEditing="False" Fixed="Right" Visible="False">
+                        <dxg:GridColumn FieldName="PreTaxSum" Header="工资总计" AllowEditing="False" Fixed="Right" >
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>

@@ -319,10 +319,10 @@ namespace JxcApplication.ViewModels
             {
                 row.PreTaxSum += row.C8;
             }
-            if (row.C9.HasValue)
-            {
-                row.PreTaxSum += row.C9;
-            }
+            //if (row.C9.HasValue)
+            //{
+            //    row.PreTaxSum += row.C9;
+            //}
             if (row.C10.HasValue)
             {
                 row.PreTaxSum += row.C10;
@@ -372,14 +372,16 @@ namespace JxcApplication.ViewModels
             //{
             //    row.C17 = null;
             //}
-            if (row.C17.HasValue && row.PreTaxSum.HasValue)
-            {
-                row.AfterTaxSum = row.PreTaxSum - row.C17;
-            }
-            else
-            {
-                row.AfterTaxSum = row.PreTaxSum;
-            }
+            //=====
+            //if (row.C17.HasValue && row.PreTaxSum.HasValue)
+            //{
+            //    row.AfterTaxSum = row.PreTaxSum - row.C17;
+            //}
+            //else
+            //{
+            //    row.AfterTaxSum = row.PreTaxSum;
+            //}
+            row.AfterTaxSum = row.PreTaxSum.Value - (row.C9 ?? 0) - (row.C10 ?? 0);
         }
     }
 
