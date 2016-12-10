@@ -37,7 +37,7 @@ namespace JxcApplication
             DevExpress.Xpf.Core.ApplicationThemeHelper.UpdateApplicationThemeName();
             try
             {
-                //DXWindow1 window=new DXWindow1();
+                //DXWindow1 window = new DXWindow1();
                 //window.ShowDialog();
                 //return;
 

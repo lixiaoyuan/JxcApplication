@@ -1,0 +1,439 @@
+﻿<UserControl x:Class="JxcApplication.Views.Mail.MailNewEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxre="http://schemas.devexpress.com/winfx/2008/xaml/richedit"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             mc:Ignorable="d"
+             d:DesignHeight="310.4" d:DesignWidth="810.35">
+    <UserControl.Resources>
+        <dxre:RichEditUICommand x:Key="commands" />
+        <dxre:RichEditStringIdConverter x:Key="stringIdConverter" />
+        <dxre:DefaultBarItemDataTemplates x:Key="defaultBarItemTemplates" />
+        <ControlTemplate x:Key="popupContentTemplate">
+            <dxg:GridControl x:Name="PART_GridControl" AutoExpandAllGroups="True">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="Name" Header="名字" />
+                    <dxg:GridColumn FieldName="Email" Header="邮件地址" />
+                    <dxg:GridColumn FieldName="Spell" Header="拼音码" />
+                    <dxg:GridColumn FieldName="Tel" Header="电话" />
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView
+                        Name="View"
+                        ShowGroupedColumns="True"
+                        AutoWidth="True"
+                        AllowPerPixelScrolling="True"
+                        ScrollAnimationDuration="0"
+                        ShowAutoFilterRow="True"
+                        ShowTotalSummary="True"
+                        IsSynchronizedWithCurrentItem="False" />
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService/>
+        <dxmvvm:CurrentWindowService/>
+    </dxmvvm:Interaction.Behaviors>
+    <dx:LoadingDecorator>
+        <dxb:BarManager x:Name="barManager1" ToolbarGlyphSize="Small">
+            <dxb:BarManager.Items>
+                <dxb:BarButtonItem x:Name="biEditPaste"
+                                   Command="{Binding EditPaste, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biEditCut"
+                                   Command="{Binding EditCut, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biEditCopy"
+                                   Command="{Binding EditCopy, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biEditPasteSpecial"
+                                   Command="{Binding EditPasteSpecial, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxr:BarButtonGroup x:Name="biFont">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarEditItemLink BarItemName="biFormatFontName" />
+                        <dxb:BarEditItemLink BarItemName="biFormatFontSize" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarEditItem x:Name="biFormatFontName" Content=""
+                                 Command="{Binding FormatFontName, Mode=OneTime, Source={StaticResource commands}}"
+                                 EditWidth="150">
+                    <dxb:BarEditItem.EditSettings>
+                        <dxre:FontComboBoxEditSettings />
+                    </dxb:BarEditItem.EditSettings>
+                </dxb:BarEditItem>
+                <dxb:BarEditItem x:Name="biFormatFontSize" Content=""
+                                 Command="{Binding FormatFontSize, Mode=OneTime, Source={StaticResource commands}}"
+                                 EditWidth="50">
+                    <dxb:BarEditItem.EditSettings>
+                        <dxre:FontSizeComboBoxEditSettings
+                            OfficeFontSizeProvider="{Binding ElementName=richEditControl1}" />
+                    </dxb:BarEditItem.EditSettings>
+                </dxb:BarEditItem>
+                <dxr:BarButtonGroup x:Name="biFontSize">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarButtonItemLink BarItemName="biFormatIncreaseFontSize" />
+                        <dxb:BarButtonItemLink BarItemName="biFormatDecreaseFontSize" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarButtonItem x:Name="biFormatIncreaseFontSize"
+                                   Command="{Binding FormatIncreaseFontSize, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biFormatDecreaseFontSize"
+                                   Command="{Binding FormatDecreaseFontSize, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxr:BarButtonGroup x:Name="biClearFormatting">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarButtonItemLink BarItemName="biFormatClearFormatting" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarButtonItem x:Name="biFormatClearFormatting"
+                                   Command="{Binding FormatClearFormatting, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxr:BarButtonGroup x:Name="biFontShape">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarCheckItemLink BarItemName="biFormatFontBold" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatFontItalic" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatFontUnderline" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatFontDoubleUnderline" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatFontStrikeout" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatFontDoubleStrikeout" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatFontSuperscript" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatFontSubscript" />
+                        <dxb:BarSubItemLink BarItemName="biEditChangeCase" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarCheckItem x:Name="biFormatFontBold"
+                                  Command="{Binding FormatFontBold, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatFontItalic"
+                                  Command="{Binding FormatFontItalic, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatFontUnderline"
+                                  Command="{Binding FormatFontUnderline, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatFontDoubleUnderline"
+                                  Command="{Binding FormatFontDoubleUnderline, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatFontStrikeout"
+                                  Command="{Binding FormatFontStrikeout, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatFontDoubleStrikeout"
+                                  Command="{Binding FormatFontDoubleStrikeout, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatFontSuperscript"
+                                  Command="{Binding FormatFontSuperscript, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatFontSubscript"
+                                  Command="{Binding FormatFontSubscript, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarSubItem x:Name="biEditChangeCase"
+                                Command="{Binding EditChangeCase, Mode=OneTime, Source={StaticResource commands}}">
+                    <dxb:BarSubItem.ItemLinks>
+                        <dxb:BarButtonItemLink BarItemName="biEditMakeUpperCase" />
+                        <dxb:BarButtonItemLink BarItemName="biEditMakeLowerCase" />
+                        <dxb:BarButtonItemLink BarItemName="biEditToggleCase" />
+                    </dxb:BarSubItem.ItemLinks>
+                </dxb:BarSubItem>
+                <dxb:BarButtonItem x:Name="biEditMakeUpperCase"
+                                   Command="{Binding EditMakeUpperCase, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biEditMakeLowerCase"
+                                   Command="{Binding EditMakeLowerCase, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biEditToggleCase"
+                                   Command="{Binding EditToggleCase, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxr:BarButtonGroup x:Name="biFontColor">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxre:BarSplitButtonColorEditItemLink BarItemName="biFormatFontBackColor" />
+                        <dxre:BarSplitButtonColorEditItemLink BarItemName="biFormatFontForeColor" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxre:BarSplitButtonColorEditItem x:Name="biFormatFontBackColor"
+                                                  Command="{Binding FormatFontBackColor, Mode=OneTime, Source={StaticResource commands}}">
+                    <dxb:PopupControlContainerInfo>
+                        <dxe:ColorEdit ChipSize="Large" ChipMargin="5" ColumnCount="5"
+                                       EditValue="{Binding EditValue, ElementName=biFormatFontBackColor, Mode=TwoWay}"
+                                       ShowMoreColorsButton="False" ShowDefaultColorButton="False"
+                                       ShowNoColorButton="True" ShowBorder="False">
+                            <dxe:ColorEdit.Palettes>
+                                <dxre:CharactersBackgroundColorPaletteCollection />
+                            </dxe:ColorEdit.Palettes>
+                        </dxe:ColorEdit>
+                    </dxb:PopupControlContainerInfo>
+                </dxre:BarSplitButtonColorEditItem>
+                <dxre:BarSplitButtonColorEditItem x:Name="biFormatFontForeColor"
+                                                  Command="{Binding FormatFontForeColor, Mode=OneTime, Source={StaticResource commands}}">
+                    <dxb:PopupControlContainerInfo>
+                        <dxe:ColorEdit EditValue="{Binding EditValue, ElementName=biFormatFontForeColor, Mode=TwoWay}"
+                                       ShowBorder="False" />
+                    </dxb:PopupControlContainerInfo>
+                </dxre:BarSplitButtonColorEditItem>
+                <dxr:BarButtonGroup x:Name="biNumberingList">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarCheckItemLink BarItemName="biFormatBulletedList" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatNumberingList" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatMultilevelList" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarCheckItem x:Name="biFormatBulletedList"
+                                  Command="{Binding FormatBulletedList, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatNumberingList"
+                                  Command="{Binding FormatNumberingList, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatMultilevelList"
+                                  Command="{Binding FormatMultilevelList, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxr:BarButtonGroup x:Name="biParagraphIndent">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarButtonItemLink BarItemName="biFormatDecreaseIndent" />
+                        <dxb:BarButtonItemLink BarItemName="biFormatIncreaseIndent" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarButtonItem x:Name="biFormatDecreaseIndent"
+                                   Command="{Binding FormatDecreaseIndent, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biFormatIncreaseIndent"
+                                   Command="{Binding FormatIncreaseIndent, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxr:BarButtonGroup x:Name="biShowWhitespace">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarCheckItemLink BarItemName="biViewShowWhitespace" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarCheckItem x:Name="biViewShowWhitespace"
+                                  Command="{Binding ViewShowWhitespace, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxr:BarButtonGroup x:Name="biParagraphAlignment">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarCheckItemLink BarItemName="biFormatParagraphAlignLeft" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatParagraphAlignCenter" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatParagraphAlignRight" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatParagraphAlignJustify" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarCheckItem x:Name="biFormatParagraphAlignLeft"
+                                  Command="{Binding FormatParagraphAlignLeft, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatParagraphAlignCenter"
+                                  Command="{Binding FormatParagraphAlignCenter, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatParagraphAlignRight"
+                                  Command="{Binding FormatParagraphAlignRight, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatParagraphAlignJustify"
+                                  Command="{Binding FormatParagraphAlignJustify, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxr:BarButtonGroup x:Name="biLineSpacing">
+                    <dxr:BarButtonGroup.ItemLinks>
+                        <dxb:BarSubItemLink BarItemName="biFormatParagraphLineSpacing" />
+                        <dxre:BarSplitButtonColorEditItemLink BarItemName="biFormatParagraphBackColor" />
+                    </dxr:BarButtonGroup.ItemLinks>
+                </dxr:BarButtonGroup>
+                <dxb:BarSubItem x:Name="biFormatParagraphLineSpacing"
+                                Command="{Binding FormatParagraphLineSpacing, Mode=OneTime, Source={StaticResource commands}}">
+                    <dxb:BarSubItem.ItemLinks>
+                        <dxb:BarCheckItemLink BarItemName="biFormatParagraphLineSpacingSingle" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatParagraphLineSpacingSesquialteral" />
+                        <dxb:BarCheckItemLink BarItemName="biFormatParagraphLineSpacingDouble" />
+                        <dxb:BarButtonItemLink BarItemName="biFormatParagraphLineSpacingCustomize" />
+                        <dxb:BarButtonItemLink BarItemName="biFormatParagraphAddSpacingBefore" />
+                        <dxb:BarButtonItemLink BarItemName="biFormatParagraphRemoveSpacingBefore" />
+                        <dxb:BarButtonItemLink BarItemName="biFormatParagraphAddSpacingAfter" />
+                        <dxb:BarButtonItemLink BarItemName="biFormatParagraphRemoveSpacingAfter" />
+                    </dxb:BarSubItem.ItemLinks>
+                </dxb:BarSubItem>
+                <dxb:BarCheckItem x:Name="biFormatParagraphLineSpacingSingle"
+                                  Command="{Binding FormatParagraphLineSpacingSingle, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatParagraphLineSpacingSesquialteral"
+                                  Command="{Binding FormatParagraphLineSpacingSesquialteral, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarCheckItem x:Name="biFormatParagraphLineSpacingDouble"
+                                  Command="{Binding FormatParagraphLineSpacingDouble, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biFormatParagraphLineSpacingCustomize"
+                                   Command="{Binding FormatParagraphLineSpacingCustomize, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biFormatParagraphAddSpacingBefore"
+                                   Command="{Binding FormatParagraphAddSpacingBefore, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biFormatParagraphRemoveSpacingBefore"
+                                   Command="{Binding FormatParagraphRemoveSpacingBefore, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biFormatParagraphAddSpacingAfter"
+                                   Command="{Binding FormatParagraphAddSpacingAfter, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biFormatParagraphRemoveSpacingAfter"
+                                   Command="{Binding FormatParagraphRemoveSpacingAfter, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxre:BarSplitButtonColorEditItem x:Name="biFormatParagraphBackColor"
+                                                  Command="{Binding FormatParagraphBackColor, Mode=OneTime, Source={StaticResource commands}}">
+                    <dxb:PopupControlContainerInfo>
+                        <dxe:ColorEdit
+                            EditValue="{Binding EditValue, ElementName=biFormatParagraphBackColor, Mode=TwoWay}"
+                            ShowDefaultColorButton="False" ShowNoColorButton="True" ShowBorder="False" />
+                    </dxb:PopupControlContainerInfo>
+                </dxre:BarSplitButtonColorEditItem>
+                <dxr:BarButtonGroup x:Name="biParagraph" />
+                <dxre:GalleryStyleItem x:Name="biGalleryStyle"
+                                       Command="{Binding FormatFontStyle, Mode=OneTime, Source={StaticResource commands}}"
+                                       RichEditControl="{Binding ElementName=richEditControl1}">
+                    <dxre:GalleryStyleItem.Gallery>
+                        <dxre:RichEditStyleGallery ColCount="10" ItemCheckMode="Single" IsItemGlyphVisible="False"
+                                                   ItemCaptionTemplate="{Binding StyleGalleryItemCaptionTemplate, Mode=OneTime, Source={StaticResource defaultBarItemTemplates}}"
+                                                   IsItemDescriptionVisible="False" MinColCount="3" />
+                    </dxre:GalleryStyleItem.Gallery>
+                </dxre:GalleryStyleItem>
+                <dxb:BarButtonItem x:Name="biEditFind"
+                                   Command="{Binding EditFind, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biEditReplace"
+                                   Command="{Binding EditReplace, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biInsertPageBreak"
+                                   Command="{Binding InsertPageBreak, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biInsertTable"
+                                   Command="{Binding InsertTable, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biInsertPicture"
+                                   Command="{Binding InsertPicture, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biInsertFloatingPicture"
+                                   Command="{Binding InsertFloatingPicture, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biInsertBookmark"
+                                   Command="{Binding InsertBookmark, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biInsertHyperlink"
+                                   Command="{Binding InsertHyperlink, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biInsertTextBox"
+                                   Command="{Binding InsertTextBox, Mode=OneTime, Source={StaticResource commands}}" />
+                <dxb:BarButtonItem x:Name="biInsertSymbol"
+                                   Command="{Binding InsertSymbol, Mode=OneTime, Source={StaticResource commands}}" />
+            </dxb:BarManager.Items>
+            <DockPanel>
+                <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top">
+                    <dxr:RibbonDefaultPageCategory>
+                        <dxr:RibbonPage x:Name="pageHome"
+                                        Caption="{Binding ConverterParameter=Caption_PageHome, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}">
+                            <dxr:RibbonPageGroup Caption="发送" ShowCaptionButton="False">
+                                <dxb:BarButtonItem Content="发送邮件" Command="{Binding SendMessageCommand}"
+                                                   LargeGlyph="{dx:DXImageOffice2013 Image=Send_32x32.png}" />
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpHomeClipboard"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupClipboard, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}"
+                                                 ShowCaptionButton="False">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxb:BarButtonItemLink BarItemName="biEditPaste" />
+                                    <dxb:BarButtonItemLink BarItemName="biEditCut" />
+                                    <dxb:BarButtonItemLink BarItemName="biEditCopy" />
+                                    <dxb:BarButtonItemLink BarItemName="biEditPasteSpecial" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpHomeFont"
+                                                 CaptionButtonCommand="{Binding FormatFont, Mode=OneTime, Source={StaticResource commands}}"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupFont, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxr:BarButtonGroupLink BarItemName="biFont" />
+                                    <dxr:BarButtonGroupLink BarItemName="biFontSize" />
+                                    <dxr:BarButtonGroupLink BarItemName="biClearFormatting" />
+                                    <dxr:BarButtonGroupLink BarItemName="biFontShape" />
+                                    <dxr:BarButtonGroupLink BarItemName="biFontColor" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpHomeParagraph"
+                                                 CaptionButtonCommand="{Binding FormatParagraph, Mode=OneTime, Source={StaticResource commands}}"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupParagraph, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxr:BarButtonGroupLink BarItemName="biNumberingList" />
+                                    <dxr:BarButtonGroupLink BarItemName="biParagraphIndent" />
+                                    <dxr:BarButtonGroupLink BarItemName="biShowWhitespace" />
+                                    <dxr:BarButtonGroupLink BarItemName="biParagraphAlignment" />
+                                    <dxr:BarButtonGroupLink BarItemName="biLineSpacing" />
+                                    <dxr:BarButtonGroupLink BarItemName="biParagraph" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpHomeStyles"
+                                                 CaptionButtonCommand="{Binding FormatEditFontStyle, Mode=OneTime, Source={StaticResource commands}}"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupStyles, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxre:RibbonStyleGalleryItemLink BarItemName="biGalleryStyle" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpHomeEditing"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupEditing, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}"
+                                                 ShowCaptionButton="False">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxb:BarButtonItemLink BarItemName="biEditFind" />
+                                    <dxb:BarButtonItemLink BarItemName="biEditReplace" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                        </dxr:RibbonPage>
+                        <dxr:RibbonPage x:Name="pageInsert"
+                                        Caption="{Binding ConverterParameter=Caption_PageInsert, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}">
+                            <dxr:RibbonPageGroup x:Name="grpInsertTables"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupTables, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}"
+                                                 ShowCaptionButton="False">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxb:BarButtonItemLink BarItemName="biInsertTable" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpInsertIllustrations"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupIllustrations, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}"
+                                                 ShowCaptionButton="False">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxb:BarButtonItemLink BarItemName="biInsertPicture" />
+                                    <dxb:BarButtonItemLink BarItemName="biInsertFloatingPicture" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpInsertLinks"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupLinks, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}"
+                                                 ShowCaptionButton="False">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxb:BarButtonItemLink BarItemName="biInsertBookmark" />
+                                    <dxb:BarButtonItemLink BarItemName="biInsertHyperlink" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpInsertText"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupText, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}"
+                                                 ShowCaptionButton="False">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxb:BarButtonItemLink BarItemName="biInsertTextBox" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup x:Name="grpInsertSymbols"
+                                                 Caption="{Binding ConverterParameter=Caption_GroupSymbols, Converter={StaticResource stringIdConverter}, Mode=OneTime, Source={StaticResource stringIdConverter}}"
+                                                 ShowCaptionButton="False">
+                                <dxr:RibbonPageGroup.ItemLinks>
+                                    <dxb:BarButtonItemLink BarItemName="biInsertSymbol" />
+                                </dxr:RibbonPageGroup.ItemLinks>
+                            </dxr:RibbonPageGroup>
+                        </dxr:RibbonPage>
+                    </dxr:RibbonDefaultPageCategory>
+                </dxr:RibbonControl>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="收件人:" Margin="12,12,4,4" HorizontalAlignment="Right" />
+                    <dxg:LookUpEdit x:Name="emailToUsersEdit" Grid.Row="0" Grid.Column="1" Margin="0,12,4,4" HorizontalAlignment="Left"
+                                    MaxWidth="400"
+                                    MinWidth="400"
+                                    ItemsSource="{Binding Users}"
+                                    EditValue="{Binding SelectUsers,Mode=OneWay}"
+                                    PopupContentTemplate="{StaticResource popupContentTemplate}"
+                                    IsReadOnly="{Binding SelectUserReadOnly}"
+                                    DisplayMember="Name"
+                                    AutoPopulateColumns="False"
+                                    ValidateOnTextInput="True"
+                                    ValidateOnEnterKeyPressed="True"
+                                    IsPopupAutoWidth="True"
+                                    AutoComplete="True"
+                                    ImmediatePopup="True"
+                                    ShowError="False"
+                                    ShowErrorToolTip="False" >
+                        <dxg:LookUpEdit.StyleSettings>
+                            <dxg:TokenLookUpEditStyleSettings/>
+                        </dxg:LookUpEdit.StyleSettings>
+                        <dxmvvm:Interaction.Behaviors>
+                            <dxmvvm:EventToCommand EventName="EditValueChanged" SourceName="emailToUsersEdit" Command="{Binding EmailToUsersEditChangedCommand}" PassEventArgsToCommand="True"/>
+                        </dxmvvm:Interaction.Behaviors>
+                    </dxg:LookUpEdit>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="主题:" Margin="12,5,4,4"
+                               HorizontalAlignment="Right" />
+                    <dxe:TextEdit Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,5,4,10"
+                                  EditValue="{Binding NewMail.Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+
+                    <dxre:RichEditControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="richEditControl1"
+                                          BorderThickness="0,1,0,0" BorderBrush="#FFD5D5D5" 
+                                          ActiveViewType="Simple"
+                                          BarManager="{Binding ElementName=barManager1, Mode=OneTime}"
+                                          Ribbon="{Binding ElementName=ribbonControl1, Mode=OneTime}">
+                        <dxmvvm:Interaction.Behaviors>
+                            <dxmvvm:EventToCommand EventName="Loaded" SourceName="richEditControl1"
+                                                   Command="{Binding LoadedCommand}"
+                                                   CommandParameter="{Binding ElementName=richEditControl1}" />
+                        </dxmvvm:Interaction.Behaviors>
+                    </dxre:RichEditControl>
+                </Grid>
+            </DockPanel>
+        </dxb:BarManager>
+    </dx:LoadingDecorator>
+</UserControl>

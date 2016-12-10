@@ -74,7 +74,7 @@
             <dxb:BarButtonItem Content="账户基本信息" x:Name="MW_RAI" Command="{Binding ReportAccountInfoCommand}"
                                LargeGlyph="../Images/Tile/Contacts_32.png" 
                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
-            
+
             <dxb:BarButtonItem Content="剩余库存查询" x:Name="MW_LSQ" Command="{Binding LastStoreQueCommand}"
                                LargeGlyph="../Images/Tile/com_vine_iphone_32.png" 
                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
@@ -104,7 +104,7 @@
             <dxb:BarButtonItem Content="收款报表" x:Name="MW_RHR" Command="{Binding ReportHasReceivableCommand}"
                                LargeGlyph="../Images/Tile/money_bag.png"
                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
-            
+
             <dxb:BarButtonItem Content="供应商" x:Name="MW_SV" Command="{Binding SuppliersCommand}"
                                LargeGlyph="../Images/Tile/myverizon_32.png" 
                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
@@ -156,6 +156,9 @@
             <dxb:BarButtonItem Content="抄送我的" x:Name="WM_COPYMEWA" LargeGlyph="../Images/Tile/lALOD8EH6szIzMg_CopyMe_200_200.png"
                                Command="{Binding CopyMeWorkApprovalOrderCommand}"
                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+            <dxb:BarButtonItem Content="报告/邮件" x:Name="WM_MAIL" LargeGlyph="../Images/Tile/Outlook_32.png"
+                               Command="{Binding MailCommand}"
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"></dxb:BarButtonItem>
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
             <dxb:Bar IsStatusBar="True">
@@ -165,40 +168,42 @@
                 <dxb:BarStaticItem Content="{Binding BarStaticItemTxt}" />
             </dxb:Bar>
         </dxb:BarManager.Bars>
-        <DockPanel>
-            <dxr:RibbonControl Name="RibbonControl12" DockPanel.Dock="Top" RibbonStyle="Office2010" AllowCustomization="False"
+        <dx:LoadingDecorator>
+            <DockPanel>
+                <dxr:RibbonControl Name="RibbonControl12" DockPanel.Dock="Top" RibbonStyle="Office2010" AllowCustomization="False"
                                AllowAddingToToolbar="False" AsyncMergingEnabled="True" CategoriesSource="{Binding Path=RibbonNodes}" 
                                ToolbarShowMode="Hide" ShowApplicationButton="False">
-                <dxr:RibbonControl.ApplicationMenu>
-                    <dxr:BackstageViewControl />
-                </dxr:RibbonControl.ApplicationMenu>
-                <dxr:RibbonControl.CategoryTemplateSelector>
-                    <selector:CategoryTemplateSelector CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
+                    <dxr:RibbonControl.ApplicationMenu>
+                        <dxr:BackstageViewControl />
+                    </dxr:RibbonControl.ApplicationMenu>
+                    <dxr:RibbonControl.CategoryTemplateSelector>
+                        <selector:CategoryTemplateSelector CategoryTemplate="{StaticResource RibbonPageCategoryTemplate}"
                                                        DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
-                </dxr:RibbonControl.CategoryTemplateSelector>
-            </dxr:RibbonControl>
-            <dx:DXTabControl AllowMerging="True" TabContentCacheMode="CacheAllTabs"
+                    </dxr:RibbonControl.CategoryTemplateSelector>
+                </dxr:RibbonControl>
+                <dx:DXTabControl AllowMerging="True" TabContentCacheMode="CacheAllTabs"
                              ItemsSource="{Binding Path=TabItems}">
-                <dx:DXTabControl.ItemTemplateSelector>
-                    <native:TypeTemplateSelector FindDescendants="True"
+                    <dx:DXTabControl.ItemTemplateSelector>
+                        <native:TypeTemplateSelector FindDescendants="True"
                                                  Templates="{StaticResource ViewModelTemplatesDictionary}" />
-                </dx:DXTabControl.ItemTemplateSelector>
-                <dx:DXTabControl.View>
-                    <dx:TabControlStretchView HideButtonShowMode="InActiveTab" />
-                </dx:DXTabControl.View>
-                <dx:DXTabControl.ItemHeaderTemplate>
-                    <DataTemplate>
-                        <Border>
-                            <TextBlock Text="{Binding Path=Caption ,Mode=OneWay}"></TextBlock>
-                        </Border>
-                    </DataTemplate>
-                </dx:DXTabControl.ItemHeaderTemplate>
-                <dx:DXTabControl.ItemContainerStyle>
-                    <Style TargetType="dx:DXTabItem">
-                        <Setter Property="IsSelected" Value="{Binding Selected}"></Setter>
-                    </Style>
-                </dx:DXTabControl.ItemContainerStyle>
-            </dx:DXTabControl>
-        </DockPanel>
+                    </dx:DXTabControl.ItemTemplateSelector>
+                    <dx:DXTabControl.View>
+                        <dx:TabControlStretchView HideButtonShowMode="InActiveTab" />
+                    </dx:DXTabControl.View>
+                    <dx:DXTabControl.ItemHeaderTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <TextBlock Text="{Binding Path=Caption ,Mode=OneWay}"></TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </dx:DXTabControl.ItemHeaderTemplate>
+                    <dx:DXTabControl.ItemContainerStyle>
+                        <Style TargetType="dx:DXTabItem">
+                            <Setter Property="IsSelected" Value="{Binding Selected}"></Setter>
+                        </Style>
+                    </dx:DXTabControl.ItemContainerStyle>
+                </dx:DXTabControl>
+            </DockPanel>
+        </dx:LoadingDecorator>
     </dxb:BarManager>
 </dxr:DXRibbonWindow>

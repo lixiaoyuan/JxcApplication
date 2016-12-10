@@ -4,7 +4,8 @@
                     xmlns:native="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
                     xmlns:relation="clr-namespace:JxcApplication.Views.Relation"
                     xmlns:sell="clr-namespace:JxcApplication.Views.Sell"
-                    xmlns:storage="clr-namespace:JxcApplication.Views.Storage">
+                    xmlns:storage="clr-namespace:JxcApplication.Views.Storage"
+                    xmlns:mail="clr-namespace:JxcApplication.Views.Mail">
     <!--视图模型字典-->
     <native:TemplatesDictionary x:Key="ViewModelTemplatesDictionary">
         <!--relation-->
@@ -118,6 +119,9 @@
         </DataTemplate>
         <DataTemplate x:Key="CopyMeWorkApprovalOrderViewModel">
             <views:CopyMeWorkApprovalOrder/>
+        </DataTemplate>
+        <DataTemplate x:Key="MailMainViewModel">
+            <mail:MailMainView/>
         </DataTemplate>
     </native:TemplatesDictionary>
 </ResourceDictionary>

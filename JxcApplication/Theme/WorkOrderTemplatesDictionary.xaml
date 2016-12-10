@@ -3,37 +3,37 @@
                     xmlns:native="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
                     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
                     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
-                    xmlns:viewModels="clr-namespace:JxcApplication.ViewModels">
+                    xmlns:viewModels="clr-namespace:JxcApplication.ViewModels"
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid">
     <BooleanToVisibilityConverter x:Key="ToVisibilityConverter2"/>
-    <Style x:Key="ApprovalLayoutItemStyle" TargetType="dxlc:LayoutItem">
-        <Setter Property="AddColonToLabel" Value="True" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="Margin" Value="10,5,10,5" />
-        <Setter Property="LabelStyle">
+    <Style x:Key="ApprovalLayoutItemStyle" TargetType="{x:Type dxlc:LayoutItem}">
+        <Setter Property="dxlc:LayoutItem.AddColonToLabel" Value="true"/>
+        <Setter Property="FrameworkElement.HorizontalAlignment" Value="Left"/>
+        <Setter Property="FrameworkElement.Margin" Value="10,5,10,5"/>
+        <Setter Property="dxlc:LayoutItem.LabelStyle">
             <Setter.Value>
-                <Style TargetType="dxlc:LayoutItemLabel">
-                    <Setter Property="Foreground" Value="DodgerBlue" />
-                    <Setter Property="FontSize" Value="13" />
+                <Style TargetType="{x:Type dxlc:LayoutItemLabel}">
+                    <Setter Property="Control.Foreground" Value="DodgerBlue"/>
+                    <Setter Property="Control.FontSize" Value="13"/>
                 </Style>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="LableHeadStyle" TargetType="Label">
-        <Setter Property="Margin" Value="-10,-15,-10,0"></Setter>
-        <Setter Property="Height" Value="50"></Setter>
-        <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
-        <Setter Property="BorderBrush" Value="DodgerBlue"></Setter>
-        <Setter Property="FontSize" Value="24"></Setter>
-        <Setter Property="FontWeight" Value="ExtraBlack"></Setter>
-        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+    <Style x:Key="LableHeadStyle" TargetType="{x:Type Label}">
+        <Setter Property="FrameworkElement.Margin" Value="-10,-15,-10,0"/>
+        <Setter Property="FrameworkElement.Height" Value="50"/>
+        <Setter Property="Control.BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Control.BorderBrush" Value="DodgerBlue"/>
+        <Setter Property="Control.FontSize" Value="24"/>
+        <Setter Property="Control.FontWeight" Value="ExtraBlack"/>
+        <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
     </Style>
-    <Style x:Key="InputFrameworkElement" TargetType="FrameworkElement">
-        <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Margin" Value="0,5,0,0"></Setter>
-        <Setter Property="Height" Value="30"></Setter>
+    <Style x:Key="InputFrameworkElement" TargetType="{x:Type FrameworkElement}">
+        <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+        <Setter Property="FrameworkElement.Margin" Value="0,5,0,0"/>
+        <Setter Property="FrameworkElement.Height" Value="30"/>
     </Style>
-    <!--显示模板-->
     <native:TemplatesDictionary x:Key="WorkApprovalOrderShowTemplatesDictionary">
         <DataTemplate x:Key="DataTemplateDefault">
             <Grid>
@@ -46,32 +46,26 @@
                     <dxlc:LayoutGroup Header="出差明细" View="GroupBox" Orientation="Vertical">
                         <dxlc:LayoutGroup.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}" FontSize="16" Foreground="DodgerBlue" />
+                                <TextBlock FontSize="16" Foreground="DodgerBlue" Text="{Binding}"/>
                             </DataTemplate>
                         </dxlc:LayoutGroup.HeaderTemplate>
                         <dxlc:LayoutItem Label="出差地点" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"
-                                       Text="{Binding Path=Data.OutAddress}" MinWidth="250" />
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" MinWidth="250" Text="{Binding Path=Data.OutAddress}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="开始时间" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <dxe:DateEdit Margin="10,0,0,0" VerticalAlignment="Center"
-                                          EditValue="{Binding Path=Data.StartDate}" Mask="F"
-                                          MaskUseAsDisplayFormat="True" MinWidth="100" IsTextEditable="False"
-                                          IsReadOnly="True" />
+                            <dxe:DateEdit Margin="10,0,0,0" VerticalAlignment="Center" Mask="F" MaskUseAsDisplayFormat="true" MinWidth="100"
+                            IsTextEditable="False" IsReadOnly="true" EditValue="{Binding Path=Data.StartDate}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="结束时间" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <dxe:DateEdit Margin="10,0,0,0" VerticalAlignment="Center"
-                                          EditValue="{Binding Path=Data.EndDate}" Mask="F"
-                                          MaskUseAsDisplayFormat="True" MinWidth="100" IsTextEditable="False"
-                                          IsReadOnly="True" />
+                            <dxe:DateEdit Margin="10,0,0,0" VerticalAlignment="Center" Mask="F" MaskUseAsDisplayFormat="true" MinWidth="100"
+                            IsTextEditable="False" IsReadOnly="true" EditValue="{Binding Path=Data.EndDate}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="出差天数" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"
-                                       Text="{Binding Path=Data.OutDayTimes}" MinWidth="100" />
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" MinWidth="100" Text="{Binding Path=Data.OutDayTimes}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="出差事由" Style="{StaticResource ApprovalLayoutItemStyle}" LabelVerticalAlignment="Top">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{Binding Path=Data.Reason}"
-                                       Width="300" TextWrapping="Wrap"/>
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Width="300" TextWrapping="Wrap"
+                         Text="{Binding Path=Data.Reason}"/>
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutControl>
@@ -83,32 +77,27 @@
                     <dxlc:LayoutGroup Header="请假明细" View="GroupBox" Orientation="Vertical">
                         <dxlc:LayoutGroup.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}" FontSize="16" Foreground="DodgerBlue" />
+                                <TextBlock FontSize="16" Foreground="DodgerBlue" Text="{Binding}"/>
                             </DataTemplate>
                         </dxlc:LayoutGroup.HeaderTemplate>
                         <dxlc:LayoutItem Label="请假类型" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"
-                                       Text="{Binding Path=Data.ForleaveType}" MinWidth="250" />
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" MinWidth="250" Text="{Binding Path=Data.ForleaveType}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="开始时间" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <dxe:DateEdit Margin="10,0,0,0" VerticalAlignment="Center"
-                                          EditValue="{Binding Path=Data.StartDate}" Mask="F"
-                                          MaskUseAsDisplayFormat="True" MinWidth="100" IsTextEditable="False"
-                                          IsReadOnly="True" />
+                            <dxe:DateEdit Margin="10,0,0,0" VerticalAlignment="Center" Mask="F" MaskUseAsDisplayFormat="true" MinWidth="100"
+                            IsTextEditable="False" IsReadOnly="true" EditValue="{Binding Path=Data.StartDate}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="结束时间" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <dxe:DateEdit Margin="10,0,0,0" VerticalAlignment="Center"
-                                          EditValue="{Binding Path=Data.EndDate}" Mask="F"
-                                          MaskUseAsDisplayFormat="True" MinWidth="100" IsTextEditable="False"
-                                          IsReadOnly="True" />
+                            <dxe:DateEdit Margin="10,0,0,0" VerticalAlignment="Center" Mask="F" MaskUseAsDisplayFormat="true" MinWidth="100"
+                            IsTextEditable="False" IsReadOnly="true" EditValue="{Binding Path=Data.EndDate}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="请假天数" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"
-                                       Text="{Binding Path=Data.LeaveDayTimes}" MinWidth="100" />
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" MinWidth="100"
+                         Text="{Binding Path=Data.LeaveDayTimes}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="请假事由" Style="{StaticResource ApprovalLayoutItemStyle}" LabelVerticalAlignment="Top">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{Binding Path=Data.Reason}"
-                                       Width="300" TextWrapping="Wrap"/>
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Width="300" TextWrapping="Wrap"
+                         Text="{Binding Path=Data.Reason}"/>
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutControl>
@@ -120,134 +109,255 @@
                     <dxlc:LayoutGroup Header="报销明细" View="GroupBox" Orientation="Vertical">
                         <dxlc:LayoutGroup.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}" FontSize="16" Foreground="DodgerBlue" />
+                                <TextBlock FontSize="16" Foreground="DodgerBlue" Text="{Binding}"/>
                             </DataTemplate>
                         </dxlc:LayoutGroup.HeaderTemplate>
                         <dxlc:LayoutItem Label="报销金额" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"
-                                       Text="{Binding Path=Data.Money}" MinWidth="250"/>
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" MinWidth="250" Text="{Binding Path=Data.Money}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="报销类别" Style="{StaticResource ApprovalLayoutItemStyle}">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"
-                                       Text="{Binding Path=Data.ReimburseType}" MinWidth="100" />
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" MinWidth="100"
+                         Text="{Binding Path=Data.ReimburseType}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="费用明细" Style="{StaticResource ApprovalLayoutItemStyle}" LabelVerticalAlignment="Top">
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{Binding Path=Data.ChargeDetails}"
-                                       Width="300" TextWrapping="Wrap"/>
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Width="300" TextWrapping="Wrap"
+                         Text="{Binding Path=Data.ChargeDetails}"/>
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutControl>
             </Grid>
         </DataTemplate>
     </native:TemplatesDictionary>
-    <!--编辑模板-->
     <native:TemplatesDictionary x:Key="WorkApprovalOrderEditTemplatesDictionary">
         <DataTemplate x:Key="DataTemplateDefault">
             <Grid>
                 <TextBlock Margin="20" VerticalAlignment="Center" Text="请选择审核单!"/>
             </Grid>
         </DataTemplate>
-        <!--出差-->
         <DataTemplate x:Key="DataTemplateBusinessTrip">
-            <ScrollViewer  Width="350" DataContext="{Binding FromData}" VerticalScrollBarVisibility="Auto" BorderThickness="1" BorderBrush="DodgerBlue">
+            <ScrollViewer Width="350" VerticalScrollBarVisibility="Auto" BorderThickness="1" BorderBrush="DodgerBlue"
+                    DataContext="{Binding FromData}">
                 <Grid Margin="10,15,10,10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="行程明细" Style="{StaticResource LableHeadStyle}"/>
-                    <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="*出差地点:"/>
-                    <dxe:TextEdit Grid.Row="1" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=OutAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                    <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="*开始时间:"/>
-                    <dxe:DateEdit Grid.Row="2" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=StartDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Mask="F" MaskUseAsDisplayFormat="True"/>
-                    <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="*结束时间:"/>
-                    <dxe:DateEdit Grid.Row="3" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=EndDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Mask="F" MaskUseAsDisplayFormat="True" />
-                    <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="出差天数:"/>
-                    <dxe:TextEdit Grid.Row="4" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=OutDayTimes,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                    <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="出差事由:"/>
-                    <dxe:TextEdit Grid.Row="5" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=Reason,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="100" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True"/>
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="出差申请"
+                 Style="{StaticResource LableHeadStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="出差目的地:"/>
+                    <dxe:TextEdit Grid.Row="1" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
+                        EditValue="{Binding Path=OutAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="出差路线:"/>
+                    <dxe:TextEdit Grid.Row="2" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
+                        EditValue="{Binding Path=Route, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <dxe:CheckEdit Grid.Row="3" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" Content="是否需要购票"
+                         EditValue="{Binding Path=IsTickets, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="开始时间:"/>
+                    <dxe:DateEdit Grid.Row="4" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" Mask="F"
+                        MaskUseAsDisplayFormat="true"
+                        EditValue="{Binding Path=StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="结束时间:"/>
+                    <dxe:DateEdit Grid.Row="5" Grid.Column="1" Margin="0,5,0,10" Style="{StaticResource InputFrameworkElement}"
+                        Mask="F" MaskUseAsDisplayFormat="true"
+                        EditValue="{Binding Path=EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="出差事由:"/>
+                    <dxe:TextEdit Grid.Row="6" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" Height="100"
+                        TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="true"
+                        EditValue="{Binding Path=Reason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GroupBox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Header="预期">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="新客户增加数量:"/>
+                            <dxe:TextEdit Grid.Row="0" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
+                            EditValue="{Binding Path=AddCustomerQuan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Text="经销商开拓零售客户数量:"
+                         TextWrapping="Wrap"/>
+                            <dxe:TextEdit Grid.Row="1" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
+                            EditValue="{Binding Path=DealersToAddRetailersQuan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Text="老客服拜访明细:"
+                         TextWrapping="Wrap"/>
+                            <dxe:TextEdit Grid.Row="2" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" Height="100"
+                            TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="true"
+                            EditValue="{Binding Path=OldCsutomerServiceDetail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </GroupBox>
                 </Grid>
             </ScrollViewer>
         </DataTemplate>
-        <!--请假-->
         <DataTemplate x:Key="DataTemplateForLeave">
-            <ScrollViewer  Width="350" DataContext="{Binding FromData}"  VerticalScrollBarVisibility="Auto" BorderThickness="1" BorderBrush="DodgerBlue">
+            <ScrollViewer Width="350" VerticalScrollBarVisibility="Auto" BorderThickness="1" BorderBrush="DodgerBlue"
+                    DataContext="{Binding FromData}">
                 <Grid Margin="10,15,10,10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="请假" Style="{StaticResource LableHeadStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="请假"
+                 Style="{StaticResource LableHeadStyle}"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="*请假类型:" Style="{StaticResource InputFrameworkElement}"/>
                     <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
-                                          EditValue="{Binding Path=ForleaveType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                          ItemsSource="{x:Static viewModels:NewWorkApprovalOrderViewModel.ForleaveTypes}"
-                                          ValueMember="Name" DisplayMember="Name"/>
+                            ItemsSource="{x:Static viewModels:NewWorkApprovalOrderViewModel.ForleaveTypes}" ValueMember="Name"
+                            DisplayMember="Name"
+                            EditValue="{Binding Path=ForleaveType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="*开始时间:"/>
-                    <dxe:DateEdit Grid.Row="2" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=StartDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Mask="F" MaskUseAsDisplayFormat="True"/>
+                    <dxe:DateEdit Grid.Row="2" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" Mask="F"
+                        MaskUseAsDisplayFormat="true"
+                        EditValue="{Binding Path=StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="*结束时间:"/>
-                    <dxe:DateEdit Grid.Row="3" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=EndDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Mask="F" MaskUseAsDisplayFormat="True" />
+                    <dxe:DateEdit Grid.Row="3" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" Mask="F"
+                        MaskUseAsDisplayFormat="true"
+                        EditValue="{Binding Path=EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="请假天数:"/>
-                    <dxe:TextEdit Grid.Row="4" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=LeaveDayTimes,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <dxe:TextEdit Grid.Row="4" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
+                        EditValue="{Binding Path=LeaveDayTimes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource InputFrameworkElement}" Content="请假事由:"/>
-                    <dxe:TextEdit Grid.Row="5" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" EditValue="{Binding Path=Reason,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="100" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True"/>
+                    <dxe:TextEdit Grid.Row="5" Grid.Column="1" Style="{StaticResource InputFrameworkElement}" Height="100"
+                        TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="true"
+                        EditValue="{Binding Path=Reason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </Grid>
             </ScrollViewer>
         </DataTemplate>
-        <!--报销-->
         <DataTemplate x:Key="DataTemplateReimburse">
-            <ScrollViewer  Width="350" DataContext="{Binding FromData}"  VerticalScrollBarVisibility="Auto" BorderThickness="1" BorderBrush="DodgerBlue">
+            <ScrollViewer Margin="10,15,10,10" VerticalScrollBarVisibility="Auto" BorderThickness="1"
+                    BorderBrush="DodgerBlue" DataContext="{Binding FromData}">
                 <Border Margin="10,15,10,10">
-                    <Grid >
-                        <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="2.5*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="报销" Style="{StaticResource LableHeadStyle}"/>
-
-                    <Label Grid.Row="1" Grid.Column="0"  Content="*报销金额:" Style="{StaticResource InputFrameworkElement}"/>
-                    <dxe:TextEdit Grid.Row="1" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
-                                            MaskUseAsDisplayFormat="True"
-                                      EditValue="{Binding Path=Money,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                      Mask="c2" MaskType="Numeric"/>
-
-                    <Label Grid.Row="2" Grid.Column="0"  Content="报销类别:" Style="{StaticResource InputFrameworkElement}"/>
-                    <dxe:TextEdit Grid.Row="2" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
-                                      EditValue="{Binding Path=ReimburseType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
-                    <Label Grid.Row="3" Grid.Column="0" Content="费用明细:" Style="{StaticResource InputFrameworkElement}"/>
-                    <dxe:TextEdit Grid.Row="3" Grid.Column="1" Style="{StaticResource InputFrameworkElement}"
-                                      Height="100" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True"
-                                      EditValue="{Binding Path=ChargeDetails,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-                </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="车费报销申请" Style="{StaticResource LableHeadStyle}"/>
+                        <dxg:GridControl Grid.Row="1" Grid.Column="0" MinHeight="300" MaxHeight="600" Margin="0,10,0,0"
+                             ItemsSource="{Binding Tickets}">
+                            <dxg:GridControl.View>
+                                <dxg:TableView ShowSearchPanelMode="Never" NewItemRowPosition="Bottom" AllowEditing="true" ShowTotalSummary="true"/>
+                            </dxg:GridControl.View>
+                            <dxg:GridControl.Columns>
+                                <dxg:GridColumn Header="序号" FieldName="Id"/>
+                                <dxg:GridColumn Header="车票名称" FieldName="TicketName"/>
+                                <dxg:GridColumn Header="车票路线" FieldName="TicketRoute"/>
+                                <dxg:GridColumn Header="车票金额" FieldName="TicketMoney">
+                                    <dxg:ColumnBase.EditSettings>
+                                        <dxe:TextEditSettings Mask="c2" MaskType="Numeric" MaskUseAsDisplayFormat="true"/>
+                                    </dxg:ColumnBase.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn Header="车票数量" FieldName="TicketQuan"/>
+                                <dxg:GridColumn Header="小计" FieldName="Sum" UnboundExpression="([TicketQuan]*[TicketMoney])" UnboundType="Decimal">
+                                    <dxg:ColumnBase.EditSettings>
+                                        <dxe:TextEditSettings Mask="c2" MaskType="Numeric" MaskUseAsDisplayFormat="true"/>
+                                    </dxg:ColumnBase.EditSettings>
+                                </dxg:GridColumn>
+                            </dxg:GridControl.Columns>
+                            <dxg:GridControl.TotalSummary>
+                                <dxg:GridSummaryItem FieldName="Sum" SummaryType="Sum" DisplayFormat="总金额{0:c}"/>
+                            </dxg:GridControl.TotalSummary>
+                        </dxg:GridControl>
+                    </Grid>
+                </Border>
+            </ScrollViewer>
+        </DataTemplate>
+        <DataTemplate x:Key="DataTemplateStayReimburse">
+            <ScrollViewer Margin="10,15,10,10" VerticalScrollBarVisibility="Auto" BorderThickness="1"
+                    BorderBrush="DodgerBlue" DataContext="{Binding FromData}">
+                <Border Margin="10,15,10,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="住宿报销申请" Style="{StaticResource LableHeadStyle}"/>
+                        <dxg:GridControl Grid.Row="1" Grid.Column="0" MinHeight="300" MaxHeight="600" Margin="0,10,0,0"
+                             ItemsSource="{Binding Stays}">
+                            <dxg:GridControl.View>
+                                <dxg:TableView ShowSearchPanelMode="Never" NewItemRowPosition="Bottom" AllowEditing="true" ShowTotalSummary="true"/>
+                            </dxg:GridControl.View>
+                            <dxg:GridControl.Columns>
+                                <dxg:GridColumn Header="序号" FieldName="Id"/>
+                                <dxg:GridColumn Header="住宿酒店名称" FieldName="HotelName"/>
+                                <dxg:GridColumn Header="住宿天数" FieldName="DayTimes"/>
+                                <dxg:GridColumn Header="单天住宿金额" FieldName="DayMoney">
+                                    <dxg:ColumnBase.EditSettings>
+                                        <dxe:TextEditSettings Mask="c2" MaskType="Numeric" MaskUseAsDisplayFormat="true"/>
+                                    </dxg:ColumnBase.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn Header="小计" FieldName="Sum" UnboundExpression="([DayTimes]*[DayMoney])" UnboundType="Decimal">
+                                    <dxg:ColumnBase.EditSettings>
+                                        <dxe:TextEditSettings Mask="c2" MaskType="Numeric" MaskUseAsDisplayFormat="true"/>
+                                    </dxg:ColumnBase.EditSettings>
+                                </dxg:GridColumn>
+                            </dxg:GridControl.Columns>
+                            <dxg:GridControl.TotalSummary>
+                                <dxg:GridSummaryItem FieldName="Sum" SummaryType="Sum" DisplayFormat="总金额{0:c}"/>
+                            </dxg:GridControl.TotalSummary>
+                        </dxg:GridControl>
+                    </Grid>
+                </Border>
+            </ScrollViewer>
+        </DataTemplate>
+        <DataTemplate x:Key="DataTemplateMealsReimburse">
+            <ScrollViewer Margin="10,15,10,10" VerticalScrollBarVisibility="Auto" BorderThickness="1"
+                    BorderBrush="DodgerBlue" DataContext="{Binding FromData}">
+                <Border Margin="10,15,10,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="餐费报销申请" Style="{StaticResource LableHeadStyle}"/>
+                        <dxg:GridControl Grid.Row="1" Grid.Column="0" MinHeight="300" MaxHeight="600" Margin="0,10,0,0"
+                             ItemsSource="{Binding Meals}">
+                            <dxg:GridControl.View>
+                                <dxg:TableView ShowSearchPanelMode="Never" NewItemRowPosition="Bottom" AllowEditing="true" ShowTotalSummary="true"/>
+                            </dxg:GridControl.View>
+                            <dxg:GridControl.Columns>
+                                <dxg:GridColumn Header="序号" FieldName="Id"/>
+                                <dxg:GridColumn Header="岗位补助每天金额" FieldName="DayMoney">
+                                    <dxg:ColumnBase.EditSettings>
+                                        <dxe:TextEditSettings Mask="c2" MaskType="Numeric" MaskUseAsDisplayFormat="true"/>
+                                    </dxg:ColumnBase.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn Header="天数" FieldName="Day"/>
+                                <dxg:GridColumn Header="小计" FieldName="Sum" UnboundExpression="([Day]*[DayMoney])" UnboundType="Decimal">
+                                    <dxg:ColumnBase.EditSettings>
+                                        <dxe:TextEditSettings Mask="c2" MaskType="Numeric" MaskUseAsDisplayFormat="true"/>
+                                    </dxg:ColumnBase.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn Header="备注" FieldName="Remark"/>
+                            </dxg:GridControl.Columns>
+                            <dxg:GridControl.TotalSummary>
+                                <dxg:GridSummaryItem FieldName="Sum" SummaryType="Sum" DisplayFormat="总金额{0:c}"/>
+                            </dxg:GridControl.TotalSummary>
+                        </dxg:GridControl>
+                    </Grid>
                 </Border>
             </ScrollViewer>
         </DataTemplate>
     </native:TemplatesDictionary>
-    
 </ResourceDictionary>

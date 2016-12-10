@@ -80,7 +80,9 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="ApplicationDbContextFunction.cs" />
+    <Compile Include="Business\FileCabinetsManager.cs" />
     <Compile Include="Business\ForleaveTypeManager.cs" />
+    <Compile Include="Business\MailManager.cs" />
     <Compile Include="Business\OrganizationStructureManager.cs" />
     <Compile Include="Business\RibbonNodeManager.cs" />
     <Compile Include="Business\SystemAccountManager.cs" />
@@ -96,7 +98,9 @@
     <Compile Include="EntityMapping\AuthRoleMenuMap.cs" />
     <Compile Include="EntityMapping\AuthToolButtonMap.cs" />
     <Compile Include="EntityMapping\AuthUserRoleMap.cs" />
+    <Compile Include="EntityMapping\FileCabinetsMap.cs" />
     <Compile Include="EntityMapping\ForleaveTypeMap.cs" />
+    <Compile Include="EntityMapping\MailOrderMap.cs" />
     <Compile Include="EntityMapping\OrganizationMap.cs" />
     <Compile Include="EntityMapping\OrganizationUserMap.cs" />
     <Compile Include="EntityMapping\SystemProgramMap.cs" />
@@ -115,7 +119,9 @@
     <Compile Include="EntityModels\AuthRoleMenu.cs" />
     <Compile Include="EntityModels\AuthToolButton.cs" />
     <Compile Include="EntityModels\AuthUserRole.cs" />
+    <Compile Include="EntityModels\FileCabinets.cs" />
     <Compile Include="EntityModels\ForleaveType.cs" />
+    <Compile Include="EntityModels\MailOrder.cs" />
     <Compile Include="EntityModels\Organization.cs" />
     <Compile Include="EntityModels\OrganizationUser.cs" />
     <Compile Include="EntityModels\SystemUser.cs" />
@@ -216,7 +222,12 @@
     <Compile Include="Migrations\201609251204158_addForleaveType.Designer.cs">
       <DependentUpon>201609251204158_addForleaveType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612060336372_AddFileMailOrder.cs" />
+    <Compile Include="Migrations\201612060336372_AddFileMailOrder.Designer.cs">
+      <DependentUpon>201612060336372_AddFileMailOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\FileFormatType.cs" />
     <Compile Include="Model\NavigationMenuGroup.cs" />
     <Compile Include="Model\RibbonNodeCollection.cs" />
     <Compile Include="Model\RibbonNodeModel.cs" />
@@ -306,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609251204158_addForleaveType.resx">
       <DependentUpon>201609251204158_addForleaveType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612060336372_AddFileMailOrder.resx">
+      <DependentUpon>201612060336372_AddFileMailOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

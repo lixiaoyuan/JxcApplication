@@ -59,6 +59,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FileCabinetsManagerTest.cs" />
     <Compile Include="RibbonNodeManagerTest.cs" />
     <Compile Include="SerializableTest.cs" />
     <Compile Include="SystemAccountManagerTest.cs" />

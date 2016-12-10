@@ -7,13 +7,19 @@ using System.Windows.Controls;
 
 namespace JxcApplication.TemplateSelector
 {
-    public class BarItemTemplateSelector : DataTemplateSelector
+    public class NotNullTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate ItemTemplate { get; set; }
-        public DataTemplate SubItemTemplate { get; set; }
+        public DataTemplate DataTemplate { get; set; }
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            return ItemTemplate;
+            if (item==null)
+            {
+                return null;
+            }
+            else
+            {
+                return DataTemplate;
+            }
         }
     }
 }

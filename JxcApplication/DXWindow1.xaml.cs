@@ -24,23 +24,19 @@ namespace JxcApplication
         public DXWindow1()
         {
             InitializeComponent();
-            this.Loaded += DXWindow1_Loaded;
-        }
-
-        private void DXWindow1_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<TestData> datas=new  List<TestData>();
-            datas.Add(new TestData() {own = 111});
-            datas.Add(new TestData() {own2 = 32});
-            datas.Add(new TestData() {sum = 43});
-            //GridControldata.ItemsSource = datas;
+            this.DataContext= new TestDataContent();
         }
     }
 
-    public class TestData
+    public class TestDataContent
     {
-        public int own { get; set; }
-        public int own2 { get; set; }
-        public int sum { get; set; }
+        public string Name { get; set; }
+
+        //private 
+    }
+
+    public class Data
+    {
+        public string LastName { get; set; }
     }
 }
