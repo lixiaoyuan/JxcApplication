@@ -12,13 +12,41 @@ namespace JxcApplication.Core.Mail
 {
     public interface IMailDataProvide
     {
-        Task<IEnumerable<MailOrder>> GetItemAsync(MailListShowType type);
+        /// <summary>
+        /// 获取邮件列表
+        /// </summary>
+        /// <param name="type">邮件列表类型</param>
+        /// <returns></returns>
+        Task<List<MailOrder>> GetItemListAsync(MailListShowType type);
+        /// <summary>
+        /// 更新邮件
+        /// </summary>
+        /// <returns></returns>
         Task<bool> UpdateItemAsync(MailOrder MailOrder);
+        /// <summary>
+        /// 删除邮件
+        /// </summary>
+        /// <returns></returns>
         Task<bool> ReomverItemAsync(MailOrder mailOrder);
-        Task<bool> CreateItemAsync(MailOrder mailOrder);
-        Task<bool> CreateItemAsync(MailOrder mailOrder, byte[] content);
+        /// <summary>
+        /// 创建邮件
+        /// </summary>
+        /// <returns></returns>
+        Task<bool> CreateItemAsync(byte[] content,params MailOrder[] mailOrder);
+        /// <summary>
+        /// 获取邮件内容
+        /// </summary>
+        /// <returns></returns>
         Task<byte[]> GetItemConentAsync(MailOrder mailOrder);
+        /// <summary>
+        /// 获取新建邮件内容
+        /// </summary>
+        /// <returns></returns>
         Task<byte[]> GetNewMailConentAsync(NewMailType newMailType);
-        Task<IEnumerable<SystemUser>> GetMailUserList();
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <returns></returns>
+        Task<List<SystemUser>> GetMailUserList();
     }
 }

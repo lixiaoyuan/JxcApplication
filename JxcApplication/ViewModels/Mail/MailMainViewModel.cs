@@ -5,14 +5,18 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using ApplicationDb.Cor;
 using ApplicationDb.Cor.EntityModels;
+using ApplicationDb.Cor.Helper;
 using ApplicationDb.Cor.Model;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.POCO;
+using DevExpress.Xpf.Core;
 using DevExpress.Xpf.Editors;
 using DevExpress.Xpf.Spreadsheet;
 using DevExpress.XtraRichEdit;
@@ -23,9 +27,11 @@ using RichEditControl = DevExpress.Xpf.RichEdit.RichEditControl;
 
 namespace JxcApplication.ViewModels.Mail
 {
-    public class Lookup
+    public static class MailShowTypeStatic
     {
-        public string Name { get; set; }
+        public static MailListType SenBoxType { get { return MailListType.SenBox; } }
+        public static MailListType InBoxType { get { return MailListType.InBox; } }
+        public static MailListType DelBoxType { get { return MailListType.DelBox; } }
     }
     public enum NewMailType
     {
@@ -34,16 +40,16 @@ namespace JxcApplication.ViewModels.Mail
         WeekPlan,
         MonthPlan
     }
-     
 
-    //[POCOViewModel]
-    public class MailNewEdit :BindableBase, IMailPreview
+    [POCOViewModel]
+    public class MailNewEdit :ViewModelBase, IMailPreview
     {
         private IMailDataProvide _dataProvide;
         private MailOrder _mailOrder;
         private NewMailType _newMailType;
         private bool _isReply;
-
+        public bool _sending;
+        private RichEditControl _richEditControl;
         //public virtual ICollectionView Users { get;  set; }
 
         public virtual ICollectionView Users { get; set; }
@@ -57,18 +63,41 @@ namespace JxcApplication.ViewModels.Mail
         public DelegateCommand<EditValueChangedEventArgs> EmailToUsersEditChangedCommand { get; set; }
         public void Loaded(RichEditControl control)
         {
-            PutDataPreview(control);
+            _richEditControl = control;
+            PutDataPreview();
             FillPrepareDataAsync();
         }
 
-        private void SendMessage()
+        private async void SendMessage()
         {
+            _sending = true;
+            SendMessageCommand.RaiseCanExecuteChanged();
+            List<MailOrder> mails = new List<MailOrder>();
+            foreach (SystemUser user in SelectUsers)
+            {
+                MailOrder mo = CloneMail(NewMail);
+                mo.Id = Guid.NewGuid();
+                mo.ToUser = user.Id;
+                mo.ToUserName = user.Name;
+                mails.Add(mo);
+            }
+            bool result = await _dataProvide.CreateItemAsync(PullDataPreview(), mails.ToArray());
+            _sending = false;
+            SendMessageCommand.RaiseCanExecuteChanged();
+            if (result)
+            {
+                DXMessageBox.Show("发送成功!");
+            }
+            else
+            {
+                DXMessageBox.Show("邮件发送失败!");
+            }
         }
 
         private bool CanSendMessage()
         {
             return SelectUsers != null && SelectUsers.Count > 0 && NewMail != null &&
-                   !string.IsNullOrWhiteSpace(NewMail.Subject);
+                   !string.IsNullOrWhiteSpace(NewMail.Subject)&&!_sending;
         }
 
         private void EmailToUsersEditChanged(EditValueChangedEventArgs e)
@@ -79,17 +108,21 @@ namespace JxcApplication.ViewModels.Mail
          /// <summary>
          /// 推入邮件内容
          /// </summary>
-         /// <param name="control"></param>
-        private async void PutDataPreview(RichEditControl control)
+        private async void PutDataPreview()
         {
-            control.BeginInit();
             MemoryStream ms = _isReply ? new MemoryStream(await _dataProvide.GetItemConentAsync(_mailOrder)) : new MemoryStream(await _dataProvide.GetNewMailConentAsync(_newMailType));
             if ( ms.Length > 0)
             {
-                control.Document.LoadDocument(ms, DocumentFormat.Doc);
+                _richEditControl.Document.LoadDocument(ms, DocumentFormat.Doc);
             }
-            control.EndInit();
             GC.Collect();
+        }
+
+        private byte[] PullDataPreview()
+        {
+            MemoryStream ms = new MemoryStream();
+            _richEditControl.Document.SaveDocument(ms, DocumentFormat.Doc);
+            return ms.GetBuffer();
         }
         /// <summary>
         /// 填充准备数据
@@ -128,14 +161,14 @@ namespace JxcApplication.ViewModels.Mail
         {
             //var returnTem = ViewModelSource.Create(() => new MailNewEdit(dataProvide, newMailType));
             //return returnTem;
-            return new MailNewEdit(dataProvide,newMailType);
+            return new MailNewEdit(dataProvide, newMailType);
         }
 
         public static MailNewEdit Create(IMailDataProvide dataProvide, MailOrder mailOrder)
         {
             //var returnTem = ViewModelSource.Create(() => new MailNewEdit(dataProvide, mailOrder));
             //return returnTem;
-            return new MailNewEdit(dataProvide,mailOrder);
+            return new MailNewEdit(dataProvide, mailOrder);
         }
 
         #endregion
@@ -170,10 +203,17 @@ namespace JxcApplication.ViewModels.Mail
 
         private MailOrder CreateNewMailOrder()
         {
-            var returnTem= new MailOrder();
-            returnTem.Id = Guid.NewGuid();
-            returnTem.FormUser = App.GlobalApp.LoginUser.Id;
-            returnTem.FormUserName = App.GlobalApp.LoginUser.Name;
+            var returnTem = new MailOrder
+            {
+                Id = Guid.NewGuid(),
+                IsDelete = false,
+                IsDaft = false,
+                IsUnread = true,
+                IsReply = false,
+                CreateDateTime = DBUnit.GetDbTime(),
+                FormUser = App.GlobalApp.LoginUser.Id,
+                FormUserName = App.GlobalApp.LoginUser.Name
+            };
             if (_isReply)
             {
                 returnTem.IsReply = true;
@@ -183,6 +223,27 @@ namespace JxcApplication.ViewModels.Mail
             return returnTem;
         }
 
+        private MailOrder CloneMail(MailOrder mail)
+        {
+            return new MailOrder()
+            {
+                Id = mail.Id,
+                IsDelete = mail.IsDelete,
+                IsDaft = mail.IsDaft,
+                IsReply = mail.IsReply,
+                IsUnread = mail.IsUnread,
+                ReplyMailId = mail.ReplyMailId,
+                FormUser = mail.FormUser,
+                FormAddress = mail.FormAddress,
+                FormUserName = mail.FormUserName,
+                ToUser = mail.ToUser,
+                ToAddress = mail.ToAddress,
+                ToUserName = mail.ToUserName,
+                CreateDateTime = mail.CreateDateTime,
+                Subject = mail.Subject,
+                ConetntFileId = mail.ConetntFileId
+            };
+        }
     }
 
     [POCOViewModel]
@@ -206,7 +267,7 @@ namespace JxcApplication.ViewModels.Mail
         public virtual DelegateCommand DeleteCommand { get; set; }
         public virtual DelegateCommand<NewMailType> CreateNewMailCommand { get; set; }
         public virtual DelegateCommand ReplyCommand { get; set; }
-
+        public virtual DelegateCommand ReceiveCommand { get; set; }
         public virtual IMailPreview MailNewEdit { get; set; }
 
         protected override void OnInitializeInRuntime()
@@ -229,6 +290,7 @@ namespace JxcApplication.ViewModels.Mail
             CreateNewMailCommand = new DelegateCommand<NewMailType>(CreateNewMail);
             ReplyCommand = new DelegateCommand(Reply, CanReply);
             RichEditControlLoadedCommand = new DelegateCommand<RichEditControl>(RichEditControlLoaded);
+            ReceiveCommand=new DelegateCommand(ReceiveMails);
         }
 
         private void CreateNewMailCore(NewMailType newMailType)
@@ -252,10 +314,8 @@ namespace JxcApplication.ViewModels.Mail
             {
                 return;
             }
-            _richEditControl.BeginInit();
             MemoryStream ms = new MemoryStream(await _mailDataProvide.GetItemConentAsync(CurrentMail));
             _richEditControl.Document.LoadDocument(ms, DocumentFormat.Doc);
-            _richEditControl.EndInit();
             GC.Collect();
         }
 
@@ -268,7 +328,12 @@ namespace JxcApplication.ViewModels.Mail
 
         public void OnCurrentMailChanged()
         {
-            UpdateToRead(CurrentMail);
+            if (CurrentMail == null)
+            {
+                return;
+            }
+            if (CurrentShowStype.Type == MailListType.InBox)
+                UpdateToRead(CurrentMail);
             PutDataPreview();
         }
 
@@ -281,9 +346,7 @@ namespace JxcApplication.ViewModels.Mail
             if (CurrentShowStype == null)
                 return;
             ShowLoadingMailList = true;
-            var result =
-                (await _mailDataProvide.GetItemAsync(CurrentShowStype))?.Select(Common.ConvertMailOrderModel)
-                    .ToObservableCollection();
+            var result = (await _mailDataProvide.GetItemListAsync(CurrentShowStype)).Select(Common.ConvertMailOrderModel).ToObservableCollection();
             ShowLoadingMailList = false;
             if (Mails != result)
                 Mails = result;
@@ -394,6 +457,13 @@ namespace JxcApplication.ViewModels.Mail
             return (CurrentMail != null) && (CurrentShowStype.Type == MailListType.InBox);
         }
 
+        /// <summary>
+        /// 接收新邮件
+        /// </summary>
+        private void ReceiveMails()
+        {
+            UpdateSource();
+        }
         #endregion
     }
 }

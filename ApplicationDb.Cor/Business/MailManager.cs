@@ -12,6 +12,10 @@ namespace ApplicationDb.Cor.Business
 {
     public class MailManager
     {
+        /// <summary>
+        /// 获取收件箱
+        /// </summary>
+        /// <returns></returns>
         public static IEnumerable<MailOrder> GetInBoxItems(Guid userId)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -19,11 +23,26 @@ namespace ApplicationDb.Cor.Business
                 return db.MailOrders.Where(a => a.ToUser == userId && a.IsDaft == false && a.IsDelete == false).ToList();
             }
         }
+        /// <summary>
+        /// 获取回收站
+        /// </summary>
+        /// <returns></returns>
         public static IEnumerable<MailOrder> GetDelBoxItems(Guid userId)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 return db.MailOrders.Where(a => a.ToUser == userId && a.IsDaft == false && a.IsDelete).ToList();
+            }
+        }
+        /// <summary>
+        /// 获取发件箱
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<MailOrder> GetSendBoxItems(Guid userId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                return db.MailOrders.Where(a => a.FormUser == userId && a.IsDaft == false && !a.IsDelete).ToList();
             }
         }
         public static bool Update(MailOrder mailOder)
@@ -47,6 +66,15 @@ namespace ApplicationDb.Cor.Business
         public static byte[] GetNewMailContent(Guid fileId)
         {
             return FileCabinetsManager.GetFile(fileId)?.Data;
+        }
+
+        public static bool Inster(params MailOrder[] mails)
+        {
+            using (ApplicationDbContext db=new ApplicationDbContext())
+            {
+                db.MailOrders.AddRange(mails);
+                return db.SaveChanges() > 0;
+            }
         }
     }
 }

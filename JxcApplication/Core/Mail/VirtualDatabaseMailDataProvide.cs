@@ -13,19 +13,23 @@ namespace JxcApplication.Core.Mail
 {
     public class VirtualDatabaseMailDataProvide : IMailDataProvide
     { 
-        public Task<IEnumerable<MailOrder>> GetItemAsync(MailListShowType type)
+        public Task<List<MailOrder>> GetItemListAsync(MailListShowType type)
         {
-            return Task<IEnumerable<MailOrder>>.Factory.StartNew(() =>
+            return Task<List<MailOrder>>.Factory.StartNew(() =>
             {
                 if (type.Type == MailListType.InBox)
                 {
-                    return MailManager.GetInBoxItems(App.GlobalApp.LoginUser.Id);
+                    return MailManager.GetInBoxItems(App.GlobalApp.LoginUser.Id).ToList();
                 }
                 else if (type.Type == MailListType.DelBox)
                 {
-                    return MailManager.GetDelBoxItems(App.GlobalApp.LoginUser.Id);
+                    return MailManager.GetDelBoxItems(App.GlobalApp.LoginUser.Id).ToList();
                 }
-                return null;
+                else if (type.Type == MailListType.SenBox)
+                {
+                    return MailManager.GetSendBoxItems(App.GlobalApp.LoginUser.Id).ToList();
+                }
+                return new List<MailOrder>();
             });
           
         }
@@ -40,21 +44,28 @@ namespace JxcApplication.Core.Mail
             return Task<bool>.Factory.StartNew(() => MailManager.Delete(mailOrder));
         }
 
-        public Task<bool> CreateItemAsync(MailOrder mailOrder)
+        public Task<bool> CreateItemAsync(byte[] content, params MailOrder[] mailOrder)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> CreateItemAsync(MailOrder mailOrder, byte[] content)
-        {
-            throw new NotImplementedException();
+            return Task<bool>.Factory.StartNew(() =>
+            {
+                Guid fileid = FileCabinetsManager.InserFile(content, $"邮件文件-发送人:{mailOrder[0].FormUserName}");
+                if (fileid == Guid.Empty)
+                {
+                    return false;
+                }
+                foreach (MailOrder order in mailOrder)
+                {
+                    order.ConetntFileId = fileid;
+                }
+                return MailManager.Inster(mailOrder);
+            });
         }
 
         public Task<byte[]> GetItemConentAsync(MailOrder mailOrder)
         {
             return Task<byte[]>.Factory.StartNew(() =>
             {
-                if (mailOrder.ConetntFileId == null || mailOrder.ConetntFileId == Guid.Empty)
+                if (mailOrder == null || mailOrder.ConetntFileId == null || mailOrder.ConetntFileId == Guid.Empty)
                 {
                     return null;
                 }
@@ -82,9 +93,9 @@ namespace JxcApplication.Core.Mail
             });
         }
 
-        public Task<IEnumerable<SystemUser>> GetMailUserList()
+        public Task<List<SystemUser>> GetMailUserList()
         {
-            return Task<IEnumerable<SystemUser>>.Factory.StartNew(SystemAccountManager.QueryLookUp);
+            return Task<List<SystemUser>>.Factory.StartNew(() => { return SystemAccountManager.QueryLookUp().ToList(); });
         }
     }
 }

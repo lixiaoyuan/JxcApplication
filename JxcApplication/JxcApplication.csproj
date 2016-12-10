@@ -203,6 +203,7 @@
     <Compile Include="Convert\ColorToStringConvert.cs" />
     <Compile Include="Convert\DecimalLessThanZeroConvert.cs" />
     <Compile Include="Convert\EnumConvert.cs" />
+    <Compile Include="Convert\MailShowStypeConvert.cs" />
     <Compile Include="Convert\NumberToVisibilityConverter.cs" />
     <Compile Include="Convert\ShortDecimalConverter.cs" />
     <Compile Include="Convert\TestConvert.cs" />

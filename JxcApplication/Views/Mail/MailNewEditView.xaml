@@ -11,8 +11,7 @@
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-
+             d:DesignHeight="310.4" d:DesignWidth="810.35">
     <UserControl.Resources>
         <dxre:RichEditUICommand x:Key="commands" />
         <dxre:RichEditStringIdConverter x:Key="stringIdConverter" />
@@ -39,6 +38,10 @@
             </dxg:GridControl>
         </ControlTemplate>
     </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService/>
+        <dxmvvm:CurrentWindowService/>
+    </dxmvvm:Interaction.Behaviors>
     <dx:LoadingDecorator>
         <dxb:BarManager x:Name="barManager1" ToolbarGlyphSize="Small">
             <dxb:BarManager.Items>
@@ -411,13 +414,16 @@
                             <dxmvvm:EventToCommand EventName="EditValueChanged" SourceName="emailToUsersEdit" Command="{Binding EmailToUsersEditChangedCommand}" PassEventArgsToCommand="True"/>
                         </dxmvvm:Interaction.Behaviors>
                     </dxg:LookUpEdit>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="主题:" Margin="12,12,4,4"
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="主题:" Margin="12,5,4,4"
                                HorizontalAlignment="Right" />
-                    <dxe:TextEdit Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,12,12,4"
+                    <dxe:TextEdit Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,5,4,10"
                                   EditValue="{Binding NewMail.Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
+
                     <dxre:RichEditControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="richEditControl1"
-                                          ActiveViewType="Simple" ShowBorder="False"
+                                          BorderThickness="0,1,0,0" BorderBrush="#FFD5D5D5" 
+                                          ActiveViewType="Simple"
                                           BarManager="{Binding ElementName=barManager1, Mode=OneTime}"
                                           Ribbon="{Binding ElementName=ribbonControl1, Mode=OneTime}">
                         <dxmvvm:Interaction.Behaviors>

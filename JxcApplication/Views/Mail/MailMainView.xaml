@@ -14,6 +14,7 @@
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:model="clr-namespace:ApplicationDb.Cor.Model;assembly=ApplicationDb.Cor"
              xmlns:mail="clr-namespace:JxcApplication.ViewModels.Mail"
+             xmlns:convert="clr-namespace:JxcApplication.Convert"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -23,6 +24,7 @@
         </Style>
         <dx:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
         <dx:BoolToVisibilityInverseConverter x:Key="boolToVisibilityInverseConverter" />
+        <convert:MailShowStypeConvert x:Key="MailShowStypeConvert"></convert:MailShowStypeConvert>
         <Style x:Key="MessWindowStyle" TargetType="dxr:DXRibbonWindow">
             <Setter Property="Icon" Value="../../Images/Icons/icon.png"></Setter>
             <Setter Property="UseLayoutRounding" Value="True"/>
@@ -40,7 +42,8 @@
             </dxmvvm:WindowService.ViewTemplate>
         </dxmvvm:WindowService>
     </dxmvvm:Interaction.Behaviors>
-    <dxb:BarManager>
+    <dx:LoadingDecorator >
+        <dxb:BarManager>
             <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -63,7 +66,7 @@
                             <dxb:BarButtonItem Content="回复" Command="{Binding ReplyCommand}"
                                                RibbonStyle="SmallWithText" Glyph="../../Images/Icons/rec16.png"
                                                LargeGlyph="../../Images/Icons/rec32.png" />
-                            <dxb:BarButtonItem Content="Forward" Command="{Binding ForwardCommand}"
+                            <dxb:BarButtonItem Content="接收邮件" Command="{Binding ReceiveCommand}"
                                                RibbonStyle="SmallWithText"
                                                Glyph="{dx:DXImageOffice2013 Image=Forward_16x16.png}" />
                         </dxr:RibbonPageGroup>
@@ -153,9 +156,14 @@
                                 </dxg:GridColumn.CellTemplate>
                             </dxg:GridColumn>
                             <dxg:GridColumn FieldName="Subject" Header="主题" ColumnFilterMode="DisplayText" />
-                            <dxg:GridColumn FieldName="FormUserName" Header="发件人" Width="90" />
-                            <dxg:GridColumn FieldName="CreateDateTime" Header="日期" Width="85" GroupIndex="0"
-                                            SortOrder="Descending" GroupInterval="DateRange" />
+                            <dxg:GridColumn FieldName="FormUserName" Header="发件人" Width="90"  
+                                            Visible="{Binding CurrentShowStype.Type,Converter={StaticResource MailShowStypeConvert},ConverterParameter={x:Static mail:MailShowTypeStatic.InBoxType}}"/>
+                            <dxg:GridColumn FieldName="ToUserName" Header="收件人" Width="90"  
+                                            Visible="{Binding CurrentShowStype.Type,Converter={StaticResource MailShowStypeConvert},ConverterParameter={x:Static mail:MailShowTypeStatic.SenBoxType}}"/>
+                            <dxg:GridColumn FieldName="FormUserName" Header="发件人" Width="90"  
+                                            Visible="{Binding CurrentShowStype.Type,Converter={StaticResource MailShowStypeConvert},ConverterParameter={x:Static mail:MailShowTypeStatic.DelBoxType}}"/>
+
+                            <dxg:GridColumn FieldName="CreateDateTime" Header="日期" Width="85" GroupIndex="0" SortOrder="Descending" GroupInterval="DateRange" />
                         </dxg:GridControl.Columns>
                         <dxg:GridControl.GroupSummary>
                             <dxg:GridSummaryItem SummaryType="Count" />
@@ -188,18 +196,17 @@
                                 </StackPanel>
                             </StackPanel>
                         </Border>
-                        <dx:LoadingDecorator Grid.Row="1" Margin="5,10">
-                            <dxre:RichEditControl x:Name="RichEditControlDoc" ActiveViewType="Draft"  ReadOnly="True" ShowBorder="False" >
+                            <dxre:RichEditControl x:Name="RichEditControlDoc" Grid.Row="1" Margin="5,10" ActiveViewType="Draft"  ReadOnly="True" ShowBorder="False" >
                                 <dxmvvm:Interaction.Behaviors>
                                     <dxmvvm:EventToCommand EventName="Loaded" SourceName="RichEditControlDoc"
                                                        Command="{Binding RichEditControlLoadedCommand}"
                                                        CommandParameter="{Binding ElementName=RichEditControlDoc}" />
                                 </dxmvvm:Interaction.Behaviors>
                             </dxre:RichEditControl>
-                        </dx:LoadingDecorator>
                     </Grid>
                 </Grid>
             </Grid>
         </Grid>
     </dxb:BarManager>
+    </dx:LoadingDecorator>
 </UserControl>

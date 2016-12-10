@@ -28,7 +28,7 @@ namespace JxcApplication.Core.Mail
                 new MailListShowType() {Name = "收件箱",Type = MailListType.InBox},
                 new MailListShowType() {Name = "发件箱",Type = MailListType.SenBox}, 
                 new MailListShowType() {Name = "回收站",Type = MailListType.DelBox}, 
-                new MailListShowType() {Name = "草稿箱",Type = MailListType.DraftsBox},
+                //new MailListShowType() {Name = "草稿箱",Type = MailListType.DraftsBox},
             });
         }
     }
