@@ -20,12 +20,12 @@
         <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
                                     CustomNotificationPosition="BottomRight"
                                     CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
-        <dxmvvm:EventToCommand SourceName="DateEditWageDate" EventName="EditValueChanged" 
-                               Command="{Binding WageDateChangedCommand}" PassEventArgsToCommand="True"/>
+        <!--<dxmvvm:EventToCommand SourceName="DateEditWageDate" EventName="EditValueChanged" 
+                               Command="{Binding WageDateChangedCommand}" PassEventArgsToCommand="True"/>-->
         <dxmvvm:EventToCommand SourceName="TableViewData" EventName="CellValueChanged"
-                               Command="{Binding CellValueChangedCommand}" PassEventArgsToCommand="True"/>
+                               Command="{Binding CellValueChangedCommand}" PassEventArgsToCommand="True" />
         <dxmvvm:EventToCommand SourceName="TableViewData" EventName="InitNewRow"
-                               Command="{Binding InitNewRowCommand}" PassEventArgsToCommand="True"/>
+                               Command="{Binding InitNewRowCommand}" PassEventArgsToCommand="True" />
         <dxmvvm:EventToCommand SourceName="GridControlWage" EventName="CustomColumnDisplayText"
                                Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True" />
     </dxmvvm:Interaction.Behaviors>
@@ -33,56 +33,55 @@
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="W_BT_DeleteRow" KeyGesture="Delete" Content="删除行"
                                LargeGlyph="{dx:DXImageOffice2013 Image=Delete_32x32.png}"
-                               Command="{Binding DeleteSelectRowCommand}"
-                               CommandParameter="{Binding ElementName=GridControlWage}" />
-            
+                               Command="{Binding ElementName=GridControlWage,Path=View.Commands.DeleteFocusedRow}"/>
+
             <dxb:BarButtonItem x:Name="W_BI_Save" KeyGesture="Ctrl+S" Content="保存"
                                LargeGlyph="{dx:DXImageOffice2013 Image=SaveAll_32x32.png}"
                                Command="{Binding SaveWageCommand}"
                                CommandParameter="{Binding ElementName=GridControlWage}" />
-            
+
             <dxb:BarButtonItem x:Name="W_BI_SaveAs" Content="另存"
                                LargeGlyph="{dx:DXImageOffice2013 Image=SaveAndNew_32x32.png}"
                                Command="{Binding SaveWageAsCommand}"
                                CommandParameter="{Binding ElementName=GridControlWage}" />
 
             <dxb:BarButtonItem Name="RE_BT_Print" Content="打印预览" LargeGlyph="{dx:DXImage Image=Printer_32x32.png}"
-                                   Glyph="{dx:DXImage Image=Printer_16x16.png}"
-                                   Command="{Binding PrintPreviewCommand}" />
+                               Glyph="{dx:DXImage Image=Printer_16x16.png}"
+                               Command="{Binding PrintPreviewCommand}" />
             <dxb:BarSubItem Name="RE_SB_Export" Content="导出" LargeGlyph="{dx:DXImage Image=Export_32x32.png}">
                 <dxb:BarButtonItem Content="导出到PDF" LargeGlyph="{dx:DXImage Image=ExportToPDF_32x32.png}"
-                                       Glyph="{dx:DXImage Image=ExportToPDF_16x16.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Pdf" />
+                                   Glyph="{dx:DXImage Image=ExportToPDF_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Pdf" />
                 <dxb:BarButtonItem Content="导出到HTM" LargeGlyph="{dx:DXImage Image=ExportToHTML_32x32.png}"
-                                       Glyph="{dx:DXImage Image=ExportToHTML_16x16.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Htm" />
+                                   Glyph="{dx:DXImage Image=ExportToHTML_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Htm" />
                 <dxb:BarButtonItem Content="导出到MHT" LargeGlyph="{dx:DXImage Image=ExportToHTML_32x32.png}"
-                                       Glyph="{dx:DXImage Image=ExportToHTML_16x16.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Mht" />
+                                   Glyph="{dx:DXImage Image=ExportToHTML_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Mht" />
                 <dxb:BarButtonItem Content="导出到RTF" LargeGlyph="{dx:DXImage Image=ExportToRTF_32x32.png}"
-                                       Glyph="{dx:DXImage Image=ExportToRTF_16x16.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Rtf" />
+                                   Glyph="{dx:DXImage Image=ExportToRTF_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Rtf" />
                 <dxb:BarButtonItem Content="导出到XLSX" LargeGlyph="{dx:DXImage Image=ExportToXLSX_32x32.png}"
-                                       Glyph="{dx:DXImage Image=ExportToXLSX_16x16.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Xlsx" />
+                                   Glyph="{dx:DXImage Image=ExportToXLSX_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Xlsx" />
                 <dxb:BarButtonItem Content="导出到XLS" LargeGlyph="{dx:DXImage Image=ExportToXLS_32x32.png}"
-                                       Glyph="{dx:DXImage Image=ExportToXLSX_16x16.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Xls" />
+                                   Glyph="{dx:DXImage Image=ExportToXLSX_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Xls" />
                 <dxb:BarButtonItem Content="导出到TXT" LargeGlyph="{dx:DXImage Image=ExportToTXT_32x32.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Txt" Glyph="{dx:DXImage Image=ExportToTXT_16x16.png}" />
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Txt" Glyph="{dx:DXImage Image=ExportToTXT_16x16.png}" />
                 <dxb:BarButtonItem Content="导出到IMAGE" LargeGlyph="{dx:DXImage Image=ExportToIMG_32x32.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Image" Glyph="{dx:DXImage Image=ExportToIMG_16x16.png}" />
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Image" Glyph="{dx:DXImage Image=ExportToIMG_16x16.png}" />
                 <dxb:BarButtonItem Content="导出到XPS" LargeGlyph="{dx:DXImage Image=ExportToXPS_32x32.png}"
-                                       Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
-                                       CommandParameter="Xps" Glyph="{dx:DXImage Image=ExportToXPS_16x16.png}" />
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Xps" Glyph="{dx:DXImage Image=ExportToXPS_16x16.png}" />
             </dxb:BarSubItem>
         </dxb:BarManager.Items>
         <DockPanel>
@@ -98,25 +97,47 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" CornerRadius="7" Background="LightSteelBlue" >
-                    <dxlc:LayoutControl  Orientation="Horizontal">
-                        <dxlc:LayoutItem Label="日期:" HorizontalAlignment="Left">
-                            <dxe:DateEdit Name="DateEditWageDate" Width="120" EditValue="{Binding Wage.WageDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsTextEditable="False" AllowRoundOutOfRangeValue="True" Mask="y" MaskUseAsDisplayFormat="True">
+                <Border Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" CornerRadius="7" Background="LightSteelBlue">
+                    <dxlc:LayoutControl Orientation="Horizontal">
+                        <dxlc:LayoutItem Label="月份:" HorizontalAlignment="Left">
+                            <dxe:DateEdit Name="DateEditWageDate" Width="120"
+                                          NullValue="{Binding SelectedMonthNullValue}"
+                                          EditValue="{Binding SelectedMonth,Mode=TwoWay}"
+                                          IsTextEditable="False" AllowRoundOutOfRangeValue="True" Mask="y"
+                                          MaskUseAsDisplayFormat="True">
                                 <dxe:DateEdit.StyleSettings>
-                                    <dxe:DateEditPickerStyleSettings/>
+                                    <dxe:DateEditPickerStyleSettings />
                                 </dxe:DateEdit.StyleSettings>
+                                <dxmvvm:Interaction.Behaviors>
+                                    <dxmvvm:EventToCommand EventName="PopupClosed" SourceName="DateEditWageDate"
+                                                           Command="{Binding DatePopupClosedCommand}" />
+                                </dxmvvm:Interaction.Behaviors>
                             </dxe:DateEdit>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="录入时间:" HorizontalAlignment="Left">
+                            <dxe:ComboBoxEdit x:Name="ListBoxEditInputRecord" Width="140"
+                                              IsTextEditable="False"
+                                              ItemsSource="{Binding MonthWageRecords}"
+                                              SelectedItem="{Binding SelectedMonthWageRecord,Mode=TwoWay}"
+                                              ValueMember="Id"
+                                              DisplayMember="Date">
+                                <dxmvvm:Interaction.Behaviors>
+                                    <dxmvvm:EventToCommand EventName="SelectedIndexChanged"
+                                                           SourceName="ListBoxEditInputRecord"
+                                                           Command="{Binding MonthWageRecordSelectedCommand}" />
+                                </dxmvvm:Interaction.Behaviors>
+                            </dxe:ComboBoxEdit>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="收款账户:" HorizontalAlignment="Left">
                             <dxg:LookUpEdit Width="150" PopupWidth="300"
-                                                    ItemsSource="{Binding AccountsLookUp}"
-                                                    PopupContentTemplate="{StaticResource ControlTemplateLookUpAccount}"
-                                                    ValueMember="Id"
-                                                    DisplayMember="Name"
-                                                    EditValue="{Binding Wage.PaymentAccountId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                    AutoPopulateColumns="False"
-                                                    IncrementalFiltering="True"
-                                                    ImmediatePopup="True">
+                                            ItemsSource="{Binding AccountsLookUp}"
+                                            PopupContentTemplate="{StaticResource ControlTemplateLookUpAccount}"
+                                            ValueMember="Id"
+                                            DisplayMember="Name"
+                                            EditValue="{Binding Wage.PaymentAccountId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            AutoPopulateColumns="False"
+                                            IncrementalFiltering="True"
+                                            ImmediatePopup="True">
                                 <dxg:LookUpEdit.StyleSettings>
                                     <dxg:SearchLookUpEditStyleSettings />
                                 </dxg:LookUpEdit.StyleSettings>
@@ -124,11 +145,12 @@
                         </dxlc:LayoutItem>
                     </dxlc:LayoutControl>
                 </Border>
-                <dxg:GridControl Name="GridControlWage" Grid.Row="1" ItemsSource="{Binding Path=WageDetail}" >
+                <dxg:GridControl Name="GridControlWage" Grid.Row="1" ItemsSource="{Binding Path=WageDetail}">
                     <dxg:GridControl.View>
-                        <dxg:TableView Name="TableViewData" AutoWidth="False" NewItemRowPosition="Bottom" AllowEditing="True" >
+                        <dxg:TableView Name="TableViewData" AutoWidth="False" NewItemRowPosition="Bottom"
+                                       AllowEditing="True">
                             <dxmvvm:Interaction.Behaviors>
-                                <behaviors:DataViewExportBehavior x:Name="ViewExportBehavior"/>
+                                <behaviors:DataViewExportBehavior x:Name="ViewExportBehavior" />
                             </dxmvvm:Interaction.Behaviors>
                         </dxg:TableView>
                     </dxg:GridControl.View>
@@ -136,19 +158,19 @@
                         <dxg:GridColumn FieldName="UserId" Header="员工" Fixed="Left">
                             <dxg:GridColumn.EditSettings>
                                 <dxg:LookUpEditSettings PopupWidth="350" ItemsSource="{Binding SystemUsersLookUp}"
-                                                            DisplayMember="Name"
-                                                            ValueMember="Id"
-                                                            PopupContentTemplate="{StaticResource ControlTemplateLookUpSystemUsers}"
-                                                            AutoPopulateColumns="False"
-                                                            ImmediatePopup="True" IncrementalFiltering="True">
+                                                        DisplayMember="Name"
+                                                        ValueMember="Id"
+                                                        PopupContentTemplate="{StaticResource ControlTemplateLookUpSystemUsers}"
+                                                        AutoPopulateColumns="False"
+                                                        ImmediatePopup="True" IncrementalFiltering="True">
                                     <dxg:LookUpEditSettings.StyleSettings>
                                         <dxg:SearchLookUpEditStyleSettings />
                                     </dxg:LookUpEditSettings.StyleSettings>
                                 </dxg:LookUpEditSettings>
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="Name" Header="名称" Fixed="Left"></dxg:GridColumn>
-                        <dxg:GridColumn FieldName="WorkDay" Header="出勤天数"></dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Name" Header="名称" Fixed="Left" />
+                        <dxg:GridColumn FieldName="WorkDay" Header="出勤天数" />
                         <dxg:GridColumn FieldName="C1" Header="基本工资">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
@@ -229,22 +251,25 @@
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="X1" Header="请假扣款" HeaderStyle="{StaticResource GridColumnHeaderConstant}">
+                        <dxg:GridColumn FieldName="X1" Header="请假扣款"
+                                        HeaderStyle="{StaticResource GridColumnHeaderConstant}">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="X2" Header="罚款" HeaderStyle="{StaticResource GridColumnHeaderConstant}">
+                        <dxg:GridColumn FieldName="X2" Header="罚款"
+                                        HeaderStyle="{StaticResource GridColumnHeaderConstant}">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="X3" Header="业绩未达标扣款" HeaderStyle="{StaticResource GridColumnHeaderConstant}">
+                        <dxg:GridColumn FieldName="X3" Header="业绩未达标扣款"
+                                        HeaderStyle="{StaticResource GridColumnHeaderConstant}">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="PreTaxSum" Header="工资总计" AllowEditing="False" Fixed="Right" >
+                        <dxg:GridColumn FieldName="PreTaxSum" Header="工资总计" AllowEditing="False" Fixed="Right">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                             </dxg:GridColumn.EditSettings>

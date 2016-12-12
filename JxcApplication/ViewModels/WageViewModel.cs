@@ -9,15 +9,23 @@ using BusinessDb.Cor.Business;
 using BusinessDb.Cor.EntityModels;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm;
+using DevExpress.Mvvm.Native;
 using DevExpress.Mvvm.POCO;
 using DevExpress.Xpf.Editors;
 using DevExpress.Xpf.Grid;
 using JxcApplication.ViewModels.Inherit;
+using Utilities;
 
 namespace JxcApplication.ViewModels
 {
     public class WageViewModel : ViewModelTabItem
     {
+        public class MonthWageRecord
+        {
+            public Guid Id { get; set; }
+            public DateTime? DateTime { get; set; }
+            public string Date { get; set; }
+        }
         private WageInsertManager _wageInsertManager;
         private WageUpdateManager _wageUpdateManager;
         private WageManager _wageManager;
@@ -38,6 +46,14 @@ namespace JxcApplication.ViewModels
         public Wage Wage { get; set; }
         public ObservableCollection<WageDetail> WageDetail { get; set; }
 
+        /// <summary>
+        /// 选择的月份
+        /// </summary>
+        public DateTime? SelectedMonth { get; set; }
+        public DateTime SelectedMonthNullValue { get; set; }
+        public ObservableCollection<MonthWageRecord> MonthWageRecords { get; set; }
+        public MonthWageRecord SelectedMonthWageRecord { get; set; }
+
         public ObservableCollection<Account> AccountsLookUp { get; set; }
         public ObservableCollection<SystemUser> SystemUsersLookUp { get; set; }
 
@@ -45,8 +61,14 @@ namespace JxcApplication.ViewModels
         public DelegateCommand<GridControl> SaveWageCommand { get; set; }
         public DelegateCommand<GridControl> SaveWageAsCommand { get; set; }
         public DelegateCommand PrintPreviewCommand { get; set; }
+        public DelegateCommand DatePopupClosedCommand { get; set; }
+        public DelegateCommand MonthWageRecordSelectedCommand { get; set; }
+
+
+
         public WageViewModel(Guid menuId, string caption) : base(menuId, caption)
         {
+            SelectedMonthNullValue = DBUnit.GetDbTime();
             AccountsLookUp = AccountManager.QueryLookUp();
             SystemUsersLookUp = SystemAccountManager.QueryLookUp();
 
@@ -54,49 +76,64 @@ namespace JxcApplication.ViewModels
             _wageInsertManager = WageInsertManager.Create();
             _wageUpdateManager = WageUpdateManager.Create();
 
-            SaveWageCommand = new DelegateCommand<GridControl>(SaveWage, (control => !IsHistory));
-            SaveWageAsCommand = new DelegateCommand<GridControl>(SaveWageAs, (control => IsHistory));
+            SaveWageCommand = new DelegateCommand<GridControl>(SaveWage, (control => !IsHistory && WageDetail != null && WageDetail.Count > 0));
+            SaveWageAsCommand = new DelegateCommand<GridControl>(SaveWageAs, (control => IsHistory && WageDetail != null && WageDetail.Count > 0));
             PrintPreviewCommand = new DelegateCommand(PrintPreview, () => IsHistory);
+            DatePopupClosedCommand = new DelegateCommand(DatePopupClosed);
+            MonthWageRecordSelectedCommand = new DelegateCommand(MonthWageRecordSelected);
         }
 
-        public void WageDateChanged(EditValueChangedEventArgs e)
+        /// <summary>
+        /// 日期框选择关闭后
+        /// </summary>
+        private async void DatePopupClosed()
         {
-            if (e.NewValue!=null)
+            if (!SelectedMonth.HasValue)
             {
-                DateTime dt ;
-                if (DateTime.TryParse(e.NewValue.ToString(),out dt))
-                {
-                    if (!_wageManager.HasExisWage(dt))
-                    {
-                        var insertWageOrder = _wageInsertManager.GetInsertWageOrder();
-                        Wage = insertWageOrder.MasterStorage;
-                        Wage.WageDate = dt;
-                        WageDetail = insertWageOrder.Details;
-                        IsHistory = false;
-                        RaisePropertiesChanged("Wage", "WageDetail");
-                    }
-                    else
-                    {
-                        var updateWageOrder = _wageUpdateManager.GetUpdateWageOrder(dt);
-                        Wage = updateWageOrder.MasterStorage;
-                        WageDetail = updateWageOrder.Details;
-                        IsHistory = true;
-                        RaisePropertiesChanged("Wage", "WageDetail");
-                    }
-                }
-                else
-                {
-                    IsHistory = true;
-                    Clear();
-                }
+                SelectedMonthWageRecord = null;
+                RaisePropertiesChanged("SelectedMonthWageRecord");
+                return;
+            }
+            var result = (await _wageManager.GetWages(SelectedMonth.Value))
+                .Select(a => new MonthWageRecord() { Id = a.Id,DateTime = a.CreateDate,Date = a.CreateDate?.ToString("MM月dd日 HH时mm分") })
+                .ToList();
+            result.Add(new MonthWageRecord() { Id = Guid.Empty, Date = " 新 建 " });
+            MonthWageRecords = result.ToObservableCollection();
+            RaisePropertyChanged("MonthWageRecords");
+            SelectedMonthWageRecord = MonthWageRecords.Count > 0 ? MonthWageRecords[0] : null;
+            RaisePropertiesChanged("SelectedMonthWageRecord");
+        }
+
+        /// <summary>
+        /// 月对应工资记录选择发生改变
+        /// </summary>
+        private void MonthWageRecordSelected()
+        {
+            if (SelectedMonthWageRecord == null || !SelectedMonth.HasValue)
+            {
+                Wage = null;
+                WageDetail = null;
+                RaisePropertiesChanged("Wage", "WageDetail");
+                return;
+            }
+            if (SelectedMonthWageRecord.Id == Guid.Empty)
+            {
+                var insertWageOrder = _wageInsertManager.GetInsertWageOrder();
+                Wage = insertWageOrder.MasterStorage;
+                Wage.WageDate = SelectedMonth.Value;
+                WageDetail = insertWageOrder.Details;
+                IsHistory = false;
+                RaisePropertiesChanged("Wage", "WageDetail");
             }
             else
             {
+                var updateWageOrder = _wageUpdateManager.GetUpdateWageOrder(SelectedMonthWageRecord.Id);
+                Wage = updateWageOrder.MasterStorage;
+                WageDetail = updateWageOrder.Details;
                 IsHistory = true;
-                Clear();
+                RaisePropertiesChanged("Wage", "WageDetail");
             }
         }
-
         public void InitNewRow(InitNewRowEventArgs e)
         {
             TableView tableView = e.OriginalSource as TableView;
@@ -135,61 +172,30 @@ namespace JxcApplication.ViewModels
             return true;
         }
 
-        public void DeleteSelectRow(GridControl opControl)
-        {
-            if (opControl == null)
-            {
-                return;
-            }
-
-            var view = opControl.View as TableView;
-            if (view == null)
-            {
-                return;
-            }
-            var handles = opControl.GetSelectedRowHandles();
-            foreach (var row in handles)
-            {
-                view.DeleteRow(row);
-            }
-        }
-
         public void SaveWage(GridControl opControl)
         {
-            if (Wage == null || WageDetail == null)
+            if (Wage == null || WageDetail == null || WageDetail.Count == 0 )
             {
+                ShowNotification("记录为空不需要保存!", "保存失败:");
                 return;
             }
-            if (_wageManager.HasExisWage(Wage.WageDate))
+            if (!IsHistory&& SaveBefor())
             {
-                IsHistory = true;
-                ShowNotification("本月工资已保存，不能修改保存!","保存失败:");
-            }
-            else
-            {
-                if (WageDetail.Count == 0)
+                var result = _wageInsertManager.InsertWageInOrder(Wage, WageDetail);
+                if (string.IsNullOrWhiteSpace(result))
                 {
-                    ShowNotification("记录为空不需要保存!", "保存失败:");
-                    return;
+                    ShowNotification("保存成功!");
+                    IsHistory = true;
                 }
-                if (SaveBefor() && !IsHistory)
+                else
                 {
-                    var result = _wageInsertManager.InsertWageInOrder(Wage, WageDetail);
-                    if (string.IsNullOrWhiteSpace(result))
-                    {
-                        ShowNotification("保存成功!");
-                        IsHistory = true;
-                    }
-                    else
-                    {
-                        ShowNotification(result, "保存失败:");
-                    }
+                    ShowNotification(result, "保存失败:");
                 }
             }
         }
         public void SaveWageAs(GridControl opControl)
         {
-            if (WageDetail.Count == 0)
+            if (Wage == null || WageDetail == null || WageDetail.Count == 0)
             {
                 ShowNotification("记录为空不需要保存!", "保存失败:");
                 return;
@@ -204,30 +210,28 @@ namespace JxcApplication.ViewModels
                     IsHistory = true;
                     return;
                 }
-                if (_wageManager.HasExisWage(editObject.EditDateTime))
+                Wage.Id = Guid.NewGuid();
+                Wage.WageDate = editObject.EditDateTime;
+                foreach (WageDetail detail in WageDetail)
+                {
+                    detail.Id = Guid.NewGuid();
+                    detail.WageId = Wage.Id;
+                }
+                var result = _wageUpdateManager.InsertWageAsInOrder(Wage, WageDetail);
+                if (string.IsNullOrWhiteSpace(result))
                 {
                     IsHistory = true;
-                    ShowNotification("本月工资已保存，不能修改保存!", "保存失败:");
+                    SelectedMonth = null;
+                    MonthWageRecords = null;
+                    SelectedMonthWageRecord = null;
+                    this.Wage = null;
+                    WageDetail = null;
+                    RaisePropertiesChanged("Wage", "WageDetail", "SelectedMonth", "MonthWageRecords", "SelectedMonthWageRecord");
+                    ShowNotification("保存成功!");
                 }
                 else
                 {
-                    Wage.Id = Guid.NewGuid();
-                    Wage.WageDate = editObject.EditDateTime;
-                    foreach (WageDetail detail in WageDetail)
-                    {
-                        detail.Id = Guid.NewGuid();
-                        detail.WageId = Wage.Id;
-                    }
-                    var result = _wageUpdateManager.InsertWageAsInOrder(Wage, WageDetail);
-                    if (string.IsNullOrWhiteSpace(result))
-                    {
-                        IsHistory = true;
-                        ShowNotification("保存成功!");
-                    }
-                    else
-                    {
-                        ShowNotification(result, "保存失败:");
-                    }
+                    ShowNotification(result, "保存失败:");
                 }
                 RaisePropertiesChanged("Wage", "WageDetail");
             }
@@ -251,10 +255,6 @@ namespace JxcApplication.ViewModels
             Report.Report.ShowPreviewDialog("WG", Wage.Id);
         }
 
-        private void Clear()
-        {
-            WageDetail = null;
-        }
         public void CellValueChanged(CellValueChangedEventArgs e)
         {
             WageDetail row = e.Row as WageDetail;

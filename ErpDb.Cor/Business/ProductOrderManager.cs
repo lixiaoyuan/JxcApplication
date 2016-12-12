@@ -2393,13 +2393,13 @@ namespace BusinessDb.Cor.Business
 
         }
 
-        public CategoriesOrder<Wage, WageDetail> GetUpdateWageOrder(DateTime wageDateTime)
+        public CategoriesOrder<Wage, WageDetail> GetUpdateWageOrder(Guid wageId)
         {
             using (var entities = new ApplicationDbContext())
             {
                 try
                 {
-                    var wage = entities.Wage.FirstOrDefault(a => DbFunctions.DiffMonths(a.WageDate, wageDateTime) == 0);
+                    var wage = entities.Wage.Find(wageId);
                     if (wage == null)
                     {
                         return new CategoriesOrder<Wage, WageDetail>();
@@ -2456,7 +2456,7 @@ namespace BusinessDb.Cor.Business
                         Id = Guid.NewGuid(),
                         AccountId = wage.PaymentAccountId,
                         TransactionType = BusinessDb.Cor.Models.TransactionTypeEnum.WageOut,
-                        TransactionBalance = wage.SumPrice,
+                        TransactionBalance = -wage.SumPrice,
                         TransactionBefore = account.Balance ?? 0m,
                         CreateUserId = wage.CreateUserId,
                         CreateDate = nowDateTime,
