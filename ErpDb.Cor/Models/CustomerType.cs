@@ -7,6 +7,8 @@ namespace BusinessDb.Cor.Models
         [Display(Description = "零售商")]
         Retail,
         [Display(Description = "经销商")]
-        Dealer
+        Dealer,
+        [Display(Description = "网销商")]
+        Intnet
     }
 }
