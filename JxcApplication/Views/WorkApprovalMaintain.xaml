@@ -13,29 +13,29 @@
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              x:Class="JxcApplication.Views.WorkApprovalMaintain"
              mc:Ignorable="d"
-             d:DesignHeight="317.561" d:DesignWidth="594.146" x:Name="root">
+             d:DesignHeight="483.961" d:DesignWidth="1080.946" x:Name="root">
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
                                     CustomNotificationPosition="BottomRight"
                                     CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
         <dxmvvm:EventToCommand SourceName="root" EventName="Loaded"
                                Command="{Binding LoadedCommand}" />
-        
+
         <dxmvvm:EventToCommand SourceName="ApprovalUserDragDropManager" EventName="Dropped"
                                Command="{Binding ApprovalUserDragDropCommand}" PassEventArgsToCommand="True" />
-        
+
         <dxmvvm:EventToCommand SourceName="CopyUserDragDropManager" EventName="Dropped"
                                Command="{Binding CopyUserDragDropCommand}" PassEventArgsToCommand="True" />
-        
+
         <dxmvvm:EventToCommand SourceName="GridControlWorkApproval" EventName="ItemsSourceChanged"
                                Command="{Binding WorkApprovalItemsSourceChangedCommand}" PassEventArgsToCommand="True" />
-        
+
         <dxmvvm:EventToCommand SourceName="GridControlWorkApproval" EventName="SelectionChanged"
                                Command="{Binding WorkApprovalItemChangedCommand}" PassEventArgsToCommand="True" />
-        
+
         <dxmvvm:EventToCommand SourceName="GridControlWorkApprovalUser" EventName="SelectionChanged"
                                Command="{Binding WorkApprovalUserItemChangedCommand}" PassEventArgsToCommand="True" />
-        
+
         <dxmvvm:EventToCommand SourceName="GridControlWorkApprovalCopyUser" EventName="SelectionChanged"
                                Command="{Binding WorkApprovalCopyUserItemChangedCommand}" PassEventArgsToCommand="True" />
     </dxmvvm:Interaction.Behaviors>
@@ -48,15 +48,18 @@
             <dxb:BarButtonItem x:Name="WAM_BT_DelApprovalUser" Content="删除审批用户"
                                LargeGlyph="{dx:DXImage Image=DeleteGroupFooter_32x32.png}"
                                Command="{Binding DeleteWorkApprovalUserCommand}"
-                               CommandParameter="{Binding ElementName=GridControlWorkApprovalUser,Path=SelectedItem}" Glyph="{dx:DXImage Image=DeleteGroupFooter_16x16.png}" />
+                               CommandParameter="{Binding ElementName=GridControlWorkApprovalUser,Path=SelectedItem}"
+                               Glyph="{dx:DXImage Image=DeleteGroupFooter_16x16.png}" />
             <dxb:BarButtonItem x:Name="WAM_BT_AddCopyUser" Content="添加抄送用户"
                                LargeGlyph="{dx:DXImage Image=AddGroupFooter_32x32.png}"
                                Command="{Binding AddWorkApprovalCopyUserCommand}"
-                               CommandParameter="{Binding ElementName=GridControlWorkApproval,Path=SelectedItem}" Glyph="{dx:DXImage Image=AddGroupFooter_16x16.png}" />
+                               CommandParameter="{Binding ElementName=GridControlWorkApproval,Path=SelectedItem}"
+                               Glyph="{dx:DXImage Image=AddGroupFooter_16x16.png}" />
             <dxb:BarButtonItem x:Name="WAM_BT_DelCopyUser" Content="删除抄送用户"
                                LargeGlyph="{dx:DXImage Image=DeleteGroupFooter_32x32.png}"
                                Command="{Binding DeleteWorkApprovalCopyUserCommand}"
-                               CommandParameter="{Binding ElementName=GridControlWorkApprovalCopyUser,Path=SelectedItem}" Glyph="{dx:DXImage Image=DeleteGroupFooter_16x16.png}" />
+                               CommandParameter="{Binding ElementName=GridControlWorkApprovalCopyUser,Path=SelectedItem}"
+                               Glyph="{dx:DXImage Image=DeleteGroupFooter_16x16.png}" />
         </dxb:BarManager.Items>
         <DockPanel>
             <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2010"
@@ -68,17 +71,19 @@
             </dxr:RibbonControl>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.7*" />
+                    <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <GroupBox Grid.Column="0" Header="审批">
                     <dxg:GridControl x:Name="GridControlWorkApproval" ItemsSource="{Binding WorkApprovals}">
                         <dxg:GridControl.View>
-                            <dxg:TableView AllowEditing="False" />
+                            <dxg:TableView AllowEditing="False" AutoWidth="True" />
                         </dxg:GridControl.View>
                         <dxg:GridControl.Columns>
                             <dxg:GridColumn FieldName="Name" Header="审批名称" />
+                            <dxg:GridColumn FieldName="DisplayName" Header="后台名称" />
                         </dxg:GridControl.Columns>
                     </dxg:GridControl>
                 </GroupBox>
@@ -86,7 +91,7 @@
                     <dxg:GridControl x:Name="GridControlWorkApprovalUser"
                                      ItemsSource="{Binding WorkApprovalUsers}">
                         <dxmvvm:Interaction.Behaviors>
-                            <dxg:GridDragDropManager x:Name="ApprovalUserDragDropManager"/>
+                            <dxg:GridDragDropManager x:Name="ApprovalUserDragDropManager" />
                         </dxmvvm:Interaction.Behaviors>
                         <dxg:GridControl.Columns>
                             <dxg:GridColumn FieldName="UserId" Header="姓名">
@@ -95,7 +100,7 @@
                                                               DisplayMember="Name" ValueMember="Id" />
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
-                            <dxg:GridColumn FieldName="Sort"  Header="排序"/>
+                            <dxg:GridColumn FieldName="Sort" Header="排序" />
                         </dxg:GridControl.Columns>
                         <dxg:GridControl.View>
                             <dxg:TableView AllowEditing="False" />
@@ -115,14 +120,37 @@
                                                               DisplayMember="Name" ValueMember="Id" />
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
-                            <dxg:GridColumn FieldName="Sort" Header="排序"/>
+                            <dxg:GridColumn FieldName="Sort" Header="排序" />
                         </dxg:GridControl.Columns>
                         <dxg:GridControl.View>
                             <dxg:TableView AllowEditing="False" />
                         </dxg:GridControl.View>
                     </dxg:GridControl>
                 </GroupBox>
-
+                <GroupBox Grid.Column="3" Header="可见部门">
+                    <dxg:GridControl Name="GridControlOrgan" ItemsSource="{Binding WorkApprovaVisibleOrganization}">
+                        <dxg:GridControl.View>
+                            <dxg:TreeListView Name="TableViewOrgan" AllowEditing="False" AutoWidth="True"
+                                              AutoExpandAllNodes="True"
+                                              KeyFieldName="Id"
+                                              ParentFieldName="ParentId"
+                                              CheckBoxFieldName="Checked"
+                                              AllowRecursiveNodeChecking="False"
+                                              AllowIndeterminateCheckState="False"
+                                              ShowCheckboxes="True">
+                                <dxmvvm:Interaction.Behaviors>
+                                    <dxmvvm:EventToCommand SourceName="TableViewOrgan" EventName="NodeCheckStateChanged" 
+                                                           Command="{Binding OrganizationNodeCheckChangedCommand}" 
+                                                           PassEventArgsToCommand="True"/>
+                                </dxmvvm:Interaction.Behaviors>
+                            </dxg:TreeListView>
+                        </dxg:GridControl.View>
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="Name" Header="名称" />
+                            <dxg:GridColumn FieldName="Sort" SortIndex="1" Visible="False" />
+                        </dxg:GridControl.Columns>
+                    </dxg:GridControl>
+                </GroupBox>
             </Grid>
         </DockPanel>
     </dxb:BarManager>

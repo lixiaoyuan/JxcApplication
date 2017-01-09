@@ -124,6 +124,7 @@
     <Compile Include="EntityModels\MailOrder.cs" />
     <Compile Include="EntityModels\Organization.cs" />
     <Compile Include="EntityModels\OrganizationUser.cs" />
+    <Compile Include="EntityModels\OrganizationWorkApproval.cs" />
     <Compile Include="EntityModels\SystemUser.cs" />
     <Compile Include="EntityModels\WorkApproval.cs" />
     <Compile Include="EntityModels\WorkApprovalCopyUser.cs" />
@@ -226,6 +227,10 @@
     <Compile Include="Migrations\201612060336372_AddFileMailOrder.Designer.cs">
       <DependentUpon>201612060336372_AddFileMailOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612140723258_addOrgWorkApproval.cs" />
+    <Compile Include="Migrations\201612140723258_addOrgWorkApproval.Designer.cs">
+      <DependentUpon>201612140723258_addOrgWorkApproval.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\FileFormatType.cs" />
     <Compile Include="Model\NavigationMenuGroup.cs" />
@@ -320,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612060336372_AddFileMailOrder.resx">
       <DependentUpon>201612060336372_AddFileMailOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612140723258_addOrgWorkApproval.resx">
+      <DependentUpon>201612140723258_addOrgWorkApproval.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

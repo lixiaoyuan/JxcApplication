@@ -13,6 +13,7 @@ namespace ApplicationDb.Cor.EntityModels
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string DisplayName { get; set; }
         public bool Enable { get; set; }
         public string Remark { get; set; }
         public string FormDataTemplate { get; set; }

@@ -31,6 +31,22 @@ namespace ApplicationDb.Cor.Business
             }
         }
 
+        public static ObservableCollection<WorkApproval> QueryLookUp(Guid userId)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var orguser = db.OrganizationUser.FirstOrDefault(a => a.UserId == userId);
+                if (orguser == null)
+                {
+                    return null;
+                }
+                return
+                    db.WorkApproval.Join(
+                        db.OrganizationWorkApproval.Where(a => a.OrganizationId == orguser.OrganizationId), (a) => a.Id,
+                        b => b.WorkApprovalId, (a, b) => a).ToObservableCollection();
+            }
+        }
+
         /// <summary>
         ///     审批用户
         /// </summary>
@@ -52,6 +68,29 @@ namespace ApplicationDb.Cor.Business
         {
             return Instance.db.WorkApproval.Find(id);
         }
+
+        /// <summary>
+        /// 获取审批对应可视的部门组织
+        /// </summary>
+        /// <returns></returns>
+        public static ObservableCollection<Organization> WorkApprovalOrganization(Guid WorkApprovalId)
+        {
+            using (ApplicationDbContext db=new ApplicationDbContext())
+            {
+                return db.GetOrganizationWorkApprovalCheck(WorkApprovalId).ToObservableCollection();
+            }
+        }
+        /// <summary>
+        /// 更新组织审批可视
+        /// </summary>
+        public static void UpdateOrganizationWorkApproval(Guid orgId, Guid workAppId, bool isCheck)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.UpdateOrganizationWorkApproval(orgId, workAppId, isCheck);
+            }
+        }
+
 
         public ObservableCollection<WorkApprovalCopyUser> CopyUsers(WorkApproval workApproval)
         {

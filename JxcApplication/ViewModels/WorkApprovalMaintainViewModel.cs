@@ -9,6 +9,7 @@ using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.POCO;
 using DevExpress.Xpf.Grid;
 using DevExpress.Xpf.Grid.DragDrop;
+using DevExpress.Xpf.Grid.TreeList;
 using JxcApplication.Control;
 using JxcApplication.ViewModels.Inherit;
 
@@ -22,7 +23,7 @@ namespace JxcApplication.ViewModels
         private bool _deleteWorkApprovalCopyUser;
         private bool _deleteWorkApprovalUser;
         private bool _lisenItemChanged;
-
+        private WorkApproval _currentWorkApproval;
         private readonly WorkApprovalManager _workApprovalManager;
 
         public WorkApprovalMaintainViewModel(Guid menuId, string caption) : base(menuId, caption)
@@ -48,6 +49,8 @@ namespace JxcApplication.ViewModels
 
             ApprovalUserDragDropCommand = new DelegateCommand<GridDroppedEventArgs>(ApprovalUserDragDrop);
             CopyUserDragDropCommand = new DelegateCommand<GridDroppedEventArgs>(CopyUserDragDrop);
+
+            OrganizationNodeCheckChangedCommand = new DelegateCommand<TreeListNodeEventArgs>(OrganizationNodeCheckChanged);
         }
 
 
@@ -56,11 +59,13 @@ namespace JxcApplication.ViewModels
         public ObservableCollection<WorkApproval> WorkApprovals { get; set; }
         public ObservableCollection<WorkApprovalUser> WorkApprovalUsers { get; set; }
         public ObservableCollection<WorkApprovalCopyUser> WorkApprovalCopyUsers { get; set; }
+        public ObservableCollection<Organization> WorkApprovaVisibleOrganization { get; set; }
         public DelegateCommand LoadedCommand { get; set; }
         public DelegateCommand<ItemsSourceChangedEventArgs> WorkApprovalItemsSourceChangedCommand { get; set; }
         public DelegateCommand<GridSelectionChangedEventArgs> WorkApprovalItemChangedCommand { get; set; }
         public DelegateCommand<GridSelectionChangedEventArgs> WorkApprovalUserItemChangedCommand { get; set; }
         public DelegateCommand<GridSelectionChangedEventArgs> WorkApprovalCopyUserItemChangedCommand { get; set; }
+        public DelegateCommand<TreeListNodeEventArgs> OrganizationNodeCheckChangedCommand { get; set; }
         public DelegateCommand<WorkApproval> AddWorkApprovalUserCommand { get; set; }
         public DelegateCommand<WorkApproval> AddWorkApprovalCopyUserCommand { get; set; }
         public DelegateCommand<WorkApprovalUser> DeleteWorkApprovalUserCommand { get; set; }
@@ -149,6 +154,7 @@ namespace JxcApplication.ViewModels
         {
             if (!_lisenItemChanged)
             {
+                _currentWorkApproval = null;
                 _addWorkApprovalUser = false;
                 _addWorkApprovalCopyUser = false;
                 _deleteWorkApprovalUser = false;
@@ -159,6 +165,7 @@ namespace JxcApplication.ViewModels
             var tableView = e.Source as TableView;
             if ((tableView == null) || (tableView.Grid.SelectedItem == null))
             {
+                _currentWorkApproval = null;
                 _addWorkApprovalUser = false;
                 _addWorkApprovalCopyUser = false;
                 _deleteWorkApprovalUser = false;
@@ -169,6 +176,7 @@ namespace JxcApplication.ViewModels
             var selectRow = tableView.Grid.SelectedItem as WorkApproval;
             if (selectRow == null)
             {
+                _currentWorkApproval = null;
                 _addWorkApprovalUser = false;
                 _addWorkApprovalCopyUser = false;
                 _deleteWorkApprovalUser = false;
@@ -176,15 +184,16 @@ namespace JxcApplication.ViewModels
                 RaiseCanExecuteChanged();
                 return;
             }
-
+            _currentWorkApproval = selectRow;
             WorkApprovalUsers = _workApprovalManager.ApprovalUsers(selectRow);
             WorkApprovalCopyUsers = _workApprovalManager.CopyUsers(selectRow);
+            WorkApprovaVisibleOrganization = WorkApprovalManager.WorkApprovalOrganization(selectRow.Id);
 
             _addWorkApprovalUser = true;
             _addWorkApprovalCopyUser = true;
             _deleteWorkApprovalUser = WorkApprovalUsers.Any();
             _deleteWorkApprovalCopyUser = WorkApprovalCopyUsers.Any();
-            RaisePropertiesChanged("WorkApprovalUsers", "WorkApprovalCopyUsers");
+            RaisePropertiesChanged("WorkApprovalUsers", "WorkApprovalCopyUsers", "WorkApprovaVisibleOrganization");
             RaiseCanExecuteChanged();
         }
 
@@ -303,6 +312,16 @@ namespace JxcApplication.ViewModels
                     ShowNotification(saveChangedResult, "删除失败:");
                 }
             }
+        }
+
+        private void OrganizationNodeCheckChanged(TreeListNodeEventArgs e)
+        {
+            var row = e.Row as Organization;
+            if (row == null || _currentWorkApproval == null)
+            {
+                return;
+            }
+            WorkApprovalManager.UpdateOrganizationWorkApproval(row.Id, _currentWorkApproval.Id, row.Checked);
         }
     }
 }

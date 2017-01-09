@@ -18,6 +18,10 @@ namespace ApplicationDb.Cor.EntityMapping
                 .IsUnicode(false)
                 .HasMaxLength(20);
 
+            Property(a => a.DisplayName)
+           .IsUnicode(false)
+           .HasMaxLength(40);
+
             Property(a => a.Remark)
                 .IsUnicode(false)
                 .HasMaxLength(100);

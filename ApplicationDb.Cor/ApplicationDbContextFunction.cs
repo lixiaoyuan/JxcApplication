@@ -245,5 +245,17 @@ namespace ApplicationDb.Cor
 
             return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<AuthRibbonNode>("dbo.GetMenuRibbonNode @menuId", menuIdParameter);
         }
+
+        public static ObjectResult<Organization> GetOrganizationWorkApprovalCheck(this ApplicationDbContext db,
+            Guid workApprovalId)
+        {
+            var workIdPara=new SqlParameter("WorkApprovalId",workApprovalId);
+            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<Organization>("dbo.GetOrganizationWorkApprovalCheck @WorkApprovalId", workIdPara);
+        }
+
+        public static void UpdateOrganizationWorkApproval(this ApplicationDbContext db, Guid orgId, Guid workApproval, bool check)
+        {
+            ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreCommand("dbo.UpdateOrganizationWorkApproval @OrganizationId,@WorkApprovalId,@Checked", new SqlParameter("OrganizationId", orgId), new SqlParameter("WorkApprovalId", workApproval), new SqlParameter("Checked", check));
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace JxcApplication.ViewModels
         protected override void OnInitializeInRuntime()
         {
             base.OnInitializeInRuntime();
-            Tiles = WorkApprovalManager.QueryLookUp();
+            Tiles = WorkApprovalManager.QueryLookUp(App.GlobalApp.LoginUser.Id);
         }
 
         private async void ButtonSubmit(object comit)

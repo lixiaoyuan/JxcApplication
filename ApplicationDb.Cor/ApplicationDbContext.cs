@@ -24,6 +24,8 @@ namespace ApplicationDb.Cor
         public virtual DbSet<SystemUser> SystemUser { get; set; }
         public virtual DbSet<Zhangtao> Zhangtao { get; set; }
         public virtual DbSet<Organization> Organization { get; set; }
+        public virtual DbSet<OrganizationUser> OrganizationUser { get; set; }
+        public virtual DbSet<OrganizationWorkApproval> OrganizationWorkApproval { get; set; }
         public virtual DbSet<AuthRibbonNode> AuthRibbonNode { get; set; }
 
         public virtual DbSet<WorkApproval> WorkApproval { get; set; }
