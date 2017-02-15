@@ -21,24 +21,44 @@
              xmlns:core="clr-namespace:JxcApplication.Core"
              mc:Ignorable="d"
              d:DesignHeight="394.39" d:DesignWidth="946.098">
+    <UserControl.Resources>
+        <convert:RefundTypeCast x:Key="RefundTypeCast" />
+        <convert:RefundTypeRebate x:Key="RefundTypeRebate" />
+        <Style x:Key="inputWindowStyle" TargetType="dxr:DXRibbonWindow">
+            <Setter Property="Icon" Value="../../Images/Icons/icon.png"></Setter>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+        </Style>
+    </UserControl.Resources>
+
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False"
                                     CustomNotificationPosition="BottomRight"
                                     CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
         <dxmvvm:EventToCommand SourceName="GridControl" EventName="CustomColumnDisplayText"
                                Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True" />
+        <dx:DialogService  Title="请输入开单单号"
+                              DialogWindowStartupLocation="CenterScreen">
+            <dx:DialogService.ViewTemplate>
+                <DataTemplate>
+                    <dxe:TextEdit Margin="10,5" FontSize="14" VerticalAlignment="Center" Text="{Binding InputOrderCode,Mode=TwoWay}" NullText="XK-20XX-XX-XX-XXXX"/>
+                </DataTemplate>
+            </dx:DialogService.ViewTemplate>
+            <dx:DialogService.DialogStyle>
+                <Style TargetType="dx:DXDialogWindow">
+                    <Setter Property="Width" Value="300"></Setter>
+                    <Setter Property="Height" Value="150"></Setter>
+                    <Setter Property="ResizeMode" Value="NoResize"/>
+                    <Setter Property="ShowIcon" Value="False"/>
+                    <Setter Property="ShowInTaskbar" Value="False"></Setter>
+                </Style>
+            </dx:DialogService.DialogStyle>
+        </dx:DialogService>
     </dxmvvm:Interaction.Behaviors>
-    <UserControl.Resources>
-        <convert:RefundTypeCast x:Key="RefundTypeCast" />
-        <convert:RefundTypeRebate x:Key="RefundTypeRebate" />
-    </UserControl.Resources>
-
     <dxb:BarManager>
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="PR_BT_DeleteRow" KeyGesture="Delete" Content="删除行"
                                LargeGlyph="{dx:DXImageOffice2013 Image=Delete_32x32.png}"
-                               Command="{Binding DeleteSelectRowCommand}"
-                               CommandParameter="{Binding ElementName=GridControl}" />
+                               Command="{Binding ElementName=TableView,Path=Commands.DeleteFocusedRow}"/>
 
             <dxb:BarSubItem x:Name="PR_SI_Print" Content="打印"
                             LargeGlyph="{dx:DXImage Image=Print_32x32.png}"
@@ -57,7 +77,11 @@
                                Command="{Binding NewProductOrderCommand}"
                                LargeGlyph="{dx:DXImage Image=BOFileAttachment_32x32.png}"
                                Glyph="{dx:DXImage Image=BOFileAttachment_16x16.png}" />
-
+            
+            <dxb:BarButtonItem x:Name="PR_BI_RefOrder" KeyGesture="Ctrl+F" Content="引用订单"
+                               LargeGlyph="{dx:DXImage Image=Paste_32x32.png}"
+                               Glyph="{dx:DXImage Image=Paste_16x16.png}" Command="{Binding RefOrderCommand}" ></dxb:BarButtonItem>
+            
             <dxb:BarButtonItem x:Name="PR_BI_Save" KeyGesture="Ctrl+S" Content="保存"
                                LargeGlyph="{dx:DXImageOffice2013 Image=SaveAll_32x32.png}"
                                Command="{Binding SaveProductCommand}"

@@ -13,12 +13,13 @@ namespace BusinessDb.Cor
         public ApplicationDbContext()
             : base("data source=.;initial catalog=Application_First;user id=sa;password=123456;MultipleActiveResultSets=True;App=EntityFramework")
         {
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 #else
         public ApplicationDbContext()
             : base(ConnectStringHelper.ConnectString)
         {
-          
+           Database.SetInitializer<ApplicationDbContext>(null);
         }
 #endif 
 

@@ -95,7 +95,7 @@
                                LargeGlyph="../Images/Tile/WWDC_32.png" 
                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
 
-            <dxb:BarButtonItem Content="未付款开单报表" x:Name="MW_RNP" Command="{Binding ReportNoPaymentCommand}"
+            <dxb:BarButtonItem Content="开单费用报表" x:Name="MW_RNP" Command="{Binding ReportNoPaymentCommand}"
                                LargeGlyph="../Images/Tile/Outlook_32.png" 
                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
             <dxb:BarButtonItem Content="已付款开单报表" x:Name="MW_RP" Command="{Binding ReportPaymentedCommand}"

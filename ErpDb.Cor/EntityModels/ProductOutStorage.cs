@@ -44,6 +44,7 @@ namespace BusinessDb.Cor.EntityModels
         public string Remark { get; set; }
 
         public int? StatusFlag { get; set; }
+
         public int PaymoneyType { get; set; }
         public Guid? CreateUserId { get; set; }
 

@@ -8,10 +8,12 @@ namespace BusinessDb.Cor.Models.Report
 {
     public class SalesDetailModelUser
     {
-        [Display(Name = "编码")]
+        [Display(Name = "业务员编码")]
         public string Code { get; set; }
-        [Display(Name = "名称")]
+        [Display(Name = "业务员")]
         public string Name { get; set; }
+        [Display(Name = "客户")]
+        public string CustomerName { get; set; }
         [Display(Name = "总金额")]
         [DataType(DataType.Currency)]
         public decimal SumPrice { get; set; }
@@ -19,10 +21,12 @@ namespace BusinessDb.Cor.Models.Report
 
     public class SalesDetailModelCustomer
     {
-        [Display(Name = "编码")]
+        [Display(Name = "客户编码")]
         public string Code { get; set; }
-        [Display(Name = "名称")]
-        public string CustomerName { get; set; }
+        [Display(Name = "客户")]
+        public string Name { get; set; }
+        [Display(Name = "业务员")]
+        public string BusinessName { get; set; }
         [Display(Name = "总金额")]
         [DataType(DataType.Currency)]
         public decimal SumPrice { get; set; }

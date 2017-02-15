@@ -21,7 +21,7 @@
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:DispatcherService />
         <dxmvvm:EventToCommand SourceName="ListBoxEditShowType" EventName="SelectedIndexChanged"
-                               Command="{Binding ShowTypeIndexChangedCommand}" CommandParameter="{Binding ElementName=ListBoxEditShowType,Path=SelectedIndex}"></dxmvvm:EventToCommand>
+                               Command="{Binding ShowTypeIndexChangedCommand}" CommandParameter="{Binding ElementName=ListBoxEditShowType,Path=SelectedIndex}"/>
     </dxmvvm:Interaction.Behaviors>
     <Grid>
         <dxb:BarManager>

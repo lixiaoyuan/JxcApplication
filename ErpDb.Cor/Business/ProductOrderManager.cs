@@ -155,6 +155,19 @@ namespace BusinessDb.Cor.Business
         {
             return _entities.Database.SqlQuery<SelectChargeOrder>("SELECT Id, OrderType, Code,CreateDate,ISNULL(SumPrice,0) AS 'SumPrice',ISNULL(Paid,0) AS 'Paid',ISNULL(SumPrice,0)-ISNULL(Paid,0) AS 'UnPay',Remark FROM dbo.ProductReturnInStorage WHERE PaymentType in('OffsetTransactions','Rebate')  AND CreateDate>=@StartTime AND CreateDate <=@EndTime AND CustomerId=@customerId AND ISNULL(SumPrice, 0) - ISNULL(Paid, 0) > 0 UNION ALL SELECT Id, OrderType,Code,CreateDate,ISNULL(SumPrice,0) AS 'SumPrice',ISNULL(Paid,0) AS 'Paid',ISNULL(SumPrice,0)-ISNULL(Paid,0) AS 'UnPay',Remark FROM dbo.ProductOutStorage WHERE CreateDate>=@StartTime AND CreateDate <=@EndTime AND CustomerId=@customerId AND ISNULL(SumPrice, 0) - ISNULL(Paid, 0) > 0", new SqlParameter("StartTime", starTime), new SqlParameter("EndTime", endTime),new SqlParameter("customerId", customId)).ToObservableCollection();
         }
+        /// <summary>
+        /// 获取销售开单明细
+        /// </summary>
+        /// <returns></returns>
+        public ObservableCollection<ProductOutStorageDetail> GetSellOutStorage(string outCode)
+        {
+            var outOrder = _entities.ProductOutStorage.AsNoTracking().FirstOrDefault(a => a.OrderType == "XK" && a.Code == outCode.ToUpper());
+            if (outOrder == default(ProductOutStorage))
+            {
+                return null;
+            }
+            return _entities.ProductOutStorageDetail.Where(a => a.PutOutId == outOrder.Id).AsNoTracking().ToObservableCollection();
+        }
     }
 
 

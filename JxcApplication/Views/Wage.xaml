@@ -148,7 +148,7 @@
                 <dxg:GridControl Name="GridControlWage" Grid.Row="1" ItemsSource="{Binding Path=WageDetail}">
                     <dxg:GridControl.View>
                         <dxg:TableView Name="TableViewData" AutoWidth="False" NewItemRowPosition="Bottom"
-                                       AllowEditing="True">
+                                       AllowEditing="True" ShowTotalSummary="True">
                             <dxmvvm:Interaction.Behaviors>
                                 <behaviors:DataViewExportBehavior x:Name="ViewExportBehavior" />
                             </dxmvvm:Interaction.Behaviors>
@@ -285,6 +285,12 @@
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
                     </dxg:GridControl.Columns>
+                    <dxg:GridControl.TotalSummary>
+                        <dxg:GridSummaryItem SummaryType="Sum" ShowInColumn="PreTaxSum" FieldName="PreTaxSum"
+                                                 DisplayFormat="总计:{0:c}" />
+                        <dxg:GridSummaryItem SummaryType="Sum" ShowInColumn="AfterTaxSum" FieldName="AfterTaxSum"
+                                                 DisplayFormat="总计:{0:c}" />
+                    </dxg:GridControl.TotalSummary>
                 </dxg:GridControl>
             </Grid>
         </DockPanel>

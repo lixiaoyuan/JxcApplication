@@ -17,6 +17,11 @@
              d:DesignHeight="345.6" d:DesignWidth="739.2">
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:DispatcherService />
+        <dxmvvm:EventToCommand SourceName="ListBoxEditShowType" EventName="SelectedIndexChanged"
+                               Command="{Binding ShowTypeIndexChangedCommand}" CommandParameter="{Binding ElementName=ListBoxEditShowType,Path=SelectedIndex}"/>
+        <dxmvvm:EventToCommand SourceName="ListBoxEditPayType" EventName="SelectedIndexChanged"
+                               Command="{Binding PayTypeIndexChangedCommand}" CommandParameter="{Binding ElementName=ListBoxEditPayType,Path=SelectedIndex}"/>
+        
     </dxmvvm:Interaction.Behaviors>
     <Grid>
         <dxb:BarManager>
@@ -79,7 +84,6 @@
                         <dxlc:LayoutControl>
 
                             <dxlc:LayoutGroup View="Group">
-
                                 <dxlc:LayoutItem Label="开始日期:" HorizontalAlignment="Left">
                                     <dxe:DateEdit Width="120" EditValue="{Binding StartDate, Mode=TwoWay}">
                                         <dxe:DateEdit.StyleSettings>
@@ -93,6 +97,35 @@
                                             <dxe:DateEditCalendarStyleSettings />
                                         </dxe:DateEdit.StyleSettings>
                                     </dxe:DateEdit>
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem  Label="付款类型:" HorizontalAlignment="Left" >
+                                    <dxe:ListBoxEdit x:Name="ListBoxEditPayType" SelectedIndex="0">
+                                        <dxe:ListBoxEditItem Content="未付款" />
+                                        <dxe:ListBoxEditItem Content="已付款" Margin="5,0,0,0"/>
+                                        <dxe:ListBoxEdit.StyleSettings>
+                                            <dxe:RadioListBoxEditStyleSettings/>
+                                        </dxe:ListBoxEdit.StyleSettings>
+                                        <dxe:ListBoxEdit.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </dxe:ListBoxEdit.ItemsPanel>
+                                    </dxe:ListBoxEdit>
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem  Label="统计类型:" HorizontalAlignment="Left" >
+                                    <dxe:ListBoxEdit x:Name="ListBoxEditShowType" SelectedIndex="0">
+                                        <dxe:ListBoxEditItem Content="明细" />
+                                        <dxe:ListBoxEditItem Content="客户" Margin="5,0,0,0"/>
+                                        <dxe:ListBoxEditItem Content="业务员" Margin="5,0,0,0"/>
+                                        <dxe:ListBoxEdit.StyleSettings>
+                                            <dxe:RadioListBoxEditStyleSettings/>
+                                        </dxe:ListBoxEdit.StyleSettings>
+                                        <dxe:ListBoxEdit.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </dxe:ListBoxEdit.ItemsPanel>
+                                    </dxe:ListBoxEdit>
                                 </dxlc:LayoutItem>
                             </dxlc:LayoutGroup>
 
@@ -125,7 +158,7 @@
                                         </behaviors:DataViewExportBehavior.HeadTemplate>
                                     </behaviors:DataViewExportBehavior>
                                 </dxmvvm:Interaction.Behaviors>
-                                <dxg:TableView.FormatConditions>
+                                <!--<dxg:TableView.FormatConditions>
                                     <dxg:FormatCondition FieldName="NoPayment" Value1="0" ValueRule="LessOrEqual"
                                                          ApplyToRow="True">
                                         <dx:Format Foreground="Red" />
@@ -133,7 +166,7 @@
                                     <dxg:FormatCondition FieldName="NoPayment" ValueRule="NotEqual" Value1="0">
                                         <dx:Format Foreground="Green" FontSize="13" />
                                     </dxg:FormatCondition>
-                                </dxg:TableView.FormatConditions>
+                                </dxg:TableView.FormatConditions>-->
                             </dxg:TableView>
                         </dxg:GridControl.View>
 

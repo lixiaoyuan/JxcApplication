@@ -12,6 +12,7 @@ namespace ApplicationDb.Cor
         public ApplicationDbContext()
             : base(ApplicationDb.Cor.Helper.ConnectStringHelper.ConnectString)
         {
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public virtual DbSet<AuthMenu> AuthMenu { get; set; }

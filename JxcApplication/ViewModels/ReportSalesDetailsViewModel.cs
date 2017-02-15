@@ -15,6 +15,7 @@ namespace JxcApplication.ViewModels
     public class ReportSalesDetailsViewModel : ViewModelTabItem
     {
         private ReportManager reportManager;
+        private int _showType = 0;
         public bool ShowLoadingPanel { get; set; }
         public virtual DateTime? StartDate { get; set; }
         public virtual DateTime? EndDate { get; set; }
@@ -30,17 +31,18 @@ namespace JxcApplication.ViewModels
 
         protected void OnStartDateChanged(DateTime? newDate)
         {
-            LoadingData();
+            LoadingData(_showType);
         }
 
         protected  void OnEndDateChanged(DateTime? newDate)
         {
-            LoadingData();
+            LoadingData(_showType);
         }
 
         private void ShowTypeIndexChanged(int index)
         {
-            LoadingData(index);
+            _showType = index;
+            LoadingData(_showType);
         }
         private void LoadingData(int type = 0)
         {

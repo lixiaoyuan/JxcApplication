@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using ApplicationDb.Cor;
@@ -8,6 +10,7 @@ using BusinessDb.Cor.Models;
 using DevExpress.Xpf.Grid;
 using BusinessDb.Cor;
 using BusinessDb.Cor.EntityModels;
+using DevExpress.Mvvm;
 using JxcApplication.ViewModels.Inherit;
 
 namespace JxcApplication.ViewModels.Sell
@@ -30,6 +33,8 @@ namespace JxcApplication.ViewModels.Sell
         {
             get { return "产品退货单"; }
         }
+
+        public virtual string InputOrderCode { get; set; }
 
         public ObservableCollection<Product> ProductLookUp { get; set; }
         public ObservableCollection<Customer> CustomersLookUp { get; set; }
@@ -341,6 +346,11 @@ namespace JxcApplication.ViewModels.Sell
             }
         }
 
+        public bool CanSaveProduct(GridControl opControl)
+        {
+            return IsNewOrder;
+        }
+
         /// <summary>
         ///     查看历史订单变更
         /// </summary>
@@ -370,28 +380,28 @@ namespace JxcApplication.ViewModels.Sell
             }
         }
 
-        /// <summary>
-        ///     删除选中行
-        /// </summary>
-        public void DeleteSelectRow(GridControl opGridControl)
-        {
-            Debug.Write("DeleteSelectRow");
-            if (opGridControl == null)
-            {
-                return;
-            }
+        ///// <summary>
+        /////     删除选中行
+        ///// </summary>
+        //public void DeleteSelectRow(GridControl opGridControl)
+        //{
+        //    Debug.Write("DeleteSelectRow");
+        //    if (opGridControl == null)
+        //    {
+        //        return;
+        //    }
 
-            var view = opGridControl.View as TableView;
-            if (view == null)
-            {
-                return;
-            }
-            var handles = opGridControl.GetSelectedRowHandles();
-            foreach (var row in handles)
-            {
-                view.DeleteRow(row);
-            }
-        }
+        //    var view = opGridControl.View as TableView;
+        //    if (view == null)
+        //    {
+        //        return;
+        //    }
+        //    var handles = opGridControl.GetSelectedRowHandles();
+        //    foreach (var row in handles)
+        //    {
+        //        view.DeleteRow(row);
+        //    }
+        //}
 
         public void CustomColumnDisplayText(CustomColumnDisplayTextEventArgs e)
         {
@@ -428,7 +438,47 @@ namespace JxcApplication.ViewModels.Sell
             }
             Report.Report.ShowPreviewDialog(OrderType(), ReturnStorage.Id);
         }
+        /// <summary>
+        /// 引用销售订单明细
+        /// </summary>
+        public void RefOrder()
+        {
+            MessageResult result = GetService<IDialogService>().ShowDialog(MessageButton.OKCancel, "请输入开单单号", this);
+            if (result != MessageResult.OK || ReturnStorage == null)
+            {
+                return;
+            }
+            if (Details == null)
+            {
+                Details = new ObservableCollection<ProductInStorageDetail>();
+            }
+            //获取销售单明细
+            var detail= _productOrderManager.GetSellOutStorage(InputOrderCode.ToUpper());
+            if (detail == null)
+            {
+                return;
+            }
+            foreach (var outStorageDetail in detail)
+            {
+                Details.Add(new ProductInStorageDetail()
+                {
+                    Id = Guid.NewGuid(),
+                    ProductCode = outStorageDetail.ProductCode,
+                    ProductId = outStorageDetail.ProductId,
+                    ProductSpecification = outStorageDetail.ProductSpecification,
+                    ProductUnit = outStorageDetail.ProductUnit,
+                    OriginalStock = outStorageDetail.OutStock,
+                    UnitPrice = outStorageDetail.UnitPrice,
+                    SumPrice = outStorageDetail.SumPrice,
+                    Remark = "ref "+InputOrderCode
+                });
+            }
+        }
 
+        public bool CanRefOrder()
+        {
+            return IsNewOrder;
+        }
         public ProductReturnViewModel(Guid menuId, string caption) : base(menuId, caption)
         {
         }

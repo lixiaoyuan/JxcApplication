@@ -108,6 +108,34 @@ namespace BusinessDb.Cor
         {
             return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModel>("dbo.Report_Paymented @startDate ,@endDate ", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate));
         }
+        public static ObjectResult Report_PaymentedV2(this ApplicationDbContext db, DateTime startDate, DateTime endDate,string paidWithGroup)
+        {
+            if (paidWithGroup == "PaymentModel")
+            {
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModel>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+            }
+            else if (paidWithGroup == "NotPaymentModel")
+            {
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModel>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+            }
+            else if (paidWithGroup == "PaymentNotModelUser")
+            {
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentNotModelUser>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+            }
+            else if (paidWithGroup == "PaymentModelUser")
+            {
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModelUser>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+            }
+            else if (paidWithGroup == "PaymentNotModelCustomer")
+            {
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentNotModelCustomer>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+            }
+            else if (paidWithGroup == "PaymentModelCustomer")
+            {
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModelCustomer>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+            }
+            return default(ObjectResult<object>);
+        }
         public static ObjectResult<HasReceivableModel> Report_HasReceivable(this ApplicationDbContext db, DateTime startDate, DateTime endDate)
         {
             return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<HasReceivableModel>("dbo.Report_HasReceivable @startDate ,@endDate ", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate));

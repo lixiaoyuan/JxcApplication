@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using BusinessDb.Cor.Models.Report;
@@ -119,6 +120,10 @@ namespace BusinessDb.Cor.Business
         public ObservableCollection<PaymentModel> Paymented(DateTime startDate, DateTime endDate)
         {
             return _applicationDb.Report_Paymented(startDate, endDate).ToObservableCollection();
+        }
+        public object PaymentedV2(DateTime startDate, DateTime endDate,string paidWithGroup)
+        {
+            return _applicationDb.Report_PaymentedV2(startDate, endDate, paidWithGroup);
         }
         /// <summary>
         /// 收款报表
