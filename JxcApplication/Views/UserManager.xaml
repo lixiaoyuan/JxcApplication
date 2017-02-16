@@ -87,7 +87,7 @@
                                 <dxe:TextEditSettings MaxLength="50"/>
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="Spell" Header="拼音码" >
+                        <dxg:GridColumn FieldName="Spell" Header="拼音码" Width="50">
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings MaxLength="50"/>
                             </dxg:GridColumn.EditSettings>
