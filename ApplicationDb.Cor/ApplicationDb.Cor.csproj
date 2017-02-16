@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201612140723258_addOrgWorkApproval.Designer.cs">
       <DependentUpon>201612140723258_addOrgWorkApproval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702151317356_updateSystemUser.cs" />
+    <Compile Include="Migrations\201702151317356_updateSystemUser.Designer.cs">
+      <DependentUpon>201702151317356_updateSystemUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\FileFormatType.cs" />
     <Compile Include="Model\NavigationMenuGroup.cs" />
@@ -328,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612140723258_addOrgWorkApproval.resx">
       <DependentUpon>201612140723258_addOrgWorkApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702151317356_updateSystemUser.resx">
+      <DependentUpon>201702151317356_updateSystemUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

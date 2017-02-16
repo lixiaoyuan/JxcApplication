@@ -11,6 +11,7 @@
              xmlns:cor="clr-namespace:ApplicationDb.Cor;assembly=ApplicationDb.Cor"
              xmlns:viewModels="clr-namespace:JxcApplication.ViewModels"
              xmlns:behaviors="clr-namespace:JxcApplication.Behaviors"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
              x:Class="JxcApplication.Views.UserManager"
              d:DesignWidth="606.4"
              d:DesignHeight="351.2">
@@ -76,14 +77,60 @@
                         <dxg:TableView Name="TableViewUser" AllowEditing="True" NewItemRowPosition="Bottom" />
                     </dxg:GridControl.View>
                     <dxg:GridControl.Columns>
-                        <dxg:GridColumn FieldName="Code" Header="用户编码" />
-                        <dxg:GridColumn FieldName="Name" Header="用户名" />
-                        <dxg:GridColumn FieldName="Spell" Header="拼音码" />
+                        <dxg:GridColumn FieldName="Code" Header="用户编码(登录名)" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="50"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Name" Header="用户名" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="50"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Spell" Header="拼音码" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="50"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
                         <dxg:GridColumn FieldName="Gender" Header="性别(男)" />
                         <dxg:GridColumn FieldName="Birthday" Header="生日" />
-                        <dxg:GridColumn FieldName="Tel" Header="电话" />
-                        <dxg:GridColumn FieldName="Email" Header="电子邮件" />
-                        <dxg:GridColumn FieldName="Enable" Header="是否有效" />
+                        <dxg:GridColumn FieldName="HealthCertificateExpired" Header="健康证过期日期" />
+                        <dxg:GridColumn FieldName="Tel" Header="电话" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="50"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="IdCard" Header="身份证号" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="50"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Education" Header="学历" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="100"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="School" Header="毕业学校" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="100"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Email" Header="电子邮件" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="50"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Address" Header="地址" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="300"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Remark" Header="备注" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings MaxLength="200"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Enable" Header="是否有效(电脑用户)" />
                     </dxg:GridControl.Columns>
                 </dxg:GridControl>
             </DockPanel>

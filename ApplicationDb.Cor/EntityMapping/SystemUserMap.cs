@@ -37,6 +37,26 @@ namespace ApplicationDb.Cor.EntityMapping
             Property(e => e.Email)
                 .IsUnicode(false).HasMaxLength(50);
 
+            Property(e => e.IdCard)
+                .IsUnicode(false)
+                .HasMaxLength(50);
+
+            Property(e => e.Education)
+                .IsUnicode(false)
+                .HasMaxLength(100);
+
+            Property(e => e.School)
+                .IsUnicode(false)
+                .HasMaxLength(100);
+
+            Property(e => e.Address)
+                .IsUnicode(false)
+                .HasMaxLength(300);
+
+            Property(e => e.Remark)
+                .IsUnicode(false)
+                .HasMaxLength(200);
+
             Property(e => e.CreateUserName)
                 .IsUnicode(false).HasMaxLength(50);
 

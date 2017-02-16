@@ -13,7 +13,7 @@ namespace JxcApplication.ViewModels
             this.Content = content;
 
         }
-        internal static CustomNotificationViewModel Create( string content,string caption="提示")
+        internal static CustomNotificationViewModel Create(string content, string caption = "提示")
         {
             return ViewModelSource.Create(() => new CustomNotificationViewModel(caption, content));
         }

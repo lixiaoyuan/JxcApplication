@@ -13,7 +13,7 @@ namespace ApplicationDb.Cor.Business
 {
     public class RoleManager
     {
-        ApplicationDbContext _applicationDbEntities=new ApplicationDbContext();
+        ApplicationDbContext _applicationDbEntities = new ApplicationDbContext();
         public static RoleManager Create()
         {
             return new RoleManager();

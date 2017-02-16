@@ -253,7 +253,7 @@ namespace JxcApplication
                 {
                     this.Dispatcher.BeginInvoke(new Action(() =>
                     {
-                        DXMessageBox.Show($"系统初始化失败!链接数据库错误!\n{e.Message}");
+                        DXMessageBox.Show($"系统初始化失败!连接数据库错误!\n{e.Message}");
                     }));
                     return false;
                 }
