@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using ApplicationDb.Cor.EntityModels;
@@ -53,6 +54,14 @@ namespace ApplicationDb.Cor.Business
         {
             return _applicationDbEntities.GetRoleMenuAndCheckByRoleId(roleId, systemId).ToObservableCollection();
             //throw new NotImplementedException();
+        }
+        /// <summary>
+        ///  获取菜单列表
+        /// </summary>
+        /// <returns></returns>
+        public ObservableCollection<AuthRibbonNode> GetMenuList()
+        {
+            return _applicationDbEntities.AuthRibbonNode.Where(a => a.NodeType == 0).OrderBy(a=>a.Sort).AsNoTracking().ToObservableCollection();
         }
 
         public ObservableCollection<AuthRibbonNode> GetRoleMenuCheck(Guid roleId)

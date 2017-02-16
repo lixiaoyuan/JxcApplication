@@ -32,11 +32,11 @@
         <dxmvvm:NotificationService UseWin8NotificationsIfAvailable="False" CustomNotificationPosition="BottomRight"
                                     CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
         <dxmvvm:EventToCommand SourceName="DxTabControl" EventName="SelectionChanged"
-                               Command="{Binding SelectionChangedCommand}" PassEventArgsToCommand="True" />
-        <dxmvvm:EventToCommand EventName="SelectedItemChanged" SourceName="RoleMenuGridControl"
-                               Command="{Binding SelectMenuChangedCommand}" PassEventArgsToCommand="True" />
-        <dxmvvm:EventToCommand EventName="NodeCheckStateChanged" SourceName="TreeListViewRibbonNode" Command="{Binding RibbonNodeCheckChangedCommand}" PassEventArgsToCommand="True"></dxmvvm:EventToCommand>
-        <dxmvvm:EventToCommand EventName="RowDoubleClick" SourceName="TreeListViewRibbonNode" Command="{Binding RibbonNodeRowDoubleClickCommand}" PassEventArgsToCommand="True"></dxmvvm:EventToCommand>
+                               Command="{Binding TabSelectionChangedCommand}" PassEventArgsToCommand="True" />
+        <dxmvvm:EventToCommand EventName="NodeCheckStateChanged" SourceName="TreeListViewRibbonNode" 
+                               Command="{Binding RibbonNodeCheckChangedCommand}" PassEventArgsToCommand="True"/>
+        <dxmvvm:EventToCommand EventName="RowDoubleClick" SourceName="TreeListViewRibbonNode" 
+                               Command="{Binding RibbonNodeRowDoubleClickCommand}" PassEventArgsToCommand="True"/>
         <!--<dxmvvm:EventToCommand EventName="NodeCheckStateChanged" SourceName="TreeListViewMenu"  Command="{Binding RibbonNodeCheckChangedCommand}" PassEventArgsToCommand="True"></dxmvvm:EventToCommand>-->
 
     </dxmvvm:Interaction.Behaviors>
@@ -102,26 +102,19 @@
                         </dx:DXTabItem>
                         <dx:DXTabItem Header="角色菜单">
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <!--角色菜单树-->
-                                <dxg:TreeListControl x:Name="RoleMenuGridControl" Grid.Column="0"
-                                                     SelectedItem="{Binding SelectMenuItem,Mode=OneWay}"
-                                                     ItemsSource="{Binding RoleMenuListData, Mode=TwoWay}">
-                                    <dxg:TreeListControl.View>
-                                        <dxg:TreeListView Name="TreeListViewMenu"  AllowEditing="False" AutoWidth="True" KeyFieldName="Id"
-                                                          ParentFieldName="ParentId" />
-                                    </dxg:TreeListControl.View>
-                                    <dxg:TreeListControl.Columns>
-                                        <dxg:TreeListColumn FieldName="DisplayName" Header="菜单名称" />
-                                        <dxg:TreeListColumn FieldName="Sort" Header="序号" SortIndex="1"/>
-                                    </dxg:TreeListControl.Columns>
-                                </dxg:TreeListControl>
-
-                                <dxg:TreeListControl x:Name="RoleMenuButtonGridControl" Grid.Column="1"
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <Button Width="80" Height="25" Margin="5,5,10,10" Command="{Binding PrevNavigationCommand}">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Image Source="{dx:DXImage Image=Prev_32x32.png}"/>
+                                            <Label Content="后退" VerticalContentAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                                <dxg:TreeListControl x:Name="RoleMenuButtonGridControl" Grid.Row="1"
                                                      ItemsSource="{Binding RoleMenuRibbonNodeListData, Mode=TwoWay}"
                                                      SelectionMode="Row" >
                                     <dxg:TreeListControl.Columns>
@@ -129,7 +122,7 @@
                                         <dxg:TreeListColumn FieldName="Caption" Header="名称"/>
                                         <dxg:TreeListColumn FieldName="RibbonNodeRootId" Header="打开窗口菜单">
                                             <dxg:TreeListColumn.EditSettings>
-                                                <dxe:ComboBoxEditSettings ValueMember="Id" DisplayMember="DisplayName" ItemsSource="{Binding RoleMenuListData}"/>
+                                                <dxe:ComboBoxEditSettings ValueMember="Id" DisplayMember="DisplayName" ItemsSource="{Binding MenuListData}"/>
                                             </dxg:TreeListColumn.EditSettings>
                                         </dxg:TreeListColumn>
                                         <dxg:TreeListColumn FieldName="NodeType" Header="节点类型" AllowColumnFiltering="True" AllowAutoFilter="True">
