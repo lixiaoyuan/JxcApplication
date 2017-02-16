@@ -35,7 +35,12 @@ namespace ApplicationDb.Cor
         public string Tel { get; set; }
 
         public string Email { get; set; }
-
+        public string IdCard { get; set; }
+        public DateTime? HealthCertificateExpired { get; set; }
+        public string Education { get; set; }
+        public string School { get; set; }
+        public string Address { get; set; }
+        public string Remark { get; set; }
         public bool? Enable { get; set; }
 
         public bool? Check { get; set; }
@@ -56,6 +61,5 @@ namespace ApplicationDb.Cor
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuthUserRole> AuthUserRole { get; set; }
-        
     }
 }
