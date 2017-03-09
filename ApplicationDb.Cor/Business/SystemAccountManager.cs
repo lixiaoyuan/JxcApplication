@@ -157,6 +157,16 @@ namespace ApplicationDb.Cor.Business
             }
         }
 
+        public string RemindBirthday()
+        {
+            return applicationDbEntities.RemindBirthday();
+        }
+
+        public string RemindHealthCertificateExpired()
+        {
+            return applicationDbEntities.RemindHealthCertificateExpired();
+        }
+
         #region 弃用
 
         public bool Update(SystemUser user)

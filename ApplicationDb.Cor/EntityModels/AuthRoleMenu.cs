@@ -22,8 +22,6 @@ namespace ApplicationDb.Cor
 
         public string CreateUserName { get; set; }
 
-        public virtual AuthMenu AuthMenu { get; set; }
-
         public virtual AuthRole AuthRole { get; set; }
     }
 }

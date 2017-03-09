@@ -15,11 +15,8 @@ namespace ApplicationDb.Cor
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 
-        public virtual DbSet<AuthMenu> AuthMenu { get; set; }
-        public virtual DbSet<AuthMenuToolButton> AuthMenuToolButton { get; set; }
         public virtual DbSet<AuthRole> AuthRole { get; set; }
         public virtual DbSet<AuthRoleMenu> AuthRoleMenu { get; set; }
-        public virtual DbSet<AuthToolButton> AuthToolButton { get; set; }
         public virtual DbSet<AuthUserRole> AuthUserRole { get; set; }
         public virtual DbSet<SystemProgram> SystemProgram { get; set; }
         public virtual DbSet<SystemUser> SystemUser { get; set; }

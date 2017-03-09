@@ -21,6 +21,10 @@
     BorderEffect="Default"
     DataContext="{dxmvvm:ViewModelSource viewModels:MainWindowViewModel}"
     d:DesignWidth="975.4" d:DesignHeight="653.6" >
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand SourceName="WindowRoot" EventName="Loaded"
+                               Command="{Binding ViewLoadedCommand}"/>
+    </dxmvvm:Interaction.Behaviors>
     <dxb:BarManager>
         <dxb:BarManager.Items>
             <dxb:BarButtonItem Content="成品入库" x:Name="MW_PIS" Command="{Binding ProductInStorageCommand}"

@@ -47,9 +47,9 @@ namespace AplicationDb.Cor.Test
         [TestMethod]
         public void TestMenuManager()
         {
-            ApplicationDb.Cor.Business.MenuManager menuManager = ApplicationDb.Cor.Business.MenuManager.Create();
-            var list=menuManager.GetRoleMenuCheck(Guid.Parse("355FB643-57D6-4D7D-B747-0CBE835280BD"), "erp").ToList();
-            Assert.IsTrue(list.Any());
+            //ApplicationDb.Cor.Business.MenuManager menuManager = ApplicationDb.Cor.Business.MenuManager.Create();
+            //var list=menuManager.GetRoleMenuCheck(Guid.Parse("355FB643-57D6-4D7D-B747-0CBE835280BD"), "erp").ToList();
+            //Assert.IsTrue(list.Any());
         }
     }
 }

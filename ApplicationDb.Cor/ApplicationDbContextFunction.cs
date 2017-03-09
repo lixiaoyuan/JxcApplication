@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
@@ -11,19 +12,6 @@ namespace ApplicationDb.Cor
 {
     public static class ApplicationDbContextFunction
     {
-        [Obsolete]
-        public static ObjectResult<AuthMenu> GetRoleMenuAndCheckByRoleId(this ApplicationDbContext db,Nullable<System.Guid> roleId, string systemId)
-        {
-            var roleIdParameter = roleId.HasValue ?
-                new SqlParameter("RoleId", roleId) :
-                new SqlParameter("RoleId", typeof(System.Guid));
-
-            var systemIdParameter = systemId != null ?
-                new SqlParameter("SystemId", systemId) :
-                new SqlParameter("SystemId", typeof(string));
-
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<AuthMenu>("dbo.GetRoleMenuAndCheckByRoleId @RoleId,@SystemId", roleIdParameter, systemIdParameter);
-        }
         public static ObjectResult<AuthRibbonNode> GetRoleMenuCheck(this ApplicationDbContext db, Nullable<System.Guid> roleId)
         {
             var roleParameter = roleId.HasValue ?
@@ -90,23 +78,6 @@ namespace ApplicationDb.Cor
 
         }
 
-        public static ObjectResult<AuthToolButton> GetToolButtonAndCheckByMenuIdRoleId(this ApplicationDbContext db, Nullable<System.Guid> menuId, Nullable<System.Guid> roleId, string systemId)
-        {
-            var menuIdParameter = menuId.HasValue ?
-                new SqlParameter("MenuId", menuId) :
-                new SqlParameter("MenuId", typeof(System.Guid));
-
-            var roleIdParameter = roleId.HasValue ?
-                new SqlParameter("RoleId", roleId) :
-                new SqlParameter("RoleId", typeof(System.Guid));
-
-            var systemIdParameter = systemId != null ?
-                new SqlParameter("SystemId", systemId) :
-                new SqlParameter("SystemId", typeof(string));
-
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<AuthToolButton>("dbo.GetToolButtonAndCheckByMenuIdRoleId @MenuId,@RoleId,@SystemId", menuIdParameter, roleIdParameter, systemIdParameter);
-        }
-
         //public static ObjectResult<AuthToolButton> GetToolButtonAndCheckByMenuIdRoleId(this ApplicationDbContext db, Nullable<System.Guid> menuId, Nullable<System.Guid> roleId, string systemId, MergeOption mergeOption)
         //{
         //    var menuIdParameter = menuId.HasValue ?
@@ -154,66 +125,6 @@ namespace ApplicationDb.Cor
              ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreCommand("dbo.UpdateRoleMenuNew @RoleId,@MenuId,@Checked", new SqlParameter("RoleId",roleId), new SqlParameter("MenuId",menuId), new SqlParameter("Checked",check));
         }
 
-        public static ObjectResult<AuthToolButton> GetToolButton(this ApplicationDbContext db, Nullable<System.Guid> userId, Nullable<System.Guid> menuId, string systemId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new SqlParameter("UserId", userId) :
-                new SqlParameter("UserId", typeof(System.Guid));
-
-            var menuIdParameter = menuId.HasValue ?
-                new SqlParameter("MenuId", menuId) :
-                new SqlParameter("MenuId", typeof(System.Guid));
-
-            var systemIdParameter = systemId != null ?
-                new SqlParameter("SystemId", systemId) :
-                new SqlParameter("SystemId", typeof(string));
-
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<AuthToolButton>("dbo.GetToolButton @UserId,@MenuId,@SystemId", userIdParameter, menuIdParameter, systemIdParameter);
-        }
-
-        //public static ObjectResult<AuthToolButton> GetToolButton(this ApplicationDbContext db, Nullable<System.Guid> userId, Nullable<System.Guid> menuId, string systemId)
-        //{
-        //    var userIdParameter = userId.HasValue ?
-        //        new SqlParameter("UserId", userId) :
-        //        new SqlParameter("UserId", typeof(System.Guid));
-
-        //    var menuIdParameter = menuId.HasValue ?
-        //        new SqlParameter("MenuId", menuId) :
-        //        new SqlParameter("MenuId", typeof(System.Guid));
-
-        //    var systemIdParameter = systemId != null ?
-        //        new SqlParameter("SystemId", systemId) :
-        //        new SqlParameter("SystemId", typeof(string));
-
-        //    return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<AuthToolButton>("dbo.GetToolButton @UserId,@MenuId,@SystemId", mergeOption, userIdParameter, menuIdParameter, systemIdParameter);
-        //}
-
-        public static ObjectResult<AuthMenu> GetUserTile(this ApplicationDbContext db, Nullable<System.Guid> userId, string systemId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new SqlParameter("UserId", userId) :
-                new SqlParameter("UserId", typeof(System.Guid));
-
-            var systemIdParameter = systemId != null ?
-                new SqlParameter("SystemId", systemId) :
-                new SqlParameter("SystemId", typeof(string));
-
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<AuthMenu>("dbo.GetUserTile @UserId,@SystemId", userIdParameter, systemIdParameter);
-        }
-
-        //public static ObjectResult<AuthMenu> GetUserTile(this ApplicationDbContext db, Nullable<System.Guid> userId, string systemId)
-        //{
-        //    var userIdParameter = userId.HasValue ?
-        //        new SqlParameter("UserId", userId) :
-        //        new SqlParameter("UserId", typeof(System.Guid));
-
-        //    var systemIdParameter = systemId != null ?
-        //        new SqlParameter("SystemId", systemId) :
-        //        new SqlParameter("SystemId", typeof(string));
-
-        //    return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<AuthMenu>("dbo.GetUserTile @UserId,@SystemId",  userIdParameter, systemIdParameter);
-        //}
-
         public static ObjectResult<SystemUser> GetOrganizationUserCheck(this ApplicationDbContext db, Guid organId)
         {
             var organizationIdParameter = new SqlParameter("OrganizationId", organId) ;
@@ -256,6 +167,21 @@ namespace ApplicationDb.Cor
         public static void UpdateOrganizationWorkApproval(this ApplicationDbContext db, Guid orgId, Guid workApproval, bool check)
         {
             ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreCommand("dbo.UpdateOrganizationWorkApproval @OrganizationId,@WorkApprovalId,@Checked", new SqlParameter("OrganizationId", orgId), new SqlParameter("WorkApprovalId", workApproval), new SqlParameter("Checked", check));
+        }
+
+        public static string RemindBirthday(this ApplicationDbContext db)
+        {
+            var tipMessage = new SqlParameter("@tipMessage",SqlDbType.VarChar,3000);
+            tipMessage.Direction=ParameterDirection.Output;
+            ((IObjectContextAdapter) db).ObjectContext.ExecuteStoreCommand("dbo.RemindBirthday @tipMessage out",tipMessage);
+            return tipMessage.Value.ToString();
+        }
+        public static string RemindHealthCertificateExpired(this ApplicationDbContext db)
+        {
+            var tipMessage = new SqlParameter("@tipMessage", SqlDbType.VarChar,3000);
+            tipMessage.Direction = ParameterDirection.Output;
+            ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreCommand("dbo.RemindHealthCertificateExpired @tipMessage out", tipMessage);
+            return tipMessage.Value.ToString();
         }
     }
 }

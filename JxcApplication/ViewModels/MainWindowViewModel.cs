@@ -3,6 +3,9 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
+using ApplicationDb.Cor.Business;
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.POCO;
 using DevExpress.Xpf.Bars;
@@ -18,6 +21,8 @@ namespace JxcApplication.ViewModels
     //[POCOViewModel]
     public class MainWindowViewModel : ViewModelBaseCor
     {
+        private SystemAccountManager _systemAccountManager = SystemAccountManager.Create();
+        public DelegateCommand ViewLoadedCommand { get; set; }
         public MainWindowViewModel()
         {
             TabItems = new ObservableCollection<ViewModelBaseCor>();
@@ -34,6 +39,7 @@ namespace JxcApplication.ViewModels
         {
             base.OnInitializeInRuntime();
             InitRibbonUi(Guid.Parse("FA38CF52-CAFC-43DF-BA63-92958B8E3C5E"));
+            ViewLoadedCommand=new DelegateCommand(ViewLoaded);
         }
 
         private Guid GetBarItemId(BarItem clickItem)
@@ -60,6 +66,41 @@ namespace JxcApplication.ViewModels
             TabItems.Add(viewmodel);
             //RaisePropertyChanged("TabItems");
         }
+
+        private void ViewLoaded()
+        {
+            ShowDayTip();
+        }
+
+        private void ShowDayTip()
+        {
+            string msg = "";
+            string temp = "";
+            if (App.GlobalApp.LoginUser.RemindBirthday != null && App.GlobalApp.LoginUser.RemindBirthday.Value)
+            {
+                temp = _systemAccountManager.RemindBirthday() + "\n";
+                if (!string.IsNullOrWhiteSpace(temp))
+                {
+                    msg += "生日提醒:\n\t";
+                    msg += temp;
+                }
+            }
+            if (App.GlobalApp.LoginUser.RemindBirthday != null && App.GlobalApp.LoginUser.RemindBirthday.Value)
+            {
+                temp = _systemAccountManager.RemindHealthCertificateExpired() + "\n";
+                if (!string.IsNullOrWhiteSpace(temp))
+                {
+                    msg += "健康证过期提醒:\n\t";
+                    msg += temp;
+                }
+            }
+            if (!string.IsNullOrWhiteSpace(msg))
+            {
+                DXMessageBox.Show(null, msg.Replace(@"\n", "\n\t"), "每日提醒:", MessageBoxButton.OK);
+            }
+        }
+
+        #region 按钮
 
         public void RibbonNodeMaintain(BarItem clickItem)
         {
@@ -212,5 +253,7 @@ namespace JxcApplication.ViewModels
         {
             CreateTabItem(ViewModelSource.Create(() => new MailMainViewModel(GetBarItemId(clickItem),clickItem.Content.ToString())));
         }
+
+        #endregion
     }
 }

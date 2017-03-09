@@ -75,5 +75,14 @@ namespace BusinessDb.Cor.Business
         {
             return _entities.GetProductNewInfo(productGuid, MergeOption.NoTracking).FirstOrDefault();
         }
+        /// <summary>
+        /// 销售开单，检查锁定库存，锁定数量不能销售
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckLockAmount( Guid storageId, Guid productId, decimal amount,
+            out string msg)
+        {
+            return _entities.CheckLockAmount(storageId, productId, amount,out msg);
+        }
     }
 }

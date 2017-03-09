@@ -476,6 +476,7 @@ namespace JxcApplication.ViewModels.Sell
                 }
             }
         }
+        
         /// <summary>
         ///     打印
         /// </summary>
@@ -504,6 +505,17 @@ namespace JxcApplication.ViewModels.Sell
             Report.Report.ShowPreviewDialog(OrderType(), Charge.Id);
         }
 
+        /// <summary>
+        /// 客户选择发生改变
+        /// </summary>
+        public virtual void CustomerChanged()
+        {
+            if (!Charge.CustomerId.HasValue) return;
+            //修改客户关联对应负责的业务员
+            Charge.BusinessUser = CustomerManager.Find(Charge.CustomerId.Value).ResponsibleSalesman;
+            RaisePropertyChanged("Charge");
+
+        }
         #region 历史订单
 
 

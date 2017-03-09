@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201611150141375_productOutStorageAddPayType.Designer.cs">
       <DependentUpon>201611150141375_productOutStorageAddPayType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702211138399_addLockAmount.cs" />
+    <Compile Include="Migrations\201702211138399_addLockAmount.Designer.cs">
+      <DependentUpon>201702211138399_addLockAmount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoriesOrder.cs" />
     <Compile Include="Models\CategoriesOutOrder.cs" />
@@ -352,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611150141375_productOutStorageAddPayType.resx">
       <DependentUpon>201611150141375_productOutStorageAddPayType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702211138399_addLockAmount.resx">
+      <DependentUpon>201702211138399_addLockAmount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

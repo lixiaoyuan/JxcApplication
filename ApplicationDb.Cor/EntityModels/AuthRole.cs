@@ -11,7 +11,6 @@ namespace ApplicationDb.Cor
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AuthRole()
         {
-            AuthMenuToolButton = new HashSet<AuthMenuToolButton>();
             AuthRoleMenu = new HashSet<AuthRoleMenu>();
             AuthUserRole = new HashSet<AuthUserRole>();
         }
@@ -35,9 +34,6 @@ namespace ApplicationDb.Cor
         public Guid? ModifyUserId { get; set; }
 
         public string ModifyUserName { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuthMenuToolButton> AuthMenuToolButton { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuthRoleMenu> AuthRoleMenu { get; set; }

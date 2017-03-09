@@ -28,10 +28,6 @@ namespace ApplicationDb.Cor.EntityMapping
                 .IsUnicode(false)
                 .HasMaxLength(50);
 
-            HasMany(e => e.AuthMenuToolButton)
-                .WithOptional(e => e.AuthRole)
-                .HasForeignKey(e => e.RoleId);
-
             HasMany(e => e.AuthRoleMenu)
                 .WithOptional(e => e.AuthRole)
                 .HasForeignKey(e => e.RoleId);

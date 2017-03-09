@@ -91,12 +91,9 @@
     <Compile Include="Business\WorkApprovalManager.cs" />
     <Compile Include="Business\WorkApprovalOrderManager.cs" />
     <Compile Include="Business\ZhangtaoManager.cs" />
-    <Compile Include="EntityMapping\AuthMenuMap.cs" />
-    <Compile Include="EntityMapping\AuthMenuToolButtonMap.cs" />
     <Compile Include="EntityMapping\AuthRibbonNodeMap.cs" />
     <Compile Include="EntityMapping\AuthRoleMap.cs" />
     <Compile Include="EntityMapping\AuthRoleMenuMap.cs" />
-    <Compile Include="EntityMapping\AuthToolButtonMap.cs" />
     <Compile Include="EntityMapping\AuthUserRoleMap.cs" />
     <Compile Include="EntityMapping\FileCabinetsMap.cs" />
     <Compile Include="EntityMapping\ForleaveTypeMap.cs" />
@@ -112,12 +109,9 @@
     <Compile Include="EntityMapping\WorkApprovalOrderUserMap.cs" />
     <Compile Include="EntityMapping\WorkApprovalUserMap.cs" />
     <Compile Include="EntityMapping\ZhangtaoMap.cs" />
-    <Compile Include="EntityModels\AuthMenu.cs" />
-    <Compile Include="EntityModels\AuthMenuToolButton.cs" />
     <Compile Include="EntityModels\AuthRibbonNode.cs" />
     <Compile Include="EntityModels\AuthRole.cs" />
     <Compile Include="EntityModels\AuthRoleMenu.cs" />
-    <Compile Include="EntityModels\AuthToolButton.cs" />
     <Compile Include="EntityModels\AuthUserRole.cs" />
     <Compile Include="EntityModels\FileCabinets.cs" />
     <Compile Include="EntityModels\ForleaveType.cs" />
@@ -235,6 +229,10 @@
     <Compile Include="Migrations\201702151317356_updateSystemUser.Designer.cs">
       <DependentUpon>201702151317356_updateSystemUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702201229547_addSystemUserRemind.cs" />
+    <Compile Include="Migrations\201702201229547_addSystemUserRemind.Designer.cs">
+      <DependentUpon>201702201229547_addSystemUserRemind.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\FileFormatType.cs" />
     <Compile Include="Model\NavigationMenuGroup.cs" />
@@ -335,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702151317356_updateSystemUser.resx">
       <DependentUpon>201702151317356_updateSystemUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702201229547_addSystemUserRemind.resx">
+      <DependentUpon>201702201229547_addSystemUserRemind.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

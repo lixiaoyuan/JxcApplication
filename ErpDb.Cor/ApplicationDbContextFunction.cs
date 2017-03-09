@@ -148,7 +148,10 @@ namespace BusinessDb.Cor
         {
             return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<ReportAccountInfoModel>("dbo.Report_AccountSnapshot @snapshotDateTime",new SqlParameter("snapshotDateTime", snapshotDate));
         }
-
+        /// <summary>
+        /// 获取客户所有订单未结算金额，正数客户欠款，负数公司欠款
+        /// </summary>
+        /// <returns></returns>
         public static decimal GetCustomerAllOrderPrice(this ApplicationDbContext db, Guid customerId)
         {
             var outParameter = new SqlParameter("OutSumPrice", SqlDbType.Decimal);
@@ -159,6 +162,25 @@ namespace BusinessDb.Cor
             decimal retuvalue = 0;
             decimal.TryParse(outParameter.Value.ToString(), out retuvalue);
             return retuvalue;
+        }
+        /// <summary>
+        /// 销售开单，检查锁定库存，锁定数量不能销售
+        /// </summary>
+        /// <returns></returns>
+        public static bool CheckLockAmount(this ApplicationDbContext db, Guid storageId, Guid productId, decimal amount,
+            out string msg)
+        {
+            var storageIdParameter = new SqlParameter("storageId", storageId);
+            var productIdParameter = new SqlParameter("productId", productId);
+            var amountParameter = new SqlParameter("amount", amount);
+            var allowParameter = new SqlParameter("allow", SqlDbType.Bit, 1) {Direction = ParameterDirection.Output};
+            var msgParameter = new SqlParameter("msg", SqlDbType.VarChar, 300) {Direction = ParameterDirection.Output};
+            ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreCommand("dbo.CheckLockAmount @storageId,@productId,@amount,@allow out,@msg out", storageIdParameter,
+                productIdParameter,
+                amountParameter,
+                allowParameter, msgParameter);
+            msg = msgParameter.Value.ToString();
+            return bool.Parse(allowParameter.Value.ToString());
         }
     }
 }

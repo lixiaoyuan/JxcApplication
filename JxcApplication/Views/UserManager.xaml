@@ -92,9 +92,23 @@
                                 <dxe:TextEditSettings MaxLength="50"/>
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn FieldName="Gender" Header="性别(男)" />
+                        <dxg:GridColumn FieldName="Gender" Header="性别(男)" Width="60">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:CheckEditSettings IsThreeState="False"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
                         <dxg:GridColumn FieldName="Birthday" Header="生日" />
-                        <dxg:GridColumn FieldName="HealthCertificateExpired" Header="健康证过期日期" />
+                        <dxg:GridColumn FieldName="RemindBirthday" Header="生日提醒" Width="60">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:CheckEditSettings IsThreeState="False"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="HealthCertificateExpired" Header="健康证过期日期"/>
+                        <dxg:GridColumn FieldName="RemindHealthCertificateExpired" Header="健康证过期日期提醒" Width="80">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:CheckEditSettings IsThreeState="False"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
                         <dxg:GridColumn FieldName="Tel" Header="电话" >
                             <dxg:GridColumn.EditSettings>
                                 <dxe:TextEditSettings MaxLength="50"/>

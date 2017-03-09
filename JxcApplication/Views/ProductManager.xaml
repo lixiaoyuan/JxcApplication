@@ -125,6 +125,11 @@
                                     <dxe:TextEditSettings Mask="n" MaskType="Numeric" />
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="LockAmount" Header="库存锁定">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings Mask="n" MaskType="Numeric" />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
                             <dxg:GridColumn FieldName="LifeDay" Header="保质期(天)" />
                             <dxg:GridColumn FieldName="Enable" Header="是否有效" />
                         </dxg:GridControl.Columns>

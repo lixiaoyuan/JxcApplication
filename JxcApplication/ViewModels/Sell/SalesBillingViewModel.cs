@@ -328,6 +328,26 @@ namespace JxcApplication.ViewModels.Sell
                     return false;
                 }
             }
+            //检查是否超出锁定数量
+            //foreach (ProductOutStorageDetail detail in OutStorageDetails)
+            //{
+            //    if(!detail.ProductId.HasValue)continue;
+                
+            //        ProductManager.CheckLockAmount(OutStorage.StorageId,detail.ProductId.Value,)
+            //}
+           var groupOutStock= OutStorageDetails.GroupBy(a => a.ProductId).Select(a => new {productId = a.Key, outStock = a.Sum(b => b.OutStock)});
+            string msgCheckStock = "";
+            foreach (var groupValue in groupOutStock)
+            {
+                if (!groupValue.productId.HasValue) continue;
+                if (!ProductManager.CheckLockAmount(OutStorage.StorageId.Value, groupValue.productId.Value,
+                    groupValue.outStock, out msgCheckStock))
+                {
+                    DXMessageBox.Show(msgCheckStock.Replace(@"\n","\n").Replace(@"\t","\t"), "警告:", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+            //更新项目的基本信息
             OutStorage.SumPrice = sumDecimal;
             OutStorage.StatusFlag = 0;
             if (IsNewOrder)

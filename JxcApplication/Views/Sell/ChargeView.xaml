@@ -29,6 +29,8 @@
                                Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True" />
         <dxmvvm:EventToCommand SourceName="TableView" EventName="CellValueChanged"
                                Command="{Binding CellValueChangedCommand}" PassEventArgsToCommand="True" />
+        <dxmvvm:EventToCommand SourceName="CustomerLookUpEdit" EventName="EditValueChanged"
+                               Command="{Binding CustomerChangedCommand}"/>
     </dxmvvm:Interaction.Behaviors>
 
     <UserControl.Resources>

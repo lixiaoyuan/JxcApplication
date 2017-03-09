@@ -9,8 +9,7 @@ namespace BusinessDb.Cor.EntityModels
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
-        {
+        public Product(){
             ProductInStorageDetail = new HashSet<ProductInStorageDetail>();
             ProductOutStorageDetail = new HashSet<ProductOutStorageDetail>();
         }
@@ -41,7 +40,10 @@ namespace BusinessDb.Cor.EntityModels
         public string Manufacturer { get; set; }
 
         public int? LifeDay { get; set; }
-
+        /// <summary>
+        /// Ëø¶¨ÊýÁ¿
+        /// </summary>
+        public decimal? LockAmount { get; set; }
         public bool? Enable { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

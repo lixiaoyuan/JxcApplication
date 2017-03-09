@@ -61,11 +61,11 @@
                         <dxg:GridDragDropManager x:Name="MenuDragDropManager"/>
                     </dxmvvm:Interaction.Behaviors>
                     <dxg:GridControl.View>
-                        <dxg:TableView AllowEditing="False"/>
+                        <dxg:TableView AllowEditing="False" AutoWidth="True"/>
                     </dxg:GridControl.View>
                     <dxg:GridControl.Columns>
                         <dxg:GridColumn FieldName="DisplayName" Header="菜单名称"/>
-                        <dxg:GridColumn FieldName="Sort" Header="序号" />
+                        <dxg:GridColumn FieldName="Sort" Header="序号" Width="50"/>
                     </dxg:GridControl.Columns>
                 </dxg:GridControl>
                 <dxg:TreeListControl x:Name="TreeListControlMenuNode" Grid.Column="1" ItemsSource="{Binding RibbonNode}">

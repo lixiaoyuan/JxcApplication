@@ -297,7 +297,6 @@
     <Compile Include="ViewModels\ReportAccountInfoViewModel.cs" />
     <Compile Include="ViewModels\RepotProductInStoreViewModel.cs" />
     <Compile Include="ViewModels\RibbonNodeMaintainViewModel.cs" />
-    <Compile Include="ViewModels\RibbonNodeViewModel.cs" />
     <Compile Include="ViewModels\WageViewModel.cs" />
     <Compile Include="ViewModels\WaitWorkApprovalOrderViewModel.cs" />
     <Compile Include="ViewModels\WorkApprovalMaintainViewModel.cs" />
@@ -386,9 +385,6 @@
     </Compile>
     <Compile Include="Views\ReportSalesDetails.xaml.cs">
       <DependentUpon>ReportSalesDetails.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RibbonNode.xaml.cs">
-      <DependentUpon>RibbonNode.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RibbonNodeMaintain.xaml.cs">
       <DependentUpon>RibbonNodeMaintain.xaml</DependentUpon>
@@ -671,10 +667,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RibbonNode.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\RibbonNodeMaintain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -796,6 +788,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\UI\" />
+    <Folder Include="ViewModels\Approval\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Tile\Dropbox_32.png" />
