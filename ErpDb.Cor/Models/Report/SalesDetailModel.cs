@@ -61,6 +61,8 @@ namespace BusinessDb.Cor.Models.Report
         [Display(Name = "总价")]
         [DataType(DataType.Currency)]
         public decimal? SumPrice { get; set; }
+        [Display(Name = "备注")]
+        public string Remark { get; set; }
         [Display(AutoGenerateField = false)]
         public Guid PutOutId { get; set; }
     }

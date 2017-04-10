@@ -91,7 +91,7 @@ namespace BusinessDb.Cor.Business
         public ObservableCollection<OrderBrowser> GetHistoryInOrder(string orderType,DateTime starTime)
         {
             return _entities.ProductInStorage.Where(a =>
-                a.OrderType == orderType && a.CreteDate > starTime).OrderByDescending(
+                a.OrderType == orderType && DbFunctions.DiffYears(a.CreteDate, starTime) == 0&& DbFunctions.DiffMonths(a.CreteDate, starTime) == 0).OrderByDescending(
                     b => b.CreteDate).Select(
                         b => new OrderBrowser() { Code = b.Code, DateTime = b.CreteDate, Id = b.Id }).AsNoTracking().ToObservableCollection();
         }
@@ -103,7 +103,7 @@ namespace BusinessDb.Cor.Business
         public ObservableCollection<OrderBrowser> GetHistoryReturnInOrder(string orderType,DateTime starTime)
         {
             return _entities.ProductReturnInStorage.Where(a =>
-                a.OrderType == orderType && a.CreateDate > starTime).OrderByDescending(
+                a.OrderType == orderType && DbFunctions.DiffYears(a.CreateDate, starTime) == 0 && DbFunctions.DiffMonths(a.CreateDate, starTime) == 0).OrderByDescending(
                     b => b.CreateDate).Select(
                         b => new OrderBrowser() { Code = b.Code, DateTime = b.CreateDate, Id = b.Id }).AsNoTracking().ToObservableCollection();
 
@@ -116,7 +116,7 @@ namespace BusinessDb.Cor.Business
         public ObservableCollection<OrderBrowser> GetHistoryOutOrder(string orderType, DateTime starTime)
         {
             return _entities.ProductOutStorage.Where(a =>
-                a.OrderType == orderType && a.CreateDate > starTime).OrderByDescending(
+                a.OrderType == orderType && DbFunctions.DiffYears(a.CreateDate, starTime) == 0 && DbFunctions.DiffMonths(a.CreateDate, starTime) == 0).OrderByDescending(
                     b => b.CreateDate).Select(
                         b => new OrderBrowser() { Code = b.Code, DateTime = b.CreateDate, Id = b.Id }).AsNoTracking().ToObservableCollection();
         }
@@ -129,7 +129,7 @@ namespace BusinessDb.Cor.Business
         public ObservableCollection<OrderBrowser> GetHistoryChargeOrder(DateTime starTime)
         {
             return _entities.Charge.Where(
-                    a => a.CreateDate > starTime).OrderByDescending(
+                    a => DbFunctions.DiffYears(a.CreateDate, starTime) == 0 && DbFunctions.DiffMonths(a.CreateDate, starTime) == 0).OrderByDescending(
                         b => b.CreateDate).Select(
                             c => new OrderBrowser() {Code = c.Code,DateTime = c.CreateDate,Id = c.Id}).ToObservableCollection();
         }
@@ -141,7 +141,7 @@ namespace BusinessDb.Cor.Business
         public ObservableCollection<OrderBrowser> GetHistoryExpensesOrder(string orderType,DateTime starTime)
         {
             return
-                _entities.Expenses.Where(a => a.OrderType == orderType && a.CreteDate >= starTime)
+                _entities.Expenses.Where(a => a.OrderType == orderType && DbFunctions.DiffYears(a.CreteDate, starTime) == 0 && DbFunctions.DiffMonths(a.CreteDate, starTime) == 0)
                     .OrderByDescending(a => a.CreteDate)
                     .Select(a => new OrderBrowser() { Code = a.Code, DateTime = a.CreteDate, Id = a.Id })
                     .ToObservableCollection();

@@ -196,6 +196,7 @@
     <Compile Include="Control\SelectUser.xaml.cs">
       <DependentUpon>SelectUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\ShowOrderEventArgs.cs" />
     <Compile Include="Control\UserEdit.xaml.cs">
       <DependentUpon>UserEdit.xaml</DependentUpon>
     </Compile>

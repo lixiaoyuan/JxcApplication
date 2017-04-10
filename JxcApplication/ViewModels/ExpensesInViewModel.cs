@@ -8,6 +8,7 @@ using BusinessDb.Cor.Models;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm;
 using DevExpress.Xpf.Grid;
+using JxcApplication.Core;
 using JxcApplication.ViewModels.Inherit;
 
 namespace JxcApplication.ViewModels
@@ -100,7 +101,6 @@ namespace JxcApplication.ViewModels
             SystemUserLookUp = SystemAccountManager.QueryLookUp();
 
             InitNewOrder();
-            InitHistoryOrder();
         }
 
         /// <summary>
@@ -115,24 +115,16 @@ namespace JxcApplication.ViewModels
             Expenses = order.MasterStorage;
             RaisePropertiesChanged("ExpensesDetail", "Expenses");
         }
-        /// <summary>
-        ///     初始化或刷新历史纪录列表
-        /// </summary>
-        private void InitHistoryOrder()
-        {
-            HistoryOrderList = productOrderManager.GetHistoryExpensesOrder(OrderType(), DBUnit.GetDbTime().AddMonths(-2));
-            _isHistoryItemChanged = false;
-            RaisePropertyChanged("HistoryOrderList");
-        }
+
         /// <summary>
         ///     加载历史订单
         /// </summary>
-        /// <param name="id"></param>
-        private void LoadHistory(Guid id)
+        /// <param name="arg"></param>
+        public virtual void LoadHistory(ShowOrderEventArgs arg)
         {
             IsNewOrder = false;
             expensesUpdateManager = ExpensesInUpdateManager.Create();
-            var updateOrder = expensesUpdateManager.GetUpdateExpensesOrder(id);
+            var updateOrder = expensesUpdateManager.GetUpdateExpensesOrder(arg.OrderId);
             if (updateOrder == null)
             {
                 ShowNotification("没有找到历史订单!");
@@ -223,7 +215,6 @@ namespace JxcApplication.ViewModels
                 return;
             }
             var orderBrowser = (OrderBrowser)e.NewItem;
-            LoadHistory(orderBrowser.Id);
         }
 
         /// <summary>
@@ -236,7 +227,6 @@ namespace JxcApplication.ViewModels
             if (e.HitInfo.InRow)
             {
                 var orderBrowser = (OrderBrowser)tableView.Grid.GetRow(e.HitInfo.RowHandle);
-                LoadHistory(orderBrowser.Id);
             }
         }
 
@@ -276,7 +266,6 @@ namespace JxcApplication.ViewModels
             if (result)
             {
                 InitNewOrder();
-                InitHistoryOrder();
             }
         }
 

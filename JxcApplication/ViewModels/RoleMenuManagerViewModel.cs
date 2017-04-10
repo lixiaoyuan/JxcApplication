@@ -21,7 +21,7 @@ namespace JxcApplication.ViewModels
         private readonly RoleManager _roleManager = RoleManager.Create();
         private bool _isTab1;
         private bool _isTab2;
-        private AuthRibbonNode _lastMenu;
+        //private AuthRibbonNode _lastMenu;
         private AuthRole _lastRole;
         private List<Guid> _prevs;
 

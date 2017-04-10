@@ -9,33 +9,30 @@
              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
-        <DataTemplate x:Key="DataTemplateItem">
-            <Grid>
-                
-            </Grid>
-        </DataTemplate>
-    </UserControl.Resources>
     <Border BorderThickness="1" BorderBrush="DodgerBlue">
-    <Grid>
-        <dxg:GridControl x:Name="GridControlOrderBrowser"  ItemsSource="{Binding HistoryOrderList}" AllowUpdateTwoWayBoundPropertiesOnSynchronization="False">
-            <dxmvvm:Interaction.Behaviors>
-                <dxmvvm:EventToCommand SourceName="GridControlOrderBrowser" EventName="SelectedItemChanged"
-                                       Command="{Binding OrderBrowserSelectedItemChangedCommand}"
-                                       PassEventArgsToCommand="True"/>
-                <dxmvvm:EventToCommand SourceName="TableViewOrderBrowser" EventName="RowDoubleClick" 
-                                       Command="{Binding OrderBrowserRowDoubleClickCommand}"
-                                       PassEventArgsToCommand="True"></dxmvvm:EventToCommand>
-            </dxmvvm:Interaction.Behaviors>
-            <dxg:GridControl.View>
-                <dxg:TableView x:Name="TableViewOrderBrowser" AutoWidth="True" ShowSearchPanelMode="Never" ShowGroupPanel="False" AllowEditing="False"/>
-            </dxg:GridControl.View>
-            <dxg:GridControl.Columns>
-                <dxg:GridColumn FieldName="Code" Header="订单编码" />
-                <dxg:GridColumn FieldName="DateTime" Header="录入日期" />
-            </dxg:GridControl.Columns>
-        </dxg:GridControl>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                <Label Content="日期:"></Label>
+                <dxe:DateEdit Name="DateEdit" EditValueChanged="DateEdit_OnEditValueChanged" Margin="5,0,0,0" Width="150" Mask="y" AllowRoundOutOfRangeValue="True" IsTextEditable="False" MaskUseAsDisplayFormat="True">
+                    <dxe:DateEdit.StyleSettings>
+                        <dxe:DateEditPickerStyleSettings/>
+                    </dxe:DateEdit.StyleSettings>
+                </dxe:DateEdit>
+            </StackPanel>
+            <dxg:GridControl x:Name="GridControlOrderBrowser" Grid.Row="1" Margin="0,5,0,0"  AllowUpdateTwoWayBoundPropertiesOnSynchronization="False" SelectedItemChanged="GridControlOrderBrowser_OnSelectedItemChanged" >
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="TableViewOrderBrowser" AutoWidth="True" ShowSearchPanelMode="Never" ShowGroupPanel="False" AllowEditing="False" RowDoubleClick="TableViewOrderBrowser_OnRowDoubleClick"/>
+                </dxg:GridControl.View>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="Code" Header="订单编码" />
+                    <dxg:GridColumn FieldName="DateTime" Header="录入日期" />
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
 
-    </Grid>
+        </Grid>
     </Border>
 </UserControl>

@@ -14,13 +14,13 @@ using DevExpress.Xpf.Grid;
 using BusinessDb.Cor;
 using BusinessDb.Cor.EntityModels;
 using DevExpress.Xpf.Editors;
+using JxcApplication.Core;
 using JxcApplication.ViewModels.Inherit;
 
 namespace JxcApplication.ViewModels.Storage
 {
     public class RawOutStorageViewModel : ViewModelTabItem
     {
-        private bool _isHistoryItemChanged;
         private bool _isNewOrder;
         private ProductOrderManager _productOrderManager;
 
@@ -74,8 +74,6 @@ namespace JxcApplication.ViewModels.Storage
             //ProductLookUp = ProductManager.QueryByProductType("YL");
 
             InitNewOrder();
-            InitHistoryOrder();
-
         }
 
         private void InitNewOrder()
@@ -97,27 +95,16 @@ namespace JxcApplication.ViewModels.Storage
         }
 
         /// <summary>
-        ///     初始化或刷新历史纪录列表
-        /// </summary>
-        private void InitHistoryOrder()
-        {
-            Debug.Write("InitHistoryOrder");
-            HistoryOrderList = _productOrderManager.GetHistoryOutOrder(OrderType(), DBUnit.GetDbTime().AddMonths(-2));
-            _isHistoryItemChanged = false;
-            RaisePropertyChanged("HistoryOrderList");
-        }
-
-        /// <summary>
         ///     加载历史订单
         /// </summary>
-        /// <param name="id"></param>
-        private void LoadHistory(Guid id)
+        /// <param name="arg"></param>
+        public virtual void LoadHistory(ShowOrderEventArgs arg)
         {
             IsNewOrder = false;
             StoreLookUpEnable = false;
             _deleteDetails.Clear();
             _rawOutOrderUpdateManager = RawOutOrderUpdateManager.Create();
-            var updateOrder = _rawOutOrderUpdateManager.GetUpdateProductOutOrder(id);
+            var updateOrder = _rawOutOrderUpdateManager.GetUpdateProductOutOrder(arg.OrderId);
             if (updateOrder == null)
             {
                 ShowNotification("没有找到历史订单!");
@@ -333,36 +320,6 @@ namespace JxcApplication.ViewModels.Storage
             if (result)
             {
                 InitNewOrder();
-                InitHistoryOrder();
-            }
-        }
-
-        /// <summary>
-        ///     查看历史订单变更
-        /// </summary>
-        /// <param name="e"></param>
-        public virtual void OrderBrowserSelectedItemChanged(SelectedItemChangedEventArgs e)
-        {
-            if (_isHistoryItemChanged == false)
-            {
-                _isHistoryItemChanged = true;
-                return;
-            }
-            var orderBrowser = (OrderBrowser)e.NewItem;
-            LoadHistory(orderBrowser.Id);
-        }
-
-        /// <summary>
-        ///     查看历史订单(双击)
-        /// </summary>
-        /// <param name="e"></param>
-        public virtual void OrderBrowserRowDoubleClick(RowDoubleClickEventArgs e)
-        {
-            var tableView = (TableView)e.Source;
-            if (e.HitInfo.InRow)
-            {
-                var orderBrowser = (OrderBrowser)tableView.Grid.GetRow(e.HitInfo.RowHandle);
-                LoadHistory(orderBrowser.Id);
             }
         }
 

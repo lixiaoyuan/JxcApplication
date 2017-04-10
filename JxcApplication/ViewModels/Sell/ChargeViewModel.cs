@@ -13,13 +13,13 @@ using BusinessDb.Cor;
 using BusinessDb.Cor.EntityModels;
 using DevExpress.Mvvm;
 using JxcApplication.Control;
+using JxcApplication.Core;
 using JxcApplication.ViewModels.Inherit;
 
 namespace JxcApplication.ViewModels.Sell
 {
     public class ChargeViewModel : ViewModelTabItem
     {
-        private bool _isHistoryItemChanged;
         private ProductChargeInsertManager _chargeInsertManager;
         private PorductChargeUpdateManager _chargeUpdateManager;
         private ProductOrderManager _productOrderManager;
@@ -74,7 +74,6 @@ namespace JxcApplication.ViewModels.Sell
             SystemUserLookUp = SystemAccountManager.QueryLookUp();
 
             InitNewOrder();
-            InitHistoryOrder();
         }
 
         private void InitNewOrder()
@@ -443,7 +442,6 @@ namespace JxcApplication.ViewModels.Sell
             if (result)
             {
                 InitNewOrder();
-                InitHistoryOrder();
             }
         }
 
@@ -516,30 +514,16 @@ namespace JxcApplication.ViewModels.Sell
             RaisePropertyChanged("Charge");
 
         }
-        #region 历史订单
-
-
-        /// <summary>
-        ///     初始化或刷新历史纪录列表
-        /// </summary>
-        private void InitHistoryOrder()
-        {
-            Debug.Write("InitHistoryOrder");
-            HistoryOrderList = _productOrderManager.GetHistoryChargeOrder(DBUnit.GetDbTime().AddMonths(-2));
-            _isHistoryItemChanged = false;
-            RaisePropertyChanged("HistoryOrderList");
-        }
 
         /// <summary>
         ///     加载历史订单
         /// </summary>
-        /// <param name="id"></param>
-        private void LoadHistory(Guid id)
+        /// <param name="arg"></param>
+        public virtual void LoadHistory(ShowOrderEventArgs arg)
         {
             IsNewOrder = false;
             _chargeUpdateManager = PorductChargeUpdateManager.Create();
-            //ProductReturnOrderUpdateManager = ProductReturnOrderUpdateManager.Create();
-            var updateOrder = _chargeUpdateManager.GetUpdateProductChargeOrder(id);
+            var updateOrder = _chargeUpdateManager.GetUpdateProductChargeOrder(arg.OrderId);
             if (updateOrder == null)
             {
                 ShowNotification("没有找到历史订单!");
@@ -550,37 +534,6 @@ namespace JxcApplication.ViewModels.Sell
             Charge = updateOrder.MasterStorage;
             RaisePropertiesChanged("Details", "Charge");
         }
-
-        /// <summary>
-        ///     查看历史订单变更
-        /// </summary>
-        /// <param name="e"></param>
-        public virtual void OrderBrowserSelectedItemChanged(SelectedItemChangedEventArgs e)
-        {
-            if (_isHistoryItemChanged == false)
-            {
-                _isHistoryItemChanged = true;
-                return;
-            }
-            var orderBrowser = (OrderBrowser)e.NewItem;
-            LoadHistory(orderBrowser.Id);
-        }
-
-        /// <summary>
-        ///     查看历史订单(双击)
-        /// </summary>
-        /// <param name="e"></param>
-        public virtual void OrderBrowserRowDoubleClick(RowDoubleClickEventArgs e)
-        {
-            var tableView = (TableView)e.Source;
-            if (e.HitInfo.InRow)
-            {
-                var orderBrowser = (OrderBrowser)tableView.Grid.GetRow(e.HitInfo.RowHandle);
-                LoadHistory(orderBrowser.Id);
-            }
-        }
-
-        #endregion
 
         public ChargeViewModel(Guid menuId, string caption) : base(menuId, caption)
         {

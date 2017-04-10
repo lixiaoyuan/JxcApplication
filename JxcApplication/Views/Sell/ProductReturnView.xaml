@@ -95,13 +95,16 @@
                                                        DefaultCategoryTemplate="{StaticResource RibbonDefaultPageCategoryTemplate}" />
                 </dxr:RibbonControl.CategoryTemplateSelector>
             </dxr:RibbonControl>
-            <Grid>
-                <Grid>
+            <Grid x:Name="GridMain">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Border Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" CornerRadius="7" Background="LightSteelBlue">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" CornerRadius="7" Background="LightSteelBlue">
                         <Grid Margin="0,5,0,0">
                             <dxlc:LayoutControl Width="auto" Orientation="Horizontal">
                                 <dxlc:LayoutGroup View="Group" Orientation="Vertical">
@@ -298,81 +301,20 @@
                             <dxg:GridSummaryItem SummaryType="Count" ShowInColumn="ProductId" DisplayFormat="总记录数:{0}" />
                         </dxg:GridControl.TotalSummary>
                     </dxg:GridControl>
-                </Grid>
-                <!--#region历史订单-->
-                <control:OrderInBrowser x:Name="OrderUi" Background="Bisque" Grid.Column="0" Grid.Row="0"
-                                        HorizontalAlignment="Left" Width="0" Height="0" VerticalAlignment="Bottom"
-                                        Visibility="Hidden" dxmvvm:ViewModelExtensions.ParentViewModel="{Binding}">
-                    <control:OrderInBrowser.Triggers>
-                        <EventTrigger SourceName="OrderUi" RoutedEvent="control:OrderInBrowser.MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation To="0" Duration="0:0:0.050"
-                                                     Storyboard.Target="{Binding ElementName=OrderUi}"
-                                                     Storyboard.TargetProperty="Width" />
-                                    <DoubleAnimation To="0" Duration="0:0:0.050"
-                                                     Storyboard.Target="{Binding ElementName=OrderUi}"
-                                                     Storyboard.TargetProperty="Height" />
-                                    <ObjectAnimationUsingKeyFrames BeginTime="0:0:0.050"
-                                                                   Storyboard.Target="{Binding ElementName=OrderUi}"
-                                                                   Storyboard.TargetProperty="Visibility">
-                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
-                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
-                                    </ObjectAnimationUsingKeyFrames>
-                                    <ObjectAnimationUsingKeyFrames Storyboard.Target="{Binding ElementName=TouchUi}"
-                                                                   Storyboard.TargetProperty="Background">
-                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
-                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.020">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <SolidColorBrush Color="DodgerBlue" />
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
-                                    </ObjectAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </control:OrderInBrowser.Triggers>
-                </control:OrderInBrowser>
-
-                <Border x:Name="TouchUi" Background="DodgerBlue" Width="60" Height="30" HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom" CornerRadius="10">
-                    <Border.Triggers>
-                        <EventTrigger SourceName="TouchUi" RoutedEvent="Border.MouseEnter">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation To="300" Duration="0:0:0.050" Storyboard.TargetName="OrderUi"
-                                                         Storyboard.TargetProperty="Width" />
-                                        <DoubleAnimation To="400" Duration="0:0:0.050" Storyboard.TargetName="OrderUi"
-                                                         Storyboard.TargetProperty="Height" />
-                                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0.050"
-                                                                       Storyboard.TargetName="OrderUi"
-                                                                       Storyboard.TargetProperty="Visibility">
-                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.020"
-                                                                        Value="{x:Static Visibility.Visible}" />
-                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TouchUi"
-                                                                       Storyboard.TargetProperty="Background">
-                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.020">
-                                                    <DiscreteObjectKeyFrame.Value>
-                                                        <SolidColorBrush Color="DeepSkyBlue" />
-                                                    </DiscreteObjectKeyFrame.Value>
-                                                </DiscreteObjectKeyFrame>
-                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
-                    </Border.Triggers>
-                    <TextBlock Text="历史订单" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" />
-                </Border>
-                <!--#endregion-->
+                <Expander Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" ExpandDirection="Right" >
+                    <Expander.Header>
+                        <TextBlock Text="历史订单"/>
+                    </Expander.Header>
+                    <Expander.Content>
+                        <Grid Width="300" Height="{Binding ElementName=GridMain,Path=ActualHeight}" >
+                            <control:OrderInBrowser x:Name="OrderInBrowser" Margin="0,20" OrderType="XT" ShowType="ReturnInOrder">
+                                <dxmvvm:Interaction.Behaviors>
+                                    <dxmvvm:EventToCommand EventName="ShowOrder" SourceName="OrderInBrowser" Command="{Binding LoadHistoryCommand}" PassEventArgsToCommand="True"></dxmvvm:EventToCommand>
+                                </dxmvvm:Interaction.Behaviors>
+                            </control:OrderInBrowser>
+                        </Grid>
+                    </Expander.Content>
+                </Expander>
             </Grid>
         </DockPanel>
 
