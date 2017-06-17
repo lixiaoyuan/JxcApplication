@@ -18,8 +18,19 @@ namespace ApplicationDb.Cor.Business
         {
             return new RoleManager();
         }
-
-        public RoleManager()
+        /// <summary>
+        /// 是否是业务员组
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsSalesmanGroup(SystemUser user)
+        {
+            using (ApplicationDbContext db=new ApplicationDbContext())
+            {
+                Guid id = Guid.Parse("D810A93A-C73C-4782-9454-AD660514B5E9");
+               return db.AuthUserRole.Any(a => a.UserId == user.Id && a.RoleId.Value== id);
+            }
+        }
+        private RoleManager()
         {
             
         }

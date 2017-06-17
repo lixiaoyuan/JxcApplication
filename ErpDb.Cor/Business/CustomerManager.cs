@@ -12,7 +12,7 @@ namespace BusinessDb.Cor.Business
     {
         private ApplicationDbContext _entities;
 
-        public CustomerManager()
+        private CustomerManager()
         {
             _entities = new ApplicationDbContext();
         }
@@ -76,10 +76,21 @@ namespace BusinessDb.Cor.Business
         }
         public ObservableCollection<Customer> QueCustomers()
         {
+            _entities = new ApplicationDbContext();
             _entities.Customer.Load();
             return _entities.Customer.Local;
         }
-
+        /// <summary>
+        /// 只显示业务员负责的客户
+        /// </summary>
+        /// <param name="salesmanUserId"></param>
+        /// <returns></returns>
+        public ObservableCollection<Customer> QueCustomers(Guid responsibleSalesmanId)
+        {
+            _entities = new ApplicationDbContext();
+            _entities.Customer.Where(a => a.ResponsibleSalesman == responsibleSalesmanId).Load();
+            return _entities.Customer.Local;
+        }
         /// <summary>
         ///     是否有未保存数据
         /// </summary>
@@ -98,15 +109,6 @@ namespace BusinessDb.Cor.Business
         public bool Save()
         {
             return _entities.SaveChanges() > 0;
-        }
-
-        public ObservableCollection<Customer> Refresh()
-        {
-            //_entities.Customer.Local.Clear();
-            //_entities.Customer.Load();
-            _entities = new ApplicationDbContext();
-            _entities.Customer.Load();
-            return _entities.Customer.Local;
         }
 
         public void Remove(Customer suppliers)

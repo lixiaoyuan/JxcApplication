@@ -18,23 +18,26 @@ namespace JxcApplication.ViewModels.Relation
 {
     public class CustomerViewModel : ViewModelTabItem
     {
-        public ObservableCollection<Customer> Customers { get; set; }
         private CustomerManager _manager;
-
+        public ObservableCollection<Customer> Customers { get; set; }
         public ObservableCollection<SystemUser> SystemUserLookUp { get; set; }
         protected override void OnInitializeInRuntime()
         {
             base.OnInitializeInRuntime();
             _manager = CustomerManager.Create();
-            //SystemAccountManager.Create();
-
             InitData();
         }
 
         private void InitData()
         {
             SystemUserLookUp = SystemAccountManager.QueryLookUp();
-            Customers = _manager.QueCustomers();
+            if (RoleManager.IsSalesmanGroup(App.GlobalApp.LoginUser))
+            {
+                Customers = _manager.QueCustomers(App.GlobalApp.LoginUser.Id);
+            }else
+            {
+                Customers = _manager.QueCustomers();
+            }
         }
 
         public void InitNewRow(InitNewRowEventArgs args)
@@ -54,9 +57,14 @@ namespace JxcApplication.ViewModels.Relation
 
         public void Refresh(GridControl opControl)
         {
-            //_manager.Refresh();
-            //InitData();
-            Customers = _manager.Refresh();
+            if (RoleManager.IsSalesmanGroup(App.GlobalApp.LoginUser))
+            {
+                Customers = _manager.QueCustomers(App.GlobalApp.LoginUser.Id);
+            }
+            else
+            {
+                Customers = _manager.QueCustomers();
+            }
             RaisePropertyChanged("Customers");
             opControl.RefreshData();
         }
