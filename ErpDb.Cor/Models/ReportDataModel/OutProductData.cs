@@ -17,6 +17,7 @@ namespace BusinessDb.Cor.Models.ReportDataModel
             public string CreateUser { get; set; }
             public string BusinessUser { get; set; }
             public decimal SumPrice { get; set; }
+	        public decimal SumQuant { get; set; }
             public string Remark { get; set; }
             public string PaymoneyType { get; set; }
             public override string ToString()

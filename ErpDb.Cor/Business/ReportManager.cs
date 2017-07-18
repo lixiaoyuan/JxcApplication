@@ -59,17 +59,17 @@ namespace BusinessDb.Cor.Business
         /// 销售报表明细
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<SalesDetailModel> QueReportSalesDetail(DateTime startDate,DateTime endDate)
+        public ObservableCollection<SalesDetailModel> QueReportSalesDetail(DateTime startDate,DateTime endDate,Guid busId)
         {
-            return _applicationDb.Report_SalesDetails(startDate, endDate).ToObservableCollection();
+            return _applicationDb.Report_SalesDetails(startDate, endDate,busId).ToObservableCollection();
         }
-        public ObservableCollection<SalesDetailModelUser> QueReportSalesDetailUser(DateTime startDate, DateTime endDate)
+        public ObservableCollection<SalesDetailModelUser> QueReportSalesDetailUser(DateTime startDate, DateTime endDate, Guid busId)
         {
-            return _applicationDb.Report_SalesDetails_User(startDate, endDate).ToObservableCollection();
+            return _applicationDb.Report_SalesDetails_User(startDate, endDate,busId).ToObservableCollection();
         }
-        public ObservableCollection<SalesDetailModelCustomer> QueReportSalesDetailCustomer(DateTime startDate, DateTime endDate)
+        public ObservableCollection<SalesDetailModelCustomer> QueReportSalesDetailCustomer(DateTime startDate, DateTime endDate, Guid busId)
         {
-            return _applicationDb.Report_SalesDetails_Customer(startDate, endDate).ToObservableCollection();
+            return _applicationDb.Report_SalesDetails_Customer(startDate, endDate,busId).ToObservableCollection();
         }
         /// <summary>
         /// 账户交易明细

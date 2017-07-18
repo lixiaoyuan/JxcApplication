@@ -11,7 +11,7 @@ namespace BusinessDb.Cor.Models
     /// </summary>
     public enum PaymentType
     {
-        [Display(Description = "现金")]
+        [Display(Description = "现结")]
         Cash,
         [Display(Description = "转账")]
         Transfer

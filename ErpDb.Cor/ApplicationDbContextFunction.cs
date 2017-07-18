@@ -68,17 +68,17 @@ namespace BusinessDb.Cor
         {
             return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<StockAlarmModel>("dbo.GetStockAlarm  ");
         }
-        public static ObjectResult<SalesDetailModel> Report_SalesDetails(this ApplicationDbContext db,DateTime startDate,DateTime endDate)
+        public static ObjectResult<SalesDetailModel> Report_SalesDetails(this ApplicationDbContext db,DateTime startDate,DateTime endDate,Guid busId)
         {
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<SalesDetailModel>("dbo.Report_SalesDetails @startDate ,@endDate ", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate));
+            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<SalesDetailModel>("dbo.Report_SalesDetails @startDate ,@endDate ,@busId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate),new SqlParameter("busId",busId));
         }
-        public static ObjectResult<SalesDetailModelUser> Report_SalesDetails_User(this ApplicationDbContext db, DateTime startDate, DateTime endDate)
+        public static ObjectResult<SalesDetailModelUser> Report_SalesDetails_User(this ApplicationDbContext db, DateTime startDate, DateTime endDate, Guid busId)
         {
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<SalesDetailModelUser>("dbo.Report_SalesDetails_User @startDate ,@endDate ", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate));
+            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<SalesDetailModelUser>("dbo.Report_SalesDetails_User @startDate ,@endDate ,@busId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("busId", busId));
         }
-        public static ObjectResult<SalesDetailModelCustomer> Report_SalesDetails_Customer(this ApplicationDbContext db, DateTime startDate, DateTime endDate)
+        public static ObjectResult<SalesDetailModelCustomer> Report_SalesDetails_Customer(this ApplicationDbContext db, DateTime startDate, DateTime endDate, Guid busId)
         {
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<SalesDetailModelCustomer>("dbo.Report_SalesDetails_Customer @startDate ,@endDate ", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate));
+            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<SalesDetailModelCustomer>("dbo.Report_SalesDetails_Customer @startDate ,@endDate ,@busId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("busId", busId));
         }
         public static ObjectResult<ProductOutStoreModel> Report_ProductOutStore(this ApplicationDbContext db, DateTime startDate, DateTime endDate)
         {

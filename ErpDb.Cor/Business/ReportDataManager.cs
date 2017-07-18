@@ -45,12 +45,13 @@ namespace BusinessDb.Cor.Business
             {
                yield break;
             }
-            var head = _entities.Database.SqlQuery<OutProductData.Head>("SELECT  a.CreateDate ,c.Name as 'CreateUser',a.Code,a.GiveAddress,a.GiveArea,b.Name AS 'CustomerName',a.AcontackTel as 'Tel' ,d.Area as 'GiveArea' ,c2.Name AS 'BusinessUser',a.SumPrice ,a.AcontackName,a.Remark,CASE a.PaymoneyType WHEN 0 THEN '现金' WHEN 1 THEN '转账' END AS 'PaymoneyType' FROM    dbo.ProductOutStorage a LEFT JOIN dbo.Customer b ON a.CustomerId = b.Id LEFT JOIN ApplicationDb.dbo.SystemUser c ON a.CreateUserId = c.Id LEFT JOIN ApplicationDb.dbo.SystemUser c2 ON c2.Id=a.BusinessUser LEFT JOIN dbo.Acontact d ON a.AcontackId = d.Id WHERE a.Id = @id", new SqlParameter("id", id)).FirstOrDefault();
+            var head = _entities.Database.SqlQuery<OutProductData.Head>("SELECT  a.CreateDate ,c.Name as 'CreateUser',a.Code,a.GiveAddress,a.GiveArea,b.Name AS 'CustomerName',a.AcontackTel as 'Tel' ,d.Area as 'GiveArea' ,c2.Name AS 'BusinessUser',a.SumPrice ,a.AcontackName,a.Remark,CASE a.PaymoneyType WHEN 0 THEN '现结' WHEN 1 THEN '转账' END AS 'PaymoneyType',0.0 as 'SumQuant' FROM    dbo.ProductOutStorage a LEFT JOIN dbo.Customer b ON a.CustomerId = b.Id LEFT JOIN ApplicationDb.dbo.SystemUser c ON a.CreateUserId = c.Id LEFT JOIN ApplicationDb.dbo.SystemUser c2 ON c2.Id=a.BusinessUser LEFT JOIN dbo.Acontact d ON a.AcontackId = d.Id WHERE a.Id = @id", new SqlParameter("id", id)).FirstOrDefault();
             if (head == null)
             {
                yield break;
             }
             var details = _entities.Database.SqlQuery<OutProductData.Detail>("SELECT b.Name AS 'Name',a.ProductSpecification,a.ProductUnit,a.OutStock,a.UnitPrice,a.SumPrice  FROM dbo.ProductOutStorageDetail a LEFT JOIN dbo.Product b ON a.ProductId=b.Id WHERE PutOutId=@PutOutId ORDER BY a.SortId", new SqlParameter("PutOutId", id)).ToList();
+	        head.SumQuant = details.Sum(a => a.OutStock);
             yield return   new OutProductData() { Title = head, Details = details };
         }
 
