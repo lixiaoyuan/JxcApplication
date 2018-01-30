@@ -74,11 +74,11 @@ namespace JxcApplication.ViewModels
                 ObservableCollection<ReportAccountInfoModel> result = null;
                 if (flag == 0)
                 {
-                    result = reportManager.QueReportAccountInfo();
+                    result = reportManager.QueReportAccountInfo(App.GlobalApp.LoginUser.Id);
                 }
                 else if (flag == 1)
                 {
-                    result = reportManager.QueReportSnapshotAccountInfo(SnapshotDate);
+                    result = reportManager.QueReportSnapshotAccountInfo(SnapshotDate, App.GlobalApp.LoginUser.Id);
                 }
                 DispatcherService.BeginInvoke(() =>
                 {

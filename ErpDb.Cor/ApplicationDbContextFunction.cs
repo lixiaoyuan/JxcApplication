@@ -108,31 +108,31 @@ namespace BusinessDb.Cor
         {
             return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModel>("dbo.Report_Paymented @startDate ,@endDate ", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate));
         }
-        public static ObjectResult Report_PaymentedV2(this ApplicationDbContext db, DateTime startDate, DateTime endDate,string paidWithGroup)
+        public static ObjectResult Report_PaymentedV2(this ApplicationDbContext db, DateTime startDate, DateTime endDate,string paidWithGroup,Guid userId)
         {
             if (paidWithGroup == "PaymentModel")
             {
-                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModel>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModel>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup ,@userId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup),new SqlParameter("userId",userId.ToString("D")));
             }
             else if (paidWithGroup == "NotPaymentModel")
             {
-                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModel>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModel>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup ,@userId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup), new SqlParameter("userId", userId.ToString("D")));
             }
             else if (paidWithGroup == "PaymentNotModelUser")
             {
-                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentNotModelUser>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentNotModelUser>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup ,@userId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup), new SqlParameter("userId", userId.ToString("D")));
             }
             else if (paidWithGroup == "PaymentModelUser")
             {
-                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModelUser>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModelUser>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup ,@userId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup), new SqlParameter("userId", userId.ToString("D")));
             }
             else if (paidWithGroup == "PaymentNotModelCustomer")
             {
-                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentNotModelCustomer>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentNotModelCustomer>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup ,@userId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup), new SqlParameter("userId", userId.ToString("D")));
             }
             else if (paidWithGroup == "PaymentModelCustomer")
             {
-                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModelCustomer>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup));
+                return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<PaymentModelCustomer>("dbo.Report_PaymentedV2 @startDate ,@endDate ,@paidWithGroup ,@userId", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate), new SqlParameter("paidWithGroup", paidWithGroup), new SqlParameter("userId", userId.ToString("D")));
             }
             return default(ObjectResult<object>);
         }
@@ -140,14 +140,14 @@ namespace BusinessDb.Cor
         {
             return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<HasReceivableModel>("dbo.Report_HasReceivable @startDate ,@endDate ", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate));
         }
-        public static ObjectResult<ReportAccountInfoModel> ReportAccountInfo(this ApplicationDbContext db)
+        public static ObjectResult<ReportAccountInfoModel> ReportAccountInfo(this ApplicationDbContext db, Guid userId)
         {
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<ReportAccountInfoModel>("dbo.ReportAccountInfo");
+            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<ReportAccountInfoModel>("dbo.ReportAccountInfo @userId", new SqlParameter("userId", userId.ToString("D")));
         }
-        public static ObjectResult<ReportAccountInfoModel> ReportSnapshotAccountInfo(this ApplicationDbContext db,DateTime snapshotDate)
+        public static ObjectResult<ReportAccountInfoModel> ReportSnapshotAccountInfo(this ApplicationDbContext db,DateTime snapshotDate,Guid userId)
         {
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<ReportAccountInfoModel>("dbo.Report_AccountSnapshot @snapshotDateTime",new SqlParameter("snapshotDateTime", snapshotDate));
-        }
+			return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<ReportAccountInfoModel>("dbo.Report_AccountSnapshot @snapshotDateTime,@userId", new SqlParameter("snapshotDateTime", snapshotDate), new SqlParameter("userId", userId.ToString("D")));
+		}
         /// <summary>
         /// 获取客户所有订单未结算金额，正数客户欠款，负数公司欠款
         /// </summary>

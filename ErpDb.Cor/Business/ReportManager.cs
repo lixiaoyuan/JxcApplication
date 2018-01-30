@@ -84,17 +84,17 @@ namespace BusinessDb.Cor.Business
         /// 账户基本信息
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<ReportAccountInfoModel> QueReportAccountInfo()
+        public ObservableCollection<ReportAccountInfoModel> QueReportAccountInfo(Guid userId)
         {
-            return _applicationDb.ReportAccountInfo().ToObservableCollection();
+            return _applicationDb.ReportAccountInfo(userId).ToObservableCollection();
         }
         /// <summary>
         /// 账户快照信息
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<ReportAccountInfoModel> QueReportSnapshotAccountInfo(DateTime snapshotDate)
+        public ObservableCollection<ReportAccountInfoModel> QueReportSnapshotAccountInfo(DateTime snapshotDate,Guid userId)
         {
-            return _applicationDb.ReportSnapshotAccountInfo(snapshotDate).ToObservableCollection();
+            return _applicationDb.ReportSnapshotAccountInfo(snapshotDate,userId).ToObservableCollection();
         }
         /// <summary>
         /// 费用支出明细报表
@@ -121,9 +121,9 @@ namespace BusinessDb.Cor.Business
         {
             return _applicationDb.Report_Paymented(startDate, endDate).ToObservableCollection();
         }
-        public object PaymentedV2(DateTime startDate, DateTime endDate,string paidWithGroup)
+        public object PaymentedV2(DateTime startDate, DateTime endDate,string paidWithGroup,Guid userid)
         {
-            return _applicationDb.Report_PaymentedV2(startDate, endDate, paidWithGroup);
+            return _applicationDb.Report_PaymentedV2(startDate, endDate, paidWithGroup,userid);
         }
         /// <summary>
         /// 收款报表

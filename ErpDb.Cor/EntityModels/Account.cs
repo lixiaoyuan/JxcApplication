@@ -21,6 +21,7 @@ namespace BusinessDb.Cor.EntityModels
         public string Name { get; set; }
 
         public decimal? Balance { get; set; }
+	    public string VisableUser { get; set; }
 
         public Guid? CreateUserId { get; set; }
 

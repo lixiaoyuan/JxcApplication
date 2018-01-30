@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using ApplicationDb.Cor.Business;
 using BusinessDb.Cor.Business;
 using BusinessDb.Cor.Models.Report;
 using DevExpress.Mvvm.DataAnnotations;
@@ -58,6 +59,12 @@ namespace JxcApplication.ViewModels
             }
             ShowLoadingPanel = true;
             RaisePropertyChanged("ShowLoadingPanel");
+			Guid userid=Guid.Empty;
+	        if (RoleManager.IsSalesmanGroup(App.GlobalApp.LoginUser))
+	        {
+		        userid = App.GlobalApp.LoginUser.Id;
+	        }
+			
             Task.Factory.StartNew((() =>
             {
                 object result = null;
@@ -65,30 +72,30 @@ namespace JxcApplication.ViewModels
                 {
                     if (showType == 0)//明细
                     {
-                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "NotPaymentModel");
+                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "NotPaymentModel",userid);
                     }
                     else if (showType == 1)//客户
                     {
-                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentNotModelCustomer");
+                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentNotModelCustomer",userid);
                     }
                     else if (showType == 2)//业务员
                     {
-                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentNotModelUser");
+                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentNotModelUser",userid);
                     }
                 }
                 else if (payType == 1)//已付款
                 {
                     if (showType == 0)//明细
                     {
-                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentModel");
+                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentModel",userid);
                     }
                     else if (showType == 1)//客户
                     {
-                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentModelCustomer");
+                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentModelCustomer",userid);
                     }
                     else if (showType == 2)//业务员
                     {
-                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentModelUser");
+                        result = reportManager.PaymentedV2(StartDate.Value, EndDate.Value, "PaymentModelUser",userid);
                     }
                 }
                 DispatcherService.BeginInvoke((() =>

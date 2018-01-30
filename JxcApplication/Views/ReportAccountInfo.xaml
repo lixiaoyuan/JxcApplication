@@ -100,7 +100,7 @@
                                      ItemsSource="{Binding Datas}" AutoGenerateColumns="RemoveOld"
                                      EnableSmartColumnsGeneration="True">
                         <dxg:GridControl.View>
-                            <dxg:TableView x:Name="TableView" Style="{StaticResource RepotTable}">
+                            <dxg:TableView x:Name="TableView" Style="{StaticResource RepotTable}" ShowGroupPanel="False" AutoWidth="False">
                                 <dxmvvm:Interaction.Behaviors>
                                     <behaviors:DataViewExportBehavior x:Name="ViewExportBehavior">
                                         <behaviors:DataViewExportBehavior.HeadTemplate>

@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201702211138399_addLockAmount.Designer.cs">
       <DependentUpon>201702211138399_addLockAmount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801121313582_addVisableUser.cs" />
+    <Compile Include="Migrations\201801121313582_addVisableUser.Designer.cs">
+      <DependentUpon>201801121313582_addVisableUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoriesOrder.cs" />
     <Compile Include="Models\CategoriesOutOrder.cs" />
@@ -359,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702211138399_addLockAmount.resx">
       <DependentUpon>201702211138399_addLockAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801121313582_addVisableUser.resx">
+      <DependentUpon>201801121313582_addVisableUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

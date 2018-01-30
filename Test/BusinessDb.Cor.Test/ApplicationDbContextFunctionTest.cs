@@ -11,7 +11,7 @@ namespace BusinessDb.Cor.Test
         {
             using (ApplicationDbContext db=new ApplicationDbContext())
             {
-                var d=db.Report_PaymentedV2(DateTime.Now.AddMonths(-10), DateTime.Now, "NotPaymentModel");
+                var d=db.Report_PaymentedV2(DateTime.Now.AddMonths(-10), DateTime.Now, "NotPaymentModel",Guid.Empty);
                 foreach (object o in d)
                 {
                     Console.WriteLine(o);
