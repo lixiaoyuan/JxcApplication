@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using ApplicationDb.Cor;
 using ApplicationDb.Cor.Business;
 using BusinessDb.Cor.Business;
@@ -11,6 +12,7 @@ using DevExpress.Xpf.Grid;
 using BusinessDb.Cor;
 using BusinessDb.Cor.EntityModels;
 using DevExpress.Mvvm;
+using DevExpress.Xpf.Editors;
 using JxcApplication.Core;
 using JxcApplication.ViewModels.Inherit;
 
@@ -366,6 +368,16 @@ namespace JxcApplication.ViewModels.Sell
             if (e.Column.FieldName == "UnitPrice" || e.Column.FieldName == "SumPrice")
             {
                 e.DisplayText = string.Format("{0:c2}", e.Value);
+            }
+        }
+
+        public void CustomerValueChanged(EditValueChangedEventArgs arg)
+        {
+            Guid customerId = Guid.Empty;
+            if (arg.NewValue != null && Guid.TryParse(arg.NewValue.ToString(), out customerId))
+            {
+                ReturnStorage.BusinessUser = CustomersLookUp.FirstOrDefault(a => a.Id == customerId)?.ResponsibleSalesman;
+                RaisePropertiesChanged("ReturnStorage");
             }
         }
 

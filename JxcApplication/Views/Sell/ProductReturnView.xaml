@@ -36,6 +36,7 @@
                                     CustomNotificationTemplate="{StaticResource NotificationServiceTemplate}" />
         <dxmvvm:EventToCommand SourceName="GridControl" EventName="CustomColumnDisplayText"
                                Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True" />
+        <dxmvvm:EventToCommand SourceName="CustomerLookUpEdit" EventName="EditValueChanged" Command="{Binding CustomerValueChangedCommand}" PassEventArgsToCommand="True"></dxmvvm:EventToCommand>
         <dx:DialogService  Title="请输入开单单号"
                               DialogWindowStartupLocation="CenterScreen">
             <dx:DialogService.ViewTemplate>
