@@ -148,6 +148,10 @@ namespace BusinessDb.Cor
         {
 			return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<ReportAccountInfoModel>("dbo.Report_AccountSnapshot @snapshotDateTime,@userId", new SqlParameter("snapshotDateTime", snapshotDate), new SqlParameter("userId", userId.ToString("D")));
 		}
+        public static ObjectResult<ReportSalesSummaryMonthModel> ReportSalesSummaryMonth(this ApplicationDbContext db, DateTime startDate, DateTime endDate)
+        {
+            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<ReportSalesSummaryMonthModel>("dbo.Report_SalesSummary_Month @startDate,@endDate", new SqlParameter("startDate", startDate), new SqlParameter("endDate", endDate));
+        }
         /// <summary>
         /// 获取客户所有订单未结算金额，正数客户欠款，负数公司欠款
         /// </summary>

@@ -296,6 +296,7 @@
     <Compile Include="ViewModels\ReportPaymentedViewModel.cs" />
     <Compile Include="ViewModels\ReportSalesDetailsViewModel.cs" />
     <Compile Include="ViewModels\ReportAccountInfoViewModel.cs" />
+    <Compile Include="ViewModels\ReportSalesSummaryMonthViewModel.cs" />
     <Compile Include="ViewModels\RepotProductInStoreViewModel.cs" />
     <Compile Include="ViewModels\RibbonNodeMaintainViewModel.cs" />
     <Compile Include="ViewModels\WageViewModel.cs" />
@@ -348,6 +349,9 @@
     </Compile>
     <Compile Include="Views\ReportAccountInfo.xaml.cs">
       <DependentUpon>ReportAccountInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportSalesSummaryMonth.xaml.cs">
+      <DependentUpon>ReportSalesSummaryMonth.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RepotProductInStore.xaml.cs">
       <DependentUpon>RepotProductInStore.xaml</DependentUpon>
@@ -632,6 +636,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ReportAccountInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportSalesSummaryMonth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

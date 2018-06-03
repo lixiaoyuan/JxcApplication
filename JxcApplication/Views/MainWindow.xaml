@@ -108,6 +108,9 @@
             <dxb:BarButtonItem Content="收款报表" x:Name="MW_RHR" Command="{Binding ReportHasReceivableCommand}"
                                LargeGlyph="../Images/Tile/money_bag.png"
                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
+            <dxb:BarButtonItem Content="销售月表" x:Name="MW_SM" Command="{Binding ReportSalesSummaryMonthCommand}"
+                               LargeGlyph="../Images/Tile/Outlook_32.png" 
+                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=.}"/>
 
             <dxb:BarButtonItem Content="供应商" x:Name="MW_SV" Command="{Binding SuppliersCommand}"
                                LargeGlyph="../Images/Tile/myverizon_32.png" 

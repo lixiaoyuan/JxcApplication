@@ -135,5 +135,11 @@ namespace BusinessDb.Cor.Business
         {
             return _applicationDb.Report_HasReceivable(startDate, endDate).ToObservableCollection();
         }
+
+        public ObservableCollection<ReportSalesSummaryMonthModel> ReportSalesSummaryMonth(DateTime startDate,
+            DateTime endDate)
+        {
+            return _applicationDb.ReportSalesSummaryMonth(startDate, endDate).ToObservableCollection();
+        }
     }
 }

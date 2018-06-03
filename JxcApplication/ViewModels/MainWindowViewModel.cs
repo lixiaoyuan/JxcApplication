@@ -254,6 +254,11 @@ namespace JxcApplication.ViewModels
             CreateTabItem(ViewModelSource.Create(() => new MailMainViewModel(GetBarItemId(clickItem),clickItem.Content.ToString())));
         }
 
+        public void ReportSalesSummaryMonth(BarItem clickItem)
+        {
+            CreateTabItem(ViewModelSource.Create(() => new ReportSalesSummaryMonthViewModel(GetBarItemId(clickItem),clickItem.Content.ToString())));
+        }
+
         #endregion
     }
 }

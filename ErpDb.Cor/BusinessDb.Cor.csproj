@@ -263,6 +263,7 @@
     <Compile Include="Models\Report\ProductOutStoreModel.cs" />
     <Compile Include="Models\Report\ProductStock.cs" />
     <Compile Include="Models\Report\ReportAccountInfoModel.cs" />
+    <Compile Include="Models\Report\ReportSalesSummaryMonthModel.cs" />
     <Compile Include="Models\Report\SalesDetailModel.cs" />
     <Compile Include="Models\Report\SalesSummary.cs" />
     <Compile Include="Models\Report\StockAlarmModel.cs" />
