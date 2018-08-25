@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ApplicationDb.Cor.Business;
@@ -60,34 +61,42 @@ namespace JxcApplication.ViewModels
             RaisePropertyChanged("ShowLoadingPanel");
             Task.Factory.StartNew((() =>
             {
-                ObservableCollection<object> result = null;
-	            Guid busId = Guid.Empty;
-	            if (RoleManager.IsSalesmanGroup(App.GlobalApp.LoginUser))
-	            {
-		            busId = App.GlobalApp.LoginUser.Id;
-	            }
+                try
+                {
+                    ObservableCollection<object> result = null;
+                    Guid busId = Guid.Empty;
+                    if (RoleManager.IsSalesmanGroup(App.GlobalApp.LoginUser))
+                    {
+                        busId = App.GlobalApp.LoginUser.Id;
+                    }
 
-	            if (type == 0)
-                {
-					result = reportManager.QueReportSalesDetail(StartDate.Value, EndDate.Value, busId)
-					.Select(a => (object)a).ToObservableCollection();
-				}
-				else if (type == 1)
-                {
-                    result = reportManager.QueReportSalesDetailCustomer(StartDate.Value, EndDate.Value,busId)
-					.Select(a => (object)a).ToObservableCollection();
+                    if (type == 0)
+                    {
+                        result = reportManager.QueReportSalesDetail(StartDate.Value, EndDate.Value, busId)
+                            .Select(a => (object)a).ToObservableCollection();
+                    }
+                    else if (type == 1)
+                    {
+                        result = reportManager.QueReportSalesDetailCustomer(StartDate.Value, EndDate.Value,busId)
+                            .Select(a => (object)a).ToObservableCollection();
+                    }
+                    else if (type == 2)
+                    {
+                        result = reportManager.QueReportSalesDetailUser(StartDate.Value, EndDate.Value,busId)
+                            .Select(a => (object)a).ToObservableCollection();
+                    }
+                    DispatcherService.BeginInvoke((() =>
+                    {
+                        ShowLoadingPanel = false;
+                        Datas = result;
+                        RaisePropertiesChanged("Datas", "ShowLoadingPanel");
+                    }));
                 }
-                else if (type == 2)
-                {
-                    result = reportManager.QueReportSalesDetailUser(StartDate.Value, EndDate.Value,busId)
-					.Select(a => (object)a).ToObservableCollection();
-                }
-                DispatcherService.BeginInvoke((() =>
+                catch (Exception e)
                 {
                     ShowLoadingPanel = false;
-                    Datas = result;
-                    RaisePropertiesChanged("Datas", "ShowLoadingPanel");
-                }));
+                    RaisePropertyChanged("ShowLoadingPanel");
+                }
             }));
         }
 
