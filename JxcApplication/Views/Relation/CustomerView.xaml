@@ -57,6 +57,41 @@
                                LargeGlyph="{dx:DXImage Image=ResetModelDifferences_32x32.png}"
                                Command="{Binding DelCommand}"
                                CommandParameter="{Binding ElementName=GridControlCustomer}" />
+            <dxb:BarSubItem Name="RC_SB_Export" Content="导出" LargeGlyph="{dx:DXImage Image=Export_32x32.png}">
+                <dxb:BarButtonItem Content="导出到PDF" LargeGlyph="{dx:DXImage Image=ExportToPDF_32x32.png}"
+                                   Glyph="{dx:DXImage Image=ExportToPDF_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Pdf" />
+                <dxb:BarButtonItem Content="导出到HTM" LargeGlyph="{dx:DXImage Image=ExportToHTML_32x32.png}"
+                                   Glyph="{dx:DXImage Image=ExportToHTML_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Htm" />
+                <dxb:BarButtonItem Content="导出到MHT" LargeGlyph="{dx:DXImage Image=ExportToHTML_32x32.png}"
+                                   Glyph="{dx:DXImage Image=ExportToHTML_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Mht" />
+                <dxb:BarButtonItem Content="导出到RTF" LargeGlyph="{dx:DXImage Image=ExportToRTF_32x32.png}"
+                                   Glyph="{dx:DXImage Image=ExportToRTF_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Rtf" />
+                <dxb:BarButtonItem Content="导出到XLSX" LargeGlyph="{dx:DXImage Image=ExportToXLSX_32x32.png}"
+                                   Glyph="{dx:DXImage Image=ExportToXLSX_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Xlsx" />
+                <dxb:BarButtonItem Content="导出到XLS" LargeGlyph="{dx:DXImage Image=ExportToXLS_32x32.png}"
+                                   Glyph="{dx:DXImage Image=ExportToXLSX_16x16.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Xls" />
+                <dxb:BarButtonItem Content="导出到TXT" LargeGlyph="{dx:DXImage Image=ExportToTXT_32x32.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Txt" Glyph="{dx:DXImage Image=ExportToTXT_16x16.png}" />
+                <dxb:BarButtonItem Content="导出到IMAGE" LargeGlyph="{dx:DXImage Image=ExportToIMG_32x32.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Image" Glyph="{dx:DXImage Image=ExportToIMG_16x16.png}" />
+                <dxb:BarButtonItem Content="导出到XPS" LargeGlyph="{dx:DXImage Image=ExportToXPS_32x32.png}"
+                                   Command="{Binding ElementName=ViewExportBehavior,Path=ExportCommand}"
+                                   CommandParameter="Xps" Glyph="{dx:DXImage Image=ExportToXPS_16x16.png}" />
+            </dxb:BarSubItem>
         </dxb:BarManager.Items>
         <DockPanel>
             <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2010"
@@ -68,7 +103,30 @@
             </dxr:RibbonControl>
             <dxg:GridControl x:Name="GridControlCustomer" ItemsSource="{Binding Customers}">
                 <dxg:GridControl.View>
-                    <dxg:TableView x:Name="TableView1" />
+                    <dxg:TableView x:Name="TableView1" >
+                        <dxmvvm:Interaction.Behaviors>
+                            <behaviors:DataViewExportBehavior x:Name="ViewExportBehavior">
+                                <behaviors:DataViewExportBehavior.HeadTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="{Binding Path=UsablePageWidth}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <dxe:TextEdit Grid.Row="0" HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" Padding="12"
+                                                          FontSize="24" IsPrintingMode="True"
+                                                          EditValue="厦门比格维尔食品有限公司" />
+                                            <dxe:TextEdit Grid.Row="1" HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" Padding="12"
+                                                          FontSize="20" IsPrintingMode="True"
+                                                          EditValue="客户资料表" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </behaviors:DataViewExportBehavior.HeadTemplate>
+                            </behaviors:DataViewExportBehavior>
+                        </dxmvvm:Interaction.Behaviors>
+                    </dxg:TableView>
                 </dxg:GridControl.View>
                 <dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="Code" Header="编码" AllowEditing="False"

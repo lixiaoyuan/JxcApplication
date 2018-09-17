@@ -74,6 +74,19 @@ namespace BusinessDb.Cor.Business
                 return db.GetCustomerAllOrderPrice(customerId);
             }
         }
+
+        /// <summary>
+        /// 检查客户是否允许继续开单
+        /// </summary>
+        /// <returns></returns>
+        public static string CheckAllowNewSale(Guid customerId)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                return db.CheckCustomerAllowNewSale(customerId);
+            }
+        }
+
         public ObservableCollection<Customer> QueCustomers()
         {
             _entities = new ApplicationDbContext();

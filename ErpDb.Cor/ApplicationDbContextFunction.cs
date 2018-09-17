@@ -186,5 +186,15 @@ namespace BusinessDb.Cor
             msg = msgParameter.Value.ToString();
             return bool.Parse(allowParameter.Value.ToString());
         }
+
+        public static string CheckCustomerAllowNewSale(this ApplicationDbContext db, Guid customerId)
+        {
+            var customerIdParameter = new SqlParameter("customerId", customerId);
+            var errMsgParameter = new SqlParameter("errMsg", SqlDbType.VarChar, 500) { Direction = ParameterDirection.Output };
+            ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreCommand(
+                "dbo.CheckCustomerAllowNewSale @customerId,@errMsg out", customerIdParameter, errMsgParameter);
+            if (errMsgParameter.Value == null || errMsgParameter.Value == DBNull.Value) return string.Empty;
+            return errMsgParameter.Value.ToString();
+        }
     }
 }

@@ -425,6 +425,15 @@ namespace JxcApplication.ViewModels.Sell
                 RaisePropertiesChanged("Balance", "BalanceIsEnable", "Credibility", "CredibilityIsEnable", "AllOrderUnCharge", "AllOrderUnChargeIsEnable", "RemainingCredibility", "RemainingCredibilityIsEnable");
                 return;
             }
+            //检查客户是否允许继续开单
+            string checkMessage = CustomerManager.CheckAllowNewSale((Guid) e.NewValue);
+            if (!string.IsNullOrWhiteSpace(checkMessage))
+            {
+                ShowNotification(checkMessage);
+                NewProductOrder();
+                return;
+            }
+
             InitCustomerInfo((Guid) e.NewValue);
         }
 
