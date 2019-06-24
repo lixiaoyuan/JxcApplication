@@ -12,6 +12,7 @@ using DevExpress.Xpf.Editors;
 using DevExpress.Xpf.Grid;
 using BusinessDb.Cor;
 using BusinessDb.Cor.EntityModels;
+using DevExpress.Mvvm;
 using JxcApplication.Core;
 using JxcApplication.ViewModels.Inherit;
 
@@ -84,6 +85,11 @@ namespace JxcApplication.ViewModels.Sell
             get { return "销售开单"; }
         }
 
+        /// <summary>
+        /// 引用开单单号 输入框绑定
+        /// </summary>
+        public virtual string InputOrderCode { get; set; }
+
         protected override void OnInitializeInRuntime()
         {
             base.OnInitializeInRuntime();
@@ -95,7 +101,7 @@ namespace JxcApplication.ViewModels.Sell
 
             StoresLookUp = StoreManager.QueSellStores();
             CustomersLookUp = CustomerManager.QueCustomers();
-            ProductLookUp = ProductManager.QueryByProductType("CP",true);
+            ProductLookUp = ProductManager.QueryByProductType(true,"CP", "YL", "YP");
             SystemUserLookUp = SystemAccountManager.QueryLookUp();
             //AcontactsLookUp = AcontactManager.QueAcontacts();
 
@@ -602,6 +608,48 @@ namespace JxcApplication.ViewModels.Sell
                 return;
             }
             Report.Report.ShowPreviewDialog(OrderType(), OutStorage.Id);
+        }
+
+        /// <summary>
+        /// 引用销售订单明细
+        /// </summary>
+        public void RefOrder()
+        {
+            if (!IsNewOrder)
+            {
+                ShowNotification("只能在新订单中引入订单,请新建订单!");
+                return;
+            }
+            MessageResult result = GetService<IDialogService>().ShowDialog(MessageButton.OKCancel, "请输入开单单号", this);
+            if (result != MessageResult.OK || OutStorage == null)
+            {
+                return;
+            }
+            if (OutStorageDetails == null)
+            {
+                OutStorageDetails = new ObservableCollection<ProductOutStorageDetail>();
+            }
+            //获取销售单明细
+            var detail = _productOrderManager.GetSellOutStorage(InputOrderCode.ToUpper()).OrderBy(x => x.SortId);
+            if (detail == null)
+            {
+                return;
+            }
+            foreach (var outStorageDetail in detail)
+            {
+                OutStorageDetails.Add(new ProductOutStorageDetail()
+                {
+                    Id = Guid.NewGuid(),
+                    ProductCode = outStorageDetail.ProductCode,
+                    ProductId = outStorageDetail.ProductId,
+                    ProductSpecification = outStorageDetail.ProductSpecification,
+                    ProductUnit = outStorageDetail.ProductUnit,
+                    UnitPrice = outStorageDetail.UnitPrice,
+                    SumPrice = outStorageDetail.SumPrice,
+                    OrderType = outStorageDetail.OrderType,
+                    OutStock = outStorageDetail.OutStock
+                });
+            }
         }
 
         public SalesBillingViewModel(Guid menuId, string caption) : base(menuId, caption)

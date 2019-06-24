@@ -36,6 +36,24 @@
                                PassEventArgsToCommand="True" />
         <dxmvvm:EventToCommand SourceName="GridControl" EventName="CustomColumnDisplayText"
                                Command="{Binding CustomColumnDisplayTextCommand}" PassEventArgsToCommand="True" />
+
+        <dx:DialogService  Title="请输入开单单号"
+                           DialogWindowStartupLocation="CenterScreen">
+            <dx:DialogService.ViewTemplate>
+                <DataTemplate>
+                    <dxe:TextEdit Margin="10,5" FontSize="14" VerticalAlignment="Center" Text="{Binding InputOrderCode,Mode=TwoWay}" NullText="XK-20XX-XX-XX-XXXX"/>
+                </DataTemplate>
+            </dx:DialogService.ViewTemplate>
+            <dx:DialogService.DialogStyle>
+                <Style TargetType="dx:DXDialogWindow">
+                    <Setter Property="Width" Value="300"></Setter>
+                    <Setter Property="Height" Value="150"></Setter>
+                    <Setter Property="ResizeMode" Value="NoResize"/>
+                    <Setter Property="ShowIcon" Value="False"/>
+                    <Setter Property="ShowInTaskbar" Value="False"></Setter>
+                </Style>
+            </dx:DialogService.DialogStyle>
+        </dx:DialogService>
     </dxmvvm:Interaction.Behaviors>
     <UserControl.Resources>
         <convert:DecimalLessThanZeroConvert x:Key="DecimalLessThanZeroConvert1"></convert:DecimalLessThanZeroConvert>
@@ -67,6 +85,10 @@
                                Command="{Binding NewProductOrderCommand}"
                                LargeGlyph="{dx:DXImage Image=BOFileAttachment_32x32.png}"
                                Glyph="{dx:DXImage Image=BOFileAttachment_16x16.png}" />
+
+            <dxb:BarButtonItem x:Name="SB_BI_RefOrder" KeyGesture="Ctrl+F" Content="引用订单"
+                               LargeGlyph="{dx:DXImage Image=Paste_32x32.png}"
+                               Glyph="{dx:DXImage Image=Paste_16x16.png}" Command="{Binding RefOrderCommand}" ></dxb:BarButtonItem>
 
             <dxb:BarButtonItem x:Name="SB_BI_Save" KeyGesture="Ctrl+S" Content="保存"
                                LargeGlyph="{dx:DXImageOffice2013 Image=SaveAll_32x32.png}"

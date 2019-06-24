@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
+using System.Linq.Expressions;
 using BusinessDb.Cor.EntityModels;
 using Utilities;
 
@@ -43,6 +44,12 @@ namespace BusinessDb.Cor.Business
             {
                 _entitiesCache.Product.Where(a => a.ProductType == productType && a.Enable == filterEnable).Load();
             }
+            return _entitiesCache.Product.Local;
+        }
+        public ObservableCollection<Product> QueryByProductType(bool filterEnable, params string[] productType)
+        {
+            _entitiesCache = new ApplicationDbContext();
+            _entitiesCache.Product.Where(a => a.Enable == filterEnable || productType.Contains(a.ProductType)).OrderBy(a => a.ProductType).Load();
             return _entitiesCache.Product.Local;
         }
 
