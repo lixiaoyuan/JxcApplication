@@ -101,7 +101,7 @@ namespace JxcApplication.ViewModels.Sell
 
             StoresLookUp = StoreManager.QueSellStores();
             CustomersLookUp = CustomerManager.QueCustomers();
-            ProductLookUp = ProductManager.QueryByProductType(true,"CP", "YL", "YP");
+            ProductLookUp = ProductManager.QueryByProductType(true,"CP");
             SystemUserLookUp = SystemAccountManager.QueryLookUp();
             //AcontactsLookUp = AcontactManager.QueAcontacts();
 
