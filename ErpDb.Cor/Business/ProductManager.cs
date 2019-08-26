@@ -49,7 +49,7 @@ namespace BusinessDb.Cor.Business
         public ObservableCollection<Product> QueryByProductType(bool filterEnable, params string[] productType)
         {
             _entitiesCache = new ApplicationDbContext();
-            _entitiesCache.Product.Where(a => a.Enable == filterEnable || productType.Contains(a.ProductType)).OrderBy(a => a.ProductType).Load();
+            _entitiesCache.Product.Where(a => a.Enable == filterEnable && productType.Contains(a.ProductType)).OrderBy(a => a.ProductType).Load();
             return _entitiesCache.Product.Local;
         }
 
