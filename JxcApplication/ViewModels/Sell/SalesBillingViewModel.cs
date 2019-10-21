@@ -156,6 +156,8 @@ namespace JxcApplication.ViewModels.Sell
             }
             OutStorage.PaymoneyType = (int)customer.PaymentType;
             OutStorage.GiveArea = customer.Area;
+            //赋值客户表里面的客户类型到出库主记录的客户类型上。
+            OutStorage.CustomerType = customer.CustomerType;
             RemainingCredibility = (Credibility + Balance) - AllOrderUnCharge;
             BalanceIsEnable = true;
             CredibilityIsEnable = true;

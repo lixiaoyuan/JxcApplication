@@ -1,5 +1,6 @@
 namespace BusinessDb.Cor.EntityModels
 {
+    using BusinessDb.Cor.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -46,6 +47,12 @@ namespace BusinessDb.Cor.EntityModels
         public int? StatusFlag { get; set; }
 
         public int PaymoneyType { get; set; }
+
+        /// <summary>
+        /// 客户类型
+        /// </summary>
+        public CustomerType CustomerType { get; set; }
+
         public Guid? CreateUserId { get; set; }
 
         public DateTime? CreateDate { get; set; }

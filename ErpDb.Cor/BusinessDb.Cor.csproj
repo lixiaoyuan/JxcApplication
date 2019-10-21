@@ -242,6 +242,10 @@
     <Compile Include="Migrations\201801121313582_addVisableUser.Designer.cs">
       <DependentUpon>201801121313582_addVisableUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910210053309_addCustomeType.cs" />
+    <Compile Include="Migrations\201910210053309_addCustomeType.Designer.cs">
+      <DependentUpon>201910210053309_addCustomeType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoriesOrder.cs" />
     <Compile Include="Models\CategoriesOutOrder.cs" />
@@ -367,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801121313582_addVisableUser.resx">
       <DependentUpon>201801121313582_addVisableUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910210053309_addCustomeType.resx">
+      <DependentUpon>201910210053309_addCustomeType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
