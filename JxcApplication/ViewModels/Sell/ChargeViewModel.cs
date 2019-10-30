@@ -510,7 +510,9 @@ namespace JxcApplication.ViewModels.Sell
         {
             if (!Charge.CustomerId.HasValue) return;
             //修改客户关联对应负责的业务员
-            Charge.BusinessUser = CustomerManager.Find(Charge.CustomerId.Value).ResponsibleSalesman;
+            var customer = CustomerManager.Find(Charge.CustomerId.Value);
+            Charge.BusinessUser = customer.ResponsibleSalesman;
+            Charge.CustomerName = customer.Name;
             RaisePropertyChanged("Charge");
 
         }

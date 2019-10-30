@@ -22,6 +22,11 @@ namespace BusinessDb.Cor.EntityModels
 
         public Guid? CustomerId { get; set; }
 
+        /// <summary>
+        /// ¿Í»§Ãû³Æ
+        /// </summary>
+        public string CustomerName { get; set; }
+
         public Guid? PaymentAccountId { get; set; }
 
         [Column(TypeName = "money")]
