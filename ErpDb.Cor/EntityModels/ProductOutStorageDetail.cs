@@ -24,6 +24,11 @@ namespace BusinessDb.Cor.EntityModels
 
         public string ProductCode { get; set; }
 
+        /// <summary>
+        /// ²úÆ·Ãû³Æ
+        /// </summary>
+        public string ProductName { get; set; }
+
         public string ProductSpecification { get; set; }
 
         public string ProductUnit { get; set; }

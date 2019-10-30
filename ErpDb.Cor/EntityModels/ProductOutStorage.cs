@@ -31,11 +31,24 @@ namespace BusinessDb.Cor.EntityModels
 
         public Guid? AcontackId { get; set; }
 
+        /// <summary>
+        /// 送货地址
+        /// </summary>
         public string GiveAddress { get; set; }
 
+        /// <summary>
+        /// 送货区域
+        /// </summary>
         public string GiveArea { get; set; }
 
+        /// <summary>
+        /// 联系人姓名
+        /// </summary>
         public string AcontackName { get; set; }
+
+        /// <summary>
+        /// 联系电话
+        /// </summary>
         public string AcontackTel { get; set; }
 
         public decimal? SumPrice { get; set; }
@@ -46,12 +59,20 @@ namespace BusinessDb.Cor.EntityModels
 
         public int? StatusFlag { get; set; }
 
+        /// <summary>
+        /// 付款类型
+        /// </summary>
         public int PaymoneyType { get; set; }
 
         /// <summary>
         /// 客户类型
         /// </summary>
         public CustomerType CustomerType { get; set; }
+
+        /// <summary>
+        /// 客户名称
+        /// </summary>
+        public string CustomerName { get; set; }
 
         public Guid? CreateUserId { get; set; }
 

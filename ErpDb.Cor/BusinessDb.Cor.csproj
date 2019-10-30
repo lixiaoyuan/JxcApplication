@@ -246,6 +246,10 @@
     <Compile Include="Migrations\201910210053309_addCustomeType.Designer.cs">
       <DependentUpon>201910210053309_addCustomeType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910300955409_customerNameProductName.cs" />
+    <Compile Include="Migrations\201910300955409_customerNameProductName.Designer.cs">
+      <DependentUpon>201910300955409_customerNameProductName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoriesOrder.cs" />
     <Compile Include="Models\CategoriesOutOrder.cs" />
@@ -374,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910210053309_addCustomeType.resx">
       <DependentUpon>201910210053309_addCustomeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910300955409_customerNameProductName.resx">
+      <DependentUpon>201910300955409_customerNameProductName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -158,6 +158,7 @@ namespace JxcApplication.ViewModels.Sell
             OutStorage.GiveArea = customer.Area;
             //赋值客户表里面的客户类型到出库主记录的客户类型上。
             OutStorage.CustomerType = customer.CustomerType;
+            OutStorage.CustomerName = customer.Name;
             RemainingCredibility = (Credibility + Balance) - AllOrderUnCharge;
             BalanceIsEnable = true;
             CredibilityIsEnable = true;
@@ -504,6 +505,8 @@ namespace JxcApplication.ViewModels.Sell
                 editRow.ProductUnit = newInfo.Unit;
 
                 editRow.ProductId = newInfo.Id;
+
+                editRow.ProductName = newInfo.Name;
 
                 #endregion
             }
