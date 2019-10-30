@@ -250,6 +250,10 @@
     <Compile Include="Migrations\201910300955409_customerNameProductName.Designer.cs">
       <DependentUpon>201910300955409_customerNameProductName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910301325513_addCustomerNameByCharge.cs" />
+    <Compile Include="Migrations\201910301325513_addCustomerNameByCharge.Designer.cs">
+      <DependentUpon>201910301325513_addCustomerNameByCharge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoriesOrder.cs" />
     <Compile Include="Models\CategoriesOutOrder.cs" />
@@ -381,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910300955409_customerNameProductName.resx">
       <DependentUpon>201910300955409_customerNameProductName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301325513_addCustomerNameByCharge.resx">
+      <DependentUpon>201910301325513_addCustomerNameByCharge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
