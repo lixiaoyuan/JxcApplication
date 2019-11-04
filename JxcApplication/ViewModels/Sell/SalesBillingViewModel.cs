@@ -652,7 +652,8 @@ namespace JxcApplication.ViewModels.Sell
                     UnitPrice = outStorageDetail.UnitPrice,
                     SumPrice = outStorageDetail.SumPrice,
                     OrderType = outStorageDetail.OrderType,
-                    OutStock = outStorageDetail.OutStock
+                    OutStock = outStorageDetail.OutStock,
+                    ProductName = outStorageDetail.ProductName
                 });
             }
         }
