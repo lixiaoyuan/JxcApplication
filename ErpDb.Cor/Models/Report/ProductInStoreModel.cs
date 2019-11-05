@@ -20,6 +20,8 @@ namespace BusinessDb.Cor.Models.Report
         public string ProductCode { get; set; }
         [Display(Name = "产品")]
         public string Product { get; set; }
+        [Display(Name = "供应商")]
+        public string SuppliersName { get; set; }
         [Display(Name = "产品规格")]
         public string ProductSpecification { get; set; }
         [Display(Name = "产品单位")]
