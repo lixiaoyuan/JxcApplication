@@ -12,7 +12,7 @@
     xmlns:native="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
     mc:Ignorable="d"
     x:Class="JxcApplication.MainWindow"
-    Title="比格维尔食品有限公司-资源管理系统"
+    Title="艾思文特-资源管理系统"
     Icon="../Images/Icons/icon.png"
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"

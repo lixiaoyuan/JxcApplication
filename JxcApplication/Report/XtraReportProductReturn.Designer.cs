@@ -109,7 +109,7 @@ namespace JxcApplication.Report
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(842.4333F, 58.42F);
-            this.xrLabel1.Text = "厦门比格维尔食品有限公司送货单";
+            this.xrLabel1.Text = "艾思文特送货单";
             // 
             // xrTable1
             // 
@@ -227,7 +227,7 @@ namespace JxcApplication.Report
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(1117.6F, 73.23667F);
             this.xrLabel2.StyleName = "Title";
-            this.xrLabel2.Text = "厦门比格维尔食品有限公司成品退货单";
+            this.xrLabel2.Text = "艾思文特成品退货单";
             // 
             // topMarginBand1
             // 

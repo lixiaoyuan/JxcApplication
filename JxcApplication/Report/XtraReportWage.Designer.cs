@@ -186,7 +186,7 @@
             // xrLabel1
             // 
             this.xrLabel1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.Title", "厦门比格维尔食品有限公司{0}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.Title", "艾思文特{0}")});
             this.xrLabel1.Font = new System.Drawing.Font("宋体", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(298.093F, 10F);
             this.xrLabel1.Name = "xrLabel1";

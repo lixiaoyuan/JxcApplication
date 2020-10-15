@@ -6,11 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using BusinessDb.Cor.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DevExpress.Xpf.Editors;
 using DevExpress.Mvvm;
 using Utilities.Net;
+using JxcApplication.ViewModels;
 
 namespace JxcApplication.Test
 {
@@ -193,6 +195,19 @@ namespace JxcApplication.Test
             foreach (byte num in hash)
                 stringBuilder.Append(num.ToString("x2"));
             fileStream.Close();
-            Console.WriteLine(stringBuilder.ToString());}
+            Console.WriteLine(stringBuilder.ToString());
+        }
+
+        [TestMethod]
+        public void TestTask()
+        {
+            Task.Factory.StartNew(() =>
+            {
+                // 错误
+                throw new Exception("错误");
+            });
+
+
+        }
     }
 }

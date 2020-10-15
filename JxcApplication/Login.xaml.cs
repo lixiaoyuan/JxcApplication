@@ -294,7 +294,7 @@ namespace JxcApplication
                 try
                 {
                     ShowCheckUpdateing = true;
-                    string remoteUpdateDir = @"\\192.168.1.201\Update";
+                    string remoteUpdateDir = @"\\192.168.1.201\Update2";
                     using (var down = new SharedDirectoryDownload())
                     {
                         var result = down.Connect(remoteUpdateDir, "administrator", "2962565");

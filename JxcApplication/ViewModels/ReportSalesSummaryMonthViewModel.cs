@@ -51,14 +51,25 @@ namespace JxcApplication.ViewModels
 
             Task.Factory.StartNew((() =>
             {
-                var result = reportManager.ReportSalesSummaryMonth(startDate, endDate);
-
-                DispatcherService.BeginInvoke((() =>
+                try
                 {
-                    ShowLoadingPanel = false;
-                    Datas = result;
-                    RaisePropertiesChanged("Datas", "ShowLoadingPanel");
-                }));
+                    var result = reportManager.ReportSalesSummaryMonth(startDate, endDate);
+
+                    DispatcherService.BeginInvoke((() =>
+                    {
+                        ShowLoadingPanel = false;
+                        Datas = result;
+                        RaisePropertiesChanged("Datas", "ShowLoadingPanel");
+                    }));
+                }
+                catch (Exception e)
+                {
+                   DispatcherService.BeginInvoke((() =>
+                   {
+                       ShowNotification(e.Message);
+                       ShowLoadingPanel = false;
+                   }));
+                }
             }));
         }
     }
