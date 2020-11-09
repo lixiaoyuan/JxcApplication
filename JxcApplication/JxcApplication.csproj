@@ -190,6 +190,18 @@
     <Compile Include="Control\RoleEdit.xaml.cs">
       <DependentUpon>RoleEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Report\XtraReportRawOutStore.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReportRawOutStore.Designer.cs">
+      <DependentUpon>XtraReportRawOutStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sell\InputTrackingNumberWindow.xaml.cs">
+      <DependentUpon>InputTrackingNumberWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storage\RawOutStorageSelectOutWindow.xaml.cs">
+      <DependentUpon>RawOutStorageSelectOutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SelectOrder.xaml.cs">
       <DependentUpon>SelectOrder.xaml</DependentUpon>
     </Compile>
@@ -463,12 +475,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReportCharge.resx">
       <DependentUpon>XtraReportCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReportRawOutStore.resx">
+      <DependentUpon>XtraReportRawOutStore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReportProductInStore.resx">
       <DependentUpon>XtraReportProductInStore.cs</DependentUpon>
@@ -522,6 +538,14 @@
     <Page Include="Control\RoleEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Sell\InputTrackingNumberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\RawOutStorageSelectOutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\SelectOrder.xaml">
       <SubType>Designer</SubType>

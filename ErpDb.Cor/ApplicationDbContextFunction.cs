@@ -13,12 +13,14 @@ namespace BusinessDb.Cor
 {
     public static class ApplicationDbContextFunction
     {
-        public static ObjectResult<Product> GetProductNewInfo(this ApplicationDbContext db, Nullable<System.Guid> productId, MergeOption mergeOption)
+        public static ObjectResult<Product> GetProductNewInfo(this ApplicationDbContext db, Nullable<System.Guid> productId,Guid storeId, MergeOption mergeOption)
         {
             var productIdParameter = productId.HasValue ?
                 new SqlParameter("ProductId", productId) :
                 new SqlParameter("ProductId", typeof(System.Guid));
-            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<Product>("dbo.GetProductNewInfo @ProductId",productIdParameter);
+
+            var storeIdParameter = new SqlParameter("StoreId", storeId);
+            return ((IObjectContextAdapter)db).ObjectContext.ExecuteStoreQuery<Product>("dbo.GetProductNewInfo @ProductId , @StoreId ", productIdParameter,storeIdParameter);
             //<Product>("GetProductNewInfo",new ExecutionOptions(MergeOption.NoTracking), productIdParameter);
         }
 

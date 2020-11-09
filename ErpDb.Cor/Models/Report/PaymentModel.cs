@@ -107,5 +107,7 @@ namespace BusinessDb.Cor.Models.Report
         public string CreateUser { get; set; }
         [Display(Name = "开单日期")]
         public DateTime? CreateDate { get; set; }
+        [Display(Name ="备注")]
+        public string Remark { get; set; }
     }
 }

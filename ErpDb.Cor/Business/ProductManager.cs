@@ -27,8 +27,18 @@ namespace BusinessDb.Cor.Business
 
         public static ObservableCollection<Product> QueryByStore(Guid storeId)
         {
-            ApplicationDbContext application=new ApplicationDbContext();
-            return application.Product.Where(a => a.Enable.Value).Join(application.Store.Where(a => a.Id == storeId), a => a.ProductType, b => b.ProductType, ((product, store) => product)).AsNoTracking().ToObservableCollection();
+            ApplicationDbContext application = new ApplicationDbContext();
+            // 成品仓库2也需要跟成品显示出来
+            if (storeId.Equals(Guid.Parse("688D2340-1413-4467-93AA-BCDA21FC64BC")))
+            {
+                storeId = Guid.Parse("D66C26BD-3BEB-4242-8346-0A4980BA6FC7");
+            }
+
+            var query = from p in application.Product.Where(a => a.Enable.Value)
+                        from s in application.Store.Where(a => a.Id == storeId)
+                        where s.ProductType.StartsWith(p.ProductType)
+                        select p;
+            return query.AsNoTracking().ToObservableCollection();
         }
 
         #region CDM
@@ -78,9 +88,9 @@ namespace BusinessDb.Cor.Business
         /// <summary>
         /// 获取产品最新信息,用于产品选择填充的数据
         /// </summary>
-        public Product GetProductNewInfo(Guid productGuid)
+        public Product GetProductNewInfo(Guid productGuid,Guid storeId)
         {
-            return _entities.GetProductNewInfo(productGuid, MergeOption.NoTracking).FirstOrDefault();
+            return _entities.GetProductNewInfo(productGuid, storeId, MergeOption.NoTracking).FirstOrDefault();
         }
         /// <summary>
         /// 销售开单，检查锁定库存，锁定数量不能销售

@@ -56,6 +56,32 @@ namespace BusinessDb.Cor.Business
         }
 
         /// <summary>
+        /// 原材料出库单
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<RawOutStoreData> GetRawOutStoreDatas(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                yield break;
+            }
+
+            var head = _entities.Database.SqlQuery<RawOutStoreData.Head>("select ProductOutStorage.CreateDate,ProductOutStorage.Code,Store.Name as 'Store',ProductOutStorage.Remark,u.Name as 'CreateUser' from ProductOutStorage left join Store on Store.Id =ProductOutStorage.StorageId left join ApplicationDb.dbo.SystemUser u on u.Id =ProductOutStorage.CreateUserId where ProductOutStorage.Id = @id", new SqlParameter("id", id)).FirstOrDefault();
+            if (head == null)
+            {
+                yield break;
+            }
+
+            var details = _entities.Database.SqlQuery<RawOutStoreData.Detail>("select p.Name,ProductOutStorageDetail.ProductSpecification,ProductOutStorageDetail.ProductUnit,outin.SubtractStock ,inn.ProducingDate from ProductOutStorageDetail left join ProductOutInStorageDetail outin on outin.PutOutStorageId=ProductOutStorageDetail.Id left join ProductInStorageDetail ind on ind.id = outin.PutInStorageId left join ProductInStorage inn on inn.Id=ind.PutInId left join Product p on p.Id= ProductOutStorageDetail.ProductId where ProductOutStorageDetail.PutOutId=@id order by ProductOutStorageDetail.ProductId", new SqlParameter("id", id))
+                .ToList();
+            yield return new RawOutStoreData()
+            {
+                Title = head,
+                Details = details
+            };
+        }
+
+        /// <summary>
         /// 入库订单
         /// </summary>
         /// <returns></returns>
@@ -111,7 +137,7 @@ namespace BusinessDb.Cor.Business
 
             var head =
                 _entities.Database.SqlQuery<ProductReturnData.Head>(
-                    "SELECT a.Code , b.Name AS 'Store' , c.Name AS 'Customer' , d.Name AS 'BuinessUser' , e.Name AS 'AcontactUser' , f.Name AS 'PaymentType' , g.Name AS 'PaymentAccount' , a.SumPrice , h.Name AS 'CreateUser' ,a.CreateDate FROM dbo.ProductReturnInStorage a LEFT JOIN dbo.Store b ON a.StorageId = b.Id LEFT JOIN dbo.Customer c ON a.CustomerId = c.Id LEFT JOIN ApplicationDb.dbo.SystemUser d ON a.BusinessUser = d.Id LEFT JOIN dbo.Acontact e ON a.AcontackId = e.Id LEFT JOIN dbo.RefundType f ON a.PaymentType = f.Code LEFT JOIN dbo.Account g ON a.PaymentAccountId = g.Id LEFT JOIN ApplicationDb.dbo.SystemUser h ON a.CreateUserId = h.Id WHERE a.Id=@id",
+                    "SELECT a.Code , b.Name AS 'Store' , c.Name AS 'Customer' , d.Name AS 'BuinessUser' , e.Name AS 'AcontactUser' , f.Name AS 'PaymentType' , g.Name AS 'PaymentAccount' , a.SumPrice , h.Name AS 'CreateUser' ,a.CreateDate ,a.Remark FROM dbo.ProductReturnInStorage a LEFT JOIN dbo.Store b ON a.StorageId = b.Id LEFT JOIN dbo.Customer c ON a.CustomerId = c.Id LEFT JOIN ApplicationDb.dbo.SystemUser d ON a.BusinessUser = d.Id LEFT JOIN dbo.Acontact e ON a.AcontackId = e.Id LEFT JOIN dbo.RefundType f ON a.PaymentType = f.Code LEFT JOIN dbo.Account g ON a.PaymentAccountId = g.Id LEFT JOIN ApplicationDb.dbo.SystemUser h ON a.CreateUserId = h.Id WHERE a.Id=@id",
                     new SqlParameter("id", id)).FirstOrDefault();
             if (head==null)
             {

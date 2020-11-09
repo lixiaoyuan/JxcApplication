@@ -119,7 +119,7 @@
                                 <dxlc:LayoutGroup View="Group">
 
                                     <dxlc:LayoutItem Label="备注:" HorizontalAlignment="Left">
-                                        <dxe:TextEdit Width="250"
+                                        <dxe:TextEdit Width="250" 
                                                       EditValue="{Binding OutStorage.Remark,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
                                     </dxlc:LayoutItem>
 
@@ -193,12 +193,12 @@
                                     <dxe:TextEditSettings Mask="n" MaskType="Numeric" />
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
-                            <dxg:GridColumn x:Name="UnitPrice" FieldName="UnitPrice" Header="单价">
+                        <dxg:GridColumn x:Name="UnitPrice" FieldName="UnitPrice" Header="单价" Visible="{Binding IsVisibleMoney}">
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
-                            <dxg:GridColumn FieldName="SumPrice" Header="金额">
+                        <dxg:GridColumn FieldName="SumPrice" Header="金额" Visible="{Binding IsVisibleMoney}">
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                                 </dxg:GridColumn.EditSettings>
@@ -208,7 +208,7 @@
                         <dxg:GridControl.TotalSummary>
                             <dxg:GridSummaryItem SummaryType="Sum" FieldName="OutStock" ShowInColumn="OutStock"
                                                  DisplayFormat="总数量:{0}" />
-                            <dxg:GridSummaryItem SummaryType="Sum" FieldName="SumPrice" ShowInColumn="SumPrice"
+                        <dxg:GridSummaryItem SummaryType="Sum" FieldName="SumPrice" ShowInColumn="SumPrice" 
                                                  DisplayFormat="总金额:{0:c}" />
                             <dxg:GridSummaryItem SummaryType="Count" ShowInColumn="ProductId" DisplayFormat="总记录数:{0}" />
                         </dxg:GridControl.TotalSummary>

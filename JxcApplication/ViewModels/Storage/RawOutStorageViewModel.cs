@@ -16,6 +16,8 @@ using BusinessDb.Cor.EntityModels;
 using DevExpress.Xpf.Editors;
 using JxcApplication.Core;
 using JxcApplication.ViewModels.Inherit;
+using JxcApplication.Control;
+using JxcApplication.Views.Storage;
 
 namespace JxcApplication.ViewModels.Storage
 {
@@ -24,12 +26,17 @@ namespace JxcApplication.ViewModels.Storage
         private bool _isNewOrder;
         private ProductOrderManager _productOrderManager;
 
-        private RawOutOrderInsertManager _rawOutOrderInsertManager;
+        private RawOutStorageSelectOutWindow _rawOutOrderInsertManager;
         private RawOutOrderUpdateManager _rawOutOrderUpdateManager;
 
         protected ProductManager ProductManager;
         protected StoreManager StoreManager;
         public bool StoreLookUpEnable { get; set; }
+
+        /// <summary>
+        /// 是否隐藏金额
+        /// </summary>
+        public bool IsVisibleMoney { get; set; } = true;
 
         public ObservableCollection<Product> ProductLookUp { get; set; }
         public ObservableCollection<Store> StoresLookUp { get; set; }
@@ -79,7 +86,7 @@ namespace JxcApplication.ViewModels.Storage
         private void InitNewOrder()
         {
             IsNewOrder = true;
-            _rawOutOrderInsertManager = RawOutOrderInsertManager.Create();
+            _rawOutOrderInsertManager = RawOutStorageSelectOutWindow.Create();
 
             var newOrder = _rawOutOrderInsertManager.GetInsertRawOutOrder();
             OutStorage = newOrder.MasterStorage;
@@ -90,8 +97,7 @@ namespace JxcApplication.ViewModels.Storage
                 RaisePropertyChanged("StoreLookUpEnable");
             };
             StoreLookUpEnable = true;
-            RaisePropertyChanged("OutStorage");
-            RaisePropertyChanged("OutStorageDetails");
+            RaisePropertiesChanged("OutStorage", "OutStorageDetails", "StoreLookUpEnable");
         }
 
         /// <summary>
@@ -123,7 +129,12 @@ namespace JxcApplication.ViewModels.Storage
         /// <returns></returns>
         private Product GetProductNewInfo(Guid productGuid)
         {
-            return ProductManager.GetProductNewInfo(productGuid);
+            if (OutStorage.StorageId == null)
+            {
+                ShowNotification("请选择仓库");
+                return null;
+            }
+            return ProductManager.GetProductNewInfo(productGuid, OutStorage.StorageId.Value);
         }
         private string OrderType()
         {
@@ -248,6 +259,34 @@ namespace JxcApplication.ViewModels.Storage
         }
 
         /// <summary>
+        ///     打印
+        /// </summary>
+        public virtual void Print()
+        {
+            if (IsNewOrder)
+            {
+                ShowNotification("订单未生成，不能打印!");
+                return;
+            }
+            Report.Report.Print(OrderType(), OutStorage.Id);
+        }
+
+
+        /// <summary>
+        ///     打印预览
+        /// </summary>
+        public virtual void PrintPreview()
+        {
+            Debug.Write("PrintPreview");
+            if (IsNewOrder)
+            {
+                ShowNotification("订单未生成，不能打印!");
+                return;
+            }
+            Report.Report.ShowPreviewDialog(OrderType(), OutStorage.Id);
+        }
+
+        /// <summary>
         ///     单元格值发生改变后
         /// </summary>
         /// <param name="e"></param>
@@ -290,6 +329,7 @@ namespace JxcApplication.ViewModels.Storage
                 editRow.SumPrice = editRow.OutStock * editRow.UnitPrice;
                 editRow.ProductSpecification = newInfo.Specification;
                 editRow.ProductUnit = newInfo.Unit;
+                editRow.ProductName = newInfo.Name;
 
                 editRow.ProductId = newInfo.Id;
 
@@ -374,6 +414,15 @@ namespace JxcApplication.ViewModels.Storage
                 ProductLookUp = ProductManager.QueryByStore(Guid.Parse(e.NewValue.ToString()));
                 RaisePropertyChanged("ProductLookUp");
             }
+            if (e.NewValue != null && e.NewValue.ToString().ToUpper() == "E1406832-8887-4C83-A73C-3B4DFC49CD79")
+            {
+                IsVisibleMoney = false;
+            }
+            else
+            {
+                IsVisibleMoney = true;
+            }
+            RaisePropertyChanged("IsVisibleMoney");
         }
 
 

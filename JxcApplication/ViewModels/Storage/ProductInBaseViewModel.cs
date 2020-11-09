@@ -73,7 +73,12 @@ namespace JxcApplication.ViewModels.Storage
         /// <returns></returns>
         protected Product GetProductNewInfo(Guid productGuid)
         {
-            return ProductManager.GetProductNewInfo(productGuid);
+            if (ProductInStorage.StorageId == null)
+            {
+                ShowNotification("请选择仓库");
+                return null;
+            }
+            return ProductManager.GetProductNewInfo(productGuid, ProductInStorage.StorageId.Value);
         }
 
         /// <summary>
