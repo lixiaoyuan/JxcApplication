@@ -1,0 +1,50 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JxcApplication.Control" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        x:Class="JxcApplication.Views.Storage.RawOutStorageSelectOutWindow"
+        WindowStartupLocation="CenterScreen"
+       ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="出库：选择入库单" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0">
+            <dxg:GridControl x:Name="GridControlMain">
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="TableView" ShowTotalSummary="False"
+                                   AllowDrop="True"
+                                   ShowSearchPanelMode="Never"  
+                                   ShowGroupPanel="False" 
+                                   AllowEditing="False" 
+                                   AllowCellMerge="True" 
+                                   NewItemRowPosition="None"/>
+                </dxg:GridControl.View>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="OutProductName" Header="名称"></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="OutProductSpec" Header="规格"></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="OutStock" Header="数量"></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="UseQuantity" Header="扣除数量" HeaderStyle="{StaticResource GridColumnHeaderConstant}" ></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="OutProductTime" Header="生产日期"></dxg:GridColumn>
+                    <dxg:GridColumn FieldName="InLastStock" Header="入库单剩余数量"></dxg:GridColumn>
+                </dxg:GridControl.Columns>
+
+                <dxmvvm:Interaction.Behaviors>
+                    <dxg:GridDragDropManager x:Name="gridDragDropManager" DragOver="gridDragDropManager_DragOver" Drop="gridDragDropManager_Drop" Dropped="gridDragDropManager_Dropped">
+
+                    </dxg:GridDragDropManager>
+                </dxmvvm:Interaction.Behaviors>
+            </dxg:GridControl>
+        </Border>
+        <StackPanel Grid.Row="1">
+            <Button Height="38" Width="120" Margin="5" Content="确定" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

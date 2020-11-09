@@ -86,6 +86,11 @@ namespace BusinessDb.Cor.EntityModels
 
         public string ModiftyIp { get; set; }
 
+        /// <summary>
+        /// ¿ìµÝµ¥ºÅ
+        /// </summary>
+        public string TrackingNumber { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductOutStorageDetail> ProductOutStorageDetail { get; set; }
     }

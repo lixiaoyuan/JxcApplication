@@ -108,7 +108,12 @@ namespace JxcApplication.ViewModels.Sell
         /// <returns></returns>
         private Product GetProductNewInfo(Guid productGuid)
         {
-            return ProductManager.GetProductNewInfo(productGuid);
+            if(ReturnStorage.StorageId == null)
+            {
+                ShowNotification("请选择仓库");
+                return null;
+            }
+            return ProductManager.GetProductNewInfo(productGuid, ReturnStorage.StorageId.Value);
         }
 
 

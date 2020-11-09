@@ -15,6 +15,7 @@ using BusinessDb.Cor.EntityModels;
 using DevExpress.Mvvm;
 using JxcApplication.Core;
 using JxcApplication.ViewModels.Inherit;
+using JxcApplication.Views.Sell;
 
 namespace JxcApplication.ViewModels.Sell
 {
@@ -251,7 +252,12 @@ namespace JxcApplication.ViewModels.Sell
         /// <returns></returns>
         private Product GetProductNewInfo(Guid productGuid)
         {
-            return ProductManager.GetProductNewInfo(productGuid);
+            if (OutStorage.StorageId == null)
+            {
+                ShowNotification("请选择仓库");
+                return null;
+            }
+            return ProductManager.GetProductNewInfo(productGuid, OutStorage.StorageId.Value);
         }
 
         private string OrderType()
@@ -392,6 +398,14 @@ namespace JxcApplication.ViewModels.Sell
             var lackingId = Guid.Empty;
             if (IsNewOrder)
             {
+                InputTrackingNumberWindow number = new InputTrackingNumberWindow();
+                var res = number.ShowDialog();
+                if(!res.HasValue || !res.Value)
+                {
+                    return false;
+                }
+                OutStorage.TrackingNumber = number.trackingNumber.Text.Trim();
+
                 result = _productOrderOutInsertManager.InsertProductOutOrder(OutStorage, OutStorageDetails, ref lackingId);
             }
             else

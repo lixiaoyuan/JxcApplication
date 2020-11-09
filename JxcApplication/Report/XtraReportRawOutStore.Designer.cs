@@ -2,7 +2,7 @@
 
 namespace JxcApplication.Report
 {
-    partial class XtraReportProductReturn
+    partial class XtraReportRawOutStore
     {
         /// <summary>
         /// Required designer variable.
@@ -40,17 +40,8 @@ namespace JxcApplication.Report
             this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell15 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -64,13 +55,10 @@ namespace JxcApplication.Report
             this.xrTableCell29 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell33 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell32 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell30 = new DevExpress.XtraReports.UI.XRTableCell();
             this.bottomMarginBand1 = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -85,11 +73,8 @@ namespace JxcApplication.Report
             this.xrTableCell24 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell22 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
             this.TableTitleStyle = new DevExpress.XtraReports.UI.XRControlStyle();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.xrTableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -121,9 +106,8 @@ namespace JxcApplication.Report
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1,
             this.xrTableRow2,
-            this.xrTableRow4,
             this.xrTableRow3});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(1941F, 254F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(1941F, 190.5F);
             this.xrTable1.StyleName = "ContextStyle";
             // 
             // xrTableRow1
@@ -150,7 +134,7 @@ namespace JxcApplication.Report
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.CreateDate")});
             this.xrTableCell2.Dpi = 254F;
             this.xrTableCell2.Name = "xrTableCell2";
-            this.xrTableCell2.Weight = 0.75980662771725738D;
+            this.xrTableCell2.Weight = 0.839030239686906D;
             // 
             // xrTableCell4
             // 
@@ -159,7 +143,7 @@ namespace JxcApplication.Report
             this.xrTableCell4.StylePriority.UseTextAlignment = false;
             this.xrTableCell4.Text = "单号:";
             this.xrTableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell4.Weight = 1.0608076854115924D;
+            this.xrTableCell4.Weight = 0.98158407344194365D;
             // 
             // xrTableCell3
             // 
@@ -167,59 +151,24 @@ namespace JxcApplication.Report
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.Code")});
             this.xrTableCell3.Dpi = 254F;
             this.xrTableCell3.Name = "xrTableCell3";
+            this.xrTableCell3.Text = "[Title.Code]";
             this.xrTableCell3.Weight = 0.59600695916548552D;
             // 
             // xrTableRow2
             // 
             this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell7,
-            this.xrTableCell8,
-            this.xrTableCell11,
-            this.xrTableCell12,
             this.xrTableCell5,
             this.xrTableCell6});
             this.xrTableRow2.Dpi = 254F;
             this.xrTableRow2.Name = "xrTableRow2";
             this.xrTableRow2.Weight = 1D;
             // 
-            // xrTableCell7
-            // 
-            this.xrTableCell7.Dpi = 254F;
-            this.xrTableCell7.Name = "xrTableCell7";
-            this.xrTableCell7.Text = "付款类型:";
-            this.xrTableCell7.Weight = 0.27406927267765968D;
-            // 
-            // xrTableCell8
-            // 
-            this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.PaymentType")});
-            this.xrTableCell8.Dpi = 254F;
-            this.xrTableCell8.Name = "xrTableCell8";
-            this.xrTableCell8.Weight = 0.759806635253446D;
-            // 
-            // xrTableCell11
-            // 
-            this.xrTableCell11.Dpi = 254F;
-            this.xrTableCell11.Name = "xrTableCell11";
-            this.xrTableCell11.StylePriority.UseTextAlignment = false;
-            this.xrTableCell11.Text = "付款账号:";
-            this.xrTableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell11.Weight = 0.459417266527884D;
-            // 
-            // xrTableCell12
-            // 
-            this.xrTableCell12.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.PaymentAccount")});
-            this.xrTableCell12.Dpi = 254F;
-            this.xrTableCell12.Name = "xrTableCell12";
-            this.xrTableCell12.Weight = 0.42336617984304359D;
-            // 
             // xrTableCell5
             // 
             this.xrTableCell5.Dpi = 254F;
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.Text = "仓库:";
-            this.xrTableCell5.Weight = 0.17802411170301413D;
+            this.xrTableCell5.Weight = 0.274069281378468D;
             // 
             // xrTableCell6
             // 
@@ -227,58 +176,13 @@ namespace JxcApplication.Report
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.Store")});
             this.xrTableCell6.Dpi = 254F;
             this.xrTableCell6.Name = "xrTableCell6";
-            this.xrTableCell6.Weight = 0.59600708766775545D;
-            // 
-            // xrTableRow4
-            // 
-            this.xrTableRow4.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell13,
-            this.xrTableCell14,
-            this.xrTableCell15,
-            this.xrTableCell16});
-            this.xrTableRow4.Dpi = 254F;
-            this.xrTableRow4.Name = "xrTableRow4";
-            this.xrTableRow4.Weight = 1D;
-            // 
-            // xrTableCell13
-            // 
-            this.xrTableCell13.Dpi = 254F;
-            this.xrTableCell13.Name = "xrTableCell13";
-            this.xrTableCell13.Text = "客户:";
-            this.xrTableCell13.Weight = 0.27406927267765968D;
-            // 
-            // xrTableCell14
-            // 
-            this.xrTableCell14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.Customer")});
-            this.xrTableCell14.Dpi = 254F;
-            this.xrTableCell14.Name = "xrTableCell14";
-            this.xrTableCell14.Weight = 0.759806635253446D;
-            // 
-            // xrTableCell15
-            // 
-            this.xrTableCell15.Dpi = 254F;
-            this.xrTableCell15.Name = "xrTableCell15";
-            this.xrTableCell15.StylePriority.UseTextAlignment = false;
-            this.xrTableCell15.Text = "联系人:";
-            this.xrTableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell15.Weight = 0.459417266527884D;
-            // 
-            // xrTableCell16
-            // 
-            this.xrTableCell16.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.AcontactUser")});
-            this.xrTableCell16.Dpi = 254F;
-            this.xrTableCell16.Name = "xrTableCell16";
-            this.xrTableCell16.Weight = 1.1973973792138133D;
+            this.xrTableCell6.Weight = 2.4166212722943348D;
             // 
             // xrTableRow3
             // 
             this.xrTableRow3.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell9,
-            this.xrTableCell10,
-            this.xrTableCell18,
-            this.xrTableCell17});
+            this.xrTableCell10});
             this.xrTableRow3.Dpi = 254F;
             this.xrTableRow3.Name = "xrTableRow3";
             this.xrTableRow3.Weight = 1D;
@@ -287,16 +191,16 @@ namespace JxcApplication.Report
             // 
             this.xrTableCell9.Dpi = 254F;
             this.xrTableCell9.Name = "xrTableCell9";
-            this.xrTableCell9.Text = "总金额:";
+            this.xrTableCell9.Text = "备注:";
             this.xrTableCell9.Weight = 0.274069281378468D;
             // 
             // xrTableCell10
             // 
             this.xrTableCell10.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.SumPrice", "{0:c2}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.Remark")});
             this.xrTableCell10.Dpi = 254F;
             this.xrTableCell10.Name = "xrTableCell10";
-            this.xrTableCell10.Weight = 0.75980653759289885D;
+            this.xrTableCell10.Weight = 2.4166212722943348D;
             // 
             // xrLabel2
             // 
@@ -304,9 +208,9 @@ namespace JxcApplication.Report
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(425F, 0F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(1117.6F, 73.23667F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(1164.167F, 73.23667F);
             this.xrLabel2.StyleName = "Title";
-            this.xrLabel2.Text = "厦门比格维尔食品有限公司成品退货单";
+            this.xrLabel2.Text = "厦门比格维尔食品有限公司原材料出库单";
             // 
             // topMarginBand1
             // 
@@ -339,8 +243,7 @@ namespace JxcApplication.Report
             this.xrTableCell31,
             this.xrTableCell29,
             this.xrTableCell33,
-            this.xrTableCell32,
-            this.xrTableCell30});
+            this.xrTableCell32});
             this.xrTableRow8.Dpi = 254F;
             this.xrTableRow8.Name = "xrTableRow8";
             this.xrTableRow8.Weight = 1D;
@@ -377,15 +280,8 @@ namespace JxcApplication.Report
             // 
             this.xrTableCell32.Dpi = 254F;
             this.xrTableCell32.Name = "xrTableCell32";
-            this.xrTableCell32.Text = "单价(元)";
-            this.xrTableCell32.Weight = 0.32308293803576749D;
-            // 
-            // xrTableCell30
-            // 
-            this.xrTableCell30.Dpi = 254F;
-            this.xrTableCell30.Name = "xrTableCell30";
-            this.xrTableCell30.Text = "金额";
-            this.xrTableCell30.Weight = 0.39389714944123116D;
+            this.xrTableCell32.Text = "生产日期";
+            this.xrTableCell32.Weight = 0.71698006032852057D;
             // 
             // bottomMarginBand1
             // 
@@ -399,7 +295,7 @@ namespace JxcApplication.Report
             this.xrLabel2,
             this.xrTable1});
             this.ReportHeader.Dpi = 254F;
-            this.ReportHeader.HeightF = 327.2367F;
+            this.ReportHeader.HeightF = 263.7367F;
             this.ReportHeader.Name = "ReportHeader";
             this.ReportHeader.StyleName = "ContextStyle";
             // 
@@ -407,8 +303,6 @@ namespace JxcApplication.Report
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLine1,
-            this.xrLabel9,
-            this.xrLabel10,
             this.xrLabel11,
             this.xrLabel12});
             this.ReportFooter.Dpi = 254F;
@@ -421,35 +315,6 @@ namespace JxcApplication.Report
             this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(14.00019F, 0F);
             this.xrLine1.Name = "xrLine1";
             this.xrLine1.SizeF = new System.Drawing.SizeF(1941F, 5F);
-            // 
-            // xrLabel9
-            // 
-            this.xrLabel9.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel9.Dpi = 254F;
-            this.xrLabel9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(814.2253F, 5F);
-            this.xrLabel9.Name = "xrLabel9";
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(158.4564F, 64.9111F);
-            this.xrLabel9.StylePriority.UseBorders = false;
-            this.xrLabel9.StylePriority.UseFont = false;
-            this.xrLabel9.StylePriority.UseTextAlignment = false;
-            this.xrLabel9.Text = "经办人:";
-            this.xrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // xrLabel10
-            // 
-            this.xrLabel10.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel10.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.BusinessUser")});
-            this.xrLabel10.Dpi = 254F;
-            this.xrLabel10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(972.6816F, 5F);
-            this.xrLabel10.Name = "xrLabel10";
-            this.xrLabel10.SizeF = new System.Drawing.SizeF(390.4784F, 64.9111F);
-            this.xrLabel10.StylePriority.UseBorders = false;
-            this.xrLabel10.StylePriority.UseFont = false;
-            this.xrLabel10.StylePriority.UseTextAlignment = false;
-            this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrLabel11
             // 
@@ -524,11 +389,13 @@ namespace JxcApplication.Report
             this.xrTable3.Dpi = 254F;
             this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(14F, 0F);
             this.xrTable3.Name = "xrTable3";
+            this.xrTable3.Padding = new DevExpress.XtraPrinting.PaddingInfo(4, 0, 0, 0, 254F);
             this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow7});
             this.xrTable3.SizeF = new System.Drawing.SizeF(1941F, 60F);
             this.xrTable3.StyleName = "ContextStyle";
             this.xrTable3.StylePriority.UseBorders = false;
+            this.xrTable3.StylePriority.UsePadding = false;
             // 
             // xrTableRow7
             // 
@@ -537,8 +404,7 @@ namespace JxcApplication.Report
             this.xrTableCell23,
             this.xrTableCell24,
             this.xrTableCell22,
-            this.xrTableCell26,
-            this.xrTableCell25});
+            this.xrTableCell26});
             this.xrTableRow7.Dpi = 254F;
             this.xrTableRow7.Name = "xrTableRow7";
             this.xrTableRow7.Weight = 0.5679012345679012D;
@@ -573,7 +439,7 @@ namespace JxcApplication.Report
             // xrTableCell22
             // 
             this.xrTableCell22.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Details.OriginalStock")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Details.SubtractStock")});
             this.xrTableCell22.Dpi = 254F;
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.Weight = 0.42131862851839008D;
@@ -581,20 +447,10 @@ namespace JxcApplication.Report
             // xrTableCell26
             // 
             this.xrTableCell26.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Details.UnitPrice", "{0:f}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Details.ProducingDate", "{0:yyyy-M-d}")});
             this.xrTableCell26.Dpi = 254F;
             this.xrTableCell26.Name = "xrTableCell26";
-            this.xrTableCell26.Text = "xrTableCell26";
-            this.xrTableCell26.Weight = 0.38080290542854978D;
-            // 
-            // xrTableCell25
-            // 
-            this.xrTableCell25.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Details.SumPrice", "{0:f}")});
-            this.xrTableCell25.Dpi = 254F;
-            this.xrTableCell25.Name = "xrTableCell25";
-            this.xrTableCell25.Text = "xrTableCell25";
-            this.xrTableCell25.Weight = 0.46426853813345637D;
+            this.xrTableCell26.Weight = 0.84507122118380229D;
             // 
             // TableTitleStyle
             // 
@@ -606,26 +462,9 @@ namespace JxcApplication.Report
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(BusinessDb.Cor.Models.ReportDataModel.ProductReturnData);
+            this.bindingSource1.DataSource = typeof(BusinessDb.Cor.Models.ReportDataModel.RawOutStoreData);
             // 
-            // xrTableCell17
-            // 
-            this.xrTableCell17.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Title.Remark")});
-            this.xrTableCell17.Dpi = 254F;
-            this.xrTableCell17.Name = "xrTableCell17";
-            this.xrTableCell17.Weight = 1.1973972208711545D;
-            // 
-            // xrTableCell18
-            // 
-            this.xrTableCell18.Dpi = 254F;
-            this.xrTableCell18.Name = "xrTableCell18";
-            this.xrTableCell18.StylePriority.UseTextAlignment = false;
-            this.xrTableCell18.Text = "备注：";
-            this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell18.Weight = 0.4594175138302814D;
-            // 
-            // XtraReportProductReturn
+            // XtraReportRawOutStore
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.topMarginBand1,
@@ -691,7 +530,6 @@ namespace JxcApplication.Report
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell22;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell23;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell24;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell25;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell26;
         private DevExpress.XtraReports.UI.XRTable xrTable4;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow8;
@@ -700,23 +538,9 @@ namespace JxcApplication.Report
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell29;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell33;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell32;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell30;
         private DevExpress.XtraReports.UI.XRControlStyle TableTitleStyle;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel9;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel10;
         private DevExpress.XtraReports.UI.XRLabel xrLabel11;
         private DevExpress.XtraReports.UI.XRLabel xrLabel12;
         private DevExpress.XtraReports.UI.XRLine xrLine1;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell11;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell12;
-        private DevExpress.XtraReports.UI.XRTableRow xrTableRow4;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell13;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell14;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell15;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell16;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell18;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell17;
     }
 }

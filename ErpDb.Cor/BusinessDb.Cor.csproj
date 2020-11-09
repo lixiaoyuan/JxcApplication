@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201910301325513_addCustomerNameByCharge.Designer.cs">
       <DependentUpon>201910301325513_addCustomerNameByCharge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011091251527_trackingNumber.cs" />
+    <Compile Include="Migrations\202011091251527_trackingNumber.Designer.cs">
+      <DependentUpon>202011091251527_trackingNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoriesOrder.cs" />
     <Compile Include="Models\CategoriesOutOrder.cs" />
@@ -266,6 +270,7 @@
     <Compile Include="Models\ReportDataModel\OutProductData.cs" />
     <Compile Include="Models\ReportDataModel\ProductInStroeData.cs" />
     <Compile Include="Models\ReportDataModel\ProductReturnData.cs" />
+    <Compile Include="Models\ReportDataModel\RawOutStoreData.cs" />
     <Compile Include="Models\ReportDataModel\WageData.cs" />
     <Compile Include="Models\Report\AccountTransactionRecordModel.cs" />
     <Compile Include="Models\Report\ExpensesModel.cs" />
@@ -388,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910301325513_addCustomerNameByCharge.resx">
       <DependentUpon>201910301325513_addCustomerNameByCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011091251527_trackingNumber.resx">
+      <DependentUpon>202011091251527_trackingNumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
