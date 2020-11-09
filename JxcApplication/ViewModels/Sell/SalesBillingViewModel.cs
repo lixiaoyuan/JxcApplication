@@ -398,6 +398,7 @@ namespace JxcApplication.ViewModels.Sell
             var lackingId = Guid.Empty;
             if (IsNewOrder)
             {
+#if Aswt
                 InputTrackingNumberWindow number = new InputTrackingNumberWindow();
                 var res = number.ShowDialog();
                 if(!res.HasValue || !res.Value)
@@ -405,6 +406,7 @@ namespace JxcApplication.ViewModels.Sell
                     return false;
                 }
                 OutStorage.TrackingNumber = number.trackingNumber.Text.Trim();
+#endif
 
                 result = _productOrderOutInsertManager.InsertProductOutOrder(OutStorage, OutStorageDetails, ref lackingId);
             }
@@ -490,7 +492,7 @@ namespace JxcApplication.ViewModels.Sell
 
             if (e.Cell.Property == "ProductId")
             {
-                #region 当产品Id选择发生改变时，更新输入行的产品信息
+#region 当产品Id选择发生改变时，更新输入行的产品信息
 
                 var newGuid = Guid.Parse(e.Cell.Value.ToString());
                 if (newGuid == Guid.Empty)
@@ -522,7 +524,7 @@ namespace JxcApplication.ViewModels.Sell
 
                 editRow.ProductName = newInfo.Name;
 
-                #endregion
+#endregion
             }
             else if (e.Cell.Property == "OutStock")
             {
