@@ -20,7 +20,7 @@ namespace BusinessDb.Cor
             : base(ConnectStringHelper.ConnectString)
         {
            Database.SetInitializer<ApplicationDbContext>(null);
-            Database.CommandTimeout = 60 * 20;
+            Database.CommandTimeout = 60 * 10;
         }
 #endif 
 
