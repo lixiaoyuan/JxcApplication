@@ -168,6 +168,17 @@ namespace BusinessDb.Cor.Business
             }
             return _entities.ProductOutStorageDetail.Where(a => a.PutOutId == outOrder.Id).AsNoTracking().ToObservableCollection();
         }
+
+        /// <summary>
+        /// 获取快递单号
+        /// </summary>
+        /// <returns></returns>
+        public void UpdateTrackNumber(string code,string trackNumber)
+        {
+            _entities.Database.ExecuteSqlCommand("update ProductOutStorage set TrackingNumber=@track where Code=@code",
+                new SqlParameter("track", trackNumber),
+                new SqlParameter("code", code));
+        }
     }
 
 
