@@ -425,6 +425,56 @@ namespace JxcApplication.ViewModels.Sell
         }
 
         /// <summary>
+        /// 录入快递单号
+        /// </summary>
+        public void UpserTrackNumber()
+        {
+            if (IsNewOrder || OutStorage == null)
+            {
+                return;
+            }
+            string oldTack = OutStorage.TrackingNumber;
+            InputTrackingNumberWindow number = new InputTrackingNumberWindow();
+            number.oldNumber.Content = oldTack;
+            var res = number.ShowDialog();
+            if (!res.HasValue || !res.Value)
+            {
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(oldTack))
+            {
+                oldTack = number.trackingNumber.Text;
+            }
+            else
+            {
+                oldTack = number.trackingNumber.Text + ";" + oldTack;
+                int i = 0;
+                int index = 0;
+                while (true)
+                {
+                    index = oldTack.IndexOf(';', index);
+                    if (index >= 0)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    index++;
+                }
+                if (i >= 3)
+                {
+                    ShowNotification("修改次数超过3次，不允许修改了！");
+                    return;
+                }
+            }
+            
+            _productOrderManager.UpdateTrackNumber(OutStorage.Code, oldTack);
+            OutStorage.TrackingNumber = oldTack;
+        }
+
+        /// <summary>
         ///     初始化新订单
         /// </summary>
         public void NewProductOrder()

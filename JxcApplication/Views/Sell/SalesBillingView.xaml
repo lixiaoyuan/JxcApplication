@@ -94,6 +94,11 @@
                                LargeGlyph="{dx:DXImageOffice2013 Image=SaveAll_32x32.png}"
                                Command="{Binding SaveProductCommand}"
                                CommandParameter="{Binding ElementName=GridControl}" />
+            
+            <dxb:BarButtonItem x:Name="SB_BI_Track" KeyGesture="Ctrl+K" Content="快递单号"
+                               Command="{Binding UpserTrackNumberCommand}"
+                               LargeGlyph="{dx:DXImage Image=BOFileAttachment_32x32.png}"
+                               Glyph="{dx:DXImage Image=BOFileAttachment_16x16.png}" />
         </dxb:BarManager.Items>
         <dx:LoadingDecorator>
             <DockPanel>

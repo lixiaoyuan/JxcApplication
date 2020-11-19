@@ -13,6 +13,8 @@ namespace BusinessDb.Cor.Models.Report
     {
         [Display(Name = "单号")]
         public string Code { get; set; }
+        [Display(Name = "开/退 单号")]
+        public string RefCode { get; set; }
         [Display(Name = "客户编码")]
         public string CustomerCode { get; set; }
         [Display(Name = "客户")]
