@@ -220,7 +220,12 @@
                             </dxg:GridColumn>
 
                         </dxg:GridControl.Columns>
-                    </dxg:GridControl>
+
+                        <dxg:GridControl.TotalSummary>
+                        <dxg:GridSummaryItem SummaryType="Sum" FieldName="Cost" ShowInColumn="Cost"
+                                                 DisplayFormat="总金额:{0:c}" />
+                        </dxg:GridControl.TotalSummary>
+                </dxg:GridControl>
                     <Expander Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" ExpandDirection="Right" >
                         <Expander.Header>
                             <TextBlock Text="历史订单"/>
