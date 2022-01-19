@@ -23,6 +23,11 @@ namespace JxcApplication.ViewModels
         public ObservableCollection<ProductAsType> ProductAsTypeLookUp { get; set; }
         public string ProductTypeCode { get; set; }
 
+        /// <summary>
+        /// 上次最大的编码
+        /// </summary>
+        private string preMaxCode = null;
+
         protected override void OnInitializeInRuntime()
         {
             base.OnInitializeInRuntime();
@@ -50,6 +55,7 @@ namespace JxcApplication.ViewModels
             else
             {
                 Products = _productManager.QueryByProductType(ProductTypeCode);
+                preMaxCode = null;
             }
             RaisePropertyChanged("Products");
         }
@@ -64,7 +70,6 @@ namespace JxcApplication.ViewModels
                 return;
             }
             tableView.AddNewRow();
-            tableView.MoveLastRow();
         }
 
         public void OnInitNewRow(InitNewRowEventArgs e)
@@ -74,12 +79,22 @@ namespace JxcApplication.ViewModels
                 //添加新行
                 TableView tableView = (TableView)e.OriginalSource;
                 var newRow = (Product)tableView.Grid.GetRow(e.RowHandle);
+                tableView.FocusedRowHandle = e.RowHandle;
 
                 newRow.Id = Guid.NewGuid();
                 newRow.Enable = true;
 
-                string maxCode = _productManager.GetMaxCode(ProductTypeCode);
+                string maxCode;
+                if (preMaxCode == null)
+                {
+                    maxCode = _productManager.GetMaxCode(ProductTypeCode);
+                }
+                else
+                {
+                    maxCode = preMaxCode;
+                }
                 newRow.Code = SortCodeGenerate.GetCode(ProductTypeCode,maxCode);
+                preMaxCode = newRow.Code;
                 newRow.ProductType = ProductTypeCode;
             }
             catch (Exception exception)
