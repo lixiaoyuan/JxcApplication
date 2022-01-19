@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BusinessDb.Cor.EntityModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
-using System.Linq.Expressions;
-using BusinessDb.Cor.EntityModels;
+using System.Text.RegularExpressions;
 using Utilities;
 
 namespace BusinessDb.Cor.Business
@@ -82,13 +82,28 @@ namespace BusinessDb.Cor.Business
         /// <returns></returns>
         public string GetMaxCode(string productType)
         {
-            return _entities.Product.Where(a => a.ProductType == productType).Max(a => a.Code);
+
+            int maxCode = 0;
+            string code = null;
+            foreach (var p in _entities.Product.Where(a => a.ProductType == productType).ToList())
+            {
+                if (int.TryParse(Regex.Replace(p.Code, @"^[A-Za-z]+", string.Empty), out int f))
+                {
+                    if (f > maxCode)
+                    {
+                        maxCode = f;
+                        code = p.Code;
+                    }
+                }
+            }
+
+            return code;
         }
 
         /// <summary>
         /// 获取产品最新信息,用于产品选择填充的数据
         /// </summary>
-        public Product GetProductNewInfo(Guid productGuid,Guid storeId)
+        public Product GetProductNewInfo(Guid productGuid, Guid storeId)
         {
             return _entities.GetProductNewInfo(productGuid, storeId, MergeOption.NoTracking).FirstOrDefault();
         }
@@ -96,10 +111,10 @@ namespace BusinessDb.Cor.Business
         /// 销售开单，检查锁定库存，锁定数量不能销售
         /// </summary>
         /// <returns></returns>
-        public bool CheckLockAmount( Guid storageId, Guid productId, decimal amount,
+        public bool CheckLockAmount(Guid storageId, Guid productId, decimal amount,
             out string msg)
         {
-            return _entities.CheckLockAmount(storageId, productId, amount,out msg);
+            return _entities.CheckLockAmount(storageId, productId, amount, out msg);
         }
     }
 }
