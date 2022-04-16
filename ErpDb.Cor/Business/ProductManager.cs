@@ -28,15 +28,10 @@ namespace BusinessDb.Cor.Business
         public static ObservableCollection<Product> QueryByStore(Guid storeId)
         {
             ApplicationDbContext application = new ApplicationDbContext();
-            // 成品仓库2也需要跟成品显示出来
-            if (storeId.Equals(Guid.Parse("688D2340-1413-4467-93AA-BCDA21FC64BC")))
-            {
-                storeId = Guid.Parse("D66C26BD-3BEB-4242-8346-0A4980BA6FC7");
-            }
 
             var query = from p in application.Product.Where(a => a.Enable.Value)
                         from s in application.Store.Where(a => a.Id == storeId)
-                        where s.ProductType.StartsWith(p.ProductType)
+                        where s.ProductType.Equals(p.ProductType)
                         select p;
             return query.AsNoTracking().ToObservableCollection();
         }
@@ -52,7 +47,7 @@ namespace BusinessDb.Cor.Business
             }
             else
             {
-                _entitiesCache.Product.Where(a => a.ProductType == productType && a.Enable == filterEnable).Load();
+                _entitiesCache.Product.Where(a => a.ProductType.StartsWith(productType) && a.Enable == filterEnable).Load();
             }
             return _entitiesCache.Product.Local;
         }

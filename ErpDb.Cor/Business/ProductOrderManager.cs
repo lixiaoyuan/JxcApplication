@@ -863,7 +863,7 @@ namespace BusinessDb.Cor.Business
                         return string.Format("开单失败:{0} 产品Id为空!", detail.ProductCode);
                     }
 
-                    var storageDetails = _entities.ProductInStorageDetail.Where(a => a.StorageId == productOutStorage.StorageId && a.ProductId == detail.ProductId && a.LastStock > 0).OrderBy(a => a.LastStock).ToList();
+                    var storageDetails = _entities.ProductInStorageDetail.Where(a => a.StorageId == detail.StoreId && a.ProductId == detail.ProductId && a.LastStock > 0).OrderBy(a => a.LastStock).ToList();
 
                     #region 判断库存,或去当前仓库当前产品的剩余数量
 
@@ -1099,7 +1099,7 @@ namespace BusinessDb.Cor.Business
                     {
                         #region Added
 
-                        var storageDetails = _entities.ProductInStorageDetail.Where(a => a.StorageId == productOutStorage.StorageId && a.ProductId == detail.ProductId && a.LastStock > 0).OrderBy(a => a.LastStock).ToList();
+                        var storageDetails = _entities.ProductInStorageDetail.Where(a => a.StorageId == detail.StoreId && a.ProductId == detail.ProductId && a.LastStock > 0).OrderBy(a => a.LastStock).ToList();
                         var sumStock = storageDetails.Sum(a => a.LastStock);
                         if (sumStock < detail.OutStock)
                         {
@@ -1192,7 +1192,7 @@ namespace BusinessDb.Cor.Business
                             #region 出库数量调大,继续扣除加大数量库存
 
                             needStock -= originalOutDetail.OutStock;
-                            var storageDetails = _entities.ProductInStorageDetail.Where(a => a.StorageId == productOutStorage.StorageId && a.ProductId == detail.ProductId && a.LastStock > 0).OrderBy(a => a.LastStock).ToList();
+                            var storageDetails = _entities.ProductInStorageDetail.Where(a => a.StorageId == detail.StoreId && a.ProductId == detail.ProductId && a.LastStock > 0).OrderBy(a => a.LastStock).ToList();
                             var sumStock = storageDetails.Sum(a => a.LastStock);
                             if (sumStock < needStock)
                             {
@@ -1272,7 +1272,7 @@ namespace BusinessDb.Cor.Business
                             }
                             _entities.Database.ExecuteSqlCommand($"DELETE dbo.ProductOutInStorageDetail WHERE PutOutStorageId IN ('{string.Join("','", listOutInDetail.Select(a => a.PutOutStorageId))}')");
                             //继续出库存
-                            var storageDetails = _entities.ProductInStorageDetail.Where(a => a.StorageId == productOutStorage.StorageId && a.ProductId == detail.ProductId && a.LastStock > 0).OrderBy(a => a.LastStock).ToList();
+                            var storageDetails = _entities.ProductInStorageDetail.Where(a => a.StorageId == detail.StoreId && a.ProductId == detail.ProductId && a.LastStock > 0).OrderBy(a => a.LastStock).ToList();
                             var sumStock = storageDetails.Sum(a => a.LastStock);
                             if (sumStock < detail.OutStock)
                             {

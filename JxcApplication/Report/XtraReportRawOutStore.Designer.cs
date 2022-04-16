@@ -73,8 +73,12 @@ namespace JxcApplication.Report
             this.xrTableCell24 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell22 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.TableTitleStyle = new DevExpress.XtraReports.UI.XRControlStyle();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.TableTitleStyle = new DevExpress.XtraReports.UI.XRControlStyle();
+            this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -229,11 +233,11 @@ namespace JxcApplication.Report
             // xrTable4
             // 
             this.xrTable4.Dpi = 254F;
-            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(14F, 0F);
+            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable4.Name = "xrTable4";
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow8});
-            this.xrTable4.SizeF = new System.Drawing.SizeF(1941F, 63.5F);
+            this.xrTable4.SizeF = new System.Drawing.SizeF(1969F, 63.5F);
             this.xrTable4.StyleName = "TableTitleStyle";
             // 
             // xrTableRow8
@@ -243,6 +247,8 @@ namespace JxcApplication.Report
             this.xrTableCell31,
             this.xrTableCell29,
             this.xrTableCell33,
+            this.xrTableCell8,
+            this.xrTableCell11,
             this.xrTableCell32});
             this.xrTableRow8.Dpi = 254F;
             this.xrTableRow8.Name = "xrTableRow8";
@@ -260,28 +266,28 @@ namespace JxcApplication.Report
             this.xrTableCell31.Dpi = 254F;
             this.xrTableCell31.Name = "xrTableCell31";
             this.xrTableCell31.Text = "规格";
-            this.xrTableCell31.Weight = 0.56826257756273224D;
+            this.xrTableCell31.Weight = 0.42104470270428118D;
             // 
             // xrTableCell29
             // 
             this.xrTableCell29.Dpi = 254F;
             this.xrTableCell29.Name = "xrTableCell29";
             this.xrTableCell29.Text = "单位";
-            this.xrTableCell29.Weight = 0.41576581571997429D;
+            this.xrTableCell29.Weight = 0.340520953232917D;
             // 
             // xrTableCell33
             // 
             this.xrTableCell33.Dpi = 254F;
             this.xrTableCell33.Name = "xrTableCell33";
             this.xrTableCell33.Text = "数量";
-            this.xrTableCell33.Weight = 0.35745715319400573D;
+            this.xrTableCell33.Weight = 0.25330380940809843D;
             // 
             // xrTableCell32
             // 
             this.xrTableCell32.Dpi = 254F;
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.Text = "生产日期";
-            this.xrTableCell32.Weight = 0.71698006032852057D;
+            this.xrTableCell32.Weight = 0.35659460292782852D;
             // 
             // bottomMarginBand1
             // 
@@ -387,12 +393,12 @@ namespace JxcApplication.Report
             this.xrTable3.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrTable3.Dpi = 254F;
-            this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(14F, 0F);
+            this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable3.Name = "xrTable3";
             this.xrTable3.Padding = new DevExpress.XtraPrinting.PaddingInfo(4, 0, 0, 0, 254F);
             this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow7});
-            this.xrTable3.SizeF = new System.Drawing.SizeF(1941F, 60F);
+            this.xrTable3.SizeF = new System.Drawing.SizeF(1969F, 60F);
             this.xrTable3.StyleName = "ContextStyle";
             this.xrTable3.StylePriority.UseBorders = false;
             this.xrTable3.StylePriority.UsePadding = false;
@@ -404,6 +410,8 @@ namespace JxcApplication.Report
             this.xrTableCell23,
             this.xrTableCell24,
             this.xrTableCell22,
+            this.xrTableCell7,
+            this.xrTableCell12,
             this.xrTableCell26});
             this.xrTableRow7.Dpi = 254F;
             this.xrTableRow7.Name = "xrTableRow7";
@@ -425,7 +433,7 @@ namespace JxcApplication.Report
             this.xrTableCell23.Dpi = 254F;
             this.xrTableCell23.Name = "xrTableCell23";
             this.xrTableCell23.Text = "xrTableCell23";
-            this.xrTableCell23.Weight = 0.66978519623866761D;
+            this.xrTableCell23.Weight = 0.49626621200751231D;
             // 
             // xrTableCell24
             // 
@@ -434,7 +442,7 @@ namespace JxcApplication.Report
             this.xrTableCell24.Dpi = 254F;
             this.xrTableCell24.Name = "xrTableCell24";
             this.xrTableCell24.Text = "xrTableCell24";
-            this.xrTableCell24.Weight = 0.49004416586750427D;
+            this.xrTableCell24.Weight = 0.40135696450162095D;
             // 
             // xrTableCell22
             // 
@@ -442,7 +450,7 @@ namespace JxcApplication.Report
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "Details.SubtractStock")});
             this.xrTableCell22.Dpi = 254F;
             this.xrTableCell22.Name = "xrTableCell22";
-            this.xrTableCell22.Weight = 0.42131862851839008D;
+            this.xrTableCell22.Weight = 0.29855721278087322D;
             // 
             // xrTableCell26
             // 
@@ -450,7 +458,11 @@ namespace JxcApplication.Report
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "Details.ProducingDate", "{0:yyyy-M-d}")});
             this.xrTableCell26.Dpi = 254F;
             this.xrTableCell26.Name = "xrTableCell26";
-            this.xrTableCell26.Weight = 0.84507122118380229D;
+            this.xrTableCell26.Weight = 0.42030222098822673D;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(BusinessDb.Cor.Models.ReportDataModel.RawOutStoreData);
             // 
             // TableTitleStyle
             // 
@@ -460,9 +472,34 @@ namespace JxcApplication.Report
             this.TableTitleStyle.Name = "TableTitleStyle";
             this.TableTitleStyle.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
-            // bindingSource1
+            // xrTableCell7
             // 
-            this.bindingSource1.DataSource = typeof(BusinessDb.Cor.Models.ReportDataModel.RawOutStoreData);
+            this.xrTableCell7.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Details.StoreLocation")});
+            this.xrTableCell7.Dpi = 254F;
+            this.xrTableCell7.Name = "xrTableCell7";
+            this.xrTableCell7.Weight = 0.50178443878869217D;
+            // 
+            // xrTableCell8
+            // 
+            this.xrTableCell8.Dpi = 254F;
+            this.xrTableCell8.Name = "xrTableCell8";
+            this.xrTableCell8.Text = "所在仓库";
+            this.xrTableCell8.Weight = 0.42572649797350504D;
+            // 
+            // xrTableCell11
+            // 
+            this.xrTableCell11.Dpi = 254F;
+            this.xrTableCell11.Name = "xrTableCell11";
+            this.xrTableCell11.Text = "库位";
+            this.xrTableCell11.Weight = 0.30455161891416038D;
+            // 
+            // xrTableCell12
+            // 
+            this.xrTableCell12.Dpi = 254F;
+            this.xrTableCell12.Name = "xrTableCell12";
+            this.xrTableCell12.Text = "[StoreLocationCode]";
+            this.xrTableCell12.Weight = 0.35896113785037015D;
             // 
             // XtraReportRawOutStore
             // 
@@ -542,5 +579,9 @@ namespace JxcApplication.Report
         private DevExpress.XtraReports.UI.XRLabel xrLabel11;
         private DevExpress.XtraReports.UI.XRLabel xrLabel12;
         private DevExpress.XtraReports.UI.XRLine xrLine1;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell11;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell12;
     }
 }

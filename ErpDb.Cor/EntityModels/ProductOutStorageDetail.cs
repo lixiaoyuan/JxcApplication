@@ -38,7 +38,26 @@ namespace BusinessDb.Cor.EntityModels
         public decimal UnitPrice { get; set; }
 
         public decimal SumPrice { get; set; }
+        
+        /// <summary>
+        /// 排序
+        /// </summary>
         public int SortId { get; set; }
+        
+        /// <summary>
+        /// 仓库Id，放弃使用主表的仓库id
+        /// </summary>
+        public Guid? StoreId { get; set; }
+
+        /// <summary>
+        /// 所在仓库 备注信息
+        /// </summary>
+        public string StoreLocation { get; set; }
+        /// <summary>
+        /// 所在库位  备注信息
+        /// </summary>
+        public string StoreLocationCode { get; set; }
+
         public virtual Product Product { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using ApplicationDb.Cor;
+using ApplicationDb.Cor.Business;
+using BusinessDb.Cor.Business;
+using BusinessDb.Cor.EntityModels;
+using BusinessDb.Cor.Models;
+using DevExpress.Mvvm;
+using DevExpress.Xpf.Editors;
+using DevExpress.Xpf.Grid;
+using JxcApplication.Core;
+using JxcApplication.ViewModels.Inherit;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using ApplicationDb.Cor;
-using ApplicationDb.Cor.Business;
-using BusinessDb.Cor.Business;
-using BusinessDb.Cor.Models;
-using DevExpress.Xpf.Grid;
-using BusinessDb.Cor;
-using BusinessDb.Cor.EntityModels;
-using DevExpress.Mvvm;
-using DevExpress.Xpf.Editors;
-using JxcApplication.Core;
-using JxcApplication.ViewModels.Inherit;
 
 namespace JxcApplication.ViewModels.Sell
 {
@@ -79,7 +76,7 @@ namespace JxcApplication.ViewModels.Sell
             StoresLookUp = StoreManager.QueSellStores();
             SystemUserLookUp = SystemAccountManager.QueryLookUp();
             AcontactsLookUp = AcontactManager.QueAcontacts();
-            ProductLookUp = ProductManager.QueryByProductType("CP",true);
+            ProductLookUp = ProductManager.QueryByProductType("CP", true);
             AccountsLookUp = AccountManager.QueryLookUp();
 
             InitNewOrder();
@@ -106,14 +103,9 @@ namespace JxcApplication.ViewModels.Sell
         /// </summary>
         /// <param name="productGuid"></param>
         /// <returns></returns>
-        private Product GetProductNewInfo(Guid productGuid)
+        private Product GetProductNewInfo(Guid productGuid, Guid storeId)
         {
-            if(ReturnStorage.StorageId == null)
-            {
-                ShowNotification("请选择仓库");
-                return null;
-            }
-            return ProductManager.GetProductNewInfo(productGuid, ReturnStorage.StorageId.Value);
+            return ProductManager.GetProductNewInfo(productGuid, storeId);
         }
 
 
@@ -142,10 +134,14 @@ namespace JxcApplication.ViewModels.Sell
                 return false;
             }
 
-            if ((ReturnStorage.StorageId == null || ReturnStorage.StorageId.Value == Guid.Empty) && ReturnStorage.PaymentType != "Rebate")
+            if (ReturnStorage.PaymentType != "Rebate")
             {
-                ShowNotification("请选择仓库!", "失败:");
-                return false;
+                var nullStor = Details.FirstOrDefault(r=>r.StorageId==null|| r.StorageId ==Guid.Empty);
+                if (nullStor != null)
+                {
+                    ShowNotification("请选择仓库!", "失败:");
+                    return false;
+                }
             }
             if (ReturnStorage.CustomerId == null || ReturnStorage.CustomerId.Value == Guid.Empty)
             {
@@ -201,7 +197,7 @@ namespace JxcApplication.ViewModels.Sell
                     detail.Id = Guid.NewGuid();
                 }
                 detail.ReturnInId = ReturnStorage.Id;
-                detail.StorageId = ReturnStorage.StorageId;
+                // detail.StorageId = ReturnStorage.StorageId;
                 detail.LastStock = detail.OriginalStock;
                 if (ReturnStorage.PaymentType == "Rebate")
                 {
@@ -225,7 +221,7 @@ namespace JxcApplication.ViewModels.Sell
             string result = null;
             if (IsNewOrder)
             {
-                result = ProductReturnOrderInsertManager.InsertProductReturnOrder(ReturnStorage,msg=>ShowNotification(msg));
+                result = ProductReturnOrderInsertManager.InsertProductReturnOrder(ReturnStorage, msg => ShowNotification(msg));
             }
             else
             {
@@ -294,7 +290,7 @@ namespace JxcApplication.ViewModels.Sell
                 }
 
 
-                var newInfo = GetProductNewInfo(newGuid);
+                var newInfo = GetProductNewInfo(newGuid,editRow.StorageId.GetValueOrDefault(Guid.Empty));
                 if (newInfo == null)
                 {
                     return;
@@ -314,15 +310,15 @@ namespace JxcApplication.ViewModels.Sell
             }
             else if (e.Cell.Property == "OriginalStock")
             {
-                editRow.SumPrice = editRow.UnitPrice*editRow.OriginalStock;
+                editRow.SumPrice = editRow.UnitPrice * editRow.OriginalStock;
             }
             else if (e.Cell.Property == "UnitPrice")
             {
-                editRow.SumPrice = editRow.UnitPrice*editRow.OriginalStock;
+                editRow.SumPrice = editRow.UnitPrice * editRow.OriginalStock;
             }
             else if (e.Cell.Property == "SumPrice")
             {
-                editRow.UnitPrice = editRow.SumPrice/editRow.OriginalStock;
+                editRow.UnitPrice = editRow.SumPrice / editRow.OriginalStock;
             }
         }
 
@@ -428,7 +424,7 @@ namespace JxcApplication.ViewModels.Sell
                 Details = new ObservableCollection<ProductInStorageDetail>();
             }
             //获取销售单明细
-            var detail= _productOrderManager.GetSellOutStorage(InputOrderCode.ToUpper());
+            var detail = _productOrderManager.GetSellOutStorage(InputOrderCode.ToUpper());
             if (detail == null)
             {
                 return;
@@ -445,7 +441,7 @@ namespace JxcApplication.ViewModels.Sell
                     OriginalStock = outStorageDetail.OutStock,
                     UnitPrice = outStorageDetail.UnitPrice,
                     SumPrice = outStorageDetail.SumPrice,
-                    Remark = "ref "+InputOrderCode
+                    Remark = "ref " + InputOrderCode
                 });
             }
         }

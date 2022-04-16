@@ -38,7 +38,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Aswt-R|AnyCPU'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Aswt-Release|AnyCPU' ">
     <OutputPath>bin\Aswt-R\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
@@ -268,6 +268,22 @@
     <Compile Include="Migrations\202011091251527_trackingNumber.Designer.cs">
       <DependentUpon>202011091251527_trackingNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204100330175_addProducingDate.cs" />
+    <Compile Include="Migrations\202204100330175_addProducingDate.Designer.cs">
+      <DependentUpon>202204100330175_addProducingDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204100512452_addStoreId.cs" />
+    <Compile Include="Migrations\202204100512452_addStoreId.Designer.cs">
+      <DependentUpon>202204100512452_addStoreId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204151224039_addProductStoreLocation.cs" />
+    <Compile Include="Migrations\202204151224039_addProductStoreLocation.Designer.cs">
+      <DependentUpon>202204151224039_addProductStoreLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204151239359_addProductStoreLocation2.cs" />
+    <Compile Include="Migrations\202204151239359_addProductStoreLocation2.Designer.cs">
+      <DependentUpon>202204151239359_addProductStoreLocation2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoriesOrder.cs" />
     <Compile Include="Models\CategoriesOutOrder.cs" />
@@ -406,6 +422,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011091251527_trackingNumber.resx">
       <DependentUpon>202011091251527_trackingNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204100330175_addProducingDate.resx">
+      <DependentUpon>202204100330175_addProducingDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204100512452_addStoreId.resx">
+      <DependentUpon>202204100512452_addStoreId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204151224039_addProductStoreLocation.resx">
+      <DependentUpon>202204151224039_addProductStoreLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204151239359_addProductStoreLocation2.resx">
+      <DependentUpon>202204151239359_addProductStoreLocation2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

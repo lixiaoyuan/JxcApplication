@@ -209,7 +209,13 @@
                                     <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
-                            <dxg:GridColumn FieldName="Remark" Header="备注" />
+                            <dxg:GridColumn FieldName="ProducingDate" Header="生产日期">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:DateEditSettings></dxe:DateEditSettings>
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="SortCode" SortMode="Value" SortOrder="Ascending" Visible="False"></dxg:GridColumn>
+                        <dxg:GridColumn FieldName="Remark" Header="备注" />
 
                         </dxg:GridControl.Columns>
                         <dxg:GridControl.TotalSummary>

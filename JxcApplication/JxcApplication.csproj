@@ -62,7 +62,7 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Lixiaoyuan.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Aswt-R|AnyCPU'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Aswt-Release|AnyCPU' ">
     <OutputPath>bin\Aswt-R\</OutputPath>
     <DefineConstants>TRACE;Aswt</DefineConstants>
     <Optimize>true</Optimize>

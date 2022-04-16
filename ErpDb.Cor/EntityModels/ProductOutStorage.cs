@@ -21,6 +21,9 @@ namespace BusinessDb.Cor.EntityModels
 
         public string Code { get; set; }
 
+        /// <summary>
+        /// ·ÏÆú
+        /// </summary>
         public Guid? StorageId { get; set; }
 
         public DateTime? PaymentDate { get; set; }
