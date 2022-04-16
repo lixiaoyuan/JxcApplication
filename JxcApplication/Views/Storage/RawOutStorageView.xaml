@@ -199,10 +199,12 @@
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
                         <dxg:GridColumn FieldName="SumPrice" Header="金额" Visible="{Binding IsVisibleMoney}">
-                                <dxg:GridColumn.EditSettings>
-                                    <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
-                                </dxg:GridColumn.EditSettings>
-                            </dxg:GridColumn>
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings Mask="c2" MaskType="Numeric" />
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="StoreLocation" Header="所在仓库"></dxg:GridColumn>
+                        <dxg:GridColumn FieldName="StoreLocationCode" Header="库位"></dxg:GridColumn>
 
                         </dxg:GridControl.Columns>
                         <dxg:GridControl.TotalSummary>

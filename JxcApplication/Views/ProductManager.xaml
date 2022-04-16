@@ -107,12 +107,8 @@
                             <dxg:GridColumn FieldName="Code" Header="编码" SortIndex="1" AllowEditing="False"
                                             HeaderStyle="{StaticResource GridColumnHeaderConstant}" />
                             <dxg:GridColumn FieldName="Name" Header="名称" Width="200" />
-                            <dxg:GridColumn FieldName="PyCode" Header="拼音编码" />
-                            <dxg:GridColumn FieldName="ProductAsType" Header="产品分类">
-                                <dxg:GridColumn.EditSettings>
-                                    <dxe:ComboBoxEditSettings ItemsSource="{Binding ProductAsTypeLookUp}" ValueMember="Id" DisplayMember="Name"></dxe:ComboBoxEditSettings>
-                                </dxg:GridColumn.EditSettings>
-                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="StoreLocation" Header="所在仓库" />
+                            <dxg:GridColumn FieldName="StoreLocationCode" Header="仓位"/>
                             <dxg:GridColumn FieldName="Specification" Header="规格" />
                             <dxg:GridColumn FieldName="Unit" Header="单位" />
                             <dxg:GridColumn FieldName="UnitPrice" Header="初始单价">

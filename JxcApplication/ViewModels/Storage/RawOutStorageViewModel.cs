@@ -332,6 +332,8 @@ namespace JxcApplication.ViewModels.Storage
                 editRow.ProductName = newInfo.Name;
 
                 editRow.ProductId = newInfo.Id;
+                editRow.StoreLocation = newInfo.StoreLocation;
+                editRow.StoreLocationCode = newInfo.StoreLocationCode;
 
                 #endregion
             }

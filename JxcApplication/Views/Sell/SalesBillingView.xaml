@@ -142,7 +142,7 @@
                                         </dxlc:LayoutItem>
 
 
-                                        <dxlc:LayoutItem Label="仓 库:" HorizontalAlignment="Left">
+                                        <dxlc:LayoutItem Label="仓库(废弃):" HorizontalAlignment="Left" IsEnabled="False">
                                             <dxg:LookUpEdit Width="150" PopupWidth="300"
                                                         ItemsSource="{Binding StoresLookUp}"
                                                         PopupContentTemplate="{StaticResource ControlTemplateLookUpStore}"
@@ -312,11 +312,25 @@
                             <dxg:GridControl.Columns>
                                 <dxg:GridColumn FieldName="ProductCode" Header="货品编码" AllowEditing="False"
                                             HeaderStyle="{StaticResource GridColumnHeaderConstant}" />
+                                <dxg:GridColumn FieldName="StoreId" Header="仓库" MinWidth="200" HeaderStyle="{StaticResource GridColumnHeaderConstant}">
+                                    <dxg:GridColumn.EditSettings>
+                                    <dxg:LookUpEditSettings PopupWidth="400" ItemsSource="{Binding StoresLookUp}"
+                                                                DisplayMember="Name"
+                                                                ValueMember="Id"
+                                                                PopupContentTemplate="{StaticResource ControlTemplateLookUpStore}"
+                                                                AutoPopulateColumns="False"
+                                                                ImmediatePopup="True" IncrementalFiltering="True">
+                                            <dxg:LookUpEditSettings.StyleSettings>
+                                                <dxg:SearchLookUpEditStyleSettings />
+                                            </dxg:LookUpEditSettings.StyleSettings>
+                                        </dxg:LookUpEditSettings>
+                                </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
                                 <dxg:GridColumn FieldName="ProductId" Header="货品名称" ShowValidationAttributeErrors="False"
                                             Focusable="True" MinWidth="200"
                                             HeaderStyle="{StaticResource GridColumnHeaderConstant}">
                                     <dxg:GridColumn.EditSettings>
-                                        <dxg:LookUpEditSettings PopupWidth="350" ItemsSource="{Binding ProductLookUp}"
+                                        <dxg:LookUpEditSettings PopupWidth="500" ItemsSource="{Binding ProductLookUp}"
                                                             DisplayMember="Name"
                                                             ValueMember="Id"
                                                             PopupContentTemplate="{StaticResource ControlTemplateLookUpProduct}"

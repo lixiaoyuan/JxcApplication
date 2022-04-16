@@ -1,21 +1,20 @@
-﻿using System;
+﻿using ApplicationDb.Cor;
+using ApplicationDb.Cor.Business;
+using BusinessDb.Cor.Business;
+using BusinessDb.Cor.EntityModels;
+using BusinessDb.Cor.Models;
+using DevExpress.Mvvm;
+using DevExpress.Xpf.Core;
+using DevExpress.Xpf.Editors;
+using DevExpress.Xpf.Grid;
+using JxcApplication.Core;
+using JxcApplication.ViewModels.Inherit;
+using JxcApplication.Views.Sell;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
-using ApplicationDb.Cor;
-using ApplicationDb.Cor.Business;
-using BusinessDb.Cor.Business;
-using BusinessDb.Cor.Models;
-using DevExpress.Xpf.Core;
-using DevExpress.Xpf.Editors;
-using DevExpress.Xpf.Grid;
-using BusinessDb.Cor;
-using BusinessDb.Cor.EntityModels;
-using DevExpress.Mvvm;
-using JxcApplication.Core;
-using JxcApplication.ViewModels.Inherit;
-using JxcApplication.Views.Sell;
 
 namespace JxcApplication.ViewModels.Sell
 {
@@ -102,7 +101,7 @@ namespace JxcApplication.ViewModels.Sell
 
             StoresLookUp = StoreManager.QueSellStores();
             CustomersLookUp = CustomerManager.QueCustomers();
-            ProductLookUp = ProductManager.QueryByProductType("CP",true);
+            ProductLookUp = ProductManager.QueryByProductType("CP", true);
             SystemUserLookUp = SystemAccountManager.QueryLookUp();
             //AcontactsLookUp = AcontactManager.QueAcontacts();
 
@@ -147,11 +146,11 @@ namespace JxcApplication.ViewModels.Sell
             {
                 OutStorage.BusinessUser = customer.ResponsibleSalesman.Value;
             }
-            if (!string.IsNullOrWhiteSpace(customer.AcontactName) )
+            if (!string.IsNullOrWhiteSpace(customer.AcontactName))
             {
                 OutStorage.AcontackName = customer.AcontactName;
             }
-            if (!string.IsNullOrWhiteSpace(customer.AcontactTel) )
+            if (!string.IsNullOrWhiteSpace(customer.AcontactTel))
             {
                 OutStorage.AcontackTel = customer.AcontactTel;
             }
@@ -213,9 +212,9 @@ namespace JxcApplication.ViewModels.Sell
                 return;
             }
             OutStorage.GiveAddress = acontact.Address;
-            OutStorage.GiveArea =acontact.Area ;
+            OutStorage.GiveArea = acontact.Area;
             OutStorage.AcontackTel = string.IsNullOrWhiteSpace(acontact.Tel) ? acontact.Phone : acontact.Tel;
-            if (!string.IsNullOrWhiteSpace(acontact.Name)&&string.IsNullOrWhiteSpace(OutStorage.AcontackName))
+            if (!string.IsNullOrWhiteSpace(acontact.Name) && string.IsNullOrWhiteSpace(OutStorage.AcontackName))
             {
                 OutStorage.AcontackName = acontact.Name;
             }
@@ -250,21 +249,16 @@ namespace JxcApplication.ViewModels.Sell
         /// </summary>
         /// <param name="productGuid"></param>
         /// <returns></returns>
-        private Product GetProductNewInfo(Guid productGuid)
+        private Product GetProductNewInfo(Guid productGuid, Guid storeId)
         {
-            if (OutStorage.StorageId == null)
-            {
-                ShowNotification("请选择仓库");
-                return null;
-            }
-            return ProductManager.GetProductNewInfo(productGuid, OutStorage.StorageId.Value);
+            return ProductManager.GetProductNewInfo(productGuid, storeId);
         }
 
         private string OrderType()
         {
             return "XK";
         }
-         
+
         /// <summary>
         ///     保存之前
         /// </summary>
@@ -290,11 +284,6 @@ namespace JxcApplication.ViewModels.Sell
                 return false;
             }
 
-            if (OutStorage.StorageId == null || OutStorage.StorageId.Value == Guid.Empty)
-            {
-                ShowNotification("请选择仓库!", "失败:");
-                return false;
-            }
             if (OutStorage.CustomerId == null || OutStorage.CustomerId.Value == Guid.Empty)
             {
                 ShowNotification("请选择客户!", "失败:");
@@ -307,22 +296,22 @@ namespace JxcApplication.ViewModels.Sell
             }
 
 
-            //foreach (var detail in OutStorageDetails)
-            //{
-            //    if (detail.SumPrice < 0)
-            //    {
-            //        ShowNotification("明细金额不能小于0", "失败:");
-            //        return false;
-            //    }
-            //    sumDecimal += detail.SumPrice;
-            //}
+            var nullStore = OutStorageDetails.FirstOrDefault(a => a.StoreId == null || a.StoreId == Guid.Empty);
+            if (nullStore != null)
+            {
+                // 明细必须选择仓库
+                ShowNotification("请选择仓库!" + nullStore.ProductName, "失败:");
+                return false;
+            }
+
             var result = OutStorageDetails.Where(a => a.SumPrice < 0).ToList();
             if (result.Any())
             {
-               string codes= string.Join(",", result.Select(a => a.ProductCode));
-                ShowNotification(codes+ " 明细金额不能小于0", "失败:");
+                string codes = string.Join(",", result.Select(a => a.ProductCode));
+                ShowNotification(codes + " 明细金额不能小于0", "失败:");
                 return false;
             }
+
             decimal sumDecimal = OutStorageDetails.Sum(a => a.SumPrice);
             if (sumDecimal > RemainingCredibility)
             {
@@ -336,18 +325,20 @@ namespace JxcApplication.ViewModels.Sell
             //foreach (ProductOutStorageDetail detail in OutStorageDetails)
             //{
             //    if(!detail.ProductId.HasValue)continue;
-                
+
             //        ProductManager.CheckLockAmount(OutStorage.StorageId,detail.ProductId.Value,)
             //}
-           var groupOutStock= OutStorageDetails.GroupBy(a => a.ProductId).Select(a => new {productId = a.Key, outStock = a.Sum(b => b.OutStock)});
+            var groupOutStock = OutStorageDetails.GroupBy(a => new { a.StoreId, a.ProductId })
+                    .Select(b => new { storeId = b.Key.StoreId, productId = b.Key.ProductId, outStock = b.Sum(f => f.OutStock) });
             string msgCheckStock = "";
             foreach (var groupValue in groupOutStock)
             {
-                if (!groupValue.productId.HasValue) continue;
-                if (!ProductManager.CheckLockAmount(OutStorage.StorageId.Value, groupValue.productId.Value,
+                if (!groupValue.productId.HasValue || !groupValue.storeId.HasValue)
+                    continue;
+                if (!ProductManager.CheckLockAmount(groupValue.storeId.Value, groupValue.productId.Value,
                     groupValue.outStock, out msgCheckStock))
                 {
-                    DXMessageBox.Show(msgCheckStock.Replace(@"\n","\n").Replace(@"\t","\t"), "警告:", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    DXMessageBox.Show(msgCheckStock.Replace(@"\n", "\n").Replace(@"\t", "\t"), "警告:", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
                 }
             }
@@ -469,7 +460,7 @@ namespace JxcApplication.ViewModels.Sell
                     return;
                 }
             }
-            
+
             _productOrderManager.UpdateTrackNumber(OutStorage.Code, oldTack);
             OutStorage.TrackingNumber = oldTack;
         }
@@ -501,7 +492,7 @@ namespace JxcApplication.ViewModels.Sell
                 return;
             }
             //检查客户是否允许继续开单
-            string checkMessage = CustomerManager.CheckAllowNewSale((Guid) e.NewValue);
+            string checkMessage = CustomerManager.CheckAllowNewSale((Guid)e.NewValue);
             if (!string.IsNullOrWhiteSpace(checkMessage))
             {
                 ShowNotification(checkMessage);
@@ -509,7 +500,7 @@ namespace JxcApplication.ViewModels.Sell
                 return;
             }
 
-            InitCustomerInfo((Guid) e.NewValue);
+            InitCustomerInfo((Guid)e.NewValue);
         }
 
         /// <summary>
@@ -523,7 +514,7 @@ namespace JxcApplication.ViewModels.Sell
 #pragma warning disable CS0162
             if (e.NewValue == null || (Guid)e.NewValue == Guid.Empty)
                 return;
-            InitAcontactInfo((Guid) e.NewValue);
+            InitAcontactInfo((Guid)e.NewValue);
 #pragma warning restore
         }
 
@@ -542,21 +533,35 @@ namespace JxcApplication.ViewModels.Sell
 
             if (e.Cell.Property == "ProductId")
             {
-#region 当产品Id选择发生改变时，更新输入行的产品信息
+                #region 当产品Id选择发生改变时，更新输入行的产品信息
 
                 var newGuid = Guid.Parse(e.Cell.Value.ToString());
                 if (newGuid == Guid.Empty)
                 {
+                    // 情况行信息
+                    editRow.ProductCode = null;
+                    editRow.UnitPrice = 0;
+                    editRow.SumPrice = 0;
+                    editRow.ProductSpecification = null;
+                    editRow.ProductUnit = null;
+                    editRow.ProductId = null;
+                    editRow.ProductName = null;
                     return;
                 }
 
+                if (editRow.StoreId == null || editRow.StoreId == Guid.Empty)
+                {
+                    ShowNotification("请选择仓库");
+                    return;
+                }
 
-                var newInfo = GetProductNewInfo(newGuid);
+                var newInfo = GetProductNewInfo(newGuid, editRow.StoreId.Value);
                 if (newInfo == null)
                 {
                     return;
                 }
-                if (newInfo.StockRemind!=null)
+
+                if (newInfo.StockRemind != null)
                 {
                     //引用剩余库存
                     editRow.OutStock = newInfo.StockRemind.Value;
@@ -574,19 +579,19 @@ namespace JxcApplication.ViewModels.Sell
 
                 editRow.ProductName = newInfo.Name;
 
-#endregion
+                #endregion
             }
             else if (e.Cell.Property == "OutStock")
             {
-                editRow.SumPrice = editRow.UnitPrice*editRow.OutStock;
+                editRow.SumPrice = editRow.UnitPrice * editRow.OutStock;
             }
             else if (e.Cell.Property == "UnitPrice")
             {
-                editRow.SumPrice = editRow.UnitPrice*editRow.OutStock;
+                editRow.SumPrice = editRow.UnitPrice * editRow.OutStock;
             }
             else if (e.Cell.Property == "SumPrice")
             {
-                editRow.UnitPrice = editRow.SumPrice/editRow.OutStock;
+                editRow.UnitPrice = editRow.SumPrice / editRow.OutStock;
             }
         }
 
@@ -602,7 +607,7 @@ namespace JxcApplication.ViewModels.Sell
             {
                 Guid orid = OutStorage.Id;
                 InitNewOrder();
-                LoadHistory(new ShowOrderEventArgs(orid,null));
+                LoadHistory(new ShowOrderEventArgs(orid, null));
             }
         }
 
@@ -719,7 +724,9 @@ namespace JxcApplication.ViewModels.Sell
                     SumPrice = outStorageDetail.SumPrice,
                     OrderType = outStorageDetail.OrderType,
                     OutStock = outStorageDetail.OutStock,
-                    ProductName = outStorageDetail.ProductName
+                    ProductName = outStorageDetail.ProductName,
+                    SortId = outStorageDetail.SortId,
+                    StoreId = outStorageDetail.StoreId
                 });
             }
         }

@@ -46,6 +46,16 @@ namespace BusinessDb.Cor.EntityModels
         public decimal? LockAmount { get; set; }
         public bool? Enable { get; set; }
 
+        /// <summary>
+        /// ËùÔÚ²Ö¿â
+        /// </summary>
+        public string StoreLocation { get; set; }
+
+        /// <summary>
+        /// ¿âÎ»±àÂë
+        /// </summary>
+        public string StoreLocationCode { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductInStorageDetail> ProductInStorageDetail { get; set; }
 

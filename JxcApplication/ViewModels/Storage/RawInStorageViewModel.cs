@@ -6,6 +6,7 @@ using System.Text;
 using BusinessDb.Cor.Business;
 using BusinessDb.Cor;
 using BusinessDb.Cor.EntityModels;
+using DevExpress.Xpf.Grid;
 
 namespace JxcApplication.ViewModels.Storage
 {
@@ -88,6 +89,7 @@ namespace JxcApplication.ViewModels.Storage
 
             }
             ProductInStorage.SumPrice = 0;
+            short sort = 0;
             foreach (var detail in Details)
             {
                 detail.OrderType = OrderType();
@@ -99,8 +101,25 @@ namespace JxcApplication.ViewModels.Storage
                 detail.StorageId = ProductInStorage.StorageId;
                 detail.LastStock = detail.OriginalStock;
                 ProductInStorage.SumPrice += detail.SumPrice;
+                detail.SortCode = sort++;
             }
             return true;
+        }
+
+        public override void CellValueChanged(CellValueChangedEventArgs e)
+        {
+            base.CellValueChanged(e);
+
+            var editRow = e.Cell.Row as ProductInStorageDetail;
+            if (editRow == null)
+            {
+                return;
+            }
+
+            if (editRow.ProducingDate == null)
+            {
+                editRow.ProducingDate = DBUnit.GetDbTime();
+            }
         }
 
         public RawInStorageViewModel(Guid menuId, string caption) : base(menuId, caption)

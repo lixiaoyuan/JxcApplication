@@ -22,6 +22,8 @@ namespace BusinessDb.Cor.Models.ReportDataModel
             public string ProductSpecification { get; set; }
             public string ProductUnit { get; set; }
             public decimal SubtractStock { get; set; }
+            public string StoreLocation { get; set; }
+            public string StoreLocationCode { get; set; }
             public DateTime ProducingDate { get; set; }
 
         }

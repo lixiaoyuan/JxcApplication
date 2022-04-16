@@ -42,6 +42,8 @@ namespace BusinessDb.Cor.EntityModels
 
         public short SortCode { get; set; }
 
+        public DateTime? ProducingDate { get; set; }
+
         public string Remark { get; set; }
 
         public virtual Product Product { get; set; }

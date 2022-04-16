@@ -72,7 +72,7 @@ namespace BusinessDb.Cor.Business
                 yield break;
             }
 
-            var details = _entities.Database.SqlQuery<RawOutStoreData.Detail>("select p.Name,ProductOutStorageDetail.ProductSpecification,ProductOutStorageDetail.ProductUnit,outin.SubtractStock ,inn.ProducingDate from ProductOutStorageDetail left join ProductOutInStorageDetail outin on outin.PutOutStorageId=ProductOutStorageDetail.Id left join ProductInStorageDetail ind on ind.id = outin.PutInStorageId left join ProductInStorage inn on inn.Id=ind.PutInId left join Product p on p.Id= ProductOutStorageDetail.ProductId where ProductOutStorageDetail.PutOutId=@id order by ProductOutStorageDetail.ProductId", new SqlParameter("id", id))
+            var details = _entities.Database.SqlQuery<RawOutStoreData.Detail>("select p.StoreLocation,p.StoreLocationCode,p.Name,ProductOutStorageDetail.ProductSpecification,ProductOutStorageDetail.ProductUnit,outin.SubtractStock ,inn.ProducingDate from ProductOutStorageDetail left join ProductOutInStorageDetail outin on outin.PutOutStorageId=ProductOutStorageDetail.Id left join ProductInStorageDetail ind on ind.id = outin.PutInStorageId left join ProductInStorage inn on inn.Id=ind.PutInId left join Product p on p.Id= ProductOutStorageDetail.ProductId where ProductOutStorageDetail.PutOutId=@id order by ProductOutStorageDetail.ProductId", new SqlParameter("id", id))
                 .ToList();
             yield return new RawOutStoreData()
             {
